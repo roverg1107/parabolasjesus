@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Invitado que Toma el Primer Lugar</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #6a4a1a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #6a4a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #9a7a3a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e0c8a0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fffdf8;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #6a4a1a;
+    border-bottom: 1.5px solid #ede0c8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #8a5a2a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #6a4a1a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #6a4a1a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0c8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf6ee;
+  }
+
+  /* LOS DOS INVITADOS */
+  .invitados-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .invitado-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .soberbio-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .humilde-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .invitado-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .invitado-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .soberbio-card h4 { color: #b02020; }
+  .humilde-card h4 { color: #1a7a3a; }
+  .invitado-card ul {
+    text-align: left;
+  }
+  .invitado-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .soberbio-card ul li::before { color: #b02020; }
+  .humilde-card ul li::before { color: #1a7a3a; }
+
+  /* LA LEY ESPIRITUAL */
+  .ley-box {
+    background: #fdf6dc;
+    border: 2px solid #c8a030;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .ley-box .titulo {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #6a4a1a;
+    margin-bottom: 4px;
+  }
+  .ley-box .formula {
+    font-size: 10pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .ley-box .formula strong {
+    font-style: normal;
+    color: #6a4a1a;
+  }
+
+  /* LOS DOS RESULTADOS */
+  .resultados-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .resultado-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .humillacion-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .exaltacion-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .resultado-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .resultado-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .humillacion-card h4 { color: #b02020; }
+  .exaltacion-card h4 { color: #1a7a3a; }
+  .resultado-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .resultado-flecha {
+    font-size: 24pt;
+    color: #6a4a1a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e0c8a0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf6ee;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #6a4a1a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf6ee;
+    border-left: 3px solid #6a4a1a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #6a4a1a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e0c8a0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf6ee;
+  }
+  .app-item strong {
+    color: #6a4a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #6a4a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #6a4a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .soberbio-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .humilde-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .humillacion-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .exaltacion-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .ley-box { background: #fdf6dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Invitado que Toma el Primer Lugar</h1>
+    <div class="subtitulo">La humildad que conduce a la exaltación</div>
+    <div class="referencia">Lucas 14:7-11 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Jesús observa cómo los invitados <strong>escogían los primeros asientos</strong> a la mesa. Les dice una parábola:</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;"><em>"Cuando fueres convidado por alguno a bodas, <strong>no te sientes en el primer lugar</strong>, no sea que otro más distinguido que tú esté convidado por él, y viniendo el que te convidó, te diga: <strong>Da lugar a este</strong>; y entonces comiences con <strong>vergüenza</strong> a ocupar el último lugar."</em></p>
+      <p style="font-size:9.5pt; margin-bottom:4px;"><em>"Mas cuando fueres convidado, ve y <strong>siéntate en el último lugar</strong>, para que cuando venga el que te convidó, te diga: <strong>Amigo, sube más arriba</strong>; entonces tendrás <strong>gloria</strong> delante de los que se sientan contigo a la mesa."</em></p>
+      <p style="font-size:9.5pt;"><strong>"Porque cualquiera que se enaltece, será humillado; y el que se humilla será enaltecido."</strong></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña una <strong>técnica</strong> de protocolo social: usa lo cotidiano para enseñar lo espiritual.</li>
+        <li>No enseña que hay que <strong>humillarse para ser exaltado</strong>: el que se humilla por cálculo no es humilde.</li>
+        <li>No enseña que el <strong>honor sea malo</strong>: condena la búsqueda ansiosa, no el honor.</li>
+        <li>No enseña que la humildad sea <strong>pasividad</strong> ni falta de autoestima.</li>
+        <li>No enseña que haya que <strong>rechazar</strong> los puestos de honor: prohíbe tomarlos por autoafirmación.</li>
+        <li>No enseña que Dios exalte siempre <strong>en esta vida</strong>: la exaltación puede ser eterna.</li>
+        <li>No enseña una <strong>estrategia social</strong>: la humildad es actitud interior.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La humildad es la actitud del discípulo:</strong> no busca el propio honor, confía en Dios.</li>
+        <li><strong>La autoafirmación conduce a la humillación:</strong> el que busca el propio honor lo pierde.</li>
+        <li><strong>La humildad conduce a la exaltación:</strong> pero no a la buscada, sino a la dada por Dios.</li>
+        <li><strong>La humildad no busca la exaltación:</strong> el que se humilla por cálculo no es humilde.</li>
+        <li><strong>Dios es el que exalta:</strong> no la autoafirmación, no la estrategia, no el mérito humano.</li>
+        <li><strong>La humildad es verdad sobre uno mismo:</strong> reconocer dones y límites sin soberbia ni autodesprecio.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>El honor verdadero viene de Dios:</strong> no de los hombres, sino de Aquel que ve en lo secreto.</li>
+        <li><strong>La humildad es compatible con la dignidad:</strong> el humilde reconoce su dignidad como hijo de Dios.</li>
+        <li><strong>La humildad es una ley del Reino:</strong> no es opción; es condición para entrar.</li>
+        <li><strong>La humildad es escatológica:</strong> prepara para el banquete eterno.</li>
+        <li><strong>La humildad es imitación de Cristo:</strong> "se humilló a sí mismo... por lo cual Dios le exaltó" (Fil 2:8-9).</li>
+        <li><strong>La humildad transforma las relaciones:</strong> el humilde no compite; sirve.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS DOS INVITADOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los dos invitados: el soberbio y el humilde</h2>
+    <div class="invitados-grid">
+      <div class="invitado-card soberbio-card">
+        <span class="icono">🔴</span>
+        <h4>El invitado soberbio</h4>
+        <ul>
+          <li>Escoge el <strong>primer lugar</strong>.</li>
+          <li><strong>Busca</strong> el propio honor.</li>
+          <li>Se <strong>sobreestima</strong> a sí mismo.</li>
+          <li>No cuenta con los <strong>demás</strong>.</li>
+          <li>Corre el riesgo de la <strong>vergüenza pública</strong>.</li>
+          <li>Es <strong>humillado</strong> delante de todos.</li>
+          <li><strong>Pierde</strong> el honor que buscaba.</li>
+        </ul>
+      </div>
+      <div class="invitado-card humilde-card">
+        <span class="icono">🟢</span>
+        <h4>El invitado humilde</h4>
+        <ul>
+          <li>Escoge el <strong>último lugar</strong>.</li>
+          <li><strong>Confía</strong> en el anfitrión.</li>
+          <li>Se <strong>valora</strong> con verdad.</li>
+          <li><strong>Respeta</strong> a los demás.</li>
+          <li>Es <strong>invitado</strong> a subir más arriba.</li>
+          <li>Es <strong>exaltado</strong> delante de todos.</li>
+          <li><strong>Recibe</strong> la gloria que no buscaba.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ley-box">
+      <div class="titulo">⚖️ La ley espiritual del Reino</div>
+      <div class="formula">
+        <strong>"Cualquiera que se enaltece, será humillado; y el que se humilla será enaltecido."</strong><br>
+        La <strong>ley del Reino</strong> invierte las categorías humanas. El mundo dice: "busca el primer lugar". El Reino dice: "ocupa el último lugar". El mundo dice: "afírmate a ti mismo". El Reino dice: "confía en Dios". La <strong>humildad</strong> no es una <strong>técnica</strong> para obtener honor: es una <strong>actitud interior</strong> que confía en Dios. El <strong>honor verdadero</strong> no se conquista: se <strong>recibe</strong> de Dios.
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: LOS DOS RESULTADOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Los dos resultados: humillación y exaltación</h2>
+    <div class="resultados-grid">
+      <div class="resultado-card humillacion-card">
+        <span class="icono">⬇️</span>
+        <h4>La humillación</h4>
+        <span class="desc">El que se <strong>enaltece</strong> es <strong>humillado</strong>. La <strong>vergüenza pública</strong> de tener que <strong>ceder</strong> el lugar. La <strong>pérdida</strong> del honor que se buscaba. La <strong>consecuencia</strong> de la soberbia.</span>
+      </div>
+      <div class="resultado-flecha">→</div>
+      <div class="resultado-card exaltacion-card">
+        <span class="icono">⬆️</span>
+        <h4>La exaltación</h4>
+        <span class="desc">El que se <strong>humilla</strong> es <strong>exaltado</strong>. La <strong>invitación</strong> pública a subir más arriba. La <strong>gloria</strong> delante de los demás. El <strong>don</strong> de Dios al humilde. La <strong>recompensa</strong> de la humildad.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>πρωτοκλισία</td>
+        <td>prōtoklisia</td>
+        <td>primer asiento, primer diván</td>
+        <td>De <em>prōtos</em> (primero) + <em>klisia</em> (diván). El lugar más honorífico en el banquete.</td>
+      </tr>
+      <tr>
+        <td>κατάκλισις</td>
+        <td>kataklisis</td>
+        <td>reclinarse, sentarse a la mesa</td>
+        <td>La postura de los invitados en el banquete. Se recostaban en divanes.</td>
+      </tr>
+      <tr>
+        <td>ἔνδοξος</td>
+        <td>endoxos</td>
+        <td>distinguido, honorable</td>
+        <td>El invitado más importante. El que merece el primer lugar.</td>
+      </tr>
+      <tr>
+        <td>καταισχύνω</td>
+        <td>kataischynō</td>
+        <td>avergonzar, humillar</td>
+        <td>La vergüenza pública de tener que ceder el lugar.</td>
+      </tr>
+      <tr>
+        <td>ἔσχατος</td>
+        <td>eschatos</td>
+        <td>último</td>
+        <td>El último lugar. El lugar menos honorífico.</td>
+      </tr>
+      <tr>
+        <td>δόξα</td>
+        <td>doxa</td>
+        <td>gloria, honor</td>
+        <td>La gloria delante de los demás invitados. La recompensa de la humildad.</td>
+      </tr>
+      <tr>
+        <td>ὑψόω</td>
+        <td>hypsoō</td>
+        <td>enaltecer, exaltar</td>
+        <td>El verbo clave de la parábola. El que se enaltece será humillado.</td>
+      </tr>
+      <tr>
+        <td>ταπεινόω</td>
+        <td>tapeinoō</td>
+        <td>humillar, abatir</td>
+        <td>El que se humilla será enaltecido. De aquí viene "tapeinofobia".</td>
+      </tr>
+      <tr>
+        <td>ταπεινοφροσύνη</td>
+        <td>tapeinophrosynē</td>
+        <td>humildad, modestia</td>
+        <td>De <em>tapeinos</em> (humilde) + <em>phrēn</em> (mente). La virtud de la humildad interior.</td>
+      </tr>
+      <tr>
+        <td>ἀνάκειμαι</td>
+        <td>anakeimai</td>
+        <td>estar recostado a la mesa</td>
+        <td>La postura de los invitados en el banquete griego.</td>
+      </tr>
+      <tr>
+        <td>προσανάβαινε</td>
+        <td>prosanabaine</td>
+        <td>sube más arriba</td>
+        <td>La invitación del anfitrión a ocupar un lugar más honorífico.</td>
+      </tr>
+      <tr>
+        <td>φίλε</td>
+        <td>phile</td>
+        <td>amigo</td>
+        <td>El tratamiento respetuoso del anfitrión. La relación cercana.</td>
+      </tr>
+      <tr>
+        <td>γάμος</td>
+        <td>gamos</td>
+        <td>bodas, banquete de bodas</td>
+        <td>El banquete nupcial. Imagen del Reino escatológico.</td>
+      </tr>
+      <tr>
+        <td>παραβολή</td>
+        <td>parabolē</td>
+        <td>parábola, comparación</td>
+        <td>La forma literaria que Jesús usa. Una comparación cotidiana para enseñar verdad espiritual.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La palabra <em>tapeinophrosynē</em> ("humildad") viene de <em>tapeinos</em> ("humilde") + <em>phrēn</em> ("mente"). La humildad no es solo una actitud externa: es una <strong>disposición interior de la mente</strong>. De aquí viene "tapeinofobia" (miedo a la humildad). Y los dos verbos clave de la parábola son <em>hypsoō</em> ("enaltecer") y <em>tapeinoō</em> ("humillar"): la ley espiritual es clara.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Proverbios 25:6-7: "No te gloríes delante del rey... mejor es que te digan: Sube acá". Proverbios 29:23: la soberbia abate; la humildad retiene la honra. Talmud Erubín 13b: el que se humilla es exaltado.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La humildad (nivāta) como virtud. La eliminación del ego (anattā). El discípulo se sienta en el último lugar ante el maestro. La atención plena supera la autoafirmación.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El sabio no se muestra, por eso brilla" (Tao 22). "El que se pone debajo de todos, es el primero" (Tao 66). "El agua busca los lugares bajos" (Tao 8): el sabio busca el último lugar.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 25:63: los siervos del Misericordioso caminan humildemente. Sura 7:146: Dios aparta a los soberbios. Hadiz: "El que se humilla ante Dios, Dios lo eleva".</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La humildad (vinaya) como virtud. La eliminación del ego (ahamkāra). El discípulo se sienta en el último lugar ante el guru. La acción desinteresada requiere humildad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La modestia (tapeinophrosynē) como virtud. La autosuficiencia (autarkeia): el sabio no necesita reconocimiento. La apatheia: no se perturba por el honor ni la vergüenza.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La modestia (sōphrosynē) como justo medio entre vanidad y falta de autoestima. La magnanimidad (megalopsychia): el magnánimo conoce su valor y no busca reconocimiento ajeno.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La humildad (qiān) como virtud. "El hombre superior es modesto en sus palabras y diligente en sus acciones" (Analectas 4:24). "El hombre superior no compite" (Analectas 3:7).</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Humildad: verdad sobre uno mismo ante Dios</li>
+          <li>Exaltación: don de Dios al humilde</li>
+          <li>Honor: don de Dios</li>
+          <li>Último lugar: lugar de la humildad y la confianza</li>
+          <li>Gloria: don de Dios</li>
+          <li>Estrategia: cálculo para obtener honor</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Autodesprecio o falsa modestia</li>
+          <li>Conquista del soberbio</li>
+          <li>Búsqueda ansiosa del reconocimiento</li>
+          <li>Lugar de la falsa humildad</li>
+          <li>Conquista humana</li>
+          <li>Humildad verdadera</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#6a4a1a;"><strong>La humildad verdadera no busca la exaltación: confía en Dios y espera de Él la gloria. La humildad es verdad sobre uno mismo ante Dios. La humildad es una ley del Reino. La humildad es imitación de Cristo. La humildad transforma las relaciones.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Busco el <strong>primer lugar</strong> o el último?</div>
+      <div class="item">2. ¿Mi humildad es <strong>verdadera</strong> o calculada?</div>
+      <div class="item">3. ¿Confío en <strong>Dios</strong> para mi exaltación o la busco yo?</div>
+      <div class="item">4. ¿Reconozco mis dones sin <strong>soberbia</strong> y mis límites sin autodesprecio?</div>
+      <div class="item">5. ¿Mi <strong>autoestima</strong> es sana o soberbia?</div>
+      <div class="item">6. ¿Busco el reconocimiento de los <strong>demás</strong> o el de Dios?</div>
+      <div class="item">7. ¿Comparto el honor con los demás o lo <strong>acaparo</strong>?</div>
+      <div class="item">8. ¿Mi humildad <strong>construye comunidad</strong> o competencia?</div>
+      <div class="item">9. ¿Imito la <strong>humildad de Cristo</strong>?</div>
+      <div class="item">10. ¿Confío en que <strong>Dios exalta</strong> al humilde a su tiempo?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Practicar la humildad en el hogar; no competir por el protagonismo.</div>
+      <div class="app-item"><strong>Amistad</strong> Ceder el primer lugar al amigo; servir en lugar de competir.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de humildad y servicio en lugar de competencia.</div>
+      <div class="app-item"><strong>Trabajo</strong> No buscar el reconocimiento ansiosamente; servir con excelencia.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar la humildad verdadera: verdad sobre uno mismo ante Dios.</div>
+      <div class="app-item"><strong>Sociedad</strong> Ceder el protagonismo; promover a los demás.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar con humildad: servir en lugar de dominar.</div>
+      <div class="app-item"><strong>Espiritual</strong> Confiar en Dios para la exaltación; no buscarla uno mismo.</div>
+      <div class="app-item"><strong>Crisis</strong> La humildad ayuda a atravesar las crisis sin autoafirmación.</div>
+      <div class="app-item"><strong>Evangelización</strong> Testimoniar con humildad, no con soberbia.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Porque cualquiera que se enaltece, será humillado;<br>y el que se humilla será enaltecido.”
+    <small>La humildad es la actitud del discípulo. El que se enaltece será humillado; el que se humilla será enaltecido. La humildad verdadera no busca la exaltación: confía en Dios y espera de Él la gloria. La humildad es verdad sobre uno mismo ante Dios. La humildad es una ley del Reino. La humildad es imitación de Cristo. La humildad transforma las relaciones.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Invitado que Toma el Primer Lugar (Lucas 14:7-11) · Bloque 6: La humildad y el servicio · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>
