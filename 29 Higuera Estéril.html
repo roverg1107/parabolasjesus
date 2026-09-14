@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: La Higuera Estéril</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #5a3a1a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #5a3a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #8a6a3a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e0c8a0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fffdf8;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #5a3a1a;
+    border-bottom: 1.5px solid #ede0c8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #8a5a2a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #5a3a1a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #5a3a1a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0c8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf6ee;
+  }
+
+  /* LOS TRES AÑOS */
+  .tres-anos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .ano-item {
+    border-radius: 5px;
+    padding: 6px 5px;
+    text-align: center;
+    background: #faf6ee;
+    border: 1px solid #e0c8a0;
+  }
+  .ano-item .ano {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #5a3a1a;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .ano-item .desc {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    line-height: 1.2;
+  }
+  .ano-critico {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .ano-critico .ano { color: #8a3a00; }
+  .ano-gracia {
+    background: #e8f5d8;
+    border: 1.5px solid #7ab030;
+  }
+  .ano-gracia .ano { color: #2a5a10; }
+
+  /* DIÁLOGO */
+  .dialogo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .dialogo-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+  .dueno-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .vinador-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .dialogo-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .dueno-card h4 { color: #b02020; }
+  .vinador-card h4 { color: #1a7a3a; }
+  .dialogo-card .cita {
+    font-size: 8.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .dialogo-card .cita strong {
+    font-style: normal;
+  }
+
+  /* INTERCESIÓN BOX */
+  .intercesion-box {
+    background: #f0f8e8;
+    border: 2px solid #7ab030;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .intercesion-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #2a5a10;
+    margin-bottom: 3px;
+  }
+  .intercesion-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e0c8a0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf6ee;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #5a3a1a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf6ee;
+    border-left: 3px solid #5a3a1a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #5a3a1a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e0c8a0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf6ee;
+  }
+  .app-item strong {
+    color: #5a3a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #5a3a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #5a3a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .ano-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .ano-critico { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .ano-gracia { background: #e8f5d8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .dueno-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .vinador-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .intercesion-box { background: #f0f8e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de la Higuera Estéril</h1>
+    <div class="subtitulo">La paciencia de Dios, la urgencia del fruto y la intercesión</div>
+    <div class="referencia">Lucas 13:6-9 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un hombre tenía una <strong>higuera plantada en su viña</strong>. Vino a buscar <strong>fruto</strong> en ella, y <strong>no lo halló</strong>. Dijo al viñador: <em>"He aquí, hace <strong>tres años</strong> que vengo a buscar fruto en esta higuera, y no lo hallo; <strong>córtala</strong>; ¿para qué inutiliza también la tierra?"</em>.</p>
+      <p style="font-size:9.5pt;">El viñador respondió: <strong>"Señor, déjala todavía este año, hasta que yo cave alrededor de ella, y la abone. Y si diere fruto, bien; y si no, la cortarás después"</strong>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios sea un dueño impaciente: el dueño <strong>espera tres años</strong>.</li>
+        <li>No enseña que la higuera sea malvada: es <strong>estéril</strong>, no malvada.</li>
+        <li>No enseña que el juicio sea inmediato: el viñador <strong>pide tiempo</strong>.</li>
+        <li>No enseña que la paciencia de Dios sea indefinida: "si no, la <strong>cortarás después</strong>".</li>
+        <li>No enseña que el árbol dé fruto por sí mismo: el viñador <strong>cava</strong> y <strong>abona</strong>.</li>
+        <li>No enseña que la esterilidad sea fatal: puede haber <strong>fruto</strong> con cuidado.</li>
+        <li>No enseña que el arrepentimiento sea opcional: la parábola está en un <strong>contexto de arrepentimiento</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>Dios espera fruto de sus hijos:</strong> no se conforma con hojas; busca fruto.</li>
+        <li><strong>La paciencia de Dios es prolongada:</strong> espera tres años antes de actuar.</li>
+        <li><strong>La paciencia de Dios tiene un límite:</strong> "si no, la cortarás después".</li>
+        <li><strong>El juicio es real:</strong> "¿para qué inutiliza también la tierra?".</li>
+        <li><strong>La intercesión del viñador es eficaz:</strong> "déjala todavía este año".</li>
+        <li><strong>El cuidado de Dios es intensivo:</strong> cava y abona; trabajo concreto.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>El fruto requiere arrepentimiento:</strong> sin arrepentimiento no hay fruto.</li>
+        <li><strong>La gracia de Dios da oportunidad:</strong> el viñador pide un año más.</li>
+        <li><strong>La esterilidad no es fatal:</strong> puede haber fruto con cuidado.</li>
+        <li><strong>El fruto es signo de vida:</strong> no es precio de la salvación, es consecuencia.</li>
+        <li><strong>La parábola es un espejo:</strong> ¿soy una higuera estéril?</li>
+        <li><strong>La intercesión de Cristo es continua:</strong> el viñador representa a Cristo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS TRES AÑOS Y LA GRACIA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🌳 Los tres años de espera y el año de gracia</h2>
+    <div class="tres-anos-grid">
+      <div class="ano-item">
+        <span class="ano">Año 1</span>
+        <span class="desc">El dueño viene a buscar fruto. No lo halla. Paciencia.</span>
+      </div>
+      <div class="ano-item">
+        <span class="ano">Año 2</span>
+        <span class="desc">Vuelve a buscar fruto. No lo halla. Paciencia prolongada.</span>
+      </div>
+      <div class="ano-item ano-critico">
+        <span class="ano">Año 3</span>
+        <span class="desc">Vuelve a buscar fruto. No lo halla. "Córtala; ¿para qué inutiliza la tierra?".</span>
+      </div>
+      <div class="ano-item ano-gracia">
+        <span class="ano">Año de gracia</span>
+        <span class="desc">El viñador pide un año más. Cava y abona. La gracia da oportunidad.</span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#5a3a1a;"><strong>La paciencia de Dios es prolongada, pero tiene un límite. La gracia da oportunidad al arrepentimiento. El fruto requiere arrepentimiento y cuidado.</strong></p>
+  </div>
+
+  <!-- FILA 4: EL DIÁLOGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>💬 El diálogo entre el dueño y el viñador</h2>
+    <div class="dialogo-grid">
+      <div class="dialogo-card dueno-card">
+        <h4>👨‍🌾 El dueño (Dios)</h4>
+        <div class="cita">
+          "He aquí, hace <strong>tres años</strong> que vengo a buscar fruto en esta higuera, y no lo hallo; <strong>córtala</strong>; ¿para qué <strong>inutiliza</strong> también la tierra?"<br><br>
+          El dueño <strong>espera</strong>, pero <strong>no</strong> es <strong>indiferente</strong>. Busca <strong>fruto</strong>. La <strong>esterilidad</strong> tiene <strong>consecuencias</strong>. La <strong>paciencia</strong> tiene un <strong>límite</strong>.
+        </div>
+      </div>
+      <div class="dialogo-card vinador-card">
+        <h4>🌱 El viñador (Cristo)</h4>
+        <div class="cita">
+          "Señor, <strong>déjala todavía este año</strong>, hasta que yo <strong>cave</strong> alrededor de ella, y la <strong>abone</strong>. Y si diere <strong>fruto</strong>, bien; y si no, la <strong>cortarás después</strong>."<br><br>
+          El viñador <strong>intercede</strong>. <strong>No</strong> se <strong>rinde</strong>. Se <strong>compromete</strong> a <strong>trabajar</strong> personalmente: cavar y abonar. La <strong>gracia</strong> <strong>aplaza</strong> el <strong>juicio</strong>.
+        </div>
+      </div>
+    </div>
+    <div class="intercesion-box">
+      <div class="titulo">✨ La intercesión del viñador: imagen de Cristo</div>
+      <div class="desc">El viñador <strong>intercede</strong> por el árbol <strong>estéril</strong>. No lo <strong>defiende</strong>: pide <strong>tiempo</strong> y se <strong>compromete</strong> a <strong>trabajar</strong>. La <strong>intercesión</strong> del viñador <strong>representa</strong> a <strong>Cristo</strong>, que <strong>intercede</strong> por nosotros <strong>ante</strong> el <strong>Padre</strong> (Hebreos 7:25). La <strong>intercesión</strong> de Cristo <strong>no</strong> es <strong>pasiva</strong>: es <strong>activa</strong>, <strong>comprometida</strong>, <strong>costosa</strong>. La <strong>gracia</strong> de Dios <strong>actúa</strong> a <strong>través</strong> de la <strong>intercesión</strong> de <strong>Cristo</strong>. Y el <strong>cuidado</strong> de Dios es <strong>intensivo</strong>: <strong>cava</strong> y <strong>abona</strong>. <strong>Trabaja</strong> en <strong>nosotros</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>συκῆ</td>
+        <td>sykē</td>
+        <td>higuera</td>
+        <td>Árbol común en Israel. Símbolo del <strong>pueblo de Israel</strong> en el AT (Oseas 9:10; Joel 1:7).</td>
+      </tr>
+      <tr>
+        <td>ἀμπελών</td>
+        <td>ampelōn</td>
+        <td>viña</td>
+        <td>La <strong>viña</strong> donde estaba plantada la higuera. La viña es <strong>símbolo</strong> de Israel (Isaías 5:1-7).</td>
+      </tr>
+      <tr>
+        <td>καρπός</td>
+        <td>karpos</td>
+        <td>fruto</td>
+        <td>El <strong>fruto</strong> que el dueño busca. El fruto es el <strong>signo</strong> de la vida verdadera.</td>
+      </tr>
+      <tr>
+        <td>τρία ἔτη</td>
+        <td>tria etē</td>
+        <td>tres años</td>
+        <td>El <strong>tiempo</strong> de espera. En la tradición judía, <strong>tres años</strong> era tiempo suficiente para que una higuera diera fruto.</td>
+      </tr>
+      <tr>
+        <td>ἔκκοψον</td>
+        <td>ekkopson</td>
+        <td>corta, derriba</td>
+        <td>El <strong>juicio</strong> del dueño. La esterilidad tiene <strong>consecuencias</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἀμπελουργός</td>
+        <td>ampelourgos</td>
+        <td>viñador</td>
+        <td>El <strong>encargado</strong> de la viña. Representa a <strong>Cristo</strong>, que <strong>intercede</strong> por nosotros.</td>
+      </tr>
+      <tr>
+        <td>ἄφες</td>
+        <td>aphes</td>
+        <td>deja, permite</td>
+        <td>La <strong>intercesión</strong> del viñador. La <strong>gracia</strong> aplaza el <strong>juicio</strong>.</td>
+      </tr>
+      <tr>
+        <td>σκάψω</td>
+        <td>skapsō</td>
+        <td>cave</td>
+        <td>El <strong>trabajo</strong> del viñador. <strong>Cavar</strong> alrededor afloja la tierra y favorece las raíces.</td>
+      </tr>
+      <tr>
+        <td>κόπρια</td>
+        <td>kopria</td>
+        <td>estiércol, abono</td>
+        <td>El <strong>abono</strong> que el viñador añade. Imagen del <strong>cuidado intensivo</strong> y <strong>costoso</strong>.</td>
+      </tr>
+      <tr>
+        <td>βαλέω</td>
+        <td>baleō</td>
+        <td>eche, ponga</td>
+        <td>El viñador <strong>echa</strong> el abono. La gracia <strong>actúa concretamente</strong>.</td>
+      </tr>
+      <tr>
+        <td>μέλλει</td>
+        <td>mellei</td>
+        <td>está a punto de, ha de</td>
+        <td>El <strong>futuro incierto</strong> del árbol. El fruto depende de la <strong>respuesta</strong> del árbol.</td>
+      </tr>
+      <tr>
+        <td>εἰς τὸ μέλλον</td>
+        <td>eis to mellon</td>
+        <td>para el futuro</td>
+        <td>El <strong>tiempo de gracia</strong> que queda. La <strong>oportunidad</strong> del arrepentimiento.</td>
+      </tr>
+      <tr>
+        <td>ἐκκόψεις</td>
+        <td>ekkopseis</td>
+        <td>cortarás</td>
+        <td>El <strong>juicio futuro</strong> si no hay fruto. La paciencia tiene un <strong>límite</strong>.</td>
+      </tr>
+      <tr>
+        <td>μετανοέω</td>
+        <td>metanoeō</td>
+        <td>arrepentirse</td>
+        <td>El <strong>contexto</strong> de la parábola. Sin <strong>arrepentimiento</strong>, no hay fruto.</td>
+      </tr>
+      <tr>
+        <td>ἄφεσις</td>
+        <td>aphesis</td>
+        <td>perdón, remisión</td>
+        <td>La <strong>gracia</strong> que acompaña al arrepentimiento. La <strong>misericordia</strong> de Dios.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La palabra <em>kopria</em> ("estiércol, abono") es sorprendente. El viñador <strong>echa estiércol</strong> al árbol. La imagen es humilde y concreta: el cuidado de Dios <strong>no es abstracto</strong>: es concreto, costoso, humilde. Y la palabra <em>ampelourgos</em> ("viñador") representa a Cristo que <strong>intercede</strong> por nosotros.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Isaías 5:1-7: la viña del Señor es Israel; esperaba fruto y halló uvas silvestres. Oseas 9:10 y Joel 1:7: la higuera como símbolo de Israel. Miqueas 7:1: la ausencia de fruto como juicio.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El loto que brota del barro: transformación de la esterilidad en fertilidad. La atención plena (sati): el fruto requiere cuidado. El karma: el arrepentimiento transforma las consecuencias.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El árbol que abraza varios brazos nació de un brote diminuto" (Tao 64): el fruto requiere tiempo. Wu wei: el viñador cultiva sin forzar. La paciencia como parte del cultivo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 14:24-25: el buen árbol da fruto en todo tiempo. Sura 47:18: "Ya han llegado sus señales". Hadiz: "Aprovecha cinco cosas antes de cinco". Urgencia y fruto.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El karma: el arrepentimiento transforma las consecuencias. El deber (dharma): el fruto es el resultado del cumplimiento. La devoción (bhakti): el cultivo paciente de la relación con Dios.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El cultivo paciente de la virtud: el fruto es la virtud madura. La autosuficiencia (autarkeia): el fruto brota de la interioridad. La phrónesis: el viñador demuestra sabiduría práctica.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La virtud como hábito: el fruto brota del hábito cultivado. La entelequia: el árbol tiene la potencialidad de dar fruto. La phrónesis: saber cultivar pacientemente.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">El cultivo de sí mismo: el hombre superior cultiva su carácter. La prudencia (zhì): el viñador demuestra sabiduría. La diligencia (qín): el trabajo constante como virtud.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Fruto: signo de vida, consecuencia de la gracia</li>
+          <li>Paciencia de Dios: prolongada, con límite</li>
+          <li>Juicio: real, precedido por la misericordia</li>
+          <li>Intercesión: activa, costosa, eficaz</li>
+          <li>Cuidado de Dios: intensivo, concreto, personal</li>
+          <li>Arrepentimiento: requerido, urgente, transformador</li>
+          <li>Gracia: da oportunidad, precede al fruto</li>
+          <li>Viñador: intercesor, cuidador, trabajador</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Precio de la salvación, mérito</li>
+          <li>Indiferencia, permisividad, eterna</li>
+          <li>Inmediato, arbitrario, sin esperanza</li>
+          <li>Pasiva, automática, superficial</li>
+          <li>Abstracto, distante, indiferente</li>
+          <li>Opcional, postergable, superficial</li>
+          <li>Elimina la responsabilidad, excusa el pecado</li>
+          <li>Juez, dueño, espectador</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#5a3a1a;"><strong>Dios espera fruto. La paciencia de Dios es prolongada, pero tiene un límite. El juicio es real, pero la misericordia lo aplaza. El viñador intercede por el árbol estéril: Cristo intercede por nosotros. El tiempo de arrepentimiento es ahora.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Estoy <strong>produciendo fruto</strong> en mi vida?</div>
+      <div class="item">2. ¿He <strong>reconocido</strong> las áreas estériles de mi vida?</div>
+      <div class="item">3. ¿Confío en la <strong>paciencia</strong> de Dios o la presupongo?</div>
+      <div class="item">4. ¿Estoy <strong>aprovechando</strong> el tiempo de gracia que Dios me da?</div>
+      <div class="item">5. ¿Mi <strong>arrepentimiento</strong> es sincero o solo aparente?</div>
+      <div class="item">6. ¿Reconozco la <strong>intercesión</strong> de Cristo por mí?</div>
+      <div class="item">7. ¿Mi vida refleja el <strong>cuidado intensivo</strong> de Dios?</div>
+      <div class="item">8. ¿He <strong>permitido</strong> que Dios cave y abone mi vida?</div>
+      <div class="item">9. ¿Mi <strong>fruto</strong> es abundante o escaso?</div>
+      <div class="item">10. ¿Vivo con la <strong>urgencia</strong> del arrepentimiento?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Cultivar el fruto del amor y de la paciencia en el hogar.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser fértil en las relaciones: dar fruto de cuidado y fidelidad.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>fruto</strong> y <strong>arrepentimiento</strong> comunitario.</div>
+      <div class="app-item"><strong>Trabajo</strong> Producir <strong>fruto</strong> en el trabajo, con excelencia y honestidad.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar las áreas estériles y permitir que Dios las trabaje.</div>
+      <div class="app-item"><strong>Sociedad</strong> Ser fértil en el servicio al bien común.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Interceder por los que se lideran, como el viñador por el árbol.</div>
+      <div class="app-item"><strong>Espiritual</strong> Aprovechar el tiempo de gracia para arrepentirse y dar fruto.</div>
+      <div class="app-item"><strong>Crisis</strong> Reconocer la paciencia de Dios y aprovechar la oportunidad.</div>
+      <div class="app-item"><strong>Evangelización</strong> Llamar al <strong>arrepentimiento</strong> con urgencia y esperanza.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Señor, déjala todavía este año, hasta que yo cave alrededor de ella, y la abone.<br>Y si diere fruto, bien; y si no, la cortarás después.”
+    <small>Dios espera fruto de sus hijos. La paciencia de Dios es prolongada, pero tiene un límite. El juicio es real, pero la misericordia lo aplaza. El viñador intercede por el árbol estéril: Cristo intercede por nosotros. El cuidado de Dios es intensivo: cava y abona. El fruto requiere arrepentimiento. La parábola es un espejo: ¿soy una higuera estéril? El tiempo de arrepentimiento es ahora.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de la Higuera Estéril (Lucas 13:6-9) · Bloque 5: La vigilancia y la preparación · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

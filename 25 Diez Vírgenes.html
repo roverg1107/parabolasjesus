@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Las Diez Vírgenes</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #8a5a00;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #8a5a00;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #b88a2a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e0c88a;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fffdf6;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #8a5a00;
+    border-bottom: 1.5px solid #ede0b8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #a87a2a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #8a5a00;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #8a5a00;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0b8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf6e8;
+  }
+
+  /* LAS DIEZ VÍRGENES */
+  .virgenes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .virgen-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .prudentes-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .insensatas-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .virgen-card .icono {
+    font-size: 20pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .virgen-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .prudentes-card h4 { color: #1a7a3a; }
+  .insensatas-card h4 { color: #b02020; }
+  .virgen-card ul {
+    text-align: left;
+  }
+  .virgen-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .prudentes-card ul li::before { color: #1a7a3a; }
+  .insensatas-card ul li::before { color: #b02020; }
+
+  /* LÍNEA DEL TIEMPO */
+  .linea-tiempo {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .lt-item {
+    border-radius: 5px;
+    padding: 6px 5px;
+    text-align: center;
+    background: #faf6e8;
+    border: 1px solid #e0c88a;
+  }
+  .lt-item .momento {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #8a5a00;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .lt-item .desc {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    line-height: 1.2;
+  }
+  .lt-critico {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .lt-critico .momento {
+    color: #8a3a00;
+  }
+
+  /* ADVERTENCIA BOX */
+  .advertencia-box {
+    background: #fdf6dc;
+    border: 2px solid #d0a030;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .advertencia-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #8a5a00;
+    margin-bottom: 3px;
+  }
+  .advertencia-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e0c88a;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf6e8;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #8a5a00;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf6e8;
+    border-left: 3px solid #8a5a00;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #8a5a00;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e0c88a;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf6e8;
+  }
+  .app-item strong {
+    color: #8a5a00;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #8a5a00 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #8a5a00 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf6e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf6e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf6e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .prudentes-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .insensatas-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .advertencia-box { background: #fdf6dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .lt-item { background: #faf6e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .lt-critico { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de las Diez Vírgenes</h1>
+    <div class="subtitulo">La vigilancia como preparación activa</div>
+    <div class="referencia">Mateo 25:1-13 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Diez vírgenes tomaron sus lámparas y salieron a <strong>recibir al esposo</strong>. <strong>Cinco eran prudentes</strong> y <strong>cinco insensatas</strong>. Las insensatas no llevaron <strong>aceite de reserva</strong>; las prudentes sí. El esposo <strong>tardó</strong>, y todas <strong>cabecearon y se durmieron</strong>.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">A <strong>medianoche</strong> se oyó el clamor: <em>"¡Aquí viene el esposo; salid a recibirle!"</em>. Las insensatas pidieron aceite a las prudentes, pero estas respondieron: <em>"Id más bien a los que venden, y comprad"</em>. Mientras iban, <strong>vino el esposo</strong>, y <strong>las que estaban preparadas entraron a las bodas</strong>; y <strong>se cerró la puerta</strong>.</p>
+      <p style="font-size:9.5pt;">Las otras llegaron tarde: <em>"¡Señor, señor, ábrenos!"</em>. Él respondió: <strong>"De cierto os digo, que no os conozco"</strong>. Y Jesús concluyó: <strong>"Velad, pues, porque no sabéis el día ni la hora"</strong>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios sea un esposo arbitrario: las insensatas <strong>no estaban preparadas</strong>.</li>
+        <li>No enseña que el sueño sea el problema: <strong>todas</strong> se durmieron, prudentes e insensatas.</li>
+        <li>No enseña que la salvación se gane por obras: el aceite es <strong>preparación</strong>, no mérito.</li>
+        <li>No enseña que se pueda pedir prestada la preparación: el aceite es <strong>personal</strong>.</li>
+        <li>No enseña que la demora sea abandono: el esposo <strong>tarda, pero viene</strong>.</li>
+        <li>No enseña que las prudentes sean egoístas: no pueden compartir sin <strong>quedarse a oscuras</strong>.</li>
+        <li>No enseña que las insensatas sean malvadas: son <strong>faltas de previsión</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La venida es cierta, la hora es incierta:</strong> "no sabéis el día ni la hora".</li>
+        <li><strong>La preparación es necesaria:</strong> no basta tener lámpara; hay que tener aceite de reserva.</li>
+        <li><strong>La preparación es personal e intransferible:</strong> cada una debe tener el suyo.</li>
+        <li><strong>La demora es una prueba:</strong> la espera puede ser larga.</li>
+        <li><strong>El sueño no es el problema, la falta de reserva sí.</strong></li>
+        <li><strong>La preparación es cotidiana, no heroica:</strong> es previsión simple.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La puerta cerrada es una advertencia seria:</strong> hay un momento en que ya no se puede entrar.</li>
+        <li><strong>El Señor conoce a los suyos:</strong> "no os conozco" es negación de relación.</li>
+        <li><strong>La vigilancia es una actitud, no una emoción:</strong> preparación activa.</li>
+        <li><strong>La crisis revela lo que somos:</strong> la llegada distingue a las prudentes de las insensatas.</li>
+        <li><strong>La preparación no se improvisa:</strong> se cultiva con tiempo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS DIEZ VÍRGENES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Las diez vírgenes: prudentes e insensatas</h2>
+    <div class="virgenes-grid">
+      <div class="virgen-card prudentes-card">
+        <span class="icono">🟢</span>
+        <h4>Las cinco prudentes</h4>
+        <ul>
+          <li>Tomaron sus <strong>lámparas</strong>.</li>
+          <li>Llevaron <strong>aceite en sus vasijas</strong>: reserva.</li>
+          <li><strong>Previeron</strong> la demora del esposo.</li>
+          <li>Cuando llegó el esposo, <strong>estaban listas</strong>.</li>
+          <li><strong>Entraron con él a las bodas.</strong></li>
+          <li>No <strong>comparten</strong> su aceite: no pueden.</li>
+          <li><strong>La prudencia es previsión.</strong></li>
+        </ul>
+      </div>
+      <div class="virgen-card insensatas-card">
+        <span class="icono">🔴</span>
+        <h4>Las cinco insensatas</h4>
+        <ul>
+          <li>Tomaron sus <strong>lámparas</strong>.</li>
+          <li>No llevaron <strong>aceite de reserva</strong>.</li>
+          <li><strong>No previnieron</strong> la demora.</li>
+          <li>Cuando llegó el esposo, <strong>no estaban listas</strong>.</li>
+          <li>Quedaron <strong>fuera</strong>: la puerta se cerró.</li>
+          <li>Piden <strong>prestado</strong> el aceite: es tarde.</li>
+          <li><strong>La insensatez es falta de previsión.</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="advertencia-box">
+      <div class="titulo">🚪 La advertencia central: el aceite no se comparte</div>
+      <div class="desc">El <strong>aceite</strong> representa la <strong>fe perseverante</strong>, la <strong>preparación interior</strong>, las <strong>obras</strong> que acompañan la espera. No se puede <strong>pedir prestado</strong> a otro: cada uno debe <strong>tener</strong> el suyo. La preparación es <strong>personal</strong> e <strong>intransferible</strong>. Nadie puede <strong>creer</strong> por otro. Nadie puede <strong>prepararse</strong> por otro. La <strong>puerta cerrada</strong> advierte: hay un <strong>momento</strong> en que <strong>ya no se puede entrar</strong>. <em>"Velad, pues, porque no sabéis el día ni la hora."</em></div>
+    </div>
+  </div>
+
+  <!-- FILA 4: LÍNEA DEL TIEMPO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🕐 La espera y la llegada: la preparación a prueba</h2>
+    <div class="linea-tiempo">
+      <div class="lt-item">
+        <span class="momento">1. Salida</span>
+        <span class="desc">Las diez vírgenes salen con sus lámparas a recibir al esposo.</span>
+      </div>
+      <div class="lt-item">
+        <span class="momento">2. Espera</span>
+        <span class="desc">El esposo tarda. Las prudentes tienen reserva; las insensatas no.</span>
+      </div>
+      <div class="lt-item">
+        <span class="momento">3. Sueño</span>
+        <span class="desc">Todas cabecean y se duermen. El sueño no es el problema.</span>
+      </div>
+      <div class="lt-item lt-critico">
+        <span class="momento">4. Llegada</span>
+        <span class="desc">A medianoche se oye el clamor: "¡Aquí viene el esposo!".</span>
+      </div>
+      <div class="lt-item lt-critico">
+        <span class="momento">5. Puerta</span>
+        <span class="desc">Las preparadas entran. La puerta se cierra. Las demás quedan fuera.</span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#8a5a00;"><strong>La espera puede ser larga. La preparación debe durar toda la espera. La crisis revela lo que somos: la llegada distingue a las prudentes de las insensatas.</strong></p>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>παρθένοι</td>
+        <td>parthenoi</td>
+        <td>vírgenes, doncellas</td>
+        <td>Jóvenes <strong>invitadas</strong> a la boda. Forman parte del <strong>cortejo</strong> de la novia.</td>
+      </tr>
+      <tr>
+        <td>λαμπάδες</td>
+        <td>lampades</td>
+        <td>lámparas, antorchas</td>
+        <td>Pequeñas <strong>lámparas de aceite</strong> de barro. Cada una con su mecha y depósito.</td>
+      </tr>
+      <tr>
+        <td>φρόνιμοι</td>
+        <td>phronimoi</td>
+        <td>prudentes, sabias</td>
+        <td>De <em>phronēsis</em> (sabiduría práctica). Las que <strong>prevén</strong> la demora.</td>
+      </tr>
+      <tr>
+        <td>μωραί</td>
+        <td>mōrai</td>
+        <td>insensatas, necias</td>
+        <td>De <em>mōros</em> (necio). Las que <strong>no prevén</strong> la demora.</td>
+      </tr>
+      <tr>
+        <td>ἔλαιον</td>
+        <td>elaion</td>
+        <td>aceite</td>
+        <td>El <strong>combustible</strong> de las lámparas. Símbolo de la <strong>preparación</strong> interior.</td>
+      </tr>
+      <tr>
+        <td>ἀγγεῖα</td>
+        <td>angeia</td>
+        <td>vasijas, recipientes</td>
+        <td>Los <strong>recipientes</strong> para llevar el aceite de reserva.</td>
+      </tr>
+      <tr>
+        <td>χρονίζοντος</td>
+        <td>chronizontos</td>
+        <td>tardando, demorando</td>
+        <td>El esposo <strong>tarda</strong>. La <strong>demora</strong> es la prueba.</td>
+      </tr>
+      <tr>
+        <td>ἐνύσταξαν</td>
+        <td>enystaxan</td>
+        <td>cabecearon, se adormecieron</td>
+        <td><strong>Todas</strong> cabecearon. El sueño <strong>no</strong> es el problema.</td>
+      </tr>
+      <tr>
+        <td>κραυγή</td>
+        <td>kraugē</td>
+        <td>clamor, grito</td>
+        <td>El <strong>grito</strong> de la llegada. "¡Aquí viene el esposo!".</td>
+      </tr>
+      <tr>
+        <td>ἐξέρχεσθε</td>
+        <td>exerchesthe</td>
+        <td>salid</td>
+        <td>La <strong>llamada</strong> a salir al encuentro del esposo.</td>
+      </tr>
+      <tr>
+        <td>ἀποσβέννυνται</td>
+        <td>aposbennyntai</td>
+        <td>se apagan</td>
+        <td>Las lámparas de las insensatas <strong>se apagan</strong>. La crisis revela la falta de reserva.</td>
+      </tr>
+      <tr>
+        <td>πωλοῦντας</td>
+        <td>pōlountas</td>
+        <td>los que venden</td>
+        <td>Los <strong>vendedores</strong> de aceite. Las insensatas van a <strong>comprar</strong> cuando ya es tarde.</td>
+      </tr>
+      <tr>
+        <td>κέκλεισται</td>
+        <td>kekleistai</td>
+        <td>está cerrada</td>
+        <td>Perfecto: la puerta <strong>está cerrada</strong> y <strong>sigue cerrada</strong>. La oportunidad terminó.</td>
+      </tr>
+      <tr>
+        <td>οὐκ οἶδα ὑμᾶς</td>
+        <td>ouk oida hymas</td>
+        <td>no os conozco</td>
+        <td>La <strong>respuesta</strong> severa del esposo. La <strong>relación</strong> no se cultivó.</td>
+      </tr>
+      <tr>
+        <td>γρηγορεῖτε</td>
+        <td>grēgoreite</td>
+        <td>velad, estad despiertos</td>
+        <td>La <strong>vigilancia</strong> como actitud. No es ansiedad: es preparación.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>ouk oida hymas</em> ("no os conozco") no es "no sé quiénes sois": es <strong>"no os reconozco como míos"</strong>. Es la <strong>negación de la relación</strong>. La parábola enseña que la <strong>relación</strong> con el Señor se <strong>cultiva</strong> con la preparación.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Cantar 3:11: la procesión nupcial. Isaías 62:5: Dios como esposo. Proverbios 8:34: "velando a mis puertas cada día". Talmud Shabat 153a: prepararse en la víspera.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La atención plena (sati). La diligencia (appamāda): "La diligencia es el camino de la inmortalidad". La impermanencia: la muerte llega sin avisar.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">La presencia atenta sin ansiedad. "El que sabe que tiene bastante es rico" (Tao 33): la suficiencia interior. La preparación suave y cotidiana.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 33:63: la Hora es solo de Dios. Sura 21:1: la cuenta se acerca. Hadiz: "Aprovecha cinco cosas antes de cinco: tu juventud, tu salud, tu riqueza, tu tiempo libre y tu vida".</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La impermanencia: la muerte llega sin avisar. El deber (dharma) de cumplir mientras se vive. La devoción (bhakti) como espera activa.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El <em>memento mori</em>: meditar sobre la muerte como camino de sabiduría. La autosuficiencia (autarkeia). La prudencia (phronēsis) de prever el futuro.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La phrónesis como sabiduría práctica de prever. La virtud como hábito. La eudaimonia como fin último hacia el que se prepara.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La prudencia (zhì) como virtud. La diligencia (qín) como trabajo constante. "El hombre superior está siempre preparado".</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Vigilancia: preparación activa y prudente</li>
+          <li>Preparación: cotidiana, personal, intransferible</li>
+          <li>Prudencia: previsión de la demora</li>
+          <li>Insensatez: falta de previsión</li>
+          <li>Aceite: fe perseverante y obras</li>
+          <li>Demora: prueba de la preparación</li>
+          <li>Relación: conocimiento del esposo</li>
+          <li>Urgencia: realismo escatológico</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Ansiedad, miedo o insomnio</li>
+          <li>Heroica, colectiva, heredada</li>
+          <li>Astucia o cálculo egoísta</li>
+          <li>Malicia o maldad activa</li>
+          <li>Mérito o recompensa</li>
+          <li>Abandono del esposo</li>
+          <li>Mera pertenencia externa</li>
+          <li>Fanatismo o miedo</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#8a5a00;"><strong>La preparación es personal e intransferible. La vigilancia no es ansiedad: es preparación activa. La preparación no se improvisa: se cultiva. La puerta cerrada es una advertencia seria: hay un momento en que ya no se puede entrar.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Estoy <strong>preparado</strong> para la venida del Señor?</div>
+      <div class="item">2. ¿Mi <strong>fe</strong> es perseverante o solo entusiasta al principio?</div>
+      <div class="item">3. ¿Tengo <strong>aceite de reserva</strong> para la demora?</div>
+      <div class="item">4. ¿Mi <strong>preparación</strong> es cotidiana o solo esporádica?</div>
+      <div class="item">5. ¿Confío en que otros me <strong>presten</strong> su preparación?</div>
+      <div class="item">6. ¿Mi <strong>vigilancia</strong> es ansiedad o confianza activa?</div>
+      <div class="item">7. ¿He <strong>previsto</strong> que la espera puede ser larga?</div>
+      <div class="item">8. ¿Mi <strong>relación</strong> con el Señor se cultiva o se descuidó?</div>
+      <div class="item">9. ¿Estoy preparado para el <strong>encuentro</strong> con el Señor?</div>
+      <div class="item">10. ¿Vivo con la <strong>conciencia</strong> de la urgencia escatológica?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Cultivar la fe en la familia con constancia, no solo en los momentos fuertes.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser prudente en las relaciones: no improvisar cuando llega la crisis.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>preparación</strong> y <strong>vigilancia</strong> perseverante.</div>
+      <div class="app-item"><strong>Trabajo</strong> Prepararse cotidianamente, no solo en las emergencias.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar el <strong>aceite</strong> de la fe con oración y obras.</div>
+      <div class="app-item"><strong>Sociedad</strong> Vivir con la <strong>conciencia</strong> de la urgencia escatológica.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Preparar a otros para la venida del Señor con prudencia.</div>
+      <div class="app-item"><strong>Espiritual</strong> Cultivar la <strong>perseverancia</strong> en la fe, no solo el entusiasmo inicial.</div>
+      <div class="app-item"><strong>Crisis</strong> La crisis revela si tenemos <strong>aceite</strong> o no.</div>
+      <div class="app-item"><strong>Evangelización</strong> Llamar a la <strong>preparación</strong> con urgencia y prudencia.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Velad, pues, porque no sabéis el día ni la hora<br>en que el Hijo del Hombre ha de venir.”
+    <small>La venida del Señor es cierta, pero la hora es incierta. La preparación es necesaria, cotidiana, personal e intransferible. La prudencia prevé la demora; la insensatez no. El sueño no es el problema: la falta de reserva sí. La preparación no se improvisa: se cultiva. La vigilancia no es ansiedad: es preparación activa.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de las Diez Vírgenes (Mateo 25:1-13) · Bloque 5: La vigilancia y la preparación · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

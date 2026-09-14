@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: La Torre (Calcular el Costo)</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #3a4a5a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #3a4a5a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #6a7a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c8d0d8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafbfc;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #3a4a5a;
+    border-bottom: 1.5px solid #d8e0e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #5a6a7a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #3a4a5a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #3a4a5a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8e0e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2f5f8;
+  }
+
+  /* LAS CUATRO ETAPAS */
+  .etapas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .etapa-item {
+    border-radius: 5px;
+    padding: 6px 5px;
+    text-align: center;
+    background: #f2f5f8;
+    border: 1px solid #c8d0d8;
+  }
+  .etapa-item .etapa {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #3a4a5a;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .etapa-item .desc {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    line-height: 1.2;
+  }
+  .etapa-critica {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .etapa-critica .etapa { color: #8a3a00; }
+  .etapa-logro {
+    background: #e8f5d8;
+    border: 1.5px solid #7ab030;
+  }
+  .etapa-logro .etapa { color: #2a5a10; }
+
+  /* DIÁLOGO */
+  .dialogo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .dialogo-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+  .prudente-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .imprudente-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .dialogo-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .prudente-card h4 { color: #1a7a3a; }
+  .imprudente-card h4 { color: #b02020; }
+  .dialogo-card ul {
+    text-align: left;
+  }
+  .dialogo-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .prudente-card ul li::before { color: #1a7a3a; }
+  .imprudente-card ul li::before { color: #b02020; }
+
+  /* CITA BOX */
+  .cita-box {
+    background: #f0f4f8;
+    border: 2px solid #6a7a8a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .cita-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #3a4a5a;
+    margin-bottom: 3px;
+  }
+  .cita-box .cita {
+    font-size: 8.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .cita-box .cita strong {
+    font-style: normal;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #c8d0d8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f2f5f8;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #3a4a5a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2f5f8;
+    border-left: 3px solid #3a4a5a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #3a4a5a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c8d0d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2f5f8;
+  }
+  .app-item strong {
+    color: #3a4a5a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #3a4a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #3a4a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2f5f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f2f5f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2f5f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-item { background: #f2f5f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-critica { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-logro { background: #e8f5d8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .prudente-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .imprudente-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cita-box { background: #f0f4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de la Torre (Calcular el Costo)</h1>
+    <div class="subtitulo">La prudencia que precede al discipulado</div>
+    <div class="referencia">Lucas 14:28-30 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Jesús pregunta: <em>"¿Quién de vosotros, queriendo edificar una <strong>torre</strong>, no <strong>se sienta primero</strong> y <strong>calcula los gastos</strong>, a ver si tiene lo que necesita para <strong>acabarla</strong>?"</em></p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">"No sea que, después que haya <strong>puesto el fundamento</strong>, y no pueda acabarla, todos los que lo vean <strong>comiencen a hacer burla</strong> de él, diciendo: <em>Este hombre comenzó a edificar, y no pudo acabar</em>."</p>
+      <p style="font-size:9pt;">La parábola está inserta en la enseñanza sobre el <strong>costo del discipulado</strong> (Lucas 14:25-33), junto con la parábola del <strong>rey que calcula la guerra</strong>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que haya que tener <strong>miedo</strong> a emprender: invita a <strong>calcular</strong>, no a evitar.</li>
+        <li>No enseña que el discipulado sea <strong>imposible</strong>: es posible, pero <strong>cuesta todo</strong>.</li>
+        <li>No enseña que haya que ser <strong>rico</strong> para ser discípulo: requiere <strong>disposición</strong>, no riqueza.</li>
+        <li>No enseña que el discipulado sea una <strong>transacción comercial</strong>: es <strong>gracia</strong> y <strong>respuesta</strong>.</li>
+        <li>No enseña que haya que <strong>abandonar</strong> la vida cotidiana.</li>
+        <li>No enseña que haya que calcular para <strong>no comprometerse</strong>: el cálculo conduce al <strong>compromiso</strong>.</li>
+        <li>No enseña que el discipulado sea solo para <strong>algunos</strong>: la radicalidad es para <strong>todos</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>El discipulado requiere cálculo previo:</strong> no se emprende a la ligera.</li>
+        <li><strong>El discipulado cuesta todo:</strong> familia, vida, posesiones (Lucas 14:26-27, 33).</li>
+        <li><strong>La prudencia es una virtud del discípulo:</strong> no es cobardía, es sabiduría.</li>
+        <li><strong>La incoherencia tiene consecuencias:</strong> el que comienza y no acaba es objeto de burla.</li>
+        <li><strong>El fundamento sin acabado es un fracaso:</strong> el fundamento solo no basta.</li>
+        <li><strong>El cálculo conduce al compromiso, no a la evasión.</strong></li>
+      </ul>
+      <ul class="check">
+        <li><strong>El discipulado es posible con la gracia de Dios:</strong> lo imposible para el hombre es posible para Dios.</li>
+        <li><strong>La vida cristiana es una construcción:</strong> se edifica día a día, con perseverancia.</li>
+        <li><strong>La radicalidad es para todos:</strong> no solo para los discípulos íntimos.</li>
+        <li><strong>El discipulado no es una decisión emocional:</strong> es una decisión consciente y deliberada.</li>
+        <li><strong>La perseverancia es esencial:</strong> "el que persevere hasta el fin, este será salvo".</li>
+        <li><strong>El testimonio del discípulo está en juego:</strong> la incoherencia daña el Evangelio.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS CUATRO ETAPAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏗️ Las cuatro etapas de la construcción: el cálculo y la perseverancia</h2>
+    <div class="etapas-grid">
+      <div class="etapa-item">
+        <span class="etapa">1. Deseo</span>
+        <span class="desc">"Queriendo edificar una torre". El deseo precede al cálculo.</span>
+      </div>
+      <div class="etapa-item">
+        <span class="etapa">2. Cálculo</span>
+        <span class="desc">"Se sienta primero y calcula los gastos". La prudencia precede a la acción.</span>
+      </div>
+      <div class="etapa-item etapa-critica">
+        <span class="etapa">3. Fundamento</span>
+        <span class="desc">"Puesto el fundamento". La primera etapa, costosa y trabajosa.</span>
+      </div>
+      <div class="etapa-item etapa-logro">
+        <span class="etapa">4. Acabado</span>
+        <span class="desc">"Para acabarla". La meta del constructor: la torre completa.</span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#3a4a5a;"><strong>El cálculo revela si tenemos los recursos. El fundamento sin acabado es un fracaso. La perseverancia es esencial. El discipulado requiere cálculo previo y perseverancia hasta el final.</strong></p>
+  </div>
+
+  <!-- FILA 4: EL CONTRASTE -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ El contraste: el constructor prudente y el imprudente</h2>
+    <div class="dialogo-grid">
+      <div class="dialogo-card prudente-card">
+        <h4>🟢 El constructor prudente</h4>
+        <ul>
+          <li>Se <strong>sienta primero</strong>.</li>
+          <li><strong>Calcula</strong> los gastos.</li>
+          <li>Evalúa si <strong>tiene</strong> lo necesario.</li>
+          <li><strong>Comienza</strong> solo si puede acabar.</li>
+          <li><strong>Acaba</strong> la torre.</li>
+          <li>Es <strong>sabio</strong>: su obra es <strong>coherente</strong>.</li>
+          <li>Edifica <strong>testimonio</strong> y <strong>confianza</strong>.</li>
+        </ul>
+      </div>
+      <div class="dialogo-card imprudente-card">
+        <h4>🔴 El constructor imprudente</h4>
+        <ul>
+          <li><strong>No se sienta</strong> a calcular.</li>
+          <li><strong>No evalúa</strong> los recursos.</li>
+          <li><strong>Comienza</strong> sin saber si puede acabar.</li>
+          <li><strong>Pone</strong> el fundamento.</li>
+          <li><strong>No puede</strong> acabar.</li>
+          <li>Es <strong>objeto de burla</strong>: su obra es <strong>incoherente</strong>.</li>
+          <li>Daña su <strong>testimonio</strong>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cita-box">
+      <div class="titulo">💬 La frase de los vecinos</div>
+      <div class="cita">
+        <strong>"Este hombre comenzó a edificar, y no pudo acabar."</strong><br>
+        La <strong>burla</strong> de los vecinos es la <strong>imagen</strong> de la <strong>incoherencia</strong> espiritual. En la cultura del honor y la vergüenza, comenzar algo y no acabarlo era una <strong>humillación pública</strong>. La torre inacabada era un <strong>monumento a la imprudencia</strong>. La parábola advierte: la <strong>incoherencia</strong> en el discipulado tiene consecuencias <strong>públicas</strong>. El <strong>testimonio</strong> del discípulo está en juego.
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>πύργος</td>
+        <td>pyrgos</td>
+        <td>torre</td>
+        <td>Torre de vigilancia o almacenamiento. Asociada a la viña en otras parábolas (Mt 21:33; Mc 12:1).</td>
+      </tr>
+      <tr>
+        <td>θέλων</td>
+        <td>thelōn</td>
+        <td>queriendo, deseando</td>
+        <td>La <strong>voluntad</strong> de construir. El deseo precede al cálculo.</td>
+      </tr>
+      <tr>
+        <td>καθίσας</td>
+        <td>kathisas</td>
+        <td>habiéndose sentado</td>
+        <td>La <strong>postura</strong> del que calcula. La calma y la reflexión.</td>
+      </tr>
+      <tr>
+        <td>ψηφίζω</td>
+        <td>psēphizō</td>
+        <td>calcular, contar</td>
+        <td>De <em>psēphos</em> (piedra, guijarro). Contar con piedras. De aquí viene "psicología".</td>
+      </tr>
+      <tr>
+        <td>δαπάνη</td>
+        <td>dapanē</td>
+        <td>gasto, costo</td>
+        <td>El <strong>costo</strong> de la construcción. La evaluación de los recursos.</td>
+      </tr>
+      <tr>
+        <td>εἰς ἀπαρτισμόν</td>
+        <td>eis apartismon</td>
+        <td>para acabarla</td>
+        <td>La <strong>meta</strong> de la construcción. El acabado de la torre.</td>
+      </tr>
+      <tr>
+        <td>ἰσχύει</td>
+        <td>ischyei</td>
+        <td>tiene fuerza, tiene recursos</td>
+        <td>La <strong>capacidad</strong> económica. El poder de acabar.</td>
+      </tr>
+      <tr>
+        <td>θεμέλιον</td>
+        <td>themelion</td>
+        <td>fundamento</td>
+        <td>La <strong>base</strong> de la torre. El fundamento es costoso y esencial.</td>
+      </tr>
+      <tr>
+        <td>ἐμπαίζω</td>
+        <td>empaizō</td>
+        <td>burlarse, ridiculizar</td>
+        <td>La <strong>burla</strong> de los vecinos. La vergüenza pública.</td>
+      </tr>
+      <tr>
+        <td>ἄρχω</td>
+        <td>archō</td>
+        <td>comenzar</td>
+        <td>El <strong>comienzo</strong> de la construcción. No basta comenzar.</td>
+      </tr>
+      <tr>
+        <td>ἐκτελέω</td>
+        <td>ekteléō</td>
+        <td>acabar, completar</td>
+        <td>La <strong>meta</strong> del constructor. La perseverancia hasta el final.</td>
+      </tr>
+      <tr>
+        <td>δύναμαι</td>
+        <td>dynamai</td>
+        <td>poder, ser capaz</td>
+        <td>La <strong>capacidad</strong> de acabar. La evaluación realista de los recursos.</td>
+      </tr>
+      <tr>
+        <td>μαθητής</td>
+        <td>mathētēs</td>
+        <td>discípulo</td>
+        <td>El que <strong>aprende</strong> siguiendo a un maestro. El discipulado requiere cálculo.</td>
+      </tr>
+      <tr>
+        <td>ἀποτάσσομαι</td>
+        <td>apotassomai</td>
+        <td>renunciar, despedirse</td>
+        <td>La <strong>renuncia</strong> a todo (v. 33). La radicalidad del discipulado.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>psēphizō</em> ("calcular") viene de <em>psēphos</em> ("piedra, guijarro"). En la antigüedad se <strong>calculaba</strong> con piedras o guijarros. De aquí viene "psicología" (originalmente "contar el alma"). El cálculo es <strong>concreto, práctico, realista</strong>. Y la palabra <em>apartismos</em> ("acabado") subraya que la vida cristiana <strong>requiere acabado</strong>: no basta comenzar.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Proverbios 21:5: los pensamientos del diligente tienden a la abundancia. Proverbios 24:27: prepara tu trabajo, después edifica. Proverbios 22:3: el avisado ve el mal y se esconde.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El Óctuple Sendero requiere discernimiento. La diligencia (appamāda) como camino. El discípulo evalúa si puede seguir el camino.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">Wu wei: discernimiento sin ansiedad. "El árbol que abraza varios brazos nació de un brote diminuto" (Tao 64): la construcción requiere tiempo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 59:18: "Que cada alma considere lo que ha preparado para mañana". Sura 2:286: Dios no impone sino en la medida de la capacidad. Hadiz: aprovecha cinco cosas antes de cinco.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El karma yoga: la acción desinteresada requiere discernimiento. El deber (dharma) según la capacidad. La devoción (bhakti) como entrega consciente.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La prudencia (phronēsis) de evaluar los recursos antes de actuar. La autosuficiencia (autarkeia). El memento mori ayuda a evaluar prioridades.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La phrónesis: sabiduría práctica de evaluar medios y fines. La virtud como hábito. La eudaimonia como fin último del discipulado.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La prudencia (zhì) como virtud. La diligencia (qín) como trabajo constante. "El hombre superior está siempre preparado".</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Cálculo: evaluación consciente de los recursos</li>
+          <li>Discipulado: compromiso radical con Jesús</li>
+          <li>Prudencia: sabiduría práctica que precede a la acción</li>
+          <li>Perseverancia: constancia hasta el final</li>
+          <li>Costo: todo lo que el discipulado exige</li>
+          <li>Gracia: don que da los recursos para acabar</li>
+          <li>Fundamento: fe y comienzo del discipulado</li>
+          <li>Acabado: perseverancia hasta el final</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Ansiedad, escrúpulo o cálculo egoísta</li>
+          <li>Decisión emocional o superficial</li>
+          <li>Cobardía o evasión</li>
+          <li>Comienzo sin continuidad</li>
+          <li>Precio de la salvación</li>
+          <li>Eliminación del esfuerzo humano</li>
+          <li>Obra completa sin proceso</li>
+          <li>Perfección sin esfuerzo</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#3a4a5a;"><strong>El discipulado requiere cálculo previo. El que quiere seguir a Jesús debe saber lo que implica: cuesta todo. La prudencia precede al compromiso. La incoherencia tiene consecuencias. El cálculo conduce al compromiso, no a la evasión. La perseverancia es esencial.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿He <strong>calculado</strong> el costo del discipulado?</div>
+      <div class="item">2. ¿Mi seguimiento de Jesús es <strong>consciente</strong> o solo emocional?</div>
+      <div class="item">3. ¿He puesto el <strong>fundamento</strong> y persevero hasta el final?</div>
+      <div class="item">4. ¿Confío en la <strong>gracia</strong> de Dios para acabar la torre?</div>
+      <div class="item">5. ¿Mi vida cristiana es <strong>coherente</strong> o inacabada?</div>
+      <div class="item">6. ¿He <strong>renunciado</strong> a todo lo que me impide seguir a Jesús?</div>
+      <div class="item">7. ¿Mi discipulado <strong>edifica</strong> o escandaliza?</div>
+      <div class="item">8. ¿He <strong>evaluado</strong> realistamente mis recursos espirituales?</div>
+      <div class="item">9. ¿Mi <strong>perseverancia</strong> es constante o intermitente?</div>
+      <div class="item">10. ¿Estoy <strong>dispuesto</strong> a acabar la torre cueste lo que cueste?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Calcular el costo del compromiso familiar; perseverar en la fidelidad.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser consciente del costo de la amistad verdadera; perseverar.</div>
+      <div class="app-item"><strong>Comunidad</strong> Formar discípulos conscientes de lo que implica seguir a Jesús.</div>
+      <div class="app-item"><strong>Trabajo</strong> Calcular el costo de los proyectos; no comenzar sin evaluar.</div>
+      <div class="app-item"><strong>Vida interior</strong> Evaluar realistamente los recursos espirituales; confiar en la gracia.</div>
+      <div class="app-item"><strong>Sociedad</strong> Evaluar el costo de los compromisos sociales; perseverar.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Formar líderes conscientes de lo que implica el discipulado.</div>
+      <div class="app-item"><strong>Espiritual</strong> Meditar en el costo del discipulado; no seguir a Jesús a la ligera.</div>
+      <div class="app-item"><strong>Crisis</strong> Reevaluar los recursos espirituales en la crisis; confiar en Dios.</div>
+      <div class="app-item"><strong>Evangelización</strong> Presentar el Evangelio con honestidad sobre el costo del discipulado.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “¿Quién de vosotros, queriendo edificar una torre,<br>no se sienta primero y calcula los gastos?”
+    <small>El discipulado requiere cálculo previo. El que quiere seguir a Jesús debe saber lo que implica: cuesta todo. La prudencia precede al compromiso. El que comienza y no acaba es objeto de burla. La incoherencia espiritual tiene consecuencias. El fundamento sin acabado es un fracaso. El cálculo conduce al compromiso, no a la evasión. El discipulado es posible con la gracia de Dios. La perseverancia es esencial.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de la Torre (Lucas 14:28-30) · Bloque 5: La vigilancia y la preparación · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

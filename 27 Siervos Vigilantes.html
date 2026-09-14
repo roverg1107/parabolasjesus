@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Los Siervos Vigilantes</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #1a3a6a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #1a3a6a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #4a6a9a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #b8c8e0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafcff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #1a3a6a;
+    border-bottom: 1.5px solid #d0dce8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #3a5a8a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #1a3a6a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #1a3a6a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0dce8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2f7fc;
+  }
+
+  /* LAS VIGILIAS */
+  .vigilias-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .vigilia-item {
+    border-radius: 5px;
+    padding: 6px 5px;
+    text-align: center;
+    background: #f2f7fc;
+    border: 1px solid #b8c8e0;
+  }
+  .vigilia-item .hora {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #1a3a6a;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .vigilia-item .momento {
+    font-size: 8pt;
+    color: #4a6a9a;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .vigilia-item .desc {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    line-height: 1.2;
+  }
+  .vigilia-oscura {
+    background: #e0e8f8;
+    border: 1.5px solid #4a6a9a;
+  }
+  .vigilia-oscura .hora { color: #1a3a6a; }
+
+  /* CONTRASTE */
+  .contraste-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .contraste-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .duerme-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .vela-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .contraste-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .contraste-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .duerme-card h4 { color: #b02020; }
+  .vela-card h4 { color: #1a7a3a; }
+  .contraste-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .contraste-flecha {
+    font-size: 24pt;
+    color: #1a3a6a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* INVERSIÓN BOX */
+  .inversion-box {
+    background: #f0f4ff;
+    border: 2px solid #4a6a9a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .inversion-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1a3a6a;
+    margin-bottom: 3px;
+  }
+  .inversion-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #b8c8e0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f2f7fc;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #1a3a6a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2f7fc;
+    border-left: 3px solid #1a3a6a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #1a3a6a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #b8c8e0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2f7fc;
+  }
+  .app-item strong {
+    color: #1a3a6a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #1a3a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #1a3a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .duerme-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .vela-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .inversion-box { background: #f0f4ff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .vigilia-item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .vigilia-oscura { background: #e0e8f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de los Siervos Vigilantes</h1>
+    <div class="subtitulo">La vigilancia activa y gozosa de los que esperan al Señor</div>
+    <div class="referencia">Marcos 13:33-37 · Lucas 12:35-40 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un hombre se va <strong>lejos</strong> y deja su <strong>casa</strong> al cuidado de sus <strong>siervos</strong>. Les da <strong>autoridad</strong> y a <strong>cada uno</strong> su <strong>obra</strong>. Al <strong>portero</strong> le manda <strong>velar</strong>.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">El señor puede volver en cualquier momento: <strong>al anochecer, a medianoche, al canto del gallo o a la mañana</strong>. Los siervos deben <strong>velar</strong> para que, cuando llegue <strong>de repente</strong>, no los <strong>halle durmiendo</strong>.</p>
+      <p style="font-size:9.5pt;">En Lucas, los siervos deben estar <strong>con los lomos ceñidos</strong> y las <strong>lámparas encendidas</strong>, como quienes aguardan a que su señor regrese de las bodas, para <strong>abrirle en seguida</strong>. El señor mismo se <strong>ceñirá</strong>, los hará <strong>sentarse a la mesa</strong> y <strong>vendrá a servirles</strong>. Y Jesús concluye: <strong>"Lo que a vosotros digo, a todos lo digo: Velad"</strong>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios sea un señor ausente e indiferente: el señor <strong>vuelve</strong>.</li>
+        <li>No enseña que la vigilancia sea ansiedad o insomnio: es <strong>prontitud</strong> y <strong>amor</strong>.</li>
+        <li>No enseña que el señor venga a castigar: viene a <strong>servir</strong> a sus siervos.</li>
+        <li>No enseña que la vigilancia sea solo para los líderes: "a <strong>todos</strong> lo digo: Velad".</li>
+        <li>No enseña que la hora sea conocida: es <strong>imprevisible</strong>.</li>
+        <li>No enseña que la vigilancia sea pasiva: los siervos <strong>trabajan</strong> y velan.</li>
+        <li>No enseña que la espera sea triste: es <strong>gozosa</strong>, como quien aguarda al amado.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La venida del Señor es cierta, pero la hora es incierta:</strong> puede volver en cualquier vigilia.</li>
+        <li><strong>La vigilancia es la actitud del discípulo:</strong> prontitud, disposición, fidelidad.</li>
+        <li><strong>La vigilancia es activa, no pasiva:</strong> los siervos tienen autoridad y cada uno su obra.</li>
+        <li><strong>La vigilancia es personal y responsable:</strong> a cada uno se le da su obra.</li>
+        <li><strong>La vigilancia es prontitud:</strong> "ceñidos los lomos, lámparas encendidas".</li>
+        <li><strong>La vigilancia es signo de amor:</strong> el que ama, vela.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La vigilancia es gozosa, no temerosa:</strong> el señor sirve a sus siervos.</li>
+        <li><strong>El Señor sirve a sus siervos:</strong> el amo se convierte en servidor.</li>
+        <li><strong>La vigilancia es comunitaria:</strong> "a todos lo digo: Velad".</li>
+        <li><strong>La vigilancia es escatológica:</strong> el presente es el tiempo de la vigilancia.</li>
+        <li><strong>La vigilancia es recompensada:</strong> "bienaventurados los que velan".</li>
+        <li><strong>La vigilancia transforma la vida cotidiana:</strong> es una forma de vivir.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS VIGILIAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🌙 Las cuatro vigilias de la noche: la vigilancia debe ser constante</h2>
+    <div class="vigilias-grid">
+      <div class="vigilia-item">
+        <span class="hora">1ª vigilia</span>
+        <span class="momento">6-9 p.m.</span>
+        <span class="desc">Al anochecer. La primera hora de la noche.</span>
+      </div>
+      <div class="vigilia-item vigilia-oscura">
+        <span class="hora">2ª vigilia</span>
+        <span class="momento">9-12 p.m.</span>
+        <span class="desc">Medianoche. La hora más oscura.</span>
+      </div>
+      <div class="vigilia-item vigilia-oscura">
+        <span class="hora">3ª vigilia</span>
+        <span class="momento">12-3 a.m.</span>
+        <span class="desc">Canto del gallo. La noche profunda.</span>
+      </div>
+      <div class="vigilia-item">
+        <span class="hora">4ª vigilia</span>
+        <span class="momento">3-6 a.m.</span>
+        <span class="desc">La mañana. El amanecer.</span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#1a3a6a;"><strong>El señor puede volver en cualquier vigilia. Los siervos deben velar toda la noche. La vigilancia no es selectiva: es constante.</strong></p>
+  </div>
+
+  <!-- FILA 4: EL CONTRASTE CLAVE -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ El contraste clave: el que duerme y el que vela</h2>
+    <div class="contraste-grid">
+      <div class="contraste-card duerme-card">
+        <span class="icono">😴</span>
+        <h4>El que duerme</h4>
+        <span class="desc">No <strong>espera</strong> al señor. No está <strong>preparado</strong>. Cuando el señor <strong>vuelve</strong>, lo halla <strong>durmiendo</strong>. <strong>Pierde</strong> la oportunidad de <strong>recibirlo</strong>. Es <strong>negligente</strong>.</span>
+      </div>
+      <div class="contraste-flecha">→</div>
+      <div class="contraste-card vela-card">
+        <span class="icono">👁️</span>
+        <h4>El que vela</h4>
+        <span class="desc">Tiene los <strong>lomos ceñidos</strong> y las <strong>lámparas encendidas</strong>. Está <strong>listo</strong> para abrir en seguida. Es <strong>bienaventurado</strong>. El señor mismo lo <strong>sirve</strong>. Es <strong>fiel</strong>.</span>
+      </div>
+    </div>
+    <div class="inversion-box">
+      <div class="titulo">✨ La gran inversión: el señor sirve a sus siervos</div>
+      <div class="desc">Cuando el señor vuelve y encuentra a sus siervos <strong>velando</strong>, no los castiga: <strong>se ciñe</strong>, los hace <strong>sentarse a la mesa</strong> y <strong>viene a servirles</strong>. La imagen es <strong>única</strong> en la literatura antigua y <strong>subvierte</strong> la relación amo-siervo. Jesús se <strong>identifica</strong> con este señor que <strong>sirve</strong>. El Reino <strong>invierte</strong> los roles: el que <strong>sirve</strong> es el <strong>mayor</strong>. La vigilancia es <strong>gozosa</strong>, no <strong>temerosa</strong>: el que vela espera al <strong>amado</strong> que regresa.</div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>γρηγορεῖτε</td>
+        <td>grēgoreite</td>
+        <td>velad, estad despiertos</td>
+        <td>La <strong>vigilancia</strong> como actitud. No es ansiedad: es preparación.</td>
+      </tr>
+      <tr>
+        <td>ἀγρυπνοῦντες</td>
+        <td>agrypnountes</td>
+        <td>velando, sin dormir</td>
+        <td>De <em>a-</em> (sin) + <em>hypnos</em> (sueño). La <strong>vigilancia</strong> como estado continuo.</td>
+      </tr>
+      <tr>
+        <td>περιεζωσμέναι</td>
+        <td>periezōsmenai</td>
+        <td>ceñidos, con el cinturón puesto</td>
+        <td>Las túnicas <strong>recogidas</strong> con el cinturón. Imagen de <strong>prontitud</strong>.</td>
+      </tr>
+      <tr>
+        <td>καιόμενοι</td>
+        <td>kaiomenoi</td>
+        <td>encendidas, ardientes</td>
+        <td>Las <strong>lámparas</strong> que arden. La <strong>vigilancia</strong> como luz en la noche.</td>
+      </tr>
+      <tr>
+        <td>προσδεχόμενοι</td>
+        <td>prosdechomenoi</td>
+        <td>aguardando, esperando</td>
+        <td>La <strong>espera</strong> activa y confiada. De aquí viene "prosperidad".</td>
+      </tr>
+      <tr>
+        <td>ἀναλύσῃ</td>
+        <td>analysē</td>
+        <td>regrese, vuelva</td>
+        <td>El <strong>regreso</strong> del señor. De aquí viene "análisis" (desatar, soltar).</td>
+      </tr>
+      <tr>
+        <td>κρούσαντος</td>
+        <td>krousantos</td>
+        <td>habiendo llamado</td>
+        <td>El señor <strong>llama</strong> a la puerta. Los siervos deben <strong>abrir</strong> en seguida.</td>
+      </tr>
+      <tr>
+        <td>εὐθέως</td>
+        <td>eutheōs</td>
+        <td>en seguida, inmediatamente</td>
+        <td>La <strong>prontitud</strong> de la respuesta. No hay demora.</td>
+      </tr>
+      <tr>
+        <td>μακάριοι</td>
+        <td>makarioi</td>
+        <td>bienaventurados, dichosos</td>
+        <td>La <strong>bienaventuranza</strong> de los que velan. La <strong>recompensa</strong> de la vigilancia.</td>
+      </tr>
+      <tr>
+        <td>διακονήσει</td>
+        <td>diakonēsei</td>
+        <td>servirá</td>
+        <td>El señor <strong>sirve</strong> a sus siervos. De aquí viene "diaconía" (servicio).</td>
+      </tr>
+      <tr>
+        <td>φυλακή</td>
+        <td>phylakē</td>
+        <td>vigilia, guardia</td>
+        <td>Las <strong>cuatro vigilias</strong> de la noche judía. La vigilancia es constante.</td>
+      </tr>
+      <tr>
+        <td>οἰκοδεσπότης</td>
+        <td>oikodespotēs</td>
+        <td>padre de familia, dueño de casa</td>
+        <td>El <strong>responsable</strong> de la protección de su casa.</td>
+      </tr>
+      <tr>
+        <td>κλέπτης</td>
+        <td>kleptēs</td>
+        <td>ladrón</td>
+        <td>El que entra sin permiso. Subraya la <strong>imprevisibilidad</strong>.</td>
+      </tr>
+      <tr>
+        <td>διορύσσω</td>
+        <td>dioryssō</td>
+        <td>minar, horadar, perforar</td>
+        <td>De <em>dia</em> (a través) + <em>oryssō</em> (cavar). Los ladrones <strong>horadaban</strong> las paredes.</td>
+      </tr>
+      <tr>
+        <td>ἕτοιμοι</td>
+        <td>hetoimoi</td>
+        <td>preparados, listos</td>
+        <td>La <strong>preparación</strong> como actitud. De aquí viene "héroe" (el que está listo).</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>diakonēsei</em> ("servirá") es sorprendente: el <strong>señor</strong> se convierte en <strong>servidor</strong> de sus siervos. De aquí viene "diaconía". La imagen es única en la literatura antigua y <strong>subvierte</strong> la relación amo-siervo.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Éxodo 12:11: "ceñidos vuestros lomos" para la salida. 1 Reyes 18:46: Elías se ciñe y corre. Cantar 5:2: "Yo dormía, pero mi corazón velaba".</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La atención plena (sati). La diligencia (appamāda): "La diligencia es el camino de la inmortalidad". La impermanencia: la muerte llega sin avisar.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">La presencia atenta sin ansiedad. "El sabio no acumula: cuanto más hace para los demás, más tiene" (Tao 81): el señor que sirve.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 33:63: la Hora es solo de Dios. Sura 21:1: la cuenta se acerca. Hadiz: "Aprovecha cinco cosas antes de cinco: juventud, salud, riqueza, tiempo, vida".</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La impermanencia: la muerte llega sin avisar. El deber (dharma) de cumplir mientras se vive. La devoción (bhakti) como espera activa.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El <em>memento mori</em>: meditar sobre la muerte. La autosuficiencia (autarkeia). La prudencia (phronēsis) de prever lo imprevisible.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La phrónesis como sabiduría práctica de prever. La virtud como hábito. La amistad (philia): el señor sirve a sus siervos como amigo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La prudencia (zhì) como virtud. La diligencia (qín) como trabajo constante. "El hombre superior está siempre preparado".</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Vigilancia: preparación activa, prudente, amorosa</li>
+          <li>Preparación: continua, personal, comunitaria</li>
+          <li>Prontitud: disposición inmediata</li>
+          <li>Imprevisibilidad: realidad de la hora incierta</li>
+          <li>Trabajo: compatible con la vigilancia</li>
+          <li>Amor: motor de la vigilancia</li>
+          <li>Servicio: el señor sirve a sus siervos</li>
+          <li>Recompensa: comunión con el Señor</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Ansiedad, miedo o insomnio</li>
+          <li>Puntual, aislada, individualista</li>
+          <li>Prisa o nerviosismo</li>
+          <li>Abandono o ausencia de Dios</li>
+          <li>Obstáculo para la vigilancia</li>
+          <li>Miedo o temor</li>
+          <li>Solo los siervos sirven</li>
+          <li>Pago por méritos</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#1a3a6a;"><strong>La vigilancia no es miedo: es amor. La preparación no se improvisa: se cultiva. El Señor mismo servirá a los que velan. Y lo que a vosotros digo, a todos lo digo: Velad.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Vivo en <strong>estado</strong> de vigilancia para la venida del Señor?</div>
+      <div class="item">2. ¿Mi <strong>vigilancia</strong> es <strong>amor</strong> o <strong>miedo</strong>?</div>
+      <div class="item">3. ¿Mi <strong>preparación</strong> es continua o solo esporádica?</div>
+      <div class="item">4. ¿Mi <strong>vigilancia</strong> es compatible con mi vida cotidiana?</div>
+      <div class="item">5. ¿Mi <strong>vigilancia</strong> es activa o pasiva?</div>
+      <div class="item">6. ¿Estoy <strong>atento</strong> a las señales de la venida del Señor?</div>
+      <div class="item">7. ¿Vivo con <strong>prontitud</strong>, con lomos ceñidos y lámparas encendidas?</div>
+      <div class="item">8. ¿Mi <strong>vida</strong> refleja la urgencia de la preparación?</div>
+      <div class="item">9. ¿Mi <strong>espera</strong> del Señor es gozosa o temerosa?</div>
+      <div class="item">10. ¿Estoy <strong>preparado</strong> para recibir al Señor con gozo?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Cultivar la vigilancia en el hogar: estar atento a las necesidades de los suyos.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser vigilante en las relaciones: no descuidar los vínculos.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>preparación</strong> y <strong>vigilancia</strong> comunitaria.</div>
+      <div class="app-item"><strong>Trabajo</strong> Prepararse cotidianamente, sin abandonar las responsabilidades.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar la <strong>vigilancia</strong> como actitud interior.</div>
+      <div class="app-item"><strong>Sociedad</strong> Vivir con la <strong>conciencia</strong> de la urgencia escatológica.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Servir como el <strong>señor</strong> que sirve a sus siervos.</div>
+      <div class="app-item"><strong>Espiritual</strong> Cultivar la <strong>vigilancia</strong> como signo de amor al Señor.</div>
+      <div class="app-item"><strong>Crisis</strong> La crisis revela si estamos <strong>preparados</strong> o no.</div>
+      <div class="app-item"><strong>Evangelización</strong> Llamar a la <strong>preparación</strong> con urgencia y prudencia.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Velad, pues, porque no sabéis cuándo vendrá el señor de la casa.<br>Y lo que a vosotros digo, a todos lo digo: Velad.”
+    <small>La venida del Señor es cierta, pero la hora es incierta. La vigilancia es la actitud del discípulo: preparación activa, prudente y amorosa. No es ansiedad ni miedo: es fidelidad y amor. La preparación es continua, personal y comunitaria. La vigilancia es compatible con el trabajo cotidiano. El que vela es bienaventurado. El Señor mismo servirá a los que velan.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de los Siervos Vigilantes (Marcos 13:33-37; Lucas 12:35-40) · Bloque 5: La vigilancia y la preparación · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

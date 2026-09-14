@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Dueño de Casa Vigilante</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #2a1a4a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #2a1a4a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #5a3a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c8b8e0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fbfaff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #2a1a4a;
+    border-bottom: 1.5px solid #d8d0e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #5a3a8a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #2a1a4a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #2a1a4a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8d0e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f6f4fc;
+  }
+
+  /* CONTRASTE */
+  .contraste-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .contraste-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .duerme-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .vela-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .contraste-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .contraste-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .duerme-card h4 { color: #b02020; }
+  .vela-card h4 { color: #1a7a3a; }
+  .contraste-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .contraste-flecha {
+    font-size: 24pt;
+    color: #2a1a4a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* LÓGICA DEL CUÁNTO MÁS */
+  .logica-box {
+    background: #f0eaff;
+    border: 2px solid #5a3a8a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .logica-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #2a1a4a;
+    margin-bottom: 3px;
+  }
+  .logica-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #c8b8e0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f6f4fc;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #2a1a4a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f6f4fc;
+    border-left: 3px solid #2a1a4a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #2a1a4a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c8b8e0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f6f4fc;
+  }
+  .app-item strong {
+    color: #2a1a4a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #2a1a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #2a1a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .duerme-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .vela-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .logica-box { background: #f0eaff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Dueño de Casa Vigilante</h1>
+    <div class="subtitulo">La vigilancia ante lo imprevisible</div>
+    <div class="referencia">Mateo 24:42-44 · Lucas 12:39-40 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;"><strong>"Velad, pues, porque no sabéis a qué hora ha de venir vuestro Señor."</strong> Y Jesús ilustra con una imagen:</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;"><em>"Pero sabed esto, que si el padre de familia supiese a qué hora el ladrón habría de venir, velaría, y no dejaría minar su casa."</em></p>
+      <p style="font-size:9.5pt;">Y concluye: <strong>"Por tanto, también vosotros estad preparados; porque el Hijo del Hombre vendrá a la hora que no pensáis."</strong></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios sea un ladrón: la imagen subraya la <strong>imprevisibilidad</strong>, no la naturaleza de Dios.</li>
+        <li>No enseña que la venida sea temible para los discípulos: el temor es para los que no están preparados.</li>
+        <li>No enseña que la vigilancia sea ansiedad o insomnio: es <strong>prudencia</strong> y <strong>amor</strong>.</li>
+        <li>No enseña que la hora sea conocida: todo lo contrario, es <strong>imprevisible</strong>.</li>
+        <li>No enseña que la preparación sea puntual: es <strong>continua</strong>.</li>
+        <li>No enseña que haya que abandonar las responsabilidades cotidianas.</li>
+        <li>No enseña que el discípulo deba vivir con miedo: la vigilancia es <strong>confianza activa</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La venida del Señor es cierta, pero la hora es incierta:</strong> "a la hora que no pensáis".</li>
+        <li><strong>La vigilancia es la actitud del discípulo:</strong> preparación activa y prudente.</li>
+        <li><strong>La preparación es personal y responsable:</strong> cada uno responde por su casa.</li>
+        <li><strong>La imprevisibilidad es una prueba:</strong> si supiéramos la hora, velaríamos solo entonces.</li>
+        <li><strong>La vigilancia no es miedo, es prudencia:</strong> el dueño vela para proteger, no por temor.</li>
+        <li><strong>La vigilancia es compatible con la vida cotidiana:</strong> el dueño vela sin abandonar su casa.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La preparación no se improvisa:</strong> se cultiva con tiempo.</li>
+        <li><strong>El Hijo del Hombre vendrá a la hora que no pensamos.</strong></li>
+        <li><strong>La vigilancia es signo de amor:</strong> el que espera a alguien amado, vela.</li>
+        <li><strong>La vigilancia es escatológica:</strong> el presente es el tiempo de la preparación.</li>
+        <li><strong>La vigilancia es sabiduría:</strong> el que vela es sabio; el que duerme, insensato.</li>
+        <li><strong>La vigilancia transforma la vida cotidiana:</strong> no es un añadido, es una forma de vivir.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: EL CONTRASTE CLAVE -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ El contraste clave: el que duerme y el que vela</h2>
+    <div class="contraste-grid">
+      <div class="contraste-card duerme-card">
+        <span class="icono">😴</span>
+        <h4>El que duerme</h4>
+        <span class="desc">No <strong>sabe</strong> cuándo viene el ladrón. No <strong>vela</strong>. <strong>Deja minar</strong> su casa. <strong>Pierde</strong> lo que tiene. Es <strong>insensato</strong>. Vive como si la venida <strong>no</strong> fuera a ocurrir.</span>
+      </div>
+      <div class="contraste-flecha">→</div>
+      <div class="contraste-card vela-card">
+        <span class="icono">👁️</span>
+        <h4>El que vela</h4>
+        <span class="desc">No <strong>sabe</strong> cuándo viene el ladrón. Pero <strong>vela</strong>. <strong>Previene</strong> el daño. <strong>Protege</strong> lo que tiene. Es <strong>sabio</strong>. Vive en <strong>estado</strong> de preparación.</span>
+      </div>
+    </div>
+    <div class="logica-box">
+      <div class="titulo">💬 La lógica del "cuánto más"</div>
+      <div class="desc">La parábola <strong>no compara</strong> a Dios con el ladrón: <strong>contrasta</strong> la actitud del dueño con la del discípulo. Si un dueño <strong>prudente</strong> <strong>vela</strong> para <strong>proteger</strong> su casa de un <strong>ladrón imprevisible</strong>, <strong>cuánto más</strong> el discípulo debe <strong>velar</strong> para <strong>recibir</strong> al <strong>Hijo del Hombre</strong> que viene <strong>a la hora que no piensa</strong>. La vigilancia <strong>no</strong> es miedo: es <strong>amor</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>γρηγορεῖτε</td>
+        <td>grēgoreite</td>
+        <td>velad, estad despiertos</td>
+        <td>La <strong>vigilancia</strong> como actitud. No es ansiedad: es preparación.</td>
+      </tr>
+      <tr>
+        <td>οἰκοδεσπότης</td>
+        <td>oikodespotēs</td>
+        <td>padre de familia, dueño de casa</td>
+        <td>El <strong>responsable</strong> de la protección de su casa.</td>
+      </tr>
+      <tr>
+        <td>κλέπτης</td>
+        <td>kleptēs</td>
+        <td>ladrón</td>
+        <td>El que <strong>entra</strong> sin permiso. Subraya la <strong>imprevisibilidad</strong>.</td>
+      </tr>
+      <tr>
+        <td>διορύσσω</td>
+        <td>dioryssō</td>
+        <td>minar, horadar, perforar</td>
+        <td>De <em>dia</em> (a través) + <em>oryssō</em> (cavar). Los ladrones <strong>horadaban</strong> las paredes de adobe.</td>
+      </tr>
+      <tr>
+        <td>ἕτοιμοι</td>
+        <td>hetoimoi</td>
+        <td>preparados, listos</td>
+        <td>La <strong>preparación</strong> como actitud. De aquí viene "héroe" (el que está listo).</td>
+      </tr>
+      <tr>
+        <td>ὥρᾳ</td>
+        <td>hōra</td>
+        <td>hora</td>
+        <td>La <strong>hora</strong> de la venida. <strong>Incierta</strong> e <strong>imprevisible</strong>.</td>
+      </tr>
+      <tr>
+        <td>οὐ δοκεῖτε</td>
+        <td>ou dokeite</td>
+        <td>no pensáis, no esperáis</td>
+        <td>La <strong>sorpresa</strong> de la venida. "A la hora que no pensáis".</td>
+      </tr>
+      <tr>
+        <td>ἐγρηγόρησεν ἄν</td>
+        <td>egrēgorēsen an</td>
+        <td>habría velado</td>
+        <td>Condicional irreal: si <strong>hubiera sabido</strong>, <strong>habría velado</strong>.</td>
+      </tr>
+      <tr>
+        <td>οὐκ ἂν εἴασεν</td>
+        <td>ouk an eiasen</td>
+        <td>no habría dejado</td>
+        <td>El dueño <strong>no habría dejado</strong> que minaran su casa. La <strong>vigilancia</strong> previene el daño.</td>
+      </tr>
+      <tr>
+        <td>παρουσίας</td>
+        <td>parousias</td>
+        <td>venida, presencia</td>
+        <td>La <strong>venida</strong> del Señor. De aquí viene "parusía".</td>
+      </tr>
+      <tr>
+        <td>υἱὸς τοῦ ἀνθρώπου</td>
+        <td>huios tou anthrōpou</td>
+        <td>Hijo del Hombre</td>
+        <td>Título <strong>mesiánico</strong> de Jesús. El que <strong>vendrá</strong> al final de los tiempos.</td>
+      </tr>
+      <tr>
+        <td>ἀσφαλίσασθε</td>
+        <td>asphalisasthe</td>
+        <td>aseguraos, estad seguros</td>
+        <td>La <strong>preparación</strong> como <strong>seguridad</strong>. De aquí viene "asfaltar" (asegurar el camino).</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>dioryssō</em> ("minar, horadar") viene de <em>dia</em> (a través) + <em>oryssō</em> (cavar). Los ladrones <strong>cavaban</strong> a través de las paredes de adobe para entrar. La imagen es vívida y concreta. El dueño <strong>vela</strong> para <strong>evitar</strong> que <strong>horen</strong> su casa.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Éxodo 22:2-3: legislación sobre el ladrón. Job 24:16: "minan las casas en las tinieblas". Proverbios 6:9-11: la pereza trae pobreza como hombre armado.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La atención plena (sati). La diligencia (appamāda): "La diligencia es el camino de la inmortalidad". La impermanencia: la muerte llega sin avisar.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">La presencia atenta sin ansiedad. "El que sabe que tiene bastante es rico" (Tao 33). "Lo blando vence a lo duro" (Tao 78): la vigilancia suave previene.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 33:63: la Hora es solo de Dios. Sura 21:1: la cuenta se acerca. Hadiz: "Aprovecha cinco cosas antes de cinco: tu juventud, salud, riqueza, tiempo y vida".</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La impermanencia: la muerte llega sin avisar. El deber (dharma) de cumplir mientras se vive. La devoción (bhakti) como espera activa.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El <em>memento mori</em>: meditar sobre la muerte. La autosuficiencia (autarkeia). La prudencia (phronēsis) de prever lo imprevisible.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La phrónesis como sabiduría práctica de prever. La virtud como hábito. La eudaimonia como fin hacia el que se prepara.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La prudencia (zhì) como virtud. La diligencia (qín) como trabajo constante. "El hombre superior está siempre preparado".</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Vigilancia: preparación activa, prudente, amorosa</li>
+          <li>Preparación: continua, personal, cotidiana</li>
+          <li>Prudencia: previsión de lo imprevisible</li>
+          <li>Imprevisibilidad: realidad de la hora incierta</li>
+          <li>Amor: motor de la vigilancia</li>
+          <li>Vida cotidiana: lugar de la vigilancia</li>
+          <li>Responsabilidad: cada uno responde por su casa</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Ansiedad, miedo o insomnio</li>
+          <li>Puntual, colectiva, heroica</li>
+          <li>Astucia o cálculo egoísta</li>
+          <li>Abandono o ausencia de Dios</li>
+          <li>Miedo o temor</li>
+          <li>Obstáculo para la vigilancia</li>
+          <li>Delegación en otros</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#2a1a4a;"><strong>La vigilancia no es miedo: es amor. La preparación no se improvisa: se cultiva. El Hijo del Hombre vendrá a la hora que no pensamos. Velad, pues, con amor, no con temor.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Vivo en <strong>estado</strong> de preparación para la venida del Señor?</div>
+      <div class="item">2. ¿Mi <strong>vigilancia</strong> es <strong>amor</strong> o <strong>miedo</strong>?</div>
+      <div class="item">3. ¿Mi <strong>preparación</strong> es continua o solo esporádica?</div>
+      <div class="item">4. ¿Reconozco que la <strong>hora</strong> es incierta e imprevisible?</div>
+      <div class="item">5. ¿Mi <strong>vigilancia</strong> es compatible con mi vida cotidiana?</div>
+      <div class="item">6. ¿Estoy <strong>atento</strong> a las señales de la venida del Señor?</div>
+      <div class="item">7. ¿Mi <strong>vida</strong> refleja la urgencia de la preparación?</div>
+      <div class="item">8. ¿He <strong>abandonado</strong> responsabilidades por miedo al juicio?</div>
+      <div class="item">9. ¿Mi <strong>espera</strong> del Señor es activa o pasiva?</div>
+      <div class="item">10. ¿Estoy <strong>preparado</strong> para recibir al Señor con gozo?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Cultivar la vigilancia en el hogar: estar atento a las necesidades de los suyos.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser vigilante en las relaciones: no descuidar los vínculos.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>preparación</strong> y <strong>vigilancia</strong> perseverante.</div>
+      <div class="app-item"><strong>Trabajo</strong> Prepararse cotidianamente, no solo en las emergencias.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar la <strong>vigilancia</strong> como actitud interior.</div>
+      <div class="app-item"><strong>Sociedad</strong> Vivir con la <strong>conciencia</strong> de la urgencia escatológica.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Preparar a otros para la venida del Señor con prudencia.</div>
+      <div class="app-item"><strong>Espiritual</strong> Cultivar la <strong>vigilancia</strong> como signo de amor al Señor.</div>
+      <div class="app-item"><strong>Crisis</strong> La crisis revela si estamos <strong>preparados</strong> o no.</div>
+      <div class="app-item"><strong>Evangelización</strong> Llamar a la <strong>preparación</strong> con urgencia y prudencia.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Velad, pues, porque no sabéis a qué hora ha de venir vuestro Señor.<br>El Hijo del Hombre vendrá a la hora que no pensáis.”
+    <small>La venida del Señor es cierta, pero la hora es incierta. La vigilancia es la actitud del discípulo: preparación activa, prudente y amorosa. No es ansiedad ni miedo: es fidelidad y amor. La preparación es continua, personal y cotidiana. La imprevisibilidad es una prueba. Velad con amor, no con temor.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Dueño de Casa Vigilante (Mateo 24:42-44; Lucas 12:39-40) · Bloque 5: La vigilancia y la preparación · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>
