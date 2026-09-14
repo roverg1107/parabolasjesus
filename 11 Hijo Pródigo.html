@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Hijo Pródigo</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #5a2a7a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #5a2a7a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #7a4a9a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #d8c0e8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fdfaff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #5a2a7a;
+    border-bottom: 1.5px solid #e8d8f0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #7a4a9a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #5a2a7a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #5a2a7a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #e8d8f0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf6fc;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* DOS HIJOS */
+  .dos-hijos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .hijo-card {
+    border-radius: 5px;
+    padding: 6px 8px;
+    font-size: 9pt;
+  }
+  .hijo-menor {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .hijo-mayor {
+    background: #fff8e1;
+    border: 1.5px solid #ffcc80;
+  }
+  .hijo-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .hijo-menor h4 { color: #b02020; }
+  .hijo-mayor h4 { color: #b07000; }
+  .hijo-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .hijo-menor ul li::before { color: #b02020; }
+  .hijo-mayor ul li::before { color: #b07000; }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #d8c0e8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf6fc;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #5a2a7a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf6fc;
+    border-left: 3px solid #5a2a7a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #5a2a7a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #d8c0e8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf6fc;
+  }
+  .app-item strong {
+    color: #5a2a7a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #5a2a7a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #5a2a7a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf6fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf6fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf6fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hijo-menor { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hijo-mayor { background: #fff8e1 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Hijo Pródigo</h1>
+    <div class="subtitulo">El padre que corre al encuentro de sus dos hijos</div>
+    <div class="referencia">Lucas 15:11-32 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un hombre tiene dos hijos. El menor pide su herencia, se va lejos, la malgasta y termina apacentando cerdos. En su miseria, "volviendo en sí", decide volver a casa y pedir ser tratado como jornalero. El padre lo ve de lejos, <strong>corre</strong>, se echa sobre su cuello y lo besa. Lo viste con el mejor traje, le pone anillo y calzado, y hace fiesta: <em>"Este mi hijo muerto era, y ha revivido"</em>.</p>
+      <p style="font-size:9.5pt;">El hermano mayor, que ha sido fiel, se enoja y no quiere entrar. El padre <strong>sale a rogarle</strong>: <em>"Tú siempre estás conmigo, y todas mis cosas son tuyas. Pero era necesario hacer fiesta, porque este tu hermano era muerto, y ha revivido"</em>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que el menor sea el único perdido: el mayor también lo está.</li>
+        <li>No enseña que el padre sea permisivo: recibe, no aprueba.</li>
+        <li>No enseña que el arrepentimiento del hijo sea perfecto: su discurso es calculado.</li>
+        <li>No enseña que el hermano mayor sea un villano: su queja es legítima en términos humanos.</li>
+        <li>No enseña que la justicia se oponga a la misericordia: la gracia la supera.</li>
+        <li>No enseña que el perdón sea solo para el que vuelve: el padre sale también al que se queda.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>Hay dos formas de perderse:</strong> por rebeldía (menor) o por resentimiento (mayor).</li>
+        <li><strong>El padre toma la iniciativa dos veces:</strong> corre hacia el menor, sale a rogar al mayor.</li>
+        <li><strong>La gracia es escandalosa y excesiva:</strong> no negocia, restaura plenamente.</li>
+        <li><strong>El arrepentimiento es "volver en sí":</strong> recuperar la lucidez y orientarse al padre.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>El pecado es "muerte" y "pérdida":</strong> el perdón es resurrección y hallazgo.</li>
+        <li><strong>El resentimiento del justo también necesita conversión.</strong></li>
+        <li><strong>Dios no se cansa de salir al encuentro:</strong> su amor es mayor que las ofensas de ambos.</li>
+        <li><strong>La fiesta es la respuesta adecuada:</strong> quien no puede celebrar no ha entendido al padre.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS DOS HIJOS PERDIDOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los dos hijos perdidos</h2>
+    <div class="dos-hijos">
+      <div class="hijo-card hijo-menor">
+        <h4>🔴 El hijo menor: perdido por rebeldía</h4>
+        <ul>
+          <li>Pide su herencia antes de tiempo: "ojalá estuvieras muerto".</li>
+          <li>Se va lejos, malgasta, cae bajo.</li>
+          <li>Termina apacentando cerdos (impureza máxima).</li>
+          <li>"Vuelve en sí": reconoce su miseria y decide volver.</li>
+          <li>Prepara un discurso calculado: "hazme como jornalero".</li>
+          <li>El padre no lo deja terminar: lo interrumpe con la gracia.</li>
+        </ul>
+      </div>
+      <div class="hijo-card hijo-mayor">
+        <h4>🟠 El hijo mayor: perdido por resentimiento</h4>
+        <ul>
+          <li>Se queda en casa, cumple, obedece.</li>
+          <li>Se enoja al ver la fiesta: no quiere entrar.</li>
+          <li>Se compara: "tantos años te sirvo... nunca me has dado un cabrito".</li>
+          <li>Se siente merecedor: su fidelidad se volvió queja.</li>
+          <li>Está dentro de casa, pero fuera de la fiesta.</li>
+          <li>El padre sale a rogarle: también él necesita conversión.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#5a2a7a;"><strong>Lo que define la pérdida no es la distancia física, sino la relación con el padre. Los dos hijos necesitan ser encontrados.</strong></p>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>οὐσία</td>
+        <td>ousia</td>
+        <td>bienes, sustancia</td>
+        <td>El hijo pide su <em>ser</em>: el futuro antes de tiempo. Es un insulto grave al padre.</td>
+      </tr>
+      <tr>
+        <td>ἀσώτως</td>
+        <td>asōtōs</td>
+        <td>perdidamente</td>
+        <td>Vivir "sin salvación", derrochando lo que da vida.</td>
+      </tr>
+      <tr>
+        <td>εἰς ἑαυτὸν ἐλθών</td>
+        <td>eis heauton elthōn</td>
+        <td>volviendo en sí</td>
+        <td>No es solo arrepentimiento: es <strong>despertar</strong>, recuperar la lucidez.</td>
+      </tr>
+      <tr>
+        <td>σπλάγχνα</td>
+        <td>splanchna</td>
+        <td>entrañas, misericordia visceral</td>
+        <td>Compasión que conmueve las entrañas. El padre <strong>se conmueve</strong> antes de que el hijo hable.</td>
+      </tr>
+      <tr>
+        <td>ἔδραμεν</td>
+        <td>edramen</td>
+        <td>corrió</td>
+        <td>Escándalo cultural: un patriarca no corre. La gracia no respeta el protocolo.</td>
+      </tr>
+      <tr>
+        <td>στολή</td>
+        <td>stolē</td>
+        <td>vestido, túnica</td>
+        <td>El mejor vestido: restauración de la dignidad.</td>
+      </tr>
+      <tr>
+        <td>δακτύλιος</td>
+        <td>daktylios</td>
+        <td>anillo</td>
+        <td>Signo de autoridad y filiación. No es esclavo: es hijo.</td>
+      </tr>
+      <tr>
+        <td>ὑποδήματα</td>
+        <td>hypodēmata</td>
+        <td>calzado</td>
+        <td>Signo de hombre libre. Los esclavos iban descalzos.</td>
+      </tr>
+      <tr>
+        <td>ὠργίσθη</td>
+        <td>ōrgisthē</td>
+        <td>se enojó</td>
+        <td>La ira del mayor: no es indignación justa, es resentimiento.</td>
+      </tr>
+      <tr>
+        <td>τέκνον</td>
+        <td>teknon</td>
+        <td>hijo, niño</td>
+        <td>El padre llama "hijo" al mayor. No lo reprende: lo ama.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Génesis 27 (Jacob y Esaú); Génesis 37-45 (José y sus hermanos). Midrash del rey con dos hijos. La <em>teshuvá</em> como retorno.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">Sutra del Loto: el hijo que se aleja del padre rico. La joya en el manto: riqueza oculta que no se reconoce.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El retorno es el movimiento del Tao". El regreso a la fuente como naturalidad, no como drama moral.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 39:53: "No desesperéis de la misericordia de Dios". Hadiz: Dios se alegra más por el arrepentido que quien encuentra su camello perdido.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El olvido como causa de la pérdida; el recuerdo como restauración. El guru ayuda a volver a la verdadera naturaleza.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El retorno a la virtud como acto de voluntad. Contraste: el padre no es sereno, <strong>se conmueve, corre y abraza</strong>.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La virtud como hábito. El mayor tiene hábitos virtuosos, pero corazón duro: la virtud sin amor no basta.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">⚖️</span>
+        <span class="nombre">Cinismo</span>
+        <span class="aporte">Crítica a la riqueza y al estatus. El problema no es la riqueza: es el <strong>corazón</strong>.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que la parábola afirma</h4>
+        <ul>
+          <li>Arrepentimiento: volver en sí, levantarse, ir</li>
+          <li>Gracia: restauración plena y gratuita</li>
+          <li>Misericordia: amor activo que sale al encuentro</li>
+          <li>Perdón: restauración de la relación</li>
+          <li>Fiesta: celebración por el retorno</li>
+          <li>El padre: corre, abraza, viste, calza, ruega</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que la parábola niega</h4>
+        <ul>
+          <li>Arrepentimiento como solo sentimiento de culpa</li>
+          <li>Gracia como permisividad o complicidad</li>
+          <li>Misericordia como sentimentalismo pasivo</li>
+          <li>Perdón como olvido o negación del daño</li>
+          <li>Fiesta como complacencia por el castigo</li>
+          <li>El padre como juez severo o padre permisivo</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#5a2a7a;"><strong>La gracia no niega la justicia: la supera. El hijo no recibe lo que merece, sino lo que el amor le da.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Me reconozco más en el hijo menor o en el mayor?</div>
+      <div class="item">2. ¿He experimentado el abrazo del padre que corre?</div>
+      <div class="item">3. ¿Mi arrepentimiento es cálculo o es "volver en sí"?</div>
+      <div class="item">4. ¿Me cuesta celebrar el retorno del que se fue?</div>
+      <div class="item">5. ¿Siento que "merezco" más porque siempre he sido fiel?</div>
+      <div class="item">6. ¿He convertido mi fidelidad en resentimiento?</div>
+      <div class="item">7. ¿Estoy dentro de casa pero fuera de la fiesta?</div>
+      <div class="item">8. ¿Salgo al encuentro de los que vuelven, o espero que se arrepientan primero?</div>
+      <div class="item">9. ¿Confundo la gracia con permisividad, o la vivo como restauración?</div>
+      <div class="item">10. ¿Estoy dispuesto a entrar en la fiesta, aunque el que vuelve sea el que me ofendió?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Recibir al que vuelve sin reproches ni condiciones; salir al encuentro del que se fue.</div>
+      <div class="app-item"><strong>Amistad</strong> No dar por perdida una amistad; celebrar la reconciliación sin reservas.</div>
+      <div class="app-item"><strong>Comunidad</strong> No murmurar contra los que vuelven; alegrarse por su restauración.</div>
+      <div class="app-item"><strong>Trabajo</strong> Recibir al compañero que falló sin humillarlo; restaurarlo con confianza.</div>
+      <div class="app-item"><strong>Vida interior</strong> Reconocer en qué soy hijo menor (rebeldía) y en qué soy hijo mayor (resentimiento).</div>
+      <div class="app-item"><strong>Sociedad</strong> No descartar a los que han fallado; ofrecer segundas oportunidades reales.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Salir al encuentro de los que se alejan, tanto de los que se van como de los que se quedan.</div>
+      <div class="app-item"><strong>Espiritual</strong> Volver en sí, levantarse, ir al padre; dejarse vestir, calzar y celebrar.</div>
+      <div class="app-item"><strong>Perdón</strong> Perdonar sin exigir período de prueba; restaurar sin recordar el pasado.</div>
+      <div class="app-item"><strong>Crisis</strong> No quedarse en la miseria; recordar que en casa del padre hay abundancia.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “El padre no espera: corre al encuentro del hijo que vuelve<br>y sale a rogarle al que se queda.”
+    <small>La gracia no negocia, restaura; no castiga, celebra. Y deja la puerta abierta para los dos hijos: el que se fue y el que se quedó.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Hijo Pródigo (Lucas 15:11-32) · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: La Oveja Perdida</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #2e5c3a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #2e5c3a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #5a8a68;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c0d8c8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafffc;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #2e5c3a;
+    border-bottom: 1.5px solid #d0e8d8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #3a6a4a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #2e5c3a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #2e5c3a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8e8dc;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2faf4;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #d0e8d8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f6fbf8;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #2e5c3a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f0f8f2;
+    border-left: 3px solid #2e5c3a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #2e5c3a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #d0e8d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 8pt;
+    background: #f6fbf8;
+  }
+  .app-item strong {
+    color: #2e5c3a;
+    font-size: 8.5pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #2e5c3a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #2e5c3a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f0f8f2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f6fbf8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f6fbf8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de la Oveja Perdida</h1>
+    <div class="subtitulo">La misericordia que sale a buscar</div>
+    <div class="referencia">Lucas 15:3-7 · Mateo 18:12-14 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un pastor tiene cien ovejas. Una se pierde. Sin dudar, deja las noventa y nueve y va en busca de la extraviada. Cuando la encuentra, la carga sobre sus hombros, gozoso, y al llegar a casa convoca a amigos y vecinos para celebrar.</p>
+      <p style="font-size:9.5pt;"><em>“Os digo que así habrá más gozo en el cielo por un pecador que se arrepiente, que por noventa y nueve justos que no necesitan de arrepentimiento.”</em></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios abandone a los justos.</li>
+        <li>No enseña que el pecador valga más que el justo.</li>
+        <li>No enseña que la salvación sea mérito del que se arrepiente.</li>
+        <li>No enseña que haya que descuidar la comunidad por el individuo.</li>
+        <li>No enseña que el arrepentimiento sea causa de la búsqueda de Dios.</li>
+      </ul>
+      <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El gozo del cielo no es por el castigo del perdido, sino por su restauración.</strong></p>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>Dios toma la iniciativa:</strong> el pastor no espera, sale a buscar.</li>
+        <li><strong>El valor del individuo:</strong> aunque haya noventa y nueve, la una importa.</li>
+        <li><strong>La alegría de la restauración:</strong> hay fiesta en el cielo por el que retorna.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La búsqueda es costosa y perseverante:</strong> “hasta encontrarla”.</li>
+        <li><strong>La comunidad es corresponsable:</strong> no puede ser indiferente al descarriado.</li>
+        <li><strong>El arrepentimiento es respuesta, no causa:</strong> el amor busca primero.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>ποιμήν</td>
+        <td>poimēn</td>
+        <td>pastor</td>
+        <td>Imagen mesiánica y real; Dios como pastor de Israel (Sal 23; Ez 34).</td>
+      </tr>
+      <tr>
+        <td>ἀπόλλυμι</td>
+        <td>apollymi</td>
+        <td>perder, destruir</td>
+        <td>No es solo “extraviarse”: implica riesgo real de muerte.</td>
+      </tr>
+      <tr>
+        <td>ἕως οὗ εὕρῃ</td>
+        <td>heōs hou heurē</td>
+        <td>hasta que encuentre</td>
+        <td>Indica perseverancia: no se detiene hasta lograrlo.</td>
+      </tr>
+      <tr>
+        <td>χαρά</td>
+        <td>chara</td>
+        <td>gozo, alegría</td>
+        <td>Gozo profundo, no simple contentamiento.</td>
+      </tr>
+      <tr>
+        <td>μετανοέω</td>
+        <td>metanoeō</td>
+        <td>arrepentirse</td>
+        <td>Cambio de mente y de dirección de la vida.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- FILA 4: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Ezequiel 34: Dios mismo busca a sus ovejas. Salmo 23: el pastor que guía y restaura.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">Sutra del Loto: el padre busca al hijo perdido. Compasión que no abandona a ningún ser.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">Serenidad ante la pérdida; confianza en el retorno natural. Aporta calma, no búsqueda activa.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Dios no abandona (Sura 93). Misericordia que supera la ira. Gozo por el arrepentido.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">Krishna como pastor divino. El guru busca al discípulo, pero el énfasis está en el esfuerzo propio.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">Cuidado de los propios (oikeiōsis). Contraste: el sabio no se conmueve; Dios sí.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">Amistad y bien del otro como parte de la virtud. La misericordia como acción concreta.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">⚖️</span>
+        <span class="nombre">Cinismo</span>
+        <span class="aporte">Crítica a la indiferencia social. El sabio no desprecia al que se pierde.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 5: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Misericordia verdadera</h4>
+        <ul>
+          <li>Amor activo que busca al perdido</li>
+          <li>Iniciativa de Dios que sale al encuentro</li>
+          <li>Arrepentimiento como respuesta</li>
+          <li>Gozo por la restauración</li>
+          <li>Comunidad corresponsable</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Misericordia falsa</h4>
+        <ul>
+          <li>Sentimentalismo pasivo que espera</li>
+          <li>Esfuerzo humano para merecer a Dios</li>
+          <li>Arrepentimiento como condición previa</li>
+          <li>Complacencia por el castigo del malo</li>
+          <li>Indiferencia ante el descarriado</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#2e5c3a;"><strong>La misericordia no es un deber triste: es una celebración.</strong></p>
+  </div>
+
+  <!-- FILA 6: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Espero a que el perdido vuelva, o salgo a buscarlo?</div>
+      <div class="item">2. ¿Mi misericordia es activa o solo sentimental?</div>
+      <div class="item">3. ¿Me gozo por la restauración del que estaba perdido?</div>
+      <div class="item">4. ¿Desprecio a los “noventa y nueve” por atender al perdido?</div>
+      <div class="item">5. ¿Desprecio al perdido por cuidar a los “noventa y nueve”?</div>
+      <div class="item">6. ¿Busco al descarriado por amor o por deber?</div>
+      <div class="item">7. ¿Mi comunidad es un lugar de búsqueda o de juicio?</div>
+      <div class="item">8. ¿Confío en que Dios toma la iniciativa?</div>
+      <div class="item">9. ¿He experimentado el gozo de ser encontrado?</div>
+      <div class="item">10. ¿Estoy dispuesto a cargar con el que vuelve?</div>
+    </div>
+  </div>
+
+  <!-- FILA 7: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> No abandonar al hijo que se aleja; buscarlo con paciencia y amor.</div>
+      <div class="app-item"><strong>Amistad</strong> Salir al encuentro del amigo distanciado; no esperar a que él dé el primer paso.</div>
+      <div class="app-item"><strong>Comunidad</strong> La iglesia o grupo debe buscar activamente a los alejados, no solo lamentarlo.</div>
+      <div class="app-item"><strong>Trabajo</strong> Atender al compañero en dificultad, aunque implique costo personal.</div>
+      <div class="app-item"><strong>Vida interior</strong> Reconocer las áreas perdidas de la propia vida y dejar que Dios las busque.</div>
+      <div class="app-item"><strong>Sociedad</strong> No descartar a los marginados; buscar su restauración.</div>
+      <div class="app-item"><strong>Liderazgo</strong> El líder no solo administra a los que están: sale a buscar a los que faltan.</div>
+      <div class="app-item"><strong>Crisis</strong> No rendirse ante la pérdida; perseverar “hasta encontrarla”.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Dios no espera a que el perdido vuelva:<br>sale a buscarlo, lo carga sobre sus hombros y celebra su retorno.”
+    <small>La misericordia es búsqueda activa, no espera pasiva.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de la Oveja Perdida (Lucas 15:3-7; Mateo 18:12-14) · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

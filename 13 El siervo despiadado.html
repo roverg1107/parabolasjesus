@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Siervo Despiadado</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #7a1a2a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #7a1a2a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #9a3a4a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e8c0c8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fffafb;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #7a1a2a;
+    border-bottom: 1.5px solid #f0d8dc;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #9a3a4a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #7a1a2a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #7a1a2a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #f0d8dc;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #fdf6f8;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* DEUDAS */
+  .deudas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .deuda-card {
+    border-radius: 5px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .deuda-grande {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .deuda-pequena {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .deuda-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .deuda-grande h4 { color: #b02020; }
+  .deuda-pequena h4 { color: #1a7a3a; }
+  .deuda-card .cantidad {
+    font-size: 14pt;
+    font-weight: 700;
+    display: block;
+    margin: 3px 0;
+  }
+  .deuda-grande .cantidad { color: #b02020; }
+  .deuda-pequena .cantidad { color: #1a7a3a; }
+  .deuda-card .detalle {
+    font-size: 8.5pt;
+    color: #555;
+    display: block;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e8c0c8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #fdf6f8;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #7a1a2a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #fdf6f8;
+    border-left: 3px solid #7a1a2a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #7a1a2a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e8c0c8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #fdf6f8;
+  }
+  .app-item strong {
+    color: #7a1a2a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #7a1a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #7a1a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #fdf6f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #fdf6f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #fdf6f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .deuda-grande { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .deuda-pequena { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Siervo Despiadado</h1>
+    <div class="subtitulo">La gracia recibida es la medida de la gracia dada</div>
+    <div class="referencia">Mateo 18:23-35 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un rey hace cuentas con sus siervos. Le presentan a uno que le debe <strong>diez mil talentos</strong> —una suma impagable—. Como no puede pagar, ordena venderlo junto con su familia. El siervo suplica, y el rey, <strong>movido a misericordia</strong>, le perdona toda la deuda. Pero al salir, el mismo siervo encuentra a un consiervo que le debía <strong>cien denarios</strong> y, sin compasión, lo echa en la cárcel. El rey, al enterarse, lo llama: <em>"¿No debías tú también tener misericordia de tu consiervo, como yo tuve misericordia de ti?"</em></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios sea un rey vengativo: el enojo es respuesta a la <strong>incoherencia</strong> del siervo.</li>
+        <li>No enseña que el perdón de Dios sea condicional: perdona <strong>antes</strong> de que el siervo cambie.</li>
+        <li>No enseña que las deudas humanas sean insignificantes: cien denarios eran tres meses de salario.</li>
+        <li>No enseña que haya que olvidar la justicia: el perdón <strong>cancela</strong> la deuda, no la niega.</li>
+        <li>No enseña que el perdón sea un sentimiento: es una <strong>decisión</strong> que se traduce en acción.</li>
+        <li>No enseña que la salvación se gane perdonando: la gracia produce frutos de perdón.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La deuda perdonada es impagable:</strong> 10.000 talentos = más de 160.000 años de trabajo.</li>
+        <li><strong>La gracia es incondicional y radical:</strong> el rey no da tiempo: perdona toda la deuda.</li>
+        <li><strong>La misma gracia recibida debe ser dada:</strong> la deuda del consiervo era 600.000 veces menor.</li>
+        <li><strong>La falta de perdón es un pecado grave:</strong> el rey llama al siervo "malvado".</li>
+        <li><strong>El perdón es una decisión, no un sentimiento:</strong> acto de la voluntad que se traduce en acción.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La comunidad es testigo:</strong> los consiervos se entristecen y denuncian la injusticia.</li>
+        <li><strong>El perdón es "de todo corazón":</strong> no de labios, no calculado, no con reservas.</li>
+        <li><strong>El perdón es el corazón del Evangelio:</strong> "Perdónanos, como nosotros perdonamos".</li>
+        <li><strong>La gracia recibida es la medida de la gracia dada:</strong> "como yo tuve misericordia de ti".</li>
+        <li><strong>El perdón no es amnesia:</strong> no dice "no pasó nada", sino "ya no te lo cobro".</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS DOS DEUDAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>💰 Las dos deudas: la magnitud del contraste</h2>
+    <div class="deudas-grid">
+      <div class="deuda-card deuda-grande">
+        <h4>🔴 La deuda del siervo con el rey</h4>
+        <span class="cantidad">10.000 talentos</span>
+        <span class="detalle">= 60.000.000 denarios</span>
+        <span class="detalle">= más de <strong>160.000 años</strong> de trabajo de un jornalero</span>
+        <span class="detalle">Suma astronómica, deliberadamente exagerada por Jesús.</span>
+        <span class="detalle" style="margin-top:4px;"><strong>Deuda impagable. Solo la gracia puede cancelarla.</strong></span>
+      </div>
+      <div class="deuda-card deuda-pequena">
+        <h4>🟢 La deuda del consiervo con el siervo</h4>
+        <span class="cantidad">100 denarios</span>
+        <span class="detalle">= 100 jornales diarios</span>
+        <span class="detalle">= unos <strong>3 meses</strong> de trabajo</span>
+        <span class="detalle">Deuda real y significativa, pero incomparablemente menor.</span>
+        <span class="detalle" style="margin-top:4px;"><strong>Proporción: 600.000 a 1. El siervo no perdona ni lo mínimo.</strong></span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#7a1a2a;"><strong>El siervo perdonado no perdona una deuda 600.000 veces menor. La falta de perdón es la traición de la gracia recibida.</strong></p>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>συναίρω λόγον</td>
+        <td>synairō logon</td>
+        <td>hacer cuentas</td>
+        <td>Imagen contable. El rey audita a sus administradores.</td>
+      </tr>
+      <tr>
+        <td>δέκα χιλιάδες τάλαντα</td>
+        <td>deka chiliades talanta</td>
+        <td>diez mil talentos</td>
+        <td>Suma astronómica: más de 160.000 años de trabajo. Exageración deliberada.</td>
+      </tr>
+      <tr>
+        <td>σπλαγχνισθείς</td>
+        <td>splagchnistheis</td>
+        <td>movido a misericordia visceral</td>
+        <td>El rey se conmueve. La misericordia es visceral, no calculada.</td>
+      </tr>
+      <tr>
+        <td>ἀφῆκεν</td>
+        <td>aphēken</td>
+        <td>soltó, perdonó, dejó ir</td>
+        <td>Verbo de liberación. No solo cancela: <strong>libera</strong> al deudor.</td>
+      </tr>
+      <tr>
+        <td>κρατήσας</td>
+        <td>kratēsas</td>
+        <td>asiendo, agarrando con violencia</td>
+        <td>El siervo no solo reclama: <strong>agarra</strong> y <strong>ahoga</strong>. Violencia física.</td>
+      </tr>
+      <tr>
+        <td>πνίγω</td>
+        <td>pnigō</td>
+        <td>ahogar, estrangular</td>
+        <td>Violencia brutal. El contraste con el rey es máximo.</td>
+      </tr>
+      <tr>
+        <td>ἔβαλεν εἰς φυλακήν</td>
+        <td>ebalen eis phylakēn</td>
+        <td>echó en la cárcel</td>
+        <td>El siervo aplica la ley del más fuerte.</td>
+      </tr>
+      <tr>
+        <td>λυπηθέντες</td>
+        <td>lypēthentes</td>
+        <td>entristecidos</td>
+        <td>Los consiervos no solo se enojan: se <strong>entristecen</strong>. La injusticia duele a la comunidad.</td>
+      </tr>
+      <tr>
+        <td>πονηρέ</td>
+        <td>ponēre</td>
+        <td>malvado, malo</td>
+        <td>El rey califica al siervo de <strong>malvado</strong>. No es un pecado menor.</td>
+      </tr>
+      <tr>
+        <td>βασανισταῖς</td>
+        <td>basanistais</td>
+        <td>verdugos, torturadores</td>
+        <td>Entrega a los verdugos. La falta de perdón tiene consecuencias severas.</td>
+      </tr>
+      <tr>
+        <td>ἀπὸ τῶν καρδιῶν ὑμῶν</td>
+        <td>apo tōn kardiōn hymōn</td>
+        <td>de todo corazón</td>
+        <td>No es perdón de labios: es perdón <strong>desde lo profundo</strong>.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>aphēken</em> (perdonar) es el mismo del Padrenuestro. Es un verbo de liberación: suelta al deudor. La falta de perdón, en cambio, <em>ata</em> y <em>encarcela</em>.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Levítico 25: año del jubileo. Eclesiástico 28:2-7: perdona, y serás perdonado. Mishná: el perdón divino no cubre las ofensas al prójimo sin reparación.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">Metta y karuṇā: amor y compasión universales. El rencor es un veneno que daña al que lo guarda. Perdonar es liberarse.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"Responde al mal con el bien" (Tao Te Ching 63). El sabio no acumula rencor. El perdón es ligereza, no carga.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 24:22: "¿No queréis que Dios os perdone?". Sura 42:40: quien perdona y se reconcilia, su recompensa está junto a Dios.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">Kṣamā (perdón) como virtud del sabio. "El perdón es el poder del débil y la gloria del fuerte". Libera del ciclo del karma.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">Séneca (De Ira): dominar la ira. Marco Aurelio: "Lo mejor es vengarse no siendo como el que te ofendió". Perdón como razón.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">Megalopsychia: el magnánimo no se rebaja a la venganza. Phrónesis: saber cuándo perdonar y cuándo exigir. La gracia supera la justicia.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">⚖️</span>
+        <span class="nombre">Cinismo</span>
+        <span class="aporte">Crítica a la hipocresía: el siervo exige a otros lo que no cumple. El cínico despreciaría su doblez.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que la parábola afirma</h4>
+        <ul>
+          <li>Perdón: cancelación de la deuda, liberación</li>
+          <li>Gracia: don incondicional, impagable, soberano</li>
+          <li>Deuda: ofensa real, medida y concreta</li>
+          <li>Misericordia: compasión visceral que actúa</li>
+          <li>Justicia: no se opone a la misericordia: la completa</li>
+          <li>Reciprocidad: perdonar como fuimos perdonados</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que la parábola niega</h4>
+        <ul>
+          <li>Perdón como olvido o sentimiento superficial</li>
+          <li>Gracia como recompensa por méritos</li>
+          <li>Deuda como algo imaginario o insignificante</li>
+          <li>Misericordia como sentimentalismo pasivo</li>
+          <li>Justicia como venganza o cobro implacable</li>
+          <li>Falta de perdón como simple olvido</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#7a1a2a;"><strong>No perdonamos para merecer el perdón: perdonamos porque ya fuimos perdonados. La falta de perdón cierra el canal de la misericordia.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Reconozco la magnitud de la deuda que Dios me ha perdonado?</div>
+      <div class="item">2. ¿Mi perdón es proporcional al que he recibido?</div>
+      <div class="item">3. ¿Tengo una lista de deudas pendientes con otros?</div>
+      <div class="item">4. ¿Guardo rencor aunque diga que he perdonado?</div>
+      <div class="item">5. ¿Perdono de labios o "de todo corazón"?</div>
+      <div class="item">6. ¿Mi perdón es un acto puntual o un proceso continuado?</div>
+      <div class="item">7. ¿He convertido el perdón en una moneda de cambio?</div>
+      <div class="item">8. ¿Reconozco que la falta de perdón me encadena a mí?</div>
+      <div class="item">9. ¿Estoy dispuesto a soltar la deuda, aunque el ofensor no lo merezca?</div>
+      <div class="item">10. ¿He experimentado el gozo de perdonar y ser perdonado?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Perdonar las ofensas familiares, sin recordarlas en cada discusión.</div>
+      <div class="app-item"><strong>Amistad</strong> No llevar cuenta de las ofensas; soltar la deuda relacional.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura del perdón, no del juicio ni del chisme.</div>
+      <div class="app-item"><strong>Trabajo</strong> No cobrar a los compañeros sus fallos, recordando la propia indulgencia recibida.</div>
+      <div class="app-item"><strong>Vida interior</strong> Reconocer los rencores guardados y decidir soltarlos.</div>
+      <div class="app-item"><strong>Sociedad</strong> Promover la reconciliación y la justicia restaurativa, no la venganza.</div>
+      <div class="app-item"><strong>Liderazgo</strong> El líder perdona los errores del equipo, sin humillar ni recordar.</div>
+      <div class="app-item"><strong>Política</strong> Diseñar procesos de reconciliación nacional, sin impunidad ni venganza.</div>
+      <div class="app-item"><strong>Espiritual</strong> Vivir el Padrenuestro: "perdónanos como nosotros perdonamos".</div>
+      <div class="app-item"><strong>Crisis</strong> No dejar que el rencor se acumule; perdonar rápido y de corazón.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Dios nos ha perdonado una deuda impagable.<br>El que no perdona a su hermano traiciona la gracia que ha recibido.”
+    <small>No perdonamos para merecer el perdón: perdonamos porque ya fuimos perdonados.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Siervo Despiadado (Mateo 18:23-35) · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

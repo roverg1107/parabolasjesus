@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Buen Samaritano</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #1a6a6a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #1a6a6a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #3a8a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #b8d8d8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #f8fdfd;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #1a6a6a;
+    border-bottom: 1.5px solid #d0e8e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #2a7a7a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #1a6a6a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #1a6a6a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0e8e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2fafa;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* TRES PERSONAJES */
+  .tres-personajes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .personaje-card {
+    border-radius: 5px;
+    padding: 6px 8px;
+    font-size: 9pt;
+  }
+  .sacerdote {
+    background: #f5f5f5;
+    border: 1.5px solid #bdbdbd;
+  }
+  .levita {
+    background: #f5f5f5;
+    border: 1.5px solid #bdbdbd;
+  }
+  .samaritano {
+    background: #e0f2f1;
+    border: 1.5px solid #4db6ac;
+  }
+  .personaje-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .sacerdote h4 { color: #555; }
+  .levita h4 { color: #555; }
+  .samaritano h4 { color: #1a6a6a; }
+  .personaje-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .sacerdote ul li::before { color: #555; }
+  .levita ul li::before { color: #555; }
+  .samaritano ul li::before { color: #1a6a6a; }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #b8d8d8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f8fdfd;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #1a6a6a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f0f8f8;
+    border-left: 3px solid #1a6a6a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #1a6a6a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #b8d8d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f8fdfd;
+  }
+  .app-item strong {
+    color: #1a6a6a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #1a6a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #1a6a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f0f8f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f8fdfd !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f8fdfd !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .sacerdote { background: #f5f5f5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .levita { background: #f5f5f5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .samaritano { background: #e0f2f1 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Buen Samaritano</h1>
+    <div class="subtitulo">La misericordia que se acerca y actúa</div>
+    <div class="referencia">Lucas 10:25-37 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un hombre baja de Jerusalén a Jericó y cae en manos de ladrones que lo despojan, lo hieren y lo dejan medio muerto. Un sacerdote pasa, lo ve y sigue de largo. Un levita hace lo mismo. Pero un <strong>samaritano</strong> —miembro del pueblo despreciado por los judíos— lo ve, <strong>se conmueve</strong>, se acerca, venda sus heridas, lo carga, lo lleva a un mesón, lo cuida y paga al mesonero para que siga cuidándolo.</p>
+      <p style="font-size:9.5pt;"><em>“¿Quién, pues, de estos tres te parece que fue el prójimo del que cayó en manos de los ladrones? Él dijo: El que usó de misericordia con él. Entonces Jesús le dijo: Ve, y haz tú lo mismo.”</em></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que el sacerdote y el levita sean malvados: tenían razones (pureza, miedo, prisa), pero no justifican su indiferencia.</li>
+        <li>No enseña que la misericordia sea solo sentimiento: el samaritano <strong>actúa</strong>.</li>
+        <li>No enseña que haya que elegir entre amar a Dios y al prójimo.</li>
+        <li>No enseña que el prójimo sea solo el cercano o el que me cae bien.</li>
+        <li>No enseña que la identidad religiosa garantice la virtud.</li>
+        <li>No enseña que la salvación se gane por obras.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>El amor al prójimo no tiene fronteras:</strong> el samaritano era el enemigo histórico.</li>
+        <li><strong>La misericordia es compasión que se convierte en acción:</strong> se acerca, venda, carga, lleva, cuida, paga.</li>
+        <li><strong>La indiferencia religiosa es posible:</strong> se puede tener la doctrina correcta y el corazón endurecido.</li>
+        <li><strong>El prójimo no es una categoría, sino una acción:</strong> no se trata de saber quién es, sino de <em>ser</em> prójimo.</li>
+        <li><strong>La misericordia es costosa:</strong> tiempo, dinero, esfuerzo, reputación, seguridad.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La misericordia es concreta:</strong> vendar, cargar, pagar. No intenciones, sino acciones.</li>
+        <li><strong>La misericordia es perseverante:</strong> no abandona en el mesón; vuelve y promete cubrir gastos.</li>
+        <li><strong>Jesús invierte las preguntas y las categorías:</strong> el enemigo es el modelo; el hereje, el virtuoso.</li>
+        <li><strong>El amor a Dios se verifica en el amor al prójimo.</strong></li>
+        <li><strong>“Ve, y haz tú lo mismo”:</strong> la parábola termina en imperativo, no en reflexión.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS TRES PERSONAJES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los tres personajes del camino</h2>
+    <div class="tres-personajes">
+      <div class="personaje-card sacerdote">
+        <h4>⚪ El sacerdote</h4>
+        <ul>
+          <li>Alto rango religioso.</li>
+          <li>Conocía la Ley.</li>
+          <li>Vio al herido y <strong>cruzó al otro lado</strong>.</li>
+          <li>Razones posibles: pureza ritual, miedo, prisa.</li>
+          <li>La religión sin misericordia es una trampa.</li>
+        </ul>
+      </div>
+      <div class="personaje-card levita">
+        <h4>⚪ El levita</h4>
+        <ul>
+          <li>Asistente del templo.</li>
+          <li>También conocía la Ley.</li>
+          <li>Hizo lo mismo: <strong>pasó de largo</strong>.</li>
+          <li>No basta con saber: hay que hacer.</li>
+          <li>La indiferencia tiene una geografía: se aparta.</li>
+        </ul>
+      </div>
+      <div class="personaje-card samaritano">
+        <h4>🔷 El samaritano</h4>
+        <ul>
+          <li>Miembro del pueblo despreciado.</li>
+          <li>Considerado hereje y enemigo.</li>
+          <li><strong>Se conmovió</strong> (splagchnizomai).</li>
+          <li>Se acercó, vendó, cargó, llevó, cuidó, pagó.</li>
+          <li>El enemigo es el modelo de virtud.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#1a6a6a;"><strong>El herido no tiene identidad: podría ser cualquiera. Y el que ayuda no es el “correcto”, sino el que se conmueve y actúa.</strong></p>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>νομικός</td>
+        <td>nomikos</td>
+        <td>intérprete de la ley</td>
+        <td>Experto en la Torá. No busca aprender: busca probar a Jesús.</td>
+      </tr>
+      <tr>
+        <td>ἐκπειράζων</td>
+        <td>ekpeirazōn</td>
+        <td>probando, tentando</td>
+        <td>No es pregunta sincera: es una trampa.</td>
+      </tr>
+      <tr>
+        <td>δικαιῶσαι ἑαυτόν</td>
+        <td>dikaiōsai heauton</td>
+        <td>justificarse a sí mismo</td>
+        <td>Quiere quedar bien, no aprender. Busca una escapatoria.</td>
+      </tr>
+      <tr>
+        <td>πλησίον</td>
+        <td>plēsion</td>
+        <td>prójimo, cercano</td>
+        <td>El que está cerca. La pregunta es: ¿quién está cerca?</td>
+      </tr>
+      <tr>
+        <td>ἡμιθανῆ</td>
+        <td>hēmithanē</td>
+        <td>medio muerto</td>
+        <td>Ni vivo ni muerto. Imagen de la humanidad caída.</td>
+      </tr>
+      <tr>
+        <td>ἀντιπαρῆλθεν</td>
+        <td>antiparēlthen</td>
+        <td>pasó de largo, por el lado opuesto</td>
+        <td>No es que no lo vieran: lo vieron y <strong>cruzaron al otro lado</strong>.</td>
+      </tr>
+      <tr>
+        <td>σπλαγχνίζομαι</td>
+        <td>splagchnizomai</td>
+        <td>ser movido a misericordia visceral</td>
+        <td>Compasión que conmueve las entrañas. No es sentimiento superficial.</td>
+      </tr>
+      <tr>
+        <td>προσελθών</td>
+        <td>proselthōn</td>
+        <td>acercándose</td>
+        <td>La misericordia <strong>se acerca</strong>. No espera que el sufriente venga.</td>
+      </tr>
+      <tr>
+        <td>κατέδησεν</td>
+        <td>katedēsen</td>
+        <td>vendó</td>
+        <td>Cuidado concreto: vendar las heridas.</td>
+      </tr>
+      <tr>
+        <td>δύο δηνάρια</td>
+        <td>dyo dēnaria</td>
+        <td>dos denarios</td>
+        <td>Dos jornales. No es limosna simbólica: es gasto significativo.</td>
+      </tr>
+      <tr>
+        <td>πορεύου καὶ σὺ ποίει</td>
+        <td>poreuou kai sy poiei</td>
+        <td>ve, y haz tú lo mismo</td>
+        <td>Imperativo final. No es historia para admirar: es mandato.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Levítico 19:18 y 34: amar al prójimo y al extranjero. Éxodo 23:4-5: ayudar al enemigo. Mishná: misericordia con no judíos.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">Metta (amor benevolente) y karuṇā (compasión) universales. El monje y el escorpión: ayudar sin esperar recompensa.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">“El bien supremo es como el agua”: beneficia sin competir. Wu wei: la misericordia fluye con naturalidad, sin cálculo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 5:32: salvar una vida es salvar a la humanidad. Sura 90: la misericordia concreta como camino. El muhsin (el que hace el bien).</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">Ahimsa (no violencia), seva (servicio desinteresado), karma yoga (acción sin apego). Romper barreras de casta como signo de santidad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">Oikeiōsis (afinidad con toda la humanidad) y philanthrōpia (amor al género humano). Contraste: el samaritano <strong>se conmueve</strong>, no solo razona.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">Amistad por virtud (no por utilidad ni placer). Phrónesis: sabe <em>cómo</em> ayudar. La virtud se demuestra en la acción bien deliberada.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">⚖️</span>
+        <span class="nombre">Cinismo</span>
+        <span class="aporte">Crítica a la religión vacía y a los sacerdotes hipócritas. La parábola va más allá: no solo critica, <strong>actúa</strong>.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que la parábola afirma</h4>
+        <ul>
+          <li>Prójimo: cualquiera que necesita ayuda</li>
+          <li>Misericordia: compasión que actúa</li>
+          <li>Amor al prójimo: mandamiento universal</li>
+          <li>Ayuda: concreta, costosa, perseverante</li>
+          <li>Enemigo: también es prójimo y puede ser modelo</li>
+          <li>Salvación: gracia que produce frutos</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que la parábola niega</h4>
+        <ul>
+          <li>Prójimo: solo el cercano o el correligionario</li>
+          <li>Misericordia: sentimiento vago o lástima pasiva</li>
+          <li>Amor al prójimo: opción según simpatía</li>
+          <li>Ayuda: limosna simbólica o gesto puntual</li>
+          <li>Identidad religiosa: garantía automática de virtud</li>
+          <li>Pureza ritual: excusa para no ayudar</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#1a6a6a;"><strong>No se trata de saber quién es mi prójimo, sino de <em>ser</em> prójimo. La misericordia no cruza al otro lado: se acerca, se conmueve y actúa.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Quién es el “samaritano” que menos espero que me ayude?</div>
+      <div class="item">2. ¿A quién considero “enemigo” y no estoy dispuesto a ayudar?</div>
+      <div class="item">3. ¿Cuándo he “cruzado al otro lado” para no ver el sufrimiento?</div>
+      <div class="item">4. ¿Mi misericordia es sentimiento o acción concreta?</div>
+      <div class="item">5. ¿Estoy dispuesto a desviarme de mi camino para ayudar?</div>
+      <div class="item">6. ¿Ayudo solo si no me cuesta nada, o también si me cuesta?</div>
+      <div class="item">7. ¿Mi ayuda es puntual o perseverante?</div>
+      <div class="item">8. ¿He usado la religión como excusa para no ayudar?</div>
+      <div class="item">9. ¿He sido ayudado por alguien a quien despreciaba?</div>
+      <div class="item">10. ¿Estoy dispuesto a “hacer lo mismo”, sin cálculos ni excusas?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> No dar por sentado a los cercanos; atender al que sufre dentro de casa, aunque sea el “enemigo” familiar.</div>
+      <div class="app-item"><strong>Amistad</strong> Ayudar al amigo que ha fallado, sin recordarle su falta.</div>
+      <div class="app-item"><strong>Comunidad</strong> No discriminar por origen, ideología o religión al momento de ayudar.</div>
+      <div class="app-item"><strong>Trabajo</strong> Atender al compañero en dificultad, aunque no me caiga bien o sea mi competidor.</div>
+      <div class="app-item"><strong>Vida interior</strong> Reconocer las excusas que uso para no ayudar (prisa, miedo, comodidad).</div>
+      <div class="app-item"><strong>Sociedad</strong> No cruzar al otro lado ante el sufrimiento del migrante, del pobre, del excluido.</div>
+      <div class="app-item"><strong>Liderazgo</strong> No delegar la misericordia: involucrarse personalmente, como el samaritano.</div>
+      <div class="app-item"><strong>Política</strong> Diseñar políticas que no abandonen al herido en la cuneta.</div>
+      <div class="app-item"><strong>Espiritual</strong> Verificar el amor a Dios en el amor concreto al prójimo.</div>
+      <div class="app-item"><strong>Crisis</strong> No abandonar al que sufre cuando la crisis me afecta también a mí.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “El prójimo no es el que me cae bien, sino el que está delante de mí y necesita.<br>No se trata de saber quién es mi prójimo, sino de ser prójimo.”
+    <small>La misericordia no cruza al otro lado: se acerca, se conmueve y actúa. “Ve, y haz tú lo mismo.”</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Buen Samaritano (Lucas 10:25-37) · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>
