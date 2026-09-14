@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Los Viñadores Homicidas</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #6a1a2a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #6a1a2a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #9a4a5a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #d8b8c0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fdfafb;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #6a1a2a;
+    border-bottom: 1.5px solid #e8d0d8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #9a3a4a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #6a1a2a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #6a1a2a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #e8d0d8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf4f6;
+  }
+
+  /* LOS PERSONAJES */
+  .personajes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .personaje-card {
+    border-radius: 6px;
+    padding: 6px 8px;
+    text-align: center;
+  }
+  .dueno-card {
+    background: #e8eef4;
+    border: 1.5px solid #8aa0b8;
+  }
+  .siervos-card {
+    background: #f5ead0;
+    border: 1.5px solid #d0b070;
+  }
+  .hijo-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .personaje-card .icono {
+    font-size: 20pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .personaje-card h4 {
+    font-size: 9.5pt;
+    margin-bottom: 4px;
+  }
+  .dueno-card h4 { color: #2a4a6a; }
+  .siervos-card h4 { color: #8a5a2a; }
+  .hijo-card h4 { color: #1a7a3a; }
+  .personaje-card ul {
+    text-align: left;
+  }
+  .personaje-card ul li {
+    font-size: 8pt;
+    padding-left: 10px;
+    margin-bottom: 2px;
+  }
+  .dueno-card ul li::before { color: #2a4a6a; }
+  .siervos-card ul li::before { color: #8a5a2a; }
+  .hijo-card ul li::before { color: #1a7a3a; }
+
+  /* LA SECUENCIA DEL RECHAZO */
+  .secuencia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .secuencia-item {
+    border-radius: 5px;
+    padding: 6px 5px;
+    text-align: center;
+    background: #faf4f6;
+    border: 1px solid #d8b8c0;
+  }
+  .secuencia-item .momento {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #6a1a2a;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .secuencia-item .desc {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    line-height: 1.2;
+  }
+  .secuencia-critica {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .secuencia-critica .momento { color: #b02020; }
+  .secuencia-final {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .secuencia-final .momento { color: #8a5a00; }
+
+  /* PIEDRA ANGULAR */
+  .piedra-box {
+    background: #f0f4f8;
+    border: 2px solid #4a6a8a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .piedra-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #2a4a6a;
+    margin-bottom: 3px;
+  }
+  .piedra-box .cita {
+    font-size: 8.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .piedra-box .cita strong {
+    font-style: normal;
+  }
+
+  /* CONCLUSIÓN BOX */
+  .conclusion-box {
+    background: #fdf0dc;
+    border: 2px solid #c8a030;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .conclusion-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #6a1a2a;
+    margin-bottom: 3px;
+  }
+  .conclusion-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #d8b8c0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf4f6;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #6a1a2a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf4f6;
+    border-left: 3px solid #6a1a2a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #6a1a2a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #d8b8c0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf4f6;
+  }
+  .app-item strong {
+    color: #6a1a2a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #6a1a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #6a1a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf4f6 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf4f6 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf4f6 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .secuencia-item { background: #faf4f6 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .secuencia-critica { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .secuencia-final { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .dueno-card { background: #e8eef4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .siervos-card { background: #f5ead0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hijo-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .piedra-box { background: #f0f4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .conclusion-box { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de los Viñadores Homicidas</h1>
+    <div class="subtitulo">El rechazo de los mensajeros y del Hijo, y la piedra angular</div>
+    <div class="referencia">Mateo 21:33-46 · Marcos 12:1-12 · Lucas 20:9-19 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un hombre <strong>plantó una viña</strong>, la <strong>cercó</strong> de vallado, <strong>cavó</strong> un lagar, <strong>edificó</strong> una torre, la <strong>arrendó</strong> a unos labradores y se fue lejos. Cuando se acercó el tiempo de los frutos, <strong>envió sus siervos</strong> para recibir los frutos. Los labradores <strong>golpearon</strong>, <strong>mataron</strong> y <strong>apedrearon</strong> a los siervos. Envió <strong>otros siervos</strong>, e hicieron lo mismo.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;"><strong>Finalmente les envió a su hijo</strong>, diciendo: "Tendrán respeto a mi hijo". Pero los labradores dijeron: <em>"Este es el heredero; venid, matémosle, y apoderémonos de su heredad"</em>. Y <strong>le echaron fuera de la viña, y le mataron</strong>.</p>
+      <p style="font-size:9.5pt;">Jesús concluyó: <strong>"El reino de Dios será quitado de vosotros, y será dado a gente que produzca los frutos de él"</strong>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios sea un dueño <strong>ausente e indiferente</strong>: envía repetidamente a sus siervos.</li>
+        <li>No enseña que los labradores sean <strong>todos los israelitas</strong>: representan a los <strong>líderes religiosos</strong>.</li>
+        <li>No enseña que Dios <strong>abandone a Israel</strong> para siempre.</li>
+        <li>No enseña que la <strong>muerte del hijo</strong> sea el fin del plan de Dios: es su cumplimiento.</li>
+        <li>No enseña que Dios sea <strong>violento o vengativo</strong>: describe la violencia de los labradores.</li>
+        <li>No enseña que la viña sea <strong>propiedad</strong> de los labradores: son arrendatarios.</li>
+        <li>No enseña que los <strong>frutos</strong> sean opcionales: el dueño los espera.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>Dios es el dueño de la viña:</strong> los labradores son arrendatarios, no dueños.</li>
+        <li><strong>Dios espera frutos de su viña:</strong> la infidelidad consiste en no dar los frutos.</li>
+        <li><strong>Dios envía a sus mensajeros con paciencia:</strong> la paciencia de Dios es proverbial.</li>
+        <li><strong>El rechazo de los mensajeros es el rechazo de Dios.</strong></li>
+        <li><strong>Dios envía a su Hijo como último recurso:</strong> el acto supremo del amor de Dios.</li>
+        <li><strong>El Hijo es el heredero y será asesinado:</strong> la muerte de Jesús cumple esta parábola.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La piedra desechada se convierte en piedra angular:</strong> Jesús es la piedra desechada por los edificadores.</li>
+        <li><strong>El Reino será quitado a los infieles:</strong> la infidelidad tiene consecuencias.</li>
+        <li><strong>El Reino será dado a los que produzcan frutos:</strong> no basta pertenecer; hay que producir.</li>
+        <li><strong>Dios transforma el mal en bien:</strong> el rechazo de Jesús se convierte en fundamento de la Iglesia.</li>
+        <li><strong>La paciencia de Dios tiene un límite:</strong> no es indiferencia.</li>
+        <li><strong>La responsabilidad es proporcional al conocimiento:</strong> los líderes conocían al heredero.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS PERSONAJES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los personajes de la parábola</h2>
+    <div class="personajes-grid">
+      <div class="personaje-card dueno-card">
+        <span class="icono">👑</span>
+        <h4>El dueño de la viña</h4>
+        <ul>
+          <li><strong>Planta</strong> la viña.</li>
+          <li>La <strong>protege</strong> con vallado y torre.</li>
+          <li><strong>Cava</strong> el lagar.</li>
+          <li>La <strong>arrienda</strong> a los labradores.</li>
+          <li><strong>Envía</strong> repetidamente a sus siervos.</li>
+          <li><strong>Envía</strong> finalmente a su hijo.</li>
+          <li><strong>Representa</strong> a Dios.</li>
+        </ul>
+      </div>
+      <div class="personaje-card siervos-card">
+        <span class="icono">📜</span>
+        <h4>Los siervos</h4>
+        <ul>
+          <li>Son <strong>enviados</strong> por el dueño.</li>
+          <li>Vienen a <strong>recibir</strong> los frutos.</li>
+          <li>Son <strong>golpeados</strong>, <strong>matados</strong> y <strong>apedreados</strong>.</li>
+          <li>Son <strong>enviados</strong> en grupos sucesivos.</li>
+          <li><strong>Representan</strong> a los profetas.</li>
+          <li>Sufren la <strong>violencia</strong> de los labradores.</li>
+        </ul>
+      </div>
+      <div class="personaje-card hijo-card">
+        <span class="icono">✝️</span>
+        <h4>El hijo</h4>
+        <ul>
+          <li>Es el <strong>heredero</strong> del dueño.</li>
+          <li>Es <strong>enviado</strong> como último recurso.</li>
+          <li>Los labradores lo <strong>reconocen</strong>.</li>
+          <li>Es <strong>asesinado</strong> por codicia.</li>
+          <li>Es <strong>echado fuera</strong> de la viña.</li>
+          <li><strong>Representa</strong> a Jesús, el Hijo de Dios.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: LA SECUENCIA DEL RECHAZO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>📉 La secuencia del rechazo: de la violencia al homicidio</h2>
+    <div class="secuencia-grid">
+      <div class="secuencia-item">
+        <span class="momento">1. Primeros siervos</span>
+        <span class="desc">El dueño envía a sus siervos a recibir los frutos. Los labradores los <strong>golpean</strong>.</span>
+      </div>
+      <div class="secuencia-item">
+        <span class="momento">2. Más siervos</span>
+        <span class="desc">El dueño envía <strong>más siervos</strong>. Los labradores <strong>matan</strong> y <strong>apedrean</strong>.</span>
+      </div>
+      <div class="secuencia-item secuencia-critica">
+        <span class="momento">3. El Hijo</span>
+        <span class="desc">El dueño envía a su <strong>hijo</strong>. Los labradores <strong>conspiran</strong> para matarlo.</span>
+      </div>
+      <div class="secuencia-item secuencia-final">
+        <span class="momento">4. El juicio</span>
+        <span class="desc">El dueño <strong>destruye</strong> a los malos y <strong>arrienda</strong> la viña a otros que <strong>produzcan frutos</strong>.</span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#6a1a2a;"><strong>La paciencia de Dios es proverbial, pero tiene un límite. El rechazo de los mensajeros conduce al rechazo del Hijo. La violencia contra los profetas conduce al homicidio del Heredero. La infidelidad tiene consecuencias.</strong></p>
+  </div>
+
+  <!-- FILA 5: LA PIEDRA ANGULAR -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🪨 La piedra desechada: de rechazo a fundamento</h2>
+    <div class="piedra-box">
+      <div class="titulo">📖 Salmo 118:22-23</div>
+      <div class="cita">
+        <strong>"La piedra que desecharon los edificadores ha venido a ser cabeza del ángulo. El Señor ha hecho esto, y es cosa maravillosa a nuestros ojos."</strong><br><br>
+        Los <strong>edificadores</strong> (los líderes religiosos) <strong>desecharon</strong> la piedra (Jesús). Pero Dios la <strong>convirtió</strong> en <strong>piedra angular</strong>: el <strong>fundamento</strong> del nuevo edificio de Dios, la Iglesia. El <strong>rechazo</strong> de Jesús <strong>no impide</strong> el plan de Dios: lo <strong>cumple</strong>. Dios <strong>transforma</strong> el mal en bien. La cruz es el <strong>símbolo supremo</strong> de esta transformación.
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>ἀμπελών</td>
+        <td>ampelōn</td>
+        <td>viña</td>
+        <td>La viña plantada por el dueño. Símbolo clásico de Israel (Isaías 5).</td>
+      </tr>
+      <tr>
+        <td>φραγμός</td>
+        <td>phragmos</td>
+        <td>vallado, cerca</td>
+        <td>El muro que protege la viña.</td>
+      </tr>
+      <tr>
+        <td>ληνός</td>
+        <td>lēnos</td>
+        <td>lagar</td>
+        <td>El lugar donde se pisa la uva. Cavado en la roca.</td>
+      </tr>
+      <tr>
+        <td>πύργος</td>
+        <td>pyrgos</td>
+        <td>torre</td>
+        <td>La torre de vigilancia para proteger la viña.</td>
+      </tr>
+      <tr>
+        <td>ἐξέδετο</td>
+        <td>exedeto</td>
+        <td>arrendó</td>
+        <td>El dueño arrienda la viña. Los labradores son arrendatarios, no dueños.</td>
+      </tr>
+      <tr>
+        <td>καρπός</td>
+        <td>karpos</td>
+        <td>fruto</td>
+        <td>Los frutos que el dueño espera. La viña debe producir frutos.</td>
+      </tr>
+      <tr>
+        <td>δοῦλος</td>
+        <td>doulos</td>
+        <td>siervo</td>
+        <td>Los siervos enviados por el dueño. Representan a los profetas.</td>
+      </tr>
+      <tr>
+        <td>δέρω</td>
+        <td>derō</td>
+        <td>golpear, azotar</td>
+        <td>La violencia contra los siervos.</td>
+      </tr>
+      <tr>
+        <td>ἀποκτείνω</td>
+        <td>apokteinō</td>
+        <td>matar</td>
+        <td>La violencia extrema contra los siervos.</td>
+      </tr>
+      <tr>
+        <td>λιθοβολέω</td>
+        <td>lithoboleō</td>
+        <td>apedrear</td>
+        <td>La violencia ritual contra los siervos.</td>
+      </tr>
+      <tr>
+        <td>κληρονόμος</td>
+        <td>klēronomos</td>
+        <td>heredero</td>
+        <td>El hijo es el heredero. Los labradores lo matan para apoderarse de la herencia.</td>
+      </tr>
+      <tr>
+        <td>ἐκβάλλω</td>
+        <td>ekballō</td>
+        <td>echar fuera</td>
+        <td>Los labradores echan al hijo fuera de la viña. Anticipa la muerte de Jesús fuera de Jerusalén.</td>
+      </tr>
+      <tr>
+        <td>λίθος</td>
+        <td>lithos</td>
+        <td>piedra</td>
+        <td>La piedra desechada por los edificadores. Cristo es la piedra angular.</td>
+      </tr>
+      <tr>
+        <td>ἀποδοκιμάζω</td>
+        <td>apodokimazō</td>
+        <td>desechar, rechazar</td>
+        <td>Los edificadores desechan la piedra. Los líderes rechazan a Cristo.</td>
+      </tr>
+      <tr>
+        <td>κεφαλή γωνίας</td>
+        <td>kephalē gōnias</td>
+        <td>cabeza del ángulo</td>
+        <td>La piedra angular. La piedra fundamental del edificio.</td>
+      </tr>
+      <tr>
+        <td>βασιλεία</td>
+        <td>basileia</td>
+        <td>reino</td>
+        <td>El Reino de Dios será quitado y dado a otros.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La palabra <em>klēronomos</em> ("heredero") es significativa: el hijo es el heredero, y los labradores lo matan para apoderarse de la herencia. La codicia es la raíz del homicidio. Y la palabra <em>lithos</em> ("piedra") es el corazón de la parábola: Jesús se identifica con la piedra desechada que Dios convierte en piedra angular (Salmo 118:22-23).</strong></p>
+  </div>
+
+  <!-- FILA 7: CONCLUSIÓN -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ La conclusión: el Reino quitado y dado</h2>
+    <div class="conclusion-box">
+      <div class="titulo">"El reino de Dios será quitado de vosotros, y será dado a gente que produzca los frutos de él"</div>
+      <div class="desc">El <strong>Reino</strong> es <strong>quitado</strong> a los <strong>líderes infieles</strong> y <strong>dado</strong> a <strong>otros</strong> que <strong>produzcan frutos</strong>. La <strong>infidelidad</strong> tiene <strong>consecuencias</strong>. El Reino <strong>no</strong> es una <strong>propiedad adquirida</strong>: es una <strong>responsabilidad confiada</strong>. No <strong>basta</strong> <strong>pertenecer</strong> al pueblo elegido: hay que <strong>producir frutos</strong>. La <strong>gracia</strong> <strong>exige frutos</strong>. Y la <strong>piedra</strong> <strong>desechada</strong> por los edificadores se <strong>convierte</strong> en <strong>piedra angular</strong>. Dios <strong>transforma</strong> el mal en bien.</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Isaías 5:1-7: la viña del Señor es Israel. Salmo 80: la vid sacada de Egipto. Salmo 118:22-23: la piedra desechada. Jeremías 2:21: la viña infiel.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El karma: las acciones tienen consecuencias. La codicia (lobha) como uno de los tres venenos. La compasión (karuṇā) que no abandona a ningún ser.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El que se pone debajo de todos es el primero" (Tao 66): la piedra desechada se convierte en angular. "Lo blando vence a lo duro" (Tao 78).</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 14:24-27: el buen árbol de raíz firme y el mal árbol arrancado. Hadiz: "El mejor de los hombres es el que más beneficia a los demás".</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El karma: las acciones tienen consecuencias. El deber (dharma): los labradores debían pagar el fruto. La devoción (bhakti) produce frutos de fe.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El deber (kathēkon) de los labradores. La justicia (dikaiosynē) violada. La paciencia (hypomonē) del dueño que envía repetidamente a sus siervos.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La justicia distributiva: pagar el fruto al dueño. La phrónesis de los labradores debía llevarlos a la fidelidad. La virtud como hábito.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La rectitud (yi): los labradores debían actuar con rectitud. La lealtad (zhōng) al dueño. "El hombre superior entiende la rectitud; el inferior, el provecho".</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 9: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Viña: pueblo de Dios, Israel, la Iglesia</li>
+          <li>Labradores: líderes religiosos infieles</li>
+          <li>Siervos: profetas enviados por Dios</li>
+          <li>Hijo: Jesucristo, el Hijo de Dios</li>
+          <li>Piedra angular: Cristo, fundamento de la Iglesia</li>
+          <li>Frutos: justicia, misericordia, obras</li>
+          <li>Reino: responsabilidad confiada</li>
+          <li>Paciencia de Dios: prolongada, con límite</li>
+          <li>Gracia: don de Dios al que produce frutos</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Propiedad de los labradores</li>
+          <li>Todo el pueblo de Israel</li>
+          <li>Mensajeros sin autoridad</li>
+          <li>Un siervo más</li>
+          <li>Una piedra cualquiera</li>
+          <li>Palabras o intenciones</li>
+          <li>Propiedad adquirida</li>
+          <li>Indiferencia o debilidad</li>
+          <li>Eliminación de la responsabilidad</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#6a1a2a;"><strong>Dios es el dueño de la viña. Los labradores son arrendatarios, no dueños. Dios espera frutos. El rechazo de los mensajeros es el rechazo de Dios. El Hijo es asesinado por codicia. La piedra desechada se convierte en piedra angular. El Reino será quitado a los infieles y dado a los que produzcan frutos.</strong></p>
+  </div>
+
+  <!-- FILA 10: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Reconozco que <strong>Dios</strong> es el dueño de la viña o me creo dueño?</div>
+      <div class="item">2. ¿<strong>Produzco frutos</strong> de justicia y misericordia o solo ocupo el lugar?</div>
+      <div class="item">3. ¿<strong>Rechazo</strong> a los mensajeros de Dios o los escucho?</div>
+      <div class="item">4. ¿<strong>Reconozco</strong> a Jesús como el Hijo o lo rechazo?</div>
+      <div class="item">5. ¿<strong>Codicio</strong> el poder o sirvo con humildad?</div>
+      <div class="item">6. ¿<strong>Aprovecho</strong> la ausencia de Dios para actuar con impunidad?</div>
+      <div class="item">7. ¿<strong>Produzco</strong> frutos a su tiempo o acumulo para mí?</div>
+      <div class="item">8. ¿<strong>Confío</strong> en la paciencia de Dios o la presumo?</div>
+      <div class="item">9. ¿<strong>Reconozco</strong> a Cristo como piedra angular de mi vida?</div>
+      <div class="item">10. ¿<strong>Produzco</strong> frutos dignos del Reino?</div>
+    </div>
+  </div>
+
+  <!-- FILA 11: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Reconocer que la familia es viña de Dios; producir frutos de amor y fidelidad.</div>
+      <div class="app-item"><strong>Amistad</strong> No traicionar la confianza del amigo; producir frutos de fidelidad.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>responsabilidad</strong> y <strong>producción</strong> de frutos.</div>
+      <div class="app-item"><strong>Trabajo</strong> No apropiarse de lo que no es nuestro; rendir cuentas con honestidad.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar si produzco frutos o solo ocupo el lugar.</div>
+      <div class="app-item"><strong>Sociedad</strong> Los líderes deben servir al bien común, no codiciar el poder.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar con humildad, rindiendo cuentas a Dios.</div>
+      <div class="app-item"><strong>Espiritual</strong> Producir frutos dignos del Reino.</div>
+      <div class="app-item"><strong>Crisis</strong> No aprovechar la crisis para actuar con impunidad.</div>
+      <div class="app-item"><strong>Evangelización</strong> Reconocer a Jesús como Hijo y piedra angular.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “La piedra que desecharon los edificadores,<br>ha venido a ser cabeza del ángulo.”
+    <small>Dios es el dueño de la viña. Los labradores son arrendatarios, no dueños. Dios espera frutos y envía repetidamente a sus mensajeros. La paciencia de Dios es proverbial, pero tiene un límite. El rechazo de los mensajeros es el rechazo de Dios. Finalmente, Dios envía a su Hijo. Los labradores lo matan por codicia. Pero la piedra desechada se convierte en piedra angular. El Reino será quitado a los infieles y dado a los que produzcan frutos. Dios transforma el mal en bien.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de los Viñadores Homicidas (Mateo 21:33-46; Marcos 12:1-12; Lucas 20:9-19) · Bloque 7: El juicio y las consecuencias · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

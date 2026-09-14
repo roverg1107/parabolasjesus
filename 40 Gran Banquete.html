@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Gran Banquete</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #8a4a1a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #8a4a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #b87a3a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e0c8a8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fffdf8;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #8a4a1a;
+    border-bottom: 1.5px solid #ede0c8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #a86a2a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #8a4a1a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #8a4a1a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0c8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf6ee;
+  }
+
+  /* LAS TRES EXCUSAS */
+  .excusas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .excusa-card {
+    border-radius: 6px;
+    padding: 6px 8px;
+    text-align: center;
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .excusa-card .icono {
+    font-size: 18pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .excusa-card h4 {
+    font-size: 9pt;
+    color: #b02020;
+    margin-bottom: 3px;
+  }
+  .excusa-card .cita {
+    font-size: 7.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.25;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .excusa-card .razon {
+    font-size: 7.5pt;
+    color: #666;
+    display: block;
+    line-height: 1.2;
+    padding-top: 3px;
+    border-top: 1px dashed #ef9a9a;
+  }
+
+  /* LAS TRES INVITACIONES */
+  .invitaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .invitacion-card {
+    border-radius: 6px;
+    padding: 6px 8px;
+    text-align: center;
+  }
+  .invitacion-1 {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .invitacion-2 {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .invitacion-3 {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .invitacion-card .icono {
+    font-size: 18pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .invitacion-card h4 {
+    font-size: 9pt;
+    margin-bottom: 3px;
+  }
+  .invitacion-1 h4 { color: #b02020; }
+  .invitacion-2 h4 { color: #8a5a00; }
+  .invitacion-3 h4 { color: #1a7a3a; }
+  .invitacion-card .destinatarios {
+    font-size: 8pt;
+    font-weight: 700;
+    color: #333;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .invitacion-card .desc {
+    font-size: 7.5pt;
+    color: #444;
+    line-height: 1.2;
+  }
+
+  /* LOS PERSONAJES */
+  .personajes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .personaje-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .senor-card {
+    background: #e8eef4;
+    border: 1.5px solid #8aa0b8;
+  }
+  .siervo-card {
+    background: #f5ead0;
+    border: 1.5px solid #d0b070;
+  }
+  .personaje-card .icono {
+    font-size: 20pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .personaje-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .senor-card h4 { color: #2a4a6a; }
+  .siervo-card h4 { color: #8a5a2a; }
+  .personaje-card ul {
+    text-align: left;
+  }
+  .personaje-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .senor-card ul li::before { color: #2a4a6a; }
+  .siervo-card ul li::before { color: #8a5a2a; }
+
+  /* CONCLUSIÓN BOX */
+  .conclusion-box {
+    background: #fdf0dc;
+    border: 2px solid #c8a030;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .conclusion-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #8a4a1a;
+    margin-bottom: 3px;
+  }
+  .conclusion-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e0c8a8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf6ee;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #8a4a1a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf6ee;
+    border-left: 3px solid #8a4a1a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #8a4a1a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e0c8a8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf6ee;
+  }
+  .app-item strong {
+    color: #8a4a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #8a4a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #8a4a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .excusa-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .invitacion-1 { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .invitacion-2 { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .invitacion-3 { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .senor-card { background: #e8eef4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .siervo-card { background: #f5ead0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .conclusion-box { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Gran Banquete</h1>
+    <div class="subtitulo">Los invitados que se excusan y la invitación a los excluidos</div>
+    <div class="referencia">Lucas 14:15-24 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un hombre hizo una <strong>gran cena</strong> y <strong>convidó a muchos</strong>. A la hora de la cena, envió a su siervo a decir a los convidados: <em>"Venid, que ya todo está preparado"</em>. Pero <strong>todos a una comenzaron a excusarse</strong>.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">El <strong>primero</strong>: "He comprado una hacienda, y necesito ir a verla". <strong>Otro</strong>: "He comprado cinco yuntas de bueyes, y voy a probarlos". <strong>Otro</strong>: "Acabo de casarme, y por tanto no puedo ir".</p>
+      <p style="font-size:9.5pt;">El señor, <strong>enojado</strong>, mandó traer a los <strong>pobres, mancos, cojos y ciegos</strong>. Como aún había lugar, mandó ir por los <strong>caminos y vallados</strong> y <strong>forzar</strong> a entrar, <strong>para que se llene su casa</strong>. Y concluyó: <strong>"Ninguno de aquellos hombres que fueron convidados gustará mi cena"</strong>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios sea un señor <strong>arbitrario y vengativo</strong>: invita repetidamente; la ira es respuesta al desprecio.</li>
+        <li>No enseña que los primeros invitados sean <strong>todos los judíos</strong>: representan a los que rechazan por excusas banales.</li>
+        <li>No enseña que los segundos sean <strong>todos los gentiles</strong>: representan a los excluidos que aceptan.</li>
+        <li>No enseña que las excusas sean <strong>razonables</strong>: son pretextos ridículos.</li>
+        <li>No enseña que la invitación sea <strong>selectiva</strong>: es universal.</li>
+        <li>No enseña que Dios <strong>fuerce</strong> la voluntad humana: el verbo significa "insiste", no "violenta".</li>
+        <li>No enseña que la gracia <strong>elimine la libertad</strong>: los invitados rechazan y aceptan libremente.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>Dios invita a todos al banquete del Reino:</strong> la invitación es universal.</li>
+        <li><strong>La invitación exige una respuesta inmediata:</strong> "venid, que ya todo está preparado".</li>
+        <li><strong>Las excusas revelan el corazón:</strong> prefieren sus negocios al banquete del Señor.</li>
+        <li><strong>Las excusas son banales y ridículas:</strong> no se compra un campo sin verlo antes.</li>
+        <li><strong>La autosuficiencia excluye del banquete.</strong></li>
+        <li><strong>La ira del señor es respuesta al desprecio.</strong></li>
+        <li><strong>Los pobres y marginales son invitados.</strong></li>
+      </ul>
+      <ul class="check">
+        <li><strong>Los que están fuera de la ciudad también son invitados.</strong></li>
+        <li><strong>Dios quiere que su casa esté llena:</strong> "para que se llene mi casa".</li>
+        <li><strong>La insistencia es amorosa, no violenta:</strong> Dios presiona, no violenta.</li>
+        <li><strong>El rechazo tiene consecuencias:</strong> ninguno de los primeros invitados gustará la cena.</li>
+        <li><strong>La salvación es una fiesta, no una obligación.</strong></li>
+        <li><strong>El Reino está abierto a los que aceptan con humildad.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS TRES EXCUSAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🚫 Las tres excusas: pretextos banales y ridículos</h2>
+    <div class="excusas-grid">
+      <div class="excusa-card">
+        <span class="icono">🏞️</span>
+        <h4>El primero</h4>
+        <span class="cita">"He comprado una hacienda, y necesito ir a verla; te ruego que me excuses."</span>
+        <span class="razon">No se compra un campo sin verlo antes. La excusa es <strong>ridícula</strong>: revela que <strong>no quiere ir</strong>.</span>
+      </div>
+      <div class="excusa-card">
+        <span class="icono">🐂</span>
+        <h4>El segundo</h4>
+        <span class="cita">"He comprado cinco yuntas de bueyes, y voy a probarlos; te ruego que me excuses."</span>
+        <span class="razon">Se prueban los bueyes antes de comprarlos. La excusa es <strong>ridícula</strong>: revela que <strong>no quiere ir</strong>.</span>
+      </div>
+      <div class="excusa-card">
+        <span class="icono">💍</span>
+        <h4>El tercero</h4>
+        <span class="cita">"Acabo de casarme, y por tanto no puedo ir."</span>
+        <span class="razon">La excusa era <strong>válida</strong> según la Ley (Dt 24:5) para la guerra, pero el banquete no era la guerra. <strong>Excusa inadecuada</strong>.</span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#8a4a1a;"><strong>Las excusas no son razones: son pretextos. La verdadera razón es que no quieren ir. La autosuficiencia y la indiferencia excluyen del banquete del Reino.</strong></p>
+  </div>
+
+  <!-- FILA 4: LAS TRES INVITACIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>📨 Las tres invitaciones: la gracia que alcanza a todos</h2>
+    <div class="invitaciones-grid">
+      <div class="invitacion-card invitacion-1">
+        <span class="icono">🔴</span>
+        <h4>1ª invitación</h4>
+        <span class="destinatarios">Los notables</span>
+        <span class="desc">El señor invita a los que <strong>tenían</strong> tierras, bueyes, familia. <strong>Rechazan</strong> por excusas banales.</span>
+      </div>
+      <div class="invitacion-card invitacion-2">
+        <span class="icono">🟡</span>
+        <h4>2ª invitación</h4>
+        <span class="destinatarios">Pobres, mancos, cojos, ciegos</span>
+        <span class="desc">Los <strong>marginales</strong> de la sociedad judía. Los <strong>excluidos</strong> del culto del templo. <strong>Aceptan</strong> la invitación.</span>
+      </div>
+      <div class="invitacion-card invitacion-3">
+        <span class="icono">🟢</span>
+        <h4>3ª invitación</h4>
+        <span class="destinatarios">Los de los caminos y vallados</span>
+        <span class="desc">Los que están <strong>fuera</strong> de la ciudad. Los <strong>paganos</strong>, los <strong>pecadores</strong>, los <strong>lejanos</strong>. <strong>Entran</strong> a llenar la casa.</span>
+      </div>
+    </div>
+    <div class="conclusion-box">
+      <div class="titulo">✨ La gracia que alcanza a todos</div>
+      <div class="desc">La <strong>gracia</strong> de <strong>Dios</strong> <strong>alcanza</strong> a <strong>todos</strong>: <strong>notables</strong>, <strong>pobres</strong>, <strong>marginales</strong>, <strong>paganos</strong>, <strong>pecadores</strong>. La <strong>invitación</strong> es <strong>universal</strong>. Pero la <strong>gracia</strong> <strong>respeta</strong> la <strong>libertad</strong> humana. Los primeros invitados <strong>rechazan</strong>; los segundos <strong>aceptan</strong>. El <strong>deseo</strong> del señor es que <strong>su casa se llene</strong>. Dios <strong>quiere</strong> que <strong>todos</strong> se <strong>salven</strong> (1 Timoteo 2:4).</div>
+    </div>
+  </div>
+
+  <!-- FILA 5: LOS PERSONAJES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los personajes de la parábola</h2>
+    <div class="personajes-grid">
+      <div class="personaje-card senor-card">
+        <span class="icono">👑</span>
+        <h4>El señor (el padre de familia)</h4>
+        <ul>
+          <li><strong>Hace</strong> una gran cena.</li>
+          <li><strong>Invita</strong> a muchos.</li>
+          <li><strong>Envía</strong> a su siervo a avisar.</li>
+          <li><strong>Se enoja</strong> ante el desprecio.</li>
+          <li><strong>Invita</strong> a los pobres y marginales.</li>
+          <li><strong>Insiste</strong> para que se llene su casa.</li>
+          <li><strong>Representa</strong> a Dios.</li>
+        </ul>
+      </div>
+      <div class="personaje-card siervo-card">
+        <span class="icono">🤲</span>
+        <h4>El siervo</h4>
+        <ul>
+          <li><strong>Enviado</strong> por el señor.</li>
+          <li><strong>Llama</strong> a los invitados.</li>
+          <li><strong>Informa</strong> al señor de las excusas.</li>
+          <li><strong>Recibe</strong> las órdenes del señor.</li>
+          <li><strong>Invita</strong> a los pobres y marginales.</li>
+          <li><strong>Invita</strong> a los de los caminos.</li>
+          <li><strong>Representa</strong> a los mensajeros de Dios.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>δεῖπνον</td>
+        <td>deipnon</td>
+        <td>cena, banquete</td>
+        <td>La gran cena del señor. Imagen del Reino escatológico.</td>
+      </tr>
+      <tr>
+        <td>ἐποίησεν</td>
+        <td>epoiēsen</td>
+        <td>hizo, preparó</td>
+        <td>El señor hizo una gran cena. La preparación del banquete.</td>
+      </tr>
+      <tr>
+        <td>ἐκάλεσεν</td>
+        <td>ekalesen</td>
+        <td>llamó, invitó</td>
+        <td>El señor invitó a muchos. La invitación universal.</td>
+      </tr>
+      <tr>
+        <td>δοῦλος</td>
+        <td>doulos</td>
+        <td>siervo</td>
+        <td>El siervo enviado por el señor. Representa a los mensajeros de Dios.</td>
+      </tr>
+      <tr>
+        <td>ἔτοιμα</td>
+        <td>hetoima</td>
+        <td>preparado, listo</td>
+        <td>"Todo está preparado". La preparación del banquete.</td>
+      </tr>
+      <tr>
+        <td>παραιτέομαι</td>
+        <td>paraiteomai</td>
+        <td>excusarse, rehusar</td>
+        <td>Los invitados se excusan. Rechazo deliberado, no impulsivo.</td>
+      </tr>
+      <tr>
+        <td>ἀγρός</td>
+        <td>agros</td>
+        <td>campo, hacienda</td>
+        <td>El campo comprado por el primero. La excusa ridícula.</td>
+      </tr>
+      <tr>
+        <td>ζεῦγος βοῶν</td>
+        <td>zeugos boōn</td>
+        <td>yunta de bueyes</td>
+        <td>Las cinco yuntas de bueyes del segundo. La excusa ridícula.</td>
+      </tr>
+      <tr>
+        <td>γυνή</td>
+        <td>gynē</td>
+        <td>mujer, esposa</td>
+        <td>El tercero se casó recientemente. La excusa legal pero inadecuada.</td>
+      </tr>
+      <tr>
+        <td>ὀργίζομαι</td>
+        <td>orgizomai</td>
+        <td>enojarse, airarse</td>
+        <td>El padre de familia se enojó. La ira del señor es respuesta al desprecio.</td>
+      </tr>
+      <tr>
+        <td>πλατεῖα</td>
+        <td>plateia</td>
+        <td>plaza, calle ancha</td>
+        <td>"Las plazas de la ciudad". Lugares públicos donde están los marginales.</td>
+      </tr>
+      <tr>
+        <td>ῥύμη</td>
+        <td>rhymē</td>
+        <td>calle, callejón</td>
+        <td>"Las calles de la ciudad". Los callejones donde están los pobres.</td>
+      </tr>
+      <tr>
+        <td>πτωχός</td>
+        <td>ptōchos</td>
+        <td>pobre</td>
+        <td>Los pobres son invitados al banquete. Los marginales de la sociedad.</td>
+      </tr>
+      <tr>
+        <td>ἀνάπηρος</td>
+        <td>anapēros</td>
+        <td>manco, lisiado</td>
+        <td>Los mancos son invitados. Excluidos del culto del templo.</td>
+      </tr>
+      <tr>
+        <td>χωλός</td>
+        <td>chōlos</td>
+        <td>cojo</td>
+        <td>Los cojos son invitados. Excluidos de la sociedad.</td>
+      </tr>
+      <tr>
+        <td>τυφλός</td>
+        <td>typhlos</td>
+        <td>ciego</td>
+        <td>Los ciegos son invitados. Excluidos de la sociedad.</td>
+      </tr>
+      <tr>
+        <td>ὁδός</td>
+        <td>hodos</td>
+        <td>camino</td>
+        <td>"Los caminos" fuera de la ciudad. Los paganos y pecadores.</td>
+      </tr>
+      <tr>
+        <td>φραγμός</td>
+        <td>phragmos</td>
+        <td>vallado, cerca</td>
+        <td>"Los vallados" fuera de la ciudad. Los confines de la tierra.</td>
+      </tr>
+      <tr>
+        <td>ἀνάγκασον</td>
+        <td>anankason</td>
+        <td>fuerza, insiste, urge</td>
+        <td>De <em>anankē</em> (necesidad). Insiste, presiona, urge. No violenta.</td>
+      </tr>
+      <tr>
+        <td>γέμω</td>
+        <td>gemō</td>
+        <td>llenar</td>
+        <td>"Para que se llene mi casa". El deseo del señor.</td>
+      </tr>
+      <tr>
+        <td>γεύομαι</td>
+        <td>geuomai</td>
+        <td>gustar, probar</td>
+        <td>"Ninguno gustará mi cena". La advertencia final.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>anankason</em> ("fuérzalos") viene de <em>anankē</em> ("necesidad"): no significa violencia, sino insistencia, presión, urgencia. La insistencia del señor es amorosa. Dios insiste porque ama. La insistencia respeta la libertad humana: presiona, pero no violenta. Y la palabra <em>ptōchos</em> ("pobre") subraya la inclusión de los excluidos en el banquete del Reino.</strong></p>
+  </div>
+
+  <!-- FILA 7: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Isaías 25:6-9: banquete escatológico para todos los pueblos. Isaías 55:1-3: "Venid, comprad sin dinero". Proverbios 9:1-6: la sabiduría invita a todos a su banquete.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El banquete de la iluminación. La compasión (karuṇā): el bodhisattva invita a todos los seres. La generosidad (dāna) como virtud fundamental.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El sabio no acumula: cuanto más hace para los demás, más tiene" (Tao 81). "El que se pone debajo de todos, es el primero" (Tao 66): los excluidos ocupan el lugar de los primeros.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 47:15: el Paraíso descrito como banquete. Sura 57:21: la invitación al perdón y al Paraíso. Hadiz: la misericordia de Dios precede a la entrada.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El banquete de los dioses. El karma: las acciones tienen consecuencias. La devoción (bhakti): el devoto acepta la invitación al banquete de la comunión.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El banquete del sabio. El deber (kathēkon) de aceptar la invitación. La autosuficiencia (autarkeia): el sabio acepta con gratitud sin necesitar la invitación para ser feliz.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La generosidad (eleutheriotēs) como virtud. La justicia distributiva: la invitación es universal. La phrónesis de aceptar la invitación y prepararse adecuadamente.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La rectitud (yi) de aceptar la invitación. La lealtad (zhōng) al señor. "El hombre superior entiende la rectitud; el inferior, el provecho" (Analectas 4:16).</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 8: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Invitación: universal, para todos</li>
+          <li>Respuesta: libre, personal, inmediata</li>
+          <li>Excusas: pretextos banales, no razones</li>
+          <li>Autosuficiencia: creerse con derechos</li>
+          <li>Ira del señor: respuesta al desprecio</li>
+          <li>Pobres y marginales: invitados al banquete</li>
+          <li>Insistencia: amorosa, respetuosa</li>
+          <li>Casa llena: deseo del señor</li>
+          <li>Rechazo: decisión libre con consecuencias</li>
+          <li>Banquete: fiesta del Reino, gozo, comunión</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Selectiva, solo para algunos</li>
+          <li>Forzada, automática, postergable</li>
+          <li>Razones válidas</li>
+          <li>Reconocimiento de la necesidad</li>
+          <li>Venganza arbitraria</li>
+          <li>Excluidos del banquete</li>
+          <li>Violenta, forzada</li>
+          <li>Imposición a los invitados</li>
+          <li>Castigo arbitrario</li>
+          <li>Obligación o carga</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#8a4a1a;"><strong>Dios invita a todos al banquete del Reino. La invitación es universal; la respuesta es libre e inmediata. Las excusas son pretextos banales. La autosuficiencia excluye del banquete. Los pobres y marginales son invitados a ocupar el lugar de los que rechazan. Dios quiere que su casa esté llena.</strong></p>
+  </div>
+
+  <!-- FILA 9: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿He aceptado la <strong>invitación</strong> de Dios o la he rechazado?</div>
+      <div class="item">2. ¿Mis <strong>excusas</strong> son razones o pretextos?</div>
+      <div class="item">3. ¿Prefiero mis <strong>negocios</strong> al banquete del Señor?</div>
+      <div class="item">4. ¿Reconozco mi <strong>necesidad</strong> o me creo autosuficiente?</div>
+      <div class="item">5. ¿Respondo <strong>inmediatamente</strong> a la invitación de Dios?</div>
+      <div class="item">6. ¿Mi vida refleja la <strong>alegría</strong> del banquete del Reino?</div>
+      <div class="item">7. ¿Reconozco que la <strong>invitación</strong> es universal?</div>
+      <div class="item">8. ¿<strong>Invito</strong> a otros al banquete del Reino?</div>
+      <div class="item">9. ¿Mi respuesta a la <strong>gracia</strong> es coherente?</div>
+      <div class="item">10. ¿Vivo con la conciencia de que el <strong>rechazo</strong> tiene consecuencias?</div>
+    </div>
+  </div>
+
+  <!-- FILA 10: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Invitar a la familia al banquete del Reino; no rechazar por ocupaciones.</div>
+      <div class="app-item"><strong>Amistad</strong> Invitar a los amigos a la fe; no forzar la respuesta.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de invitación universal y respuesta inmediata.</div>
+      <div class="app-item"><strong>Trabajo</strong> No preferir los negocios a la invitación de Dios.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar las excusas que uso para no responder a Dios.</div>
+      <div class="app-item"><strong>Sociedad</strong> Invitar a todos al banquete del Reino, pobres y marginales.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar invitando a todos a la fiesta del Reino.</div>
+      <div class="app-item"><strong>Espiritual</strong> Responder a la invitación con inmediatez y coherencia.</div>
+      <div class="app-item"><strong>Crisis</strong> No rechazar la invitación por las crisis cotidianas.</div>
+      <div class="app-item"><strong>Evangelización</strong> Salir a los caminos a invitar a todos al banquete del Reino.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Venid, que ya todo está preparado...<br>para que se llene mi casa.”
+    <small>Dios invita a todos al banquete del Reino. La invitación es universal; la respuesta es libre e inmediata. Los primeros invitados rechazan por excusas banales. La autosuficiencia los excluye del banquete. Los pobres y marginales son invitados a ocupar su lugar. Los que están fuera de la ciudad también son invitados. Dios quiere que su casa esté llena. La insistencia es amorosa, no violenta. El rechazo tiene consecuencias. El Reino es una fiesta, no una obligación.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Gran Banquete (Lucas 14:15-24) · Bloque 7: El juicio y las consecuencias · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

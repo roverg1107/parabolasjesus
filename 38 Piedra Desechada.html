@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: La Piedra Desechada</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #3a4a5a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #3a4a5a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #6a7a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c8d0d8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafbfc;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #3a4a5a;
+    border-bottom: 1.5px solid #d8e0e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #5a6a7a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #3a4a5a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #3a4a5a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8e0e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2f5f8;
+  }
+
+  /* CITA SALMO 118 */
+  .cita-box {
+    background: #f0f4f8;
+    border: 2px solid #6a7a8a;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .cita-box .titulo {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #3a4a5a;
+    margin-bottom: 4px;
+  }
+  .cita-box .cita {
+    font-size: 10pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .cita-box .cita strong {
+    font-style: normal;
+    color: #3a4a5a;
+  }
+
+  /* LOS DOS ESTADOS DE LA PIEDRA */
+  .estados-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .estado-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .desechada-card {
+    background: #f5ead0;
+    border: 1.5px solid #d0b070;
+  }
+  .angular-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .estado-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .estado-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .desechada-card h4 { color: #8a5a2a; }
+  .angular-card h4 { color: #1a7a3a; }
+  .estado-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .estado-flecha {
+    font-size: 24pt;
+    color: #3a4a5a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* LOS PERSONAJES */
+  .personajes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .personaje-card {
+    border-radius: 6px;
+    padding: 6px 8px;
+    text-align: center;
+  }
+  .piedra-card {
+    background: #e8f0f8;
+    border: 1.5px solid #7a9ac0;
+  }
+  .edificadores-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .dios-card {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .personaje-card .icono {
+    font-size: 20pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .personaje-card h4 {
+    font-size: 9.5pt;
+    margin-bottom: 4px;
+  }
+  .piedra-card h4 { color: #2a4a6a; }
+  .edificadores-card h4 { color: #b02020; }
+  .dios-card h4 { color: #8a5a00; }
+  .personaje-card ul {
+    text-align: left;
+  }
+  .personaje-card ul li {
+    font-size: 8pt;
+    padding-left: 10px;
+    margin-bottom: 2px;
+  }
+  .piedra-card ul li::before { color: #2a4a6a; }
+  .edificadores-card ul li::before { color: #b02020; }
+  .dios-card ul li::before { color: #8a5a00; }
+
+  /* DOBLE EFECTO */
+  .doble-efecto {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .efecto-card {
+    border-radius: 5px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .salvacion-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .juicio-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .efecto-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .salvacion-card h4 { color: #1a7a3a; }
+  .juicio-card h4 { color: #b02020; }
+  .efecto-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* ADVERTENCIA BOX */
+  .advertencia-box {
+    background: #fdf6dc;
+    border: 2px solid #c8a030;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .advertencia-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #3a4a5a;
+    margin-bottom: 3px;
+  }
+  .advertencia-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #c8d0d8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f2f5f8;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #3a4a5a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2f5f8;
+    border-left: 3px solid #3a4a5a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #3a4a5a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c8d0d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2f5f8;
+  }
+  .app-item strong {
+    color: #3a4a5a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #3a4a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #3a4a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2f5f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f2f5f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2f5f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .desechada-card { background: #f5ead0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .angular-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .piedra-card { background: #e8f0f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .edificadores-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .dios-card { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .salvacion-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .juicio-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cita-box { background: #f0f4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .advertencia-box { background: #fdf6dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de la Piedra Desechada</h1>
+    <div class="subtitulo">El rechazo que se convierte en fundamento</div>
+    <div class="referencia">Mateo 21:42-44 · Marcos 12:10-11 · Lucas 20:17-18 · Salmo 118:22-23 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- CITA SALMO 118 -->
+  <div class="cita-box">
+    <div class="titulo">📖 La cita del Salmo 118:22-23</div>
+    <div class="cita">
+      <strong>"La piedra que desecharon los edificadores ha venido a ser cabeza del ángulo. El Señor ha hecho esto, y es cosa maravillosa a nuestros ojos."</strong>
+    </div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Jesús <strong>cita el Salmo 118</strong> para <strong>aplicar</strong> la parábola de los <strong>viñadores homicidas</strong>. Los <strong>edificadores</strong> (los <strong>líderes religiosos</strong>) <strong>examinaron</strong> la <strong>piedra</strong> (Jesús) y la <strong>desecharon</strong> como <strong>inadecuada</strong>. Pero <strong>Dios</strong> la <strong>convirtió</strong> en la <strong>piedra angular</strong>, el <strong>fundamento</strong> del <strong>edificio</strong> de <strong>Dios</strong> (la Iglesia).</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Y Jesús <strong>añade</strong>: <em>"Por tanto os digo, que el reino de Dios será quitado de vosotros, y será dado a gente que produzca los frutos de él. Y el que cayere sobre esta piedra será quebrantado; y sobre quien ella cayere, le desmenuzará."</em></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que la piedra sea <strong>desechada para siempre</strong>: se convierte en piedra angular.</li>
+        <li>No enseña que el <strong>rechazo</strong> de Jesús sea el fin del plan de Dios: es su cumplimiento.</li>
+        <li>No enseña que la piedra sea <strong>peligrosa en sí misma</strong>: el que tropieza sufre las consecuencias de su rechazo.</li>
+        <li>No enseña que haya <strong>dos piedras</strong>: es la misma piedra la que desecha y la que se convierte en angular.</li>
+        <li>No enseña que Dios sea <strong>arbitrario</strong>: el juicio depende de la respuesta humana.</li>
+        <li>No enseña que el Reino sea <strong>quitado a Israel para siempre</strong>.</li>
+        <li>No enseña que la cita del <strong>Salmo 118</strong> sea una simple ilustración: es el corazón de la parábola.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>Cristo es la piedra desechada:</strong> los líderes lo examinaron y lo rechazaron.</li>
+        <li><strong>Cristo es la piedra angular:</strong> Dios lo convirtió en fundamento de la Iglesia.</li>
+        <li><strong>El rechazo de Cristo no impide el plan de Dios:</strong> lo cumple.</li>
+        <li><strong>Dios transforma el mal en bien:</strong> la cruz se convierte en victoria.</li>
+        <li><strong>El Reino será quitado a los infieles:</strong> la infidelidad tiene consecuencias.</li>
+        <li><strong>El Reino será dado a los que produzcan frutos.</strong></li>
+        <li><strong>El que cae sobre la piedra será quebrantado.</strong></li>
+      </ul>
+      <ul class="check">
+        <li><strong>El que es aplastado por la piedra será desmenuzado:</strong> juicio definitivo.</li>
+        <li><strong>La misma piedra salva y condena:</strong> según la respuesta humana.</li>
+        <li><strong>La cita del Salmo 118 es mesiánica:</strong> Jesús se identifica con la piedra desechada.</li>
+        <li><strong>La piedra angular es fundamento de la Iglesia:</strong> 1 Corintios 3:11.</li>
+        <li><strong>La piedra angular es también piedra de tropiezo:</strong> para los que no creen.</li>
+        <li><strong>El juicio comienza ahora:</strong> la decisión presente determina el destino eterno.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS DOS ESTADOS DE LA PIEDRA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🪨 Los dos estados de la misma piedra</h2>
+    <div class="estados-grid">
+      <div class="estado-card desechada-card">
+        <span class="icono">🗑️</span>
+        <h4>Piedra desechada</h4>
+        <span class="desc">Los <strong>edificadores</strong> <strong>examinaron</strong> la piedra y la <strong>desecharon</strong> como <strong>inadecuada</strong>. Jesús fue <strong>examinado</strong> por los <strong>líderes</strong> y <strong>desechado</strong> como <strong>inadecuado</strong>. La <strong>cruz</strong> es el <strong>símbolo</strong> del <strong>rechazo</strong>.</span>
+      </div>
+      <div class="estado-flecha">→</div>
+      <div class="estado-card angular-card">
+        <span class="icono">🏛️</span>
+        <h4>Piedra angular</h4>
+        <span class="desc">Dios <strong>convirtió</strong> la piedra <strong>desechada</strong> en la <strong>piedra angular</strong>: el <strong>fundamento</strong> del <strong>edificio</strong> de Dios. La <strong>resurrección</strong> es el <strong>símbolo</strong> de la <strong>exaltación</strong>. Dios <strong>transforma</strong> el mal en bien.</span>
+      </div>
+    </div>
+    <div class="doble-efecto">
+      <div class="efecto-card salvacion-card">
+        <h4>✔ Para los que creen: salvación</h4>
+        <div class="desc">La <strong>piedra angular</strong> es <strong>fundamento</strong> para los que <strong>la</strong> <strong>aceptan</strong>. Los que <strong>construyen</strong> sobre <strong>Cristo</strong> **resisten** las <strong>tormentas</strong>. Cristo es el <strong>fundamento</strong> <strong>único</strong> de la **vida** y de la **Iglesia**.</div>
+      </div>
+      <div class="efecto-card juicio-card">
+        <h4>✘ Para los que rechazan: juicio</h4>
+        <div class="desc">La <strong>piedra angular</strong> es **tropiezo** para los que **la** **rechazan**. El que **cae** sobre la piedra será **quebrantado**. El que es **aplastado** por ella será **desmenuzado**. La **piedra** que **salva** también **condena**.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: LOS PERSONAJES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los personajes de la parábola</h2>
+    <div class="personajes-grid">
+      <div class="personaje-card piedra-card">
+        <span class="icono">🪨</span>
+        <h4>La piedra</h4>
+        <ul>
+          <li><strong>Cristo</strong> mismo.</li>
+          <li><strong>Examinada</strong> por los edificadores.</li>
+          <li><strong>Desechada</strong> como inadecuada.</li>
+          <li><strong>Convertida</strong> en piedra angular.</li>
+          <li><strong>Fundamento</strong> de la Iglesia.</li>
+          <li><strong>Piedra</strong> de tropiezo para los que no creen.</li>
+        </ul>
+      </div>
+      <div class="personaje-card edificadores-card">
+        <span class="icono">🔨</span>
+        <h4>Los edificadores</h4>
+        <ul>
+          <li>Los <strong>constructores</strong> que <strong>seleccionan</strong> las piedras.</li>
+          <li><strong>Examinan</strong> y <strong>rechazan</strong> la piedra.</li>
+          <li><strong>Representan</strong> a los líderes religiosos.</li>
+          <li><strong>Confían</strong> en su propio juicio.</li>
+          <li><strong>No reconocen</strong> la piedra angular.</li>
+          <li>Su <strong>rechazo</strong> no impide el plan de Dios.</li>
+        </ul>
+      </div>
+      <div class="personaje-card dios-card">
+        <span class="icono">👑</span>
+        <h4>Dios</h4>
+        <ul>
+          <li><strong>Convierte</strong> la piedra desechada en angular.</li>
+          <li><strong>Transforma</strong> el mal en bien.</li>
+          <li><strong>Cumple</strong> su plan de salvación.</li>
+          <li><strong>Quita</strong> el Reino a los infieles.</li>
+          <li><strong>Da</strong> el Reino a los que producen frutos.</li>
+          <li><strong>Hace</strong> cosas maravillosas.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="advertencia-box">
+      <div class="titulo">⚖️ La advertencia central: el juicio comienza ahora</div>
+      <div class="desc">El **juicio** **comienza** **ahora**: el que **rechaza** la **piedra** **ya** está **condenado**. El **juicio** **final** es la **manifestación** de una **realidad** **presente**. La **decisión** **presente** **determina** el **destino** **eterno**. El **que** **cae** sobre la **piedra** será **quebrantado** (juicio **temporal**). El **que** es **aplastado** por ella será **desmenuzado** (juicio **definitivo**). La **misma** **piedra** **salva** y **condena** **según** la **respuesta** **humana**.</div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>λίθος</td>
+        <td>lithos</td>
+        <td>piedra</td>
+        <td>La piedra desechada por los edificadores. Cristo es la piedra angular.</td>
+      </tr>
+      <tr>
+        <td>οἰκοδομοῦντες</td>
+        <td>oikodomountes</td>
+        <td>edificadores, constructores</td>
+        <td>Los constructores que seleccionan las piedras y desechan las que no sirven. Los líderes religiosos.</td>
+      </tr>
+      <tr>
+        <td>ἀποδοκιμάζω</td>
+        <td>apodokimazō</td>
+        <td>desechar, rechazar</td>
+        <td>De <em>apo</em> (lejos) + <em>dokimazō</em> (examinar). Rechazar después de examinar. Rechazo deliberado y consciente.</td>
+      </tr>
+      <tr>
+        <td>κεφαλή γωνίας</td>
+        <td>kephalē gōnias</td>
+        <td>cabeza del ángulo</td>
+        <td>La piedra angular. La piedra fundamental del edificio. Cristo mismo.</td>
+      </tr>
+      <tr>
+        <td>γωνία</td>
+        <td>gōnia</td>
+        <td>ángulo, esquina</td>
+        <td>La esquina del edificio. La piedra angular determina la orientación del edificio.</td>
+      </tr>
+      <tr>
+        <td>θαυμαστός</td>
+        <td>thaumastos</td>
+        <td>maravilloso, admirable</td>
+        <td>"Cosa maravillosa a nuestros ojos". De aquí viene "taumaturgo".</td>
+      </tr>
+      <tr>
+        <td>θραύω</td>
+        <td>thrauō</td>
+        <td>quebrantar, romper</td>
+        <td>El que cae sobre la piedra será quebrantado. La imagen del juicio.</td>
+      </tr>
+      <tr>
+        <td>λικμάω</td>
+        <td>likmaō</td>
+        <td>desmenuzar, moler</td>
+        <td>La piedra desmenuza a los que caen sobre ella. La imagen del juicio severo.</td>
+      </tr>
+      <tr>
+        <td>βασιλεία</td>
+        <td>basileia</td>
+        <td>reino</td>
+        <td>El Reino de Dios será quitado y dado a otros.</td>
+      </tr>
+      <tr>
+        <td>ἀφαιρέω</td>
+        <td>aphairesō</td>
+        <td>quitar, arrebatar</td>
+        <td>El Reino será quitado a los líderes infieles.</td>
+      </tr>
+      <tr>
+        <td>δίδωμι</td>
+        <td>didōmi</td>
+        <td>dar</td>
+        <td>El Reino será dado a gente que produzca frutos.</td>
+      </tr>
+      <tr>
+        <td>ἔθνος</td>
+        <td>ethnos</td>
+        <td>nación, pueblo, gente</td>
+        <td>De aquí viene "étnico". La gente a la que se dará el Reino.</td>
+      </tr>
+      <tr>
+        <td>καρπός</td>
+        <td>karpos</td>
+        <td>fruto</td>
+        <td>Los frutos que el Reino espera. La condición para recibir el Reino.</td>
+      </tr>
+      <tr>
+        <td>ποιέω</td>
+        <td>poieō</td>
+        <td>hacer, producir</td>
+        <td>La gente que produzca los frutos del Reino.</td>
+      </tr>
+      <tr>
+        <td>πίπτω</td>
+        <td>piptō</td>
+        <td>caer</td>
+        <td>El que cae sobre la piedra será quebrantado.</td>
+      </tr>
+      <tr>
+        <td>ἐπιπίπτω</td>
+        <td>epipiptō</td>
+        <td>caer sobre</td>
+        <td>La piedra cae sobre el que la rechaza.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La palabra <em>apodokimazō</em> ("desechar") viene de <em>apo</em> (lejos) + <em>dokimazō</em> (examinar): significa "rechazar después de examinar". Los edificadores examinaron la piedra y la desecharon como inadecuada. Y el verbo <em>likmaō</em> ("desmenuzar") es la imagen del grano que se muele en el molino: la piedra angular muele a los que la rechazan. La imagen del juicio es severa y definitiva.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Salmo 118:22-23: la piedra desechada. Isaías 28:16: la piedra angular puesta por Dios. Isaías 8:14: piedra de tropiezo. Daniel 2:34-35: la piedra que desmenuza.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El karma: las acciones tienen consecuencias. La atención plena (sati): discernir la verdadera piedra angular. El loto que brota del barro: transformación de lo rechazado.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El que se pone debajo de todos, es el primero" (Tao 66). "Lo blando vence a lo duro" (Tao 78). "El sabio no se muestra, por eso brilla" (Tao 22).</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 2:26: Dios propone parábolas. Sura 14:24-27: el buen árbol de raíz firme y el mal árbol arrancado. Hadiz: el mejor es el que más beneficia a los demás.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El karma: las acciones tienen consecuencias. El deber (dharma): los edificadores debían reconocer la piedra. La devoción (bhakti): construir sobre la piedra angular.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El deber (kathēkon) de los edificadores. La justicia (dikaiosynē) violada. La paciencia (hypomonē) de Dios que espera el reconocimiento de la piedra.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La justicia distributiva: reconocer la piedra angular. La phrónesis: sabiduría práctica de reconocer la verdadera piedra. La virtud como hábito.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La rectitud (yi): los edificadores debían actuar con rectitud. La lealtad (zhōng) a Dios. "El hombre superior entiende la rectitud; el inferior, el provecho".</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Piedra: Cristo, la piedra angular</li>
+          <li>Edificadores: líderes religiosos que rechazan</li>
+          <li>Desechar: rechazar después de examinar</li>
+          <li>Piedra angular: fundamento de la Iglesia</li>
+          <li>Exaltación: de Cristo por Dios</li>
+          <li>Reino: responsabilidad confiada</li>
+          <li>Frutos: justicia, misericordia, obras</li>
+          <li>Misma piedra: salva y condena según respuesta</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Una piedra cualquiera</li>
+          <li>Todos los constructores</li>
+          <li>Ignorar sin conocer</li>
+          <li>Una piedra decorativa</li>
+          <li>Conquista humana</li>
+          <li>Propiedad adquirida</li>
+          <li>Palabras o intenciones</li>
+          <li>Dos piedras diferentes</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#3a4a5a;"><strong>Cristo es la piedra desechada por los edificadores y convertida en piedra angular por Dios. El rechazo de Cristo no impide el plan de Dios: lo cumple. Dios transforma el mal en bien. La misma piedra salva y condena según la respuesta humana. El juicio comienza ahora. Construyamos sobre Cristo.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Reconozco a Cristo como la <strong>piedra angular</strong> de mi vida?</div>
+      <div class="item">2. ¿He <strong>rechazado</strong> a Cristo o lo he aceptado?</div>
+      <div class="item">3. ¿<strong>Construyo</strong> mi vida sobre Cristo o sobre otros fundamentos?</div>
+      <div class="item">4. ¿<strong>Produzco</strong> frutos dignos del Reino?</div>
+      <div class="item">5. ¿Me creo <strong>dueño</strong> de la viña o arrendatario?</div>
+      <div class="item">6. ¿Reconozco que <strong>Dios transforma</strong> el mal en bien?</div>
+      <div class="item">7. ¿Confío en la <strong>piedra angular</strong> o tropiezo con ella?</div>
+      <div class="item">8. ¿Mi vida es <strong>fundamento</strong> para otros o tropiezo?</div>
+      <div class="item">9. ¿Reconozco que el <strong>juicio comienza ahora</strong>?</div>
+      <div class="item">10. ¿Construyo sobre <strong>Cristo</strong> todos los días de mi vida?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Construir la familia sobre Cristo, la piedra angular.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser fundamento para los amigos, no tropiezo.</div>
+      <div class="app-item"><strong>Comunidad</strong> Construir la comunidad sobre Cristo, no sobre otros fundamentos.</div>
+      <div class="app-item"><strong>Trabajo</strong> Construir la vida profesional sobre principios sólidos.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar sobre qué fundamento estoy construyendo mi vida.</div>
+      <div class="app-item"><strong>Sociedad</strong> Construir la sociedad sobre fundamentos sólidos de justicia y verdad.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar reconociendo a Cristo como piedra angular.</div>
+      <div class="app-item"><strong>Espiritual</strong> Reconocer a Cristo como fundamento único de la vida.</div>
+      <div class="app-item"><strong>Crisis</strong> La crisis revela si Cristo es mi fundamento.</div>
+      <div class="app-item"><strong>Evangelización</strong> Anunciar a Cristo como piedra angular y único fundamento.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “La piedra que desecharon los edificadores,<br>ha venido a ser cabeza del ángulo.”
+    <small>Cristo es la piedra desechada por los edificadores y convertida en piedra angular por Dios. El rechazo de Cristo no impide el plan de Dios: lo cumple. Dios transforma el mal en bien. El Reino será quitado a los infieles y dado a los que produzcan frutos. La misma piedra salva y condena según la respuesta humana. El que cae sobre la piedra será quebrantado; el que es aplastado por ella será desmenuzado. Cristo es el fundamento único de la Iglesia. Construyamos sobre Cristo.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de la Piedra Desechada (Mateo 21:42-44; Marcos 12:10-11; Lucas 20:17-18; Salmo 118:22-23) · Bloque 7: El juicio y las consecuencias · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

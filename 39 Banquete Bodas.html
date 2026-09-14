@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Banquete de Bodas</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #6a1a4a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #6a1a4a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #9a4a7a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e0c0d8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fdfafc;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #6a1a4a;
+    border-bottom: 1.5px solid #ede0e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #8a3a6a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #6a1a4a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #6a1a4a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf4f8;
+  }
+
+  /* LAS ETAPAS DEL BANQUETE */
+  .etapas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .etapa-item {
+    border-radius: 5px;
+    padding: 6px 5px;
+    text-align: center;
+    background: #faf4f8;
+    border: 1px solid #e0c0d8;
+  }
+  .etapa-item .momento {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #6a1a4a;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .etapa-item .desc {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    line-height: 1.2;
+  }
+  .etapa-rechazo {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .etapa-rechazo .momento { color: #b02020; }
+  .etapa-invitacion {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .etapa-invitacion .momento { color: #1a7a3a; }
+  .etapa-juicio {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .etapa-juicio .momento { color: #8a5a00; }
+
+  /* LOS DOS GRUPOS DE INVITADOS */
+  .grupos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .grupo-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .primeros-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .segundos-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .grupo-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .grupo-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .primeros-card h4 { color: #b02020; }
+  .segundos-card h4 { color: #1a7a3a; }
+  .grupo-card ul {
+    text-align: left;
+  }
+  .grupo-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .primeros-card ul li::before { color: #b02020; }
+  .segundos-card ul li::before { color: #1a7a3a; }
+
+  /* VESTIDO BOX */
+  .vestido-box {
+    background: #f0f4f8;
+    border: 2px solid #4a6a8a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .vestido-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #2a4a6a;
+    margin-bottom: 3px;
+  }
+  .vestido-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* CONCLUSIÓN BOX */
+  .conclusion-box {
+    background: #fdf0dc;
+    border: 2px solid #c8a030;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .conclusion-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #6a1a4a;
+    margin-bottom: 3px;
+  }
+  .conclusion-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e0c0d8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf4f8;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #6a1a4a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf4f8;
+    border-left: 3px solid #6a1a4a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #6a1a4a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e0c0d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf4f8;
+  }
+  .app-item strong {
+    color: #6a1a4a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #6a1a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #6a1a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-rechazo { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-invitacion { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-juicio { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .primeros-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .segundos-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .vestido-box { background: #f0f4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .conclusion-box { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Banquete de Bodas</h1>
+    <div class="subtitulo">La invitación universal y la preparación necesaria</div>
+    <div class="referencia">Mateo 22:1-14 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">El Reino de los cielos es semejante a un <strong>rey</strong> que hizo <strong>fiesta de bodas</strong> a su <strong>hijo</strong>. <strong>Envió</strong> a sus siervos a llamar a los convidados; pero <strong>no quisieron venir</strong>. Volvió a enviar otros siervos: <em>"He preparado mi comida... venid a las bodas"</em>. Pero ellos, <strong>sin hacer caso</strong>, se fueron, uno a su <strong>labranza</strong>, y otro a sus <strong>negocios</strong>; y otros <strong>afrentaron y mataron</strong> a los siervos.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">El rey <strong>se enojó</strong>, <strong>destruyó</strong> a los homicidas y <strong>quemó</strong> su ciudad. Luego dijo: <em>"Vayan a las <strong>salidas de los caminos</strong>, y llamad a las bodas a <strong>cuantos halléis</strong>"</em>. Los siervos juntaron a <strong>todos</strong>, <strong>malos y buenos</strong>.</p>
+      <p style="font-size:9.5pt;">Pero el rey vio a un hombre <strong>sin vestido de boda</strong> y lo mandó <strong>atar</strong> y <strong>echar</strong> en las tinieblas. Y Jesús concluyó: <strong>"Muchos son llamados, y pocos escogidos"</strong>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios sea un rey <strong>vengativo y arbitrario</strong>: invita repetidamente; la violencia de los invitados provoca la respuesta.</li>
+        <li>No enseña que la invitación sea <strong>selectiva</strong>: es universal ("cuantos halléis").</li>
+        <li>No enseña que el <strong>vestido</strong> sea opcional: es esencial.</li>
+        <li>No enseña que los primeros invitados sean <strong>todos los judíos</strong>: representan a los líderes que rechazaron.</li>
+        <li>No enseña que los segundos sean <strong>todos los gentiles</strong>: representan a los excluidos que aceptaron.</li>
+        <li>No enseña que la invitación sea <strong>solo para los buenos</strong>: juntan a malos y buenos.</li>
+        <li>No enseña que la gracia <strong>elimine la responsabilidad</strong>: el invitado sin vestido es excluido.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>Dios invita a todos al banquete del Reino:</strong> la invitación es universal.</li>
+        <li><strong>La invitación exige una respuesta:</strong> no es pasiva; requiere decisión.</li>
+        <li><strong>Los primeros invitados rechazan por indiferencia y violencia.</strong></li>
+        <li><strong>La paciencia de Dios tiene un límite:</strong> la violencia provoca la respuesta.</li>
+        <li><strong>El rechazo de los primeros abre la puerta a los segundos.</strong></li>
+        <li><strong>La invitación es universal: malos y buenos.</strong></li>
+        <li><strong>No basta ser invitado: hay que estar preparado.</strong></li>
+      </ul>
+      <ul class="check">
+        <li><strong>El vestido de boda es don del rey:</strong> la justicia es don de Dios.</li>
+        <li><strong>El que rechaza el vestido es excluido.</strong></li>
+        <li><strong>La gracia es universal, la respuesta es libre.</strong></li>
+        <li><strong>La salvación requiere preparación:</strong> el vestido de la justicia.</li>
+        <li><strong>El Reino es una fiesta, no una obligación.</strong></li>
+        <li><strong>La indiferencia es más peligrosa que la violencia.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS CUATRO ETAPAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>📅 Las cuatro etapas del banquete</h2>
+    <div class="etapas-grid">
+      <div class="etapa-item etapa-rechazo">
+        <span class="momento">1. Invitación</span>
+        <span class="desc">El rey envía a sus siervos a llamar a los convidados. <strong>No quieren venir.</strong></span>
+      </div>
+      <div class="etapa-item etapa-rechazo">
+        <span class="momento">2. Rechazo</span>
+        <span class="desc">Indiferencia (labranza, negocios) y violencia (afrentan y matan a los siervos).</span>
+      </div>
+      <div class="etapa-item etapa-invitacion">
+        <span class="momento">3. Segunda invitación</span>
+        <span class="desc">A las <strong>salidas de los caminos</strong>: a <strong>todos</strong>, malos y buenos.</span>
+      </div>
+      <div class="etapa-item etapa-juicio">
+        <span class="momento">4. Selección</span>
+        <span class="desc">El rey examina a los convidados. El <strong>sin vestido</strong> es excluido.</span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#6a1a4a;"><strong>La invitación es universal; la respuesta es libre. La indiferencia y la violencia rechazan la invitación. Los excluidos son invitados a ocupar el lugar de los que rechazan. No basta ser invitado: hay que estar preparado.</strong></p>
+  </div>
+
+  <!-- FILA 4: LOS DOS GRUPOS DE INVITADOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los dos grupos de invitados</h2>
+    <div class="grupos-grid">
+      <div class="grupo-card primeros-card">
+        <span class="icono">🔴</span>
+        <h4>Los primeros invitados</h4>
+        <ul>
+          <li>Son <strong>invitados</strong> por el rey.</li>
+          <li><strong>No quieren venir</strong>.</li>
+          <li>Se van a su <strong>labranza</strong> y a sus <strong>negocios</strong>.</li>
+          <li>Prefieren sus <strong>ocupaciones</strong> al banquete.</li>
+          <li>Algunos <strong>afrentan y matan</strong> a los siervos.</li>
+          <li>Son <strong>destruidos</strong> por el rey.</li>
+          <li>Representan a los <strong>líderes religiosos</strong>.</li>
+        </ul>
+      </div>
+      <div class="grupo-card segundos-card">
+        <span class="icono">🟢</span>
+        <h4>Los segundos invitados</h4>
+        <ul>
+          <li>Son <strong>invitados</strong> en las <strong>salidas de los caminos</strong>.</li>
+          <li><strong>Aceptan</strong> la invitación.</li>
+          <li>Son <strong>malos y buenos</strong>: la invitación es universal.</li>
+          <li>Llenan las <strong>bodas</strong> de convidados.</li>
+          <li>Reciben el <strong>vestido</strong> del rey.</li>
+          <li>Uno es <strong>excluido</strong> por rechazar el vestido.</li>
+          <li>Representan a los <strong>excluidos</strong> que aceptaron.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="vestido-box">
+      <div class="titulo">👔 El vestido de boda: preparación interior</div>
+      <div class="desc">El <strong>vestido</strong> de <strong>boda</strong> era <strong>proporcionado</strong> por el <strong>rey</strong> mismo. Los invitados <strong>recibían</strong> el vestido al <strong>entrar</strong>. <strong>Rechazar</strong> el vestido era <strong>rechazar</strong> la <strong>hospitalidad</strong> del rey. El <strong>vestido</strong> representa la <strong>justicia</strong>, la <strong>preparación</strong> interior, las <strong>obras dignas del Reino</strong>. <strong>No basta</strong> aceptar la invitación: hay que <strong>estar preparado</strong>. La <strong>gracia</strong> es <strong>don</strong> de Dios; la <strong>preparación</strong> es <strong>respuesta</strong> a la gracia.</div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>γάμος</td>
+        <td>gamos</td>
+        <td>bodas, banquete de bodas</td>
+        <td>El banquete nupcial. Imagen del Reino escatológico.</td>
+      </tr>
+      <tr>
+        <td>βασιλεύς</td>
+        <td>basileus</td>
+        <td>rey</td>
+        <td>El que hace la fiesta de bodas para su hijo. Imagen de Dios.</td>
+      </tr>
+      <tr>
+        <td>δοῦλος</td>
+        <td>doulos</td>
+        <td>siervo</td>
+        <td>Los siervos enviados por el rey. Representan a los profetas y mensajeros.</td>
+      </tr>
+      <tr>
+        <td>καλέω</td>
+        <td>kaleō</td>
+        <td>llamar, invitar</td>
+        <td>La invitación del rey. De aquí viene "llamado".</td>
+      </tr>
+      <tr>
+        <td>κεκλημένος</td>
+        <td>keklēmenos</td>
+        <td>convidado, invitado</td>
+        <td>Los que estaban convidados a las bodas. Los primeros invitados.</td>
+      </tr>
+      <tr>
+        <td>ἕτοιμος</td>
+        <td>hetoimos</td>
+        <td>preparado, dispuesto</td>
+        <td>"Todo está dispuesto". La preparación del banquete.</td>
+      </tr>
+      <tr>
+        <td>ἀμελέω</td>
+        <td>ameleō</td>
+        <td>no hacer caso, descuidar</td>
+        <td>De <em>a-</em> (sin) + <em>melei</em> (importar). Los invitados descuidan la invitación.</td>
+      </tr>
+      <tr>
+        <td>ἀγρός</td>
+        <td>agros</td>
+        <td>campo, labranza</td>
+        <td>"Uno a su labranza". La ocupación cotidiana.</td>
+      </tr>
+      <tr>
+        <td>ἐμπορία</td>
+        <td>emporia</td>
+        <td>negocio, comercio</td>
+        <td>"Otro a sus negocios". De aquí viene "emporio".</td>
+      </tr>
+      <tr>
+        <td>ὑβρίζω</td>
+        <td>hybrizō</td>
+        <td>afrentar, insultar</td>
+        <td>La violencia verbal contra los siervos.</td>
+      </tr>
+      <tr>
+        <td>ἀποκτείνω</td>
+        <td>apokteinō</td>
+        <td>matar</td>
+        <td>La violencia física contra los siervos.</td>
+      </tr>
+      <tr>
+        <td>ὀργίζομαι</td>
+        <td>orgizomai</td>
+        <td>enojarse, airarse</td>
+        <td>El rey se enoja. La ira del rey es la respuesta a la violencia.</td>
+      </tr>
+      <tr>
+        <td>στράτευμα</td>
+        <td>strateuma</td>
+        <td>ejército</td>
+        <td>Los ejércitos del rey. De aquí viene "estrategia".</td>
+      </tr>
+      <tr>
+        <td>ἐμπρήθω</td>
+        <td>emprēthō</td>
+        <td>quemar</td>
+        <td>La ciudad es quemada. Anticipa la destrucción de Jerusalén.</td>
+      </tr>
+      <tr>
+        <td>διέξοδος</td>
+        <td>diexodos</td>
+        <td>salida, encrucijada</td>
+        <td>"Las salidas de los caminos". Los caminos fuera de la ciudad.</td>
+      </tr>
+      <tr>
+        <td>πονηρός</td>
+        <td>ponēros</td>
+        <td>malo</td>
+        <td>"Malos y buenos". La invitación es universal.</td>
+      </tr>
+      <tr>
+        <td>ἀγαθός</td>
+        <td>agathos</td>
+        <td>bueno</td>
+        <td>"Malos y buenos". La invitación es universal.</td>
+      </tr>
+      <tr>
+        <td>ἔνδυμα γάμου</td>
+        <td>endyma gamou</td>
+        <td>vestido de boda</td>
+        <td>El vestido proporcionado por el rey. Símbolo de la preparación interior.</td>
+      </tr>
+      <tr>
+        <td>φιμόω</td>
+        <td>phimoō</td>
+        <td>enmudecer, callar</td>
+        <td>El invitado enmudece. No tiene excusa.</td>
+      </tr>
+      <tr>
+        <td>σκότος</td>
+        <td>skotos</td>
+        <td>tinieblas, oscuridad</td>
+        <td>Las tinieblas de afuera. La exclusión del banquete.</td>
+      </tr>
+      <tr>
+        <td>κλητός</td>
+        <td>klētos</td>
+        <td>llamado, invitado</td>
+        <td>"Muchos son llamados". La invitación universal.</td>
+      </tr>
+      <tr>
+        <td>ἐκλεκτός</td>
+        <td>eklektos</td>
+        <td>escogido, elegido</td>
+        <td>"Pocos escogidos". Los que responden adecuadamente.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La palabra <em>endyma gamou</em> ("vestido de boda") es significativa: era proporcionado por el rey mismo. Rechazar el vestido era rechazar la hospitalidad del rey. El vestido representa la justicia, la preparación interior, las obras dignas del Reino. Y el verbo <em>phimoō</em> ("enmudecer") subraya que el invitado sin vestido no tiene excusa: su silencio es la confesión de su culpa.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Isaías 25:6-9: el banquete escatológico de Dios para todos los pueblos. Isaías 55:1-3: la invitación universal a la fiesta de Dios. Proverbios 9:1-6: la sabiduría invita a todos a su banquete.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El banquete de la iluminación. La compasión (karuṇā): el bodhisattva invita a todos los seres al banquete de la iluminación. La generosidad (dāna) como virtud.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El sabio no acumula: cuanto más hace para los demás, más tiene" (Tao 81): el rey que invita es imagen de la generosidad. "El que se pone debajo de todos, es el primero" (Tao 66).</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 47:15: el Paraíso descrito como banquete con ríos. Sura 57:21: la invitación al perdón y al Paraíso. Hadiz: la misericordia de Dios precede a la entrada.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El banquete de los dioses. El karma: las acciones tienen consecuencias. La devoción (bhakti): el devoto acepta la invitación de Dios al banquete de la comunión.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El banquete del sabio. El deber (kathēkon) de aceptar la invitación. La autosuficiencia (autarkeia): el sabio acepta con gratitud sin necesitar la invitación para ser feliz.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La generosidad (eleutheriotēs) como virtud. La justicia distributiva: la invitación es universal. La phrónesis de aceptar la invitación y prepararse adecuadamente.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La rectitud (yi) de aceptar la invitación. La lealtad (zhōng) al rey. "El hombre superior entiende la rectitud; el inferior, el provecho" (Analectas 4:16).</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Invitación: universal, para todos</li>
+          <li>Respuesta: libre, personal</li>
+          <li>Vestido de boda: preparación interior, justicia, obras</li>
+          <li>Gracia: don gratuito de Dios</li>
+          <li>Preparación: respuesta a la gracia</li>
+          <li>Muchos llamados: invitación universal</li>
+          <li>Pocos escogidos: respuesta adecuada y libre</li>
+          <li>Banquete: fiesta del Reino, gozo, comunión</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Selectiva, solo para algunos</li>
+          <li>Forzada o automática</li>
+          <li>Mérito humano o compra</li>
+          <li>Salario por méritos</li>
+          <li>Requisito previo para la gracia</li>
+          <li>Salvación universal</li>
+          <li>Elección arbitraria de Dios</li>
+          <li>Obligación o carga</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#6a1a4a;"><strong>Dios invita a todos al banquete del Reino. La invitación es universal; la respuesta es libre. Los primeros invitados rechazan por indiferencia y violencia. Los excluidos son invitados a ocupar su lugar. No basta ser invitado: hay que estar preparado. La gracia es universal; la respuesta adecuada es poca.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿He <strong>aceptado</strong> la invitación de Dios o la he rechazado?</div>
+      <div class="item">2. ¿Mi rechazo es por <strong>indiferencia</strong> o por violencia?</div>
+      <div class="item">3. ¿Prefiero mis <strong>negocios</strong> al banquete del Rey?</div>
+      <div class="item">4. ¿Produzco los <strong>frutos</strong> dignos del Reino?</div>
+      <div class="item">5. ¿Estoy <strong>vestido</strong> con el vestido de boda?</div>
+      <div class="item">6. ¿Mi vida <strong>refleja</strong> la justicia y la caridad?</div>
+      <div class="item">7. ¿Reconozco que la <strong>invitación</strong> es universal y la respuesta libre?</div>
+      <div class="item">8. ¿<strong>Invito</strong> a otros al banquete del Reino?</div>
+      <div class="item">9. ¿Mi respuesta a la <strong>gracia</strong> es coherente?</div>
+      <div class="item">10. ¿Vivo con la conciencia de que <strong>muchos</strong> son llamados y <strong>pocos</strong> escogidos?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Invitar a la familia al banquete del Reino; no rechazar por ocupaciones.</div>
+      <div class="app-item"><strong>Amistad</strong> Invitar a los amigos a la fe; no forzar la respuesta.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de invitación universal y de preparación.</div>
+      <div class="app-item"><strong>Trabajo</strong> No preferir los negocios a la invitación de Dios.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar si estoy vestido con el vestido de boda.</div>
+      <div class="app-item"><strong>Sociedad</strong> Invitar a todos al banquete del Reino, malos y buenos.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar invitando a todos a la fiesta del Reino.</div>
+      <div class="app-item"><strong>Espiritual</strong> Responder a la invitación con preparación y coherencia.</div>
+      <div class="app-item"><strong>Crisis</strong> No rechazar la invitación por las crisis cotidianas.</div>
+      <div class="app-item"><strong>Evangelización</strong> Salir a los caminos a invitar a todos al banquete del Reino.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Muchos son llamados, y pocos escogidos.”
+    <small>Dios invita a todos al banquete del Reino. La invitación es universal; la respuesta es libre. Los primeros invitados rechazan por indiferencia y violencia. Los excluidos son invitados a ocupar su lugar. No basta ser invitado: hay que estar preparado con el vestido de boda. La gracia es universal; la respuesta adecuada es poca. El Reino es una fiesta, no una obligación. La indiferencia es más peligrosa que la violencia. La gracia exige preparación.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Banquete de Bodas (Mateo 22:1-14) · Bloque 7: El juicio y las consecuencias · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>
