@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: La Semilla que Crece Sola</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #4a6a1a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #4a6a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #7a9a3a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c8d8b0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fbfdf8;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #4a6a1a;
+    border-bottom: 1.5px solid #d8e8c0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #6a8a2a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #4a6a1a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #4a6a1a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8e8c0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f6faf0;
+  }
+
+  /* ETAPAS DEL CRECIMIENTO */
+  .etapas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 6px;
+    position: relative;
+  }
+  .etapa-card {
+    border-radius: 6px;
+    padding: 8px 8px;
+    text-align: center;
+    position: relative;
+  }
+  .etapa-siembra {
+    background: #f0ece4;
+    border: 1.5px solid #bdb5a0;
+  }
+  .etapa-hierba {
+    background: #e8f5d8;
+    border: 1.5px solid #a8c070;
+  }
+  .etapa-espiga {
+    background: #d8eec0;
+    border: 1.5px solid #88b040;
+  }
+  .etapa-grano {
+    background: #c8e8a8;
+    border: 1.5px solid #6a9a30;
+  }
+  .etapa-card .icono {
+    font-size: 18pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .etapa-card h4 {
+    font-size: 9.5pt;
+    margin-bottom: 3px;
+  }
+  .etapa-siembra h4 { color: #7a6a4a; }
+  .etapa-hierba h4 { color: #4a6a20; }
+  .etapa-espiga h4 { color: #3a5a10; }
+  .etapa-grano h4 { color: #2a4a00; }
+  .etapa-card .desc {
+    font-size: 8pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .etapa-card .tiempo {
+    font-size: 7.5pt;
+    color: #666;
+    font-style: italic;
+    display: block;
+    margin-top: 3px;
+  }
+
+  /* AUTOMATĒ */
+  .automatē-box {
+    background: #f0f8e0;
+    border: 2px solid #6a9a30;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 6px;
+    text-align: center;
+  }
+  .automatē-box .palabra {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #3a5a10;
+    letter-spacing: 1px;
+  }
+  .automatē-box .significado {
+    font-size: 8.5pt;
+    color: #444;
+    margin-top: 2px;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #c8d8b0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f6faf0;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #4a6a1a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f6faf0;
+    border-left: 3px solid #4a6a1a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #4a6a1a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c8d8b0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f6faf0;
+  }
+  .app-item strong {
+    color: #4a6a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #4a6a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #4a6a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f6faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f6faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f6faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-siembra { background: #f0ece4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-hierba { background: #e8f5d8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-espiga { background: #d8eec0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-grano { background: #c8e8a8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .automatē-box { background: #f0f8e0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de la Semilla que Crece Sola</h1>
+    <div class="subtitulo">El crecimiento misterioso del Reino</div>
+    <div class="referencia">Marcos 4:26-29 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">El Reino de Dios es como un hombre que echa semilla en la tierra. Luego <strong>duerme y se levanta, de noche y de día</strong>, y la semilla brota y crece <strong>sin que él sepa cómo</strong>. La tierra, por sí misma, produce fruto: primero hierba, luego espiga, después grano lleno. Y cuando el fruto está maduro, el hombre mete la hoz, porque la siega ha llegado.</p>
+      <p style="font-size:9pt; margin-top:4px;"><em>"La semilla brota y crece sin que él sepa cómo."</em></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que el sembrador sea un holgazán: sembró. La parábola elogia la <strong>confianza</strong>, no la pereza.</li>
+        <li>No enseña que el crecimiento sea mágico o irracional: la tierra tiene una fuerza propia dada por Dios.</li>
+        <li>No enseña que el hombre no tenga nada que hacer: siembra. La acción humana se <strong>sitúa</strong>, no se elimina.</li>
+        <li>No enseña que la cosecha sea inmediata: hay etapas, hay tiempo.</li>
+        <li>No enseña que el hombre controle el momento de la cosecha.</li>
+        <li>No enseña que el Reino sea una realidad puramente interior.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>El Reino crece por el poder de Dios, no por el esfuerzo humano:</strong> el campesino duerme; Dios hace crecer.</li>
+        <li><strong>El crecimiento es misterioso e invisible:</strong> "sin que él sepa cómo". Silencioso, oculto, imperceptible.</li>
+        <li><strong>El crecimiento es automático (automatē):</strong> la tierra produce fruto "por sí misma". Dios ha puesto en ella una capacidad de crecimiento.</li>
+        <li><strong>El crecimiento es progresivo:</strong> primero hierba, luego espiga, después grano lleno. Por etapas, no de golpe.</li>
+        <li><strong>El hombre no controla el tiempo:</strong> el fruto madura a su ritmo. Humildad y paciencia escatológica.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La confianza es la actitud del sembrador:</strong> duerme tranquilo porque confía en el proceso.</li>
+        <li><strong>La siega llega cuando el fruto está maduro:</strong> hay un tiempo preciso para la cosecha.</li>
+        <li><strong>El Reino es una realidad dinámica que crece:</strong> no estático, no solo interior.</li>
+        <li><strong>El crecimiento no depende de la comprensión:</strong> no necesitamos entender todo para confiar en Dios.</li>
+        <li><strong>Acción humana y acción divina se complementan:</strong> el hombre siembra; Dios hace crecer.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS ETAPAS DEL CRECIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🌾 Las etapas del crecimiento del Reino</h2>
+    <div class="etapas-grid">
+      <div class="etapa-card etapa-siembra">
+        <span class="icono">🌰</span>
+        <h4>1. La siembra</h4>
+        <span class="desc">El hombre echa la semilla en la tierra. Hace su parte: siembra.</span>
+        <span class="tiempo">Acción humana</span>
+      </div>
+      <div class="etapa-card etapa-hierba">
+        <span class="icono">🌱</span>
+        <h4>2. La hierba</h4>
+        <span class="desc">Brota el primer tallo verde. La vida comienza a manifestarse.</span>
+        <span class="tiempo">Primera etapa</span>
+      </div>
+      <div class="etapa-card etapa-espiga">
+        <span class="icono">🌾</span>
+        <h4>3. La espiga</h4>
+        <span class="desc">La planta se forma. El crecimiento se hace visible y se consolida.</span>
+        <span class="tiempo">Segunda etapa</span>
+      </div>
+      <div class="etapa-card etapa-grano">
+        <span class="icono">🌾</span>
+        <h4>4. El grano lleno</h4>
+        <span class="desc">El fruto madura. La siega está cerca. El proceso llega a su plenitud.</span>
+        <span class="tiempo">Tercera etapa · Cosecha</span>
+      </div>
+    </div>
+    <div class="automatē-box">
+      <div class="palabra">αὐτομάτη · automatē</div>
+      <div class="significado">"Por sí misma", "automáticamente". Palabra única en el Nuevo Testamento. La tierra tiene una <strong>fuerza propia</strong> dada por Dios. El crecimiento del Reino tiene una dinámica interna que no depende del esfuerzo humano. El hombre siembra; <strong>Dios hace crecer</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>βάλλῃ τὸν σπόρον</td>
+        <td>ballē ton sporon</td>
+        <td>echa la semilla</td>
+        <td>Acción inicial del sembrador. No es pasivo: siembra.</td>
+      </tr>
+      <tr>
+        <td>καθεύδῃ καὶ ἐγείρηται</td>
+        <td>katheudē kai egeirētai</td>
+        <td>duerme y se levanta</td>
+        <td>La rutina diaria. La vida sigue mientras la semilla crece.</td>
+      </tr>
+      <tr>
+        <td>νύκτα καὶ ἡμέραν</td>
+        <td>nykta kai hēmeran</td>
+        <td>noche y día</td>
+        <td>El tiempo pasa, indiferente al ritmo humano.</td>
+      </tr>
+      <tr>
+        <td>βλαστᾷ καὶ μηκύνηται</td>
+        <td>blastā kai mēkynētai</td>
+        <td>brota y crece</td>
+        <td>Dos verbos de crecimiento: germinar y alargarse.</td>
+      </tr>
+      <tr>
+        <td>ὡς οὐκ οἶδεν αὐτός</td>
+        <td>hōs ouk oiden autos</td>
+        <td>sin que él sepa cómo</td>
+        <td>El crecimiento es <strong>misterioso</strong>, opaco a la comprensión humana.</td>
+      </tr>
+      <tr>
+        <td>αὐτομάτη</td>
+        <td>automatē</td>
+        <td>por sí misma, automáticamente</td>
+        <td>Palabra clave. La tierra tiene una <strong>fuerza propia</strong> dada por Dios.</td>
+      </tr>
+      <tr>
+        <td>καρποφορέω</td>
+        <td>karpophoreō</td>
+        <td>dar fruto</td>
+        <td>La tierra produce fruto <strong>por sí misma</strong>, no por el esfuerzo del hombre.</td>
+      </tr>
+      <tr>
+        <td>χόρτον</td>
+        <td>chorton</td>
+        <td>hierba, tallo</td>
+        <td>Primera etapa: el brote verde.</td>
+      </tr>
+      <tr>
+        <td>στάχυν</td>
+        <td>stachyn</td>
+        <td>espiga</td>
+        <td>Segunda etapa: la espiga formada.</td>
+      </tr>
+      <tr>
+        <td>πλήρη σῖτον</td>
+        <td>plērē siton</td>
+        <td>grano lleno</td>
+        <td>Tercera etapa: el grano maduro.</td>
+      </tr>
+      <tr>
+        <td>ἀποστέλλει τὸ δρέπανον</td>
+        <td>apostellei to drepanon</td>
+        <td>mete la hoz</td>
+        <td>La cosecha no se retrasa cuando el fruto está maduro.</td>
+      </tr>
+      <tr>
+        <td>ὁ θερισμός</td>
+        <td>ho therismós</td>
+        <td>la siega, la cosecha</td>
+        <td>Momento culminante. Tiene su tiempo preciso.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La palabra <em>automatē</em> es única en el Nuevo Testamento. Solo aparece aquí. Significa "por sí misma", "sin causa externa visible". Es la raíz de nuestra palabra "automático". El crecimiento del Reino tiene una <strong>dinámica interna</strong> que Dios ha puesto en él.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Génesis 1:11-12: la tierra produce por sí misma. Salmo 65: Dios riega y hace crecer. Isaías 55: la Palabra no vuelve vacía. Eclesiastés 11:6: siembra sin saber cuál prosperará.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El loto crece en el barro y se eleva. Tathatā (suchness): las cosas crecen "así como son". Los tres tipos de discípulos: crecimiento según capacidad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">Wu wei: el Tao no hace nada y nada queda sin hacer. El campesino de Song que tiró las plántulas y las mató. No forzar el crecimiento.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 56:63-64: "¿Sois vosotros quienes hacéis crecer la semilla, o somos Nosotros?". Dios es el hacedor del crecimiento. Sura 2:261: multiplicación abundante.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">Karma: siembra y cosecha. El guru siembra la semilla de la liberación. Karma yoga: actuar sin aferrarse al resultado.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">Logoi spermatikoi: semillas de razón en toda la realidad. Vivir conforme a la naturaleza: cooperar con el proceso, no forzarlo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">Entelequia: cada ser tiene una potencialidad interna que lo lleva a su fin. El crecimiento es el paso de la potencia al acto.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">Mencius y las cuatro semillas: todos tenemos semillas de virtud que deben ser cultivadas. El cultivo no fuerza: acompaña el crecimiento natural.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Crecimiento: obra de Dios, misteriosa, progresiva</li>
+          <li>Confianza: actitud del sembrador que duerme tranquilo</li>
+          <li>Acción humana: sembrar, cuidar, esperar</li>
+          <li>Automatē: fuerza propia que Dios ha dado a la tierra</li>
+          <li>Paciencia: respeto del ritmo del crecimiento</li>
+          <li>Cosecha: momento preciso, cuando el fruto está maduro</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Esfuerzo humano como causa del crecimiento</li>
+          <li>Controlable e inmediato</li>
+          <li>Pasividad o indiferencia</li>
+          <li>Forzar, controlar, acelerar</li>
+          <li>Magia o irracionalidad</li>
+          <li>Fatalismo o resignación</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#4a6a1a;"><strong>El sembrador siembra, duerme y confía. La semilla brota y crece sin que él sepa cómo. La confianza es la actitud del que sabe que el crecimiento es obra de Dios.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Confío en que Dios hace crecer, o me angustio por controlar el proceso?</div>
+      <div class="item">2. ¿Sé sembrar y luego soltar, o me quedo vigilando ansiosamente?</div>
+      <div class="item">3. ¿Respeto las etapas del crecimiento, o exijo fruto inmediato?</div>
+      <div class="item">4. ¿Reconozco que hay procesos que no entiendo?</div>
+      <div class="item">5. ¿Mi acción es cooperación con Dios, o intento sustituirlo?</div>
+      <div class="item">6. ¿Soy paciente con el ritmo del Reino en mi vida y en la de otros?</div>
+      <div class="item">7. ¿He intentado "tirar de las plántulas" para que crezcan más rápido?</div>
+      <div class="item">8. ¿Confío en que la cosecha llegará a su tiempo?</div>
+      <div class="item">9. ¿Estoy dispuesto a dormir tranquilo mientras Dios trabaja?</div>
+      <div class="item">10. ¿Reconozco que el crecimiento es obra de Dios, no mía?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Sembrar valores y confiar en el crecimiento; no forzar ni controlar.</div>
+      <div class="app-item"><strong>Amistad</strong> Sembrar sin exigir resultados inmediatos; respetar los tiempos del otro.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear condiciones para el crecimiento, sin forzar resultados.</div>
+      <div class="app-item"><strong>Trabajo</strong> Sembrar esfuerzo y confiar en el proceso; no angustiarse por lo inmediato.</div>
+      <div class="app-item"><strong>Vida interior</strong> Sembrar hábitos y confiar en el crecimiento lento; no desesperarse.</div>
+      <div class="app-item"><strong>Sociedad</strong> Sembrar justicia y valores; confiar en que el fruto llegará a su tiempo.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Crear condiciones y confiar en el equipo; no micromanage.</div>
+      <div class="app-item"><strong>Espiritual</strong> Orar, sembrar, y confiar en que Dios hace crecer.</div>
+      <div class="app-item"><strong>Crisis</strong> No forzar soluciones; confiar en el proceso y en el tiempo de Dios.</div>
+      <div class="app-item"><strong>Evangelización</strong> Sembrar sin miedo; dejar a Dios el crecimiento.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “El Reino de Dios crece por el poder de Dios, no por el esfuerzo humano.<br>El sembrador siembra, duerme y confía: la semilla brota y crece sin que él sepa cómo.”
+    <small>La tierra da fruto por sí misma, por etapas, y la cosecha llega cuando el fruto está maduro. La confianza es la actitud del que sabe que el crecimiento es obra de Dios.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de la Semilla que Crece Sola (Marcos 4:26-29) · Bloque 1: El Reino de Dios · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

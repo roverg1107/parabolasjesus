@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: La Perla de Gran Precio</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #6a4a8a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #6a4a8a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #9a7aba;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #d8c8e8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fdfbff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #6a4a8a;
+    border-bottom: 1.5px solid #e8d8f0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #8a6aaa;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #6a4a8a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #6a4a8a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #e8d8f0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf6fc;
+  }
+
+  /* LAS CUATRO ACCIONES */
+  .acciones-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .accion-card {
+    border-radius: 6px;
+    padding: 8px 8px;
+    text-align: center;
+  }
+  .accion-busca {
+    background: #f0e8f8;
+    border: 1.5px solid #b8a0d0;
+  }
+  .accion-halla {
+    background: #e8e0f5;
+    border: 1.5px solid #a890c8;
+  }
+  .accion-vende {
+    background: #f5e8f0;
+    border: 1.5px solid #d0a8c0;
+  }
+  .accion-compra {
+    background: #e8f0d8;
+    border: 1.5px solid #a8b840;
+  }
+  .accion-card .icono {
+    font-size: 18pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .accion-card h4 {
+    font-size: 9.5pt;
+    margin-bottom: 3px;
+  }
+  .accion-busca h4 { color: #6a4a8a; }
+  .accion-halla h4 { color: #5a3a7a; }
+  .accion-vende h4 { color: #8a3a6a; }
+  .accion-compra h4 { color: #4a6a00; }
+  .accion-card .desc {
+    font-size: 8pt;
+    color: #444;
+    line-height: 1.25;
+  }
+
+  /* COMPARATIVA TESORO-PERLA */
+  .comparativa-par {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .par-card {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .par-tesoro {
+    background: #f5f0dc;
+    border: 1.5px solid #c8a830;
+  }
+  .par-perla {
+    background: #f0e8f8;
+    border: 1.5px solid #b8a0d0;
+  }
+  .par-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .par-tesoro h4 { color: #8a6a00; }
+  .par-perla h4 { color: #6a4a8a; }
+  .par-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .par-tesoro ul li::before { color: #8a6a00; }
+  .par-perla ul li::before { color: #6a4a8a; }
+
+  /* PERLA BOX */
+  .perla-box {
+    background: #f5f0fa;
+    border: 2px solid #b8a0d0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .perla-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #6a4a8a;
+    margin-bottom: 3px;
+  }
+  .perla-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #d8c8e8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf6fc;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #6a4a8a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf6fc;
+    border-left: 3px solid #6a4a8a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #6a4a8a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #d8c8e8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf6fc;
+  }
+  .app-item strong {
+    color: #6a4a8a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #6a4a8a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #6a4a8a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf6fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf6fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf6fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .accion-busca { background: #f0e8f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .accion-halla { background: #e8e0f5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .accion-vende { background: #f5e8f0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .accion-compra { background: #e8f0d8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .par-tesoro { background: #f5f0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .par-perla { background: #f0e8f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .perla-box { background: #f5f0fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de la Perla de Gran Precio</h1>
+    <div class="subtitulo">La búsqueda perseverante del valor supremo</div>
+    <div class="referencia">Mateo 13:45-46 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">El Reino de los cielos es semejante a un <strong>mercader</strong> que <strong>busca buenas perlas</strong>. Habiendo hallado <strong>una perla de gran precio</strong>, fue y <strong>vendió todo lo que tenía</strong>, y <strong>la compró</strong>.</p>
+      <p style="font-size:9pt; margin-top:4px;"><em>"Que habiendo hallado una perla preciosa, fue y vendió todo lo que tenía, y la compró."</em></p>
+      <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>Contexto:</strong> el mercader (<em>emporos</em>) no es un minorista, sino un comerciante mayorista, experto, viajero. Las perlas eran más valiosas que el oro.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que el Reino se compre con dinero: el mercader compra <strong>la perla</strong>, no el Reino.</li>
+        <li>No enseña que la búsqueda humana sea suficiente: el mercader <strong>halla</strong> la perla; es don.</li>
+        <li>No enseña que haya que vender todo literalmente: es imagen de la <strong>entrega total</strong>.</li>
+        <li>No enseña que el mercader sea oportunista: es <strong>experto, honesto, transparente</strong>.</li>
+        <li>No enseña que la perla se esconda: está <strong>disponible</strong> en el mercado.</li>
+        <li>No enseña que el Reino sea una entre muchas opciones: es <strong>la</strong> perla, única.</li>
+        <li>No enseña que el mercader se quede con las otras perlas: <strong>vende todo</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>El Reino es un valor supremo e insustituible:</strong> una perla única, no muchas.</li>
+        <li><strong>El Reino se busca deliberadamente:</strong> la búsqueda es perseverante, profesional, continua.</li>
+        <li><strong>El Reino se halla por gracia:</strong> el hallazgo es don que culmina la búsqueda.</li>
+        <li><strong>El Reino exige una entrega total:</strong> no se puede poseer la perla y aferrarse a lo demás.</li>
+        <li><strong>La entrega no es pérdida, sino inversión:</strong> quien vende todo por la perla gana infinitamente más.</li>
+        <li><strong>El Reino desplaza a todos los demás bienes:</strong> la perla única sustituye a las muchas.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>El Reino es personal y único:</strong> cada uno debe encontrarlo personalmente.</li>
+        <li><strong>El Reino requiere sabiduría y discernimiento:</strong> el mercader es experto en perlas.</li>
+        <li><strong>El Reino transforma la escala de valores:</strong> lo que antes era un negocio, ahora es una perla.</li>
+        <li><strong>Búsqueda y gracia se complementan:</strong> el tesoro subraya la gracia; la perla, la búsqueda.</li>
+        <li><strong>El Reino es la perla que da sentido a todo:</strong> sin ella, la venta sería una locura.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS CUATRO ACCIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Las cuatro acciones del mercader</h2>
+    <div class="acciones-grid">
+      <div class="accion-card accion-busca">
+        <span class="icono">🔍</span>
+        <h4>1. Busca</h4>
+        <span class="desc">Búsqueda <strong>deliberada</strong>, <strong>profesional</strong>, <strong>perseverante</strong>. No busca cualquier perla: busca <strong>buenas</strong>.</span>
+      </div>
+      <div class="accion-card accion-halla">
+        <span class="icono">💎</span>
+        <h4>2. Halla</h4>
+        <span class="desc">La búsqueda culmina en <strong>hallazgo</strong>. La perla es <strong>una</strong>, única, insustituible. <strong>De gran precio</strong>.</span>
+      </div>
+      <div class="accion-card accion-vende">
+        <span class="icono">💰</span>
+        <h4>3. Vende todo</h4>
+        <span class="desc">Entrega <strong>radical</strong> y <strong>total</strong>. No vende lo superfluo: vende <strong>todo</strong>. No es pérdida: es inversión.</span>
+      </div>
+      <div class="accion-card accion-compra">
+        <span class="icono">✨</span>
+        <h4>4. La compra</h4>
+        <span class="desc">Compra <strong>directa</strong>, <strong>transparente</strong>, <strong>legal</strong>. No hay astucia: el mercader es honesto y experto.</span>
+      </div>
+    </div>
+    <div class="perla-box">
+      <div class="titulo">💎 La perla: valor supremo e insustituible</div>
+      <div class="desc">La perla es <strong>una</strong>, no muchas. No es "una opción entre otras": es <strong>la</strong> opción. En la antigüedad, las perlas eran <strong>más valiosas que el oro</strong>. La palabra griega <em>polytimon</em> significa "de valor supremo, incalculable". El Reino no es "algo valioso": es <strong>el</strong> valor supremo. No se puede tener el Reino y seguir buscando otras perlas.</div>
+    </div>
+  </div>
+
+  <!-- FILA 4: EL PAR TESORO-PERLA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔗 El par tesoro–perla: gracia y búsqueda</h2>
+    <div class="comparativa-par">
+      <div class="par-card par-tesoro">
+        <h4>🌰 El tesoro escondido</h4>
+        <ul>
+          <li><strong>Hallazgo accidental:</strong> lo encuentra sin buscar.</li>
+          <li><strong>Protagonista:</strong> un hombre cualquiera.</li>
+          <li><strong>Dimensión:</strong> <strong>gracia</strong>, don inesperado.</li>
+          <li><strong>Énfasis:</strong> el <strong>gozo</strong> del hallazgo sorpresivo.</li>
+          <li><strong>Acción:</strong> esconde y compra el campo.</li>
+        </ul>
+      </div>
+      <div class="par-card par-perla">
+        <h4>💎 La perla de gran precio</h4>
+        <ul>
+          <li><strong>Hallazgo deliberado:</strong> busca y encuentra.</li>
+          <li><strong>Protagonista:</strong> un mercader experto.</li>
+          <li><strong>Dimensión:</strong> <strong>búsqueda</strong>, esfuerzo perseverante.</li>
+          <li><strong>Énfasis:</strong> la <strong>perseverancia</strong> de la búsqueda.</li>
+          <li><strong>Acción:</strong> vende todo y compra la perla.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#6a4a8a;"><strong>Las dos parábolas juntas enseñan que el Reino se recibe tanto por <em>gracia</em> (tesoro hallado) como por <em>búsqueda</em> (perla encontrada). No se oponen: se complementan. No hay hallazgo sin búsqueda, ni búsqueda sin gracia.</strong></p>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>ἔμπορος</td>
+        <td>emporos</td>
+        <td>mercader, comerciante</td>
+        <td>De aquí viene "emporio". Comerciante <strong>mayorista</strong>, experto, viajero.</td>
+      </tr>
+      <tr>
+        <td>ζητῶν</td>
+        <td>zētōn</td>
+        <td>buscando</td>
+        <td>Participio presente: <strong>mientras busca</strong>. La búsqueda es <strong>continua</strong>, no puntual.</td>
+      </tr>
+      <tr>
+        <td>καλοὺς μαργαρίτας</td>
+        <td>kalous margaritas</td>
+        <td>buenas perlas</td>
+        <td>No busca cualquier perla: busca <strong>buenas</strong>. Su búsqueda es <strong>exigente</strong>.</td>
+      </tr>
+      <tr>
+        <td>εὑρὼν</td>
+        <td>heurōn</td>
+        <td>habiendo hallado</td>
+        <td>Verbo de <strong>descubrimiento</strong>. La búsqueda culmina en <strong>hallazgo</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἕνα πολύτιμον μαργαρίτην</td>
+        <td>hena polytimon margaritēn</td>
+        <td>una perla de gran precio</td>
+        <td><strong>Una</strong> perla, no muchas. <strong>De valor supremo</strong> (<em>polytimon</em>).</td>
+      </tr>
+      <tr>
+        <td>πεπρακεν</td>
+        <td>pepraken</td>
+        <td>ha vendido</td>
+        <td>Perfecto: <strong>vendió</strong> y <strong>sigue vendido</strong>. La venta es <strong>definitiva</strong>.</td>
+      </tr>
+      <tr>
+        <td>πάντα ὅσα εἶχεν</td>
+        <td>panta hosa eichen</td>
+        <td>todo lo que tenía</td>
+        <td>Enfatiza la <strong>totalidad</strong> de la entrega. No hay reservas.</td>
+      </tr>
+      <tr>
+        <td>ἠγόρασεν</td>
+        <td>ēgorasen</td>
+        <td>compró</td>
+        <td>Compra <strong>directamente</strong>, sin astucia. Transacción <strong>transparente</strong>.</td>
+      </tr>
+      <tr>
+        <td>μαργαρίτης</td>
+        <td>margaritēs</td>
+        <td>perla</td>
+        <td>Símbolo de <strong>riqueza suprema</strong> y <strong>belleza</strong>. Más valiosa que el oro.</td>
+      </tr>
+      <tr>
+        <td>πολύτιμος</td>
+        <td>polytimos</td>
+        <td>de gran valor</td>
+        <td>De <em>polys</em> (mucho) + <em>timē</em> (valor). <strong>Valor supremo, incalculable</strong>.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>zētōn</em> ("buscando") está en presente continuo: el mercader <strong>busca mientras vive</strong>. La búsqueda es perseverante, profesional, continua. Y el verbo <em>pepraken</em> ("ha vendido") está en perfecto: la venta es <strong>definitiva</strong>. La entrega por el Reino no es un acto puntual: es un <strong>estado permanente</strong>.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Proverbios 2:4-5: buscar la sabiduría como tesoro. Proverbios 3:13-15: la sabiduría más preciosa que las piedras. Salmo 119:72: la ley mejor que oro y plata.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La joya en el manto (Sutra del Loto): tesoro interior que todos llevamos. La perla del dragón (Zen): símbolo de la iluminación que se busca con perseverancia.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El sabio no acumula tesoros" (Tao 81). "El que sabe que tiene bastante es rico" (Tao 33). La riqueza verdadera es interior.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 62:11: "Lo que está con Dios es mejor que la diversión y el comercio". Sura 18:46: las obras perdurables como tesoro. Hadiz: el que busca conocimiento, Dios le facilita el camino.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La perla del océano: los buscadores se sumergen para encontrar el tesoro. El atman como tesoro interior. El guru como descubridor.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El tesoro de la virtud: el único bien verdadero. La riqueza interior del sabio. Contraste: la virtud se cultiva; la perla se <strong>halla</strong>.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La eudaimonia (felicidad) como bien supremo. La elección racional del bien superior. La razón que reconoce el valor.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La sabiduría como tesoro superior a la riqueza. "El hombre superior entiende la rectitud; el inferior, el provecho" (Analectas 4:16). El cultivo continuo.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Reino: perla de valor supremo, buscada y hallada</li>
+          <li>Búsqueda: deliberada, perseverante, profesional</li>
+          <li>Hallazgo: don que culmina la búsqueda</li>
+          <li>Entrega: radical, total, gozosa</li>
+          <li>Venta de todo: imagen de la entrega total</li>
+          <li>Perla: don supremo que desplaza a todos los demás</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Mercancía que se compra o se merece</li>
+          <li>Pasiva, ocasional, superficial</li>
+          <li>Recompensa por esfuerzo</li>
+          <li>Parcial, calculada, forzada</li>
+          <li>Regla literal para todos</li>
+          <li>Una entre muchas opciones</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#6a4a8a;"><strong>El Reino es una perla de gran precio, buscada con perseverancia y hallada por gracia. La entrega no es pérdida: es la mejor inversión. El Reino desplaza a todos los demás bienes y se convierte en el centro de la vida.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Busco el Reino con perseverancia, o lo espero pasivamente?</div>
+      <div class="item">2. ¿He hallado la perla de gran precio, o solo conozco su teoría?</div>
+      <div class="item">3. ¿Mi respuesta al hallazgo es <strong>gozosa</strong> o <strong>calculada</strong>?</div>
+      <div class="item">4. ¿He vendido <strong>todo</strong> por el Reino, o me aferro a algo?</div>
+      <div class="item">5. ¿Mi entrega es <strong>radical</strong> o <strong>parcial</strong>?</div>
+      <div class="item">6. ¿Reconozco que el hallazgo es <strong>gracia</strong>, no mérito?</div>
+      <div class="item">7. ¿Mi escala de valores ha sido transformada por el Reino?</div>
+      <div class="item">8. ¿Tengo <strong>discernimiento</strong> para reconocer la perla suprema?</div>
+      <div class="item">9. ¿El Reino es el <strong>centro</strong> de mi vida, o un añadido?</div>
+      <div class="item">10. ¿Mi vida transmite el <strong>gozo</strong> del hallazgo?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Reconocer el Reino como perla que da sentido a las relaciones familiares.</div>
+      <div class="app-item"><strong>Amistad</strong> Compartir el gozo del hallazgo sin imponerlo; ser testigo, no propagandista.</div>
+      <div class="app-item"><strong>Comunidad</strong> Vivir con la alegría del hallazgo, no con la tristeza del deber.</div>
+      <div class="app-item"><strong>Trabajo</strong> Ordenar el trabajo al Reino, sin idolatrarlo; el trabajo es medio, no fin.</div>
+      <div class="app-item"><strong>Vida interior</strong> Buscar el Reino con perseverancia, no esperar pasivamente.</div>
+      <div class="app-item"><strong>Sociedad</strong> Vivir con una escala de valores transformada por el Reino.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar con gozo, no con cálculo; el líder ha encontrado la perla.</div>
+      <div class="app-item"><strong>Espiritual</strong> Cultivar el discernimiento para reconocer la perla suprema.</div>
+      <div class="app-item"><strong>Crisis</strong> Recordar la perla en medio de la prueba; nada puede quitarla.</div>
+      <div class="app-item"><strong>Evangelización</strong> Compartir el gozo del hallazgo, no imponer la venta de todo.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “El Reino de Dios es una perla de gran precio,<br>buscada con perseverancia y hallada por gracia.”
+    <small>Quien la encuentra, vende todo lo que tiene y la compra. La entrega no es pérdida: es la mejor inversión. El Reino desplaza a todos los demás bienes y se convierte en el centro de la vida. La búsqueda y la gracia se complementan.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de la Perla de Gran Precio (Mateo 13:45-46) · Bloque 1: El Reino de Dios · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

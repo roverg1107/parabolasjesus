@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Sembrador</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #3a5a1a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #3a5a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #6a8a3a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c8d8b0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fbfdf8;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #3a5a1a;
+    border-bottom: 1.5px solid #d8e8c0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #5a7a2a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #3a5a1a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #3a5a1a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8e8c0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f6faf0;
+  }
+
+  /* LOS CUATRO TERRENOS */
+  .terrenos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .terreno-card {
+    border-radius: 5px;
+    padding: 6px 7px;
+    font-size: 8pt;
+    text-align: center;
+  }
+  .camino {
+    background: #f0ece4;
+    border: 1.5px solid #bdb5a0;
+  }
+  .pedregal {
+    background: #f5f0e8;
+    border: 1.5px solid #d0b890;
+  }
+  .espinos {
+    background: #eef5e0;
+    border: 1.5px solid #a8c070;
+  }
+  .buena {
+    background: #e0f0d0;
+    border: 1.5px solid #7ab040;
+  }
+  .terreno-card .icono {
+    font-size: 16pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .terreno-card h4 {
+    font-size: 9pt;
+    margin-bottom: 3px;
+  }
+  .camino h4 { color: #7a6a4a; }
+  .pedregal h4 { color: #8a6a2a; }
+  .espinos h4 { color: #4a6a20; }
+  .buena h4 { color: #2a5a10; }
+  .terreno-card ul {
+    text-align: left;
+  }
+  .terreno-card ul li {
+    font-size: 7.5pt;
+    padding-left: 10px;
+    margin-bottom: 1.5px;
+  }
+  .camino ul li::before { color: #7a6a4a; }
+  .pedregal ul li::before { color: #8a6a2a; }
+  .espinos ul li::before { color: #4a6a20; }
+  .buena ul li::before { color: #2a5a10; }
+
+  /* COMENTARIO PERSONAL */
+  .comentario-personal {
+    border: 2px solid #a87a2a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    background: #fdfaf0;
+    margin-bottom: 10px;
+    break-inside: avoid;
+  }
+  .comentario-personal h2 {
+    font-size: 11pt;
+    color: #a87a2a;
+    border-bottom: 1.5px solid #e8d8a8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .comentario-personal p {
+    font-size: 9.5pt;
+    margin-bottom: 4px;
+  }
+  .comentario-personal .cita {
+    border-left: 3px solid #a87a2a;
+    padding-left: 8px;
+    font-style: italic;
+    color: #5a4a2a;
+    margin: 4px 0;
+    font-size: 9pt;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #c8d8b0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f6faf0;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #3a5a1a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f6faf0;
+    border-left: 3px solid #3a5a1a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #3a5a1a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c8d8b0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f6faf0;
+  }
+  .app-item strong {
+    color: #3a5a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #3a5a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #3a5a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f6faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f6faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f6faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .camino { background: #f0ece4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pedregal { background: #f5f0e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .espinos { background: #eef5e0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .buena { background: #e0f0d0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comentario-personal { background: #fdfaf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Sembrador</h1>
+    <div class="subtitulo">La semilla, el terreno y la cosecha del Reino</div>
+    <div class="referencia">Mateo 13:1-23 · Marcos 4:1-20 · Lucas 8:4-15 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un sembrador sale a sembrar. Parte de la semilla cae <strong>junto al camino</strong> y las aves la comen. Parte cae en <strong>pedregales</strong> y, aunque brota pronto, se seca por falta de raíz. Parte cae <strong>entre espinos</strong>, que la ahogan. Pero parte cae en <strong>buena tierra</strong> y da fruto: a ciento, a sesenta y a treinta por uno.</p>
+      <p style="font-size:9.5pt;">Jesús explica: la semilla es la <strong>Palabra del Reino</strong>; los cuatro terrenos son cuatro formas de recibirla: incomprensión, inconstancia, distracción y fructificación.</p>
+      <p style="font-size:9pt; margin-top:4px;"><em>"El que tiene oídos para oír, oiga."</em></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios sea un sembrador descuidado: siembra abundantemente.</li>
+        <li>No enseña que la semilla sea defectuosa: es la misma en todos los terrenos.</li>
+        <li>No enseña que los tres primeros terrenos sean "malos" en sentido moral: son resistencias comunes.</li>
+        <li>No enseña que el fruto sea automático: requiere tiempo, raíz y perseverancia.</li>
+        <li>No enseña que solo haya un tipo de fruto: hay tres rendimientos: 30, 60, 100.</li>
+        <li>No enseña que la incomprensión, la inconstancia y la distracción sean irremediables: la parábola advierte, no condena.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La Palabra es una semilla viva:</strong> tiene poder propio para germinar y dar fruto.</li>
+        <li><strong>El sembrador siembra sin discriminar:</strong> no elige el terreno; siembra con generosidad.</li>
+        <li><strong>Hay cuatro formas de recibir la Palabra:</strong> incomprensión, inconstancia, distracción, fructificación.</li>
+        <li><strong>El enemigo trabaja activamente:</strong> arrebata lo que no tiene raíz.</li>
+        <li><strong>La prueba revela la raíz:</strong> la adversidad muestra lo que hay debajo.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>Las preocupaciones y las riquezas son espinos modernos:</strong> distracciones legítimas que se vuelven idolatría.</li>
+        <li><strong>El fruto es la prueba de la buena tierra:</strong> no basta oír; hay que dar fruto.</li>
+        <li><strong>Los frutos son diversos:</strong> Dios no exige el mismo rendimiento a todos.</li>
+        <li><strong>El fruto requiere tiempo:</strong> paciencia escatológica, crecimiento lento pero seguro.</li>
+        <li><strong>"El que tiene oídos para oír, oiga":</strong> la parábola es un espejo para examinar el propio terreno.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS CUATRO TERRENOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🌱 Los cuatro terrenos del corazón</h2>
+    <div class="terrenos-grid">
+      <div class="terreno-card camino">
+        <span class="icono">🛤️</span>
+        <h4>Junto al camino</h4>
+        <ul>
+          <li><strong>Incomprensión.</strong></li>
+          <li>La Palabra no penetra.</li>
+          <li>El maligno la arrebata.</li>
+          <li>Corazón endurecido, distraído.</li>
+          <li>No hay germinación.</li>
+        </ul>
+      </div>
+      <div class="terreno-card pedregal">
+        <span class="icono">🪨</span>
+        <h4>Pedregales</h4>
+        <ul>
+          <li><strong>Inconstancia.</strong></li>
+          <li>Recibe con gozo inmediato.</li>
+          <li>No tiene raíz profunda.</li>
+          <li>Al venir la prueba, tropieza.</li>
+          <li>Fe de corta duración.</li>
+        </ul>
+      </div>
+      <div class="terreno-card espinos">
+        <span class="icono">🌿</span>
+        <h4>Entre espinos</h4>
+        <ul>
+          <li><strong>Distracción.</strong></li>
+          <li>Oye la Palabra, pero...</li>
+          <li>Las preocupaciones ahogan.</li>
+          <li>El engaño de las riquezas.</li>
+          <li>Se vuelve infructuosa.</li>
+        </ul>
+      </div>
+      <div class="terreno-card buena">
+        <span class="icono">🌾</span>
+        <h4>Buena tierra</h4>
+        <ul>
+          <li><strong>Comprensión y perseverancia.</strong></li>
+          <li>Oye, entiende, retiene.</li>
+          <li>Echa raíz profunda.</li>
+          <li>Da fruto en abundancia.</li>
+          <li>30, 60, 100 por uno.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#3a5a1a;"><strong>La diferencia no está en la semilla, sino en el terreno. La parábola es un espejo: cada uno debe preguntarse qué tipo de terreno es.</strong></p>
+  </div>
+
+  <!-- FILA 4: COMENTARIO PERSONAL -->
+  <div class="comentario-personal">
+    <h2>💭 Comentario personal</h2>
+    <p>Las semillas pueden ser también <strong>amistades, proyectos, esfuerzos, vínculos y obras</strong> que uno emprende en la vida. Uno siempre tiene que sembrar. Si bien la mayoría de las semillas se van a perder por diversos motivos, <strong>las pocas que germinen darán tanto fruto que justificarán con creces la inversión</strong>.</p>
+    <div class="cita">
+      "No todo germina, pero la abundancia de lo que sí germina compensa la pérdida de lo que no. La matemática de la cosecha es la matemática de la esperanza."
+    </div>
+    <p style="font-size:8.5pt; color:#5a4a2a;"><strong>Precisión:</strong> la semilla en el texto es específicamente "la Palabra del Reino". Las amistades y proyectos son siembra de la Palabra en la medida en que encarnan los valores del Reino: amor, justicia, misericordia, verdad, reconciliación. No es que cualquier proyecto sea semilla; es que <em>todo lo que hacemos puede convertirse en vehículo de la Palabra</em> cuando lo hacemos desde el Reino.</p>
+    <p style="font-size:8.5pt; color:#5a4a2a;"><strong>Conexión bíblica:</strong> Eclesiastés 11:1-6 invita a sembrar "a la mañana" y "a la tarde", sin saber cuál prosperará. Gálatas 6:7-9 dice: "No nos cansemos de hacer el bien, porque a su tiempo segaremos, si no desmayamos".</p>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>σπείρω</td>
+        <td>speirō</td>
+        <td>sembrar</td>
+        <td>Acción generosa y repetida. El sembrador siembra sin discriminar.</td>
+      </tr>
+      <tr>
+        <td>λόγος τῆς βασιλείας</td>
+        <td>logos tēs basileias</td>
+        <td>palabra del Reino</td>
+        <td>No es solo enseñanza moral: es <strong>anuncio del Reino</strong>.</td>
+      </tr>
+      <tr>
+        <td>παρὰ τὴν ὁδόν</td>
+        <td>para tēn hodon</td>
+        <td>junto al camino</td>
+        <td>Senda dura, pisoteada. La semilla no penetra.</td>
+      </tr>
+      <tr>
+        <td>πετρώδης</td>
+        <td>petrōdēs</td>
+        <td>pedregoso</td>
+        <td>Suelo poco profundo sobre roca. Germinación rápida pero sin raíz.</td>
+      </tr>
+      <tr>
+        <td>ἀκάνθαι</td>
+        <td>akanthai</td>
+        <td>espinos, zarzas</td>
+        <td>Maleza que crece más rápido y ahoga.</td>
+      </tr>
+      <tr>
+        <td>καλὴ γῆ</td>
+        <td>kalē gē</td>
+        <td>buena tierra</td>
+        <td>Suelo profundo, limpio, fértil.</td>
+      </tr>
+      <tr>
+        <td>καρποφορέω</td>
+        <td>karpophoreō</td>
+        <td>dar fruto</td>
+        <td>Verbo de productividad agrícola. El fruto es la prueba.</td>
+      </tr>
+      <tr>
+        <td>ἑκατὸν, ἑξήκοντα, τριάκοντα</td>
+        <td>hekaton, hexēkonta, triakonta</td>
+        <td>ciento, sesenta, treinta</td>
+        <td>Tres rendimientos. Dios no exige el mismo fruto a todos.</td>
+      </tr>
+      <tr>
+        <td>συνίημι</td>
+        <td>syniēmi</td>
+        <td>entender, comprender</td>
+        <td>La buena tierra <strong>oye y entiende</strong>. No basta oír.</td>
+      </tr>
+      <tr>
+        <td>πρόσκαιρος</td>
+        <td>proskairos</td>
+        <td>temporal, de corta duración</td>
+        <td>Los pedregales son "de corta duración". No tienen raíz.</td>
+      </tr>
+      <tr>
+        <td>μεριμνάω</td>
+        <td>merimnaō</td>
+        <td>preocuparse, afanarse</td>
+        <td>Las preocupaciones del siglo ahogan la Palabra.</td>
+      </tr>
+      <tr>
+        <td>ἀπάτη τοῦ πλούτου</td>
+        <td>apatē tou ploutou</td>
+        <td>engaño de las riquezas</td>
+        <td>Las riquezas <strong>engañan</strong>: prometen lo que no dan.</td>
+      </tr>
+      <tr>
+        <td>σκανδαλίζω</td>
+        <td>skandalizō</td>
+        <td>tropezar, escandalizarse</td>
+        <td>Al venir la prueba, los pedregales "tropiezan". La fe se quiebra.</td>
+      </tr>
+      <tr>
+        <td>ἀρπάζω</td>
+        <td>harpazō</td>
+        <td>arrebatar</td>
+        <td>El maligno <strong>arrebata</strong> la Palabra no comprendida.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>skandalizō</em> no dice "pierden la fe", sino "tropiezan". La prueba es un escándalo para los pedregales. Y <em>harpazō</em> describe la acción del maligno: no razona, no convence: <strong>arrebata</strong>.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Isaías 55:10-11: la Palabra de Dios no vuelve vacía. Salmo 1: el justo es árbol plantado junto a aguas. Deuteronomio 30: elegir vida o muerte.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">Los tres tipos de discípulos: capacidad superior, media e inferior. El loto que crece en el barro y se eleva. Diversidad de capacidades.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">Wu wei: la semilla crece sin forzar, a su tiempo. "El bien supremo es como el agua: riega todas las cosas sin competir". Paciencia y naturalidad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 2:261: un grano produce siete espigas, cada una con cien granos. Sura 14: el árbol bueno y el árbol malo. Multiplicación abundante.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El karma como ley de siembra y cosecha. El guru siembra la semilla de la liberación. La germinación depende de la receptividad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">Los <em>logoi spermatikoi</em>: semillas de razón en toda la realidad. El sabio cultiva su alma como un agricultor cuida su campo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La virtud como hábito que se forma por repetición. La educación como siembra. El fruto es el hábito cultivado.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">⚖️</span>
+        <span class="nombre">Cinismo</span>
+        <span class="aporte">Crítica a los que hablan sin dar fruto. La parábola describe los terrenos con realismo, sin condenarlos: invita a la coherencia.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Qué tipo de terreno soy en este momento de mi vida?</div>
+      <div class="item">2. ¿La Palabra penetra en mi corazón o se queda en la superficie?</div>
+      <div class="item">3. ¿Tengo raíz, o mi fe es de corta duración?</div>
+      <div class="item">4. ¿Qué espinos ahogan la Palabra en mí: preocupaciones, riquezas, distracciones?</div>
+      <div class="item">5. ¿He visto fruto en mi vida, o solo entusiasmo inicial?</div>
+      <div class="item">6. ¿Soy paciente con el crecimiento, o exijo fruto inmediato?</div>
+      <div class="item">7. ¿Siembro sin discriminar, o solo donde creo que dará fruto?</div>
+      <div class="item">8. ¿Reconozco que el fruto tiene distintos rendimientos?</div>
+      <div class="item">9. ¿Estoy dispuesto a dejar que Dios transforme mi terreno?</div>
+      <div class="item">10. ¿Qué paso concreto puedo dar para pasar de un terreno a otro?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Sembrar la Palabra con constancia, sin exigir fruto inmediato.</div>
+      <div class="app-item"><strong>Amistad</strong> Sembrar sin discriminar: no elegir solo a los que responden.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear un ambiente donde la Palabra pueda echar raíz, no solo ser oída.</div>
+      <div class="app-item"><strong>Trabajo</strong> No dejar que las preocupaciones ahoguen lo esencial.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar el propio terreno y trabajar las raíces.</div>
+      <div class="app-item"><strong>Sociedad</strong> Sembrar valores con generosidad, sin esperar resultados inmediatos.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Sembrar en todos, no solo en los "prometedores".</div>
+      <div class="app-item"><strong>Espiritual</strong> Perseverar en la oración y la Palabra, aunque no se vea fruto.</div>
+      <div class="app-item"><strong>Crisis</strong> La prueba revela la raíz: cultivar antes de la tormenta.</div>
+      <div class="app-item"><strong>Evangelización</strong> Sembrar sin miedo, dejando a Dios el crecimiento.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “La Palabra es una semilla viva que germina según el terreno que la recibe.<br>El sembrador siembra sin discriminar; la cosecha es de Dios.”
+    <small>Solo la buena tierra —comprensión y perseverancia— da fruto, y lo da en abundancia diversa. Siembra siempre: las pocas semillas que germinen justificarán con creces la inversión.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Sembrador (Mateo 13:1-23; Marcos 4:1-20; Lucas 8:4-15) · Bloque 1: El Reino de Dios · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>
