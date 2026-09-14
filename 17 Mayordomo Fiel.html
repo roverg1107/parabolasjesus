@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Mayordomo Fiel y Sabio</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #1a5a4a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #1a5a4a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #4a8a7a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #b8d8d0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafdfc;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #1a5a4a;
+    border-bottom: 1.5px solid #d0e8e0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #3a7a6a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #1a5a4a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #1a5a4a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0e8e0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2faf8;
+  }
+
+  /* DOS MAYORDOMOS */
+  .dos-mayordomos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .mayordomo-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .fiel-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .infiel-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .mayordomo-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .mayordomo-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .fiel-card h4 { color: #1a7a3a; }
+  .infiel-card h4 { color: #b02020; }
+  .mayordomo-card ul {
+    text-align: left;
+  }
+  .mayordomo-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .fiel-card ul li::before { color: #1a7a3a; }
+  .infiel-card ul li::before { color: #b02020; }
+
+  /* RESPONSABILIDAD */
+  .responsabilidad-box {
+    background: #f0f8f4;
+    border: 2px solid #4a8a7a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .responsabilidad-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1a5a4a;
+    margin-bottom: 3px;
+  }
+  .responsabilidad-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #b8d8d0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f2faf8;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #1a5a4a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2faf8;
+    border-left: 3px solid #1a5a4a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #1a5a4a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #b8d8d0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2faf8;
+  }
+  .app-item strong {
+    color: #1a5a4a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #1a5a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #1a5a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2faf8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f2faf8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2faf8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .fiel-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .infiel-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .responsabilidad-box { background: #f0f8f4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Mayordomo Fiel y Sabio</h1>
+    <div class="subtitulo">La fidelidad en lo cotidiano y la responsabilidad proporcional</div>
+    <div class="referencia">Lucas 12:42-48 · Mateo 24:45-51 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un señor se ausenta y confía su casa a un mayordomo. Le encarga dar a cada siervo su <strong>ración a tiempo</strong>. Si el mayordomo es fiel y prudente, cuando el señor vuelva lo hallará haciendo así, y lo pondrá sobre <strong>todos sus bienes</strong>.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Pero si el mayordomo dice en su corazón: <em>"Mi señor tarda en venir"</em>, y comienza a <strong>golpear</strong> a los criados y a <strong>comer, beber y embriagarse</strong>, el señor vendrá en el día que no espera y lo castigará duramente.</p>
+      <p style="font-size:9pt;"><strong>"A todo aquel a quien se haya dado mucho, mucho se le demandará."</strong></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que la salvación se gane por obras: la fidelidad es <strong>respuesta</strong>, no precio.</li>
+        <li>No enseña que Dios sea un señor ausente e indiferente: el señor <strong>vuelve</strong>.</li>
+        <li>No enseña que la demora sea excusa: es <strong>prueba</strong> de la fidelidad.</li>
+        <li>No enseña que el castigo sea arbitrario: es <strong>proporcional</strong> al conocimiento.</li>
+        <li>No enseña que la autoridad sea para dominar: es para <strong>servir</strong>.</li>
+        <li>No enseña que la fidelidad sea heroica: es <strong>cotidiana</strong> y rutinaria.</li>
+        <li>No enseña que el que no sabía sea inocente: es azotado <strong>poco</strong>, pero es azotado.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La mayordomía es una confianza, no una propiedad:</strong> no somos dueños, somos administradores.</li>
+        <li><strong>La fidelidad se demuestra en lo cotidiano:</strong> dar la ración a tiempo, no gestas heroicas.</li>
+        <li><strong>La demora del señor es una prueba:</strong> el fiel persevera; el infiel se relaja.</li>
+        <li><strong>La infidelidad se manifiesta en el abuso y la disipación:</strong> golpear y embriagarse.</li>
+        <li><strong>El retorno del señor es cierto:</strong> aunque la hora sea incierta.</li>
+        <li><strong>El castigo es proporcional al conocimiento:</strong> el que sabía más, recibe más azotes.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La recompensa es la confianza ampliada:</strong> el fiel es puesto sobre todos los bienes.</li>
+        <li><strong>La fidelidad no es mérito, sino respuesta:</strong> es la prueba de la confianza recibida.</li>
+        <li><strong>La autoridad es para el servicio:</strong> el mayordomo sirve, no domina.</li>
+        <li><strong>La vigilancia es fidelidad constante:</strong> no ansiedad, sino presencia fiel.</li>
+        <li><strong>La responsabilidad es proporcional al don:</strong> a quien se le dio mucho, mucho se le demandará.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS DOS MAYORDOMOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los dos mayordomos: fiel e infiel</h2>
+    <div class="dos-mayordomos">
+      <div class="mayordomo-card fiel-card">
+        <span class="icono">🟢</span>
+        <h4>El mayordomo fiel y prudente</h4>
+        <ul>
+          <li>Da a cada siervo su <strong>ración a tiempo</strong>.</li>
+          <li>Es <strong>constante</strong> en lo cotidiano.</li>
+          <li>La demora del señor no lo <strong>relaja</strong>.</li>
+          <li>Usa su autoridad para <strong>servir</strong>.</li>
+          <li>Es hallado <strong>haciendo así</strong> al volver el señor.</li>
+          <li>Recompensa: puesto sobre <strong>todos los bienes</strong>.</li>
+          <li><strong>La fidelidad es su respuesta a la confianza.</strong></li>
+        </ul>
+      </div>
+      <div class="mayordomo-card infiel-card">
+        <span class="icono">🔴</span>
+        <h4>El mayordomo infiel</h4>
+        <ul>
+          <li>Dice en su corazón: <em>"Mi señor <strong>tarda</strong> en venir"</em>.</li>
+          <li>Usa la demora como <strong>excusa</strong> para la negligencia.</li>
+          <li><strong>Golpea</strong> a los criados y criadas.</li>
+          <li><strong>Come, bebe y se embriaga</strong>.</li>
+          <li>Abusa de su <strong>autoridad</strong>.</li>
+          <li>Se entrega a los <strong>placeres</strong>.</li>
+          <li>Castigo: <strong>cortado en dos</strong>, puesto con los infieles.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="responsabilidad-box">
+      <div class="titulo">⚖️ La responsabilidad es proporcional al conocimiento</div>
+      <div class="desc">El siervo que <strong>sabía</strong> la voluntad de su señor y no la hizo recibirá <strong>muchos azotes</strong>. El que <strong>no sabía</strong> será azotado <strong>poco</strong>. No todos serán juzgados con la misma medida. La frase final es la clave: <em>"A todo aquel a quien se haya dado mucho, mucho se le demandará"</em>. El conocimiento, la autoridad, los bienes, los talentos: todo es <strong>don</strong> que aumenta la <strong>responsabilidad</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>οἰκονόμος</td>
+        <td>oikonomos</td>
+        <td>mayordomo, administrador</td>
+        <td>De <em>oikos</em> (casa) + <em>nomos</em> (ley). El que administra la casa. De aquí viene "economía".</td>
+      </tr>
+      <tr>
+        <td>πιστός</td>
+        <td>pistos</td>
+        <td>fiel, confiable</td>
+        <td>El que merece confianza. La fidelidad es la <strong>virtud</strong> del mayordomo.</td>
+      </tr>
+      <tr>
+        <td>φρόνιμος</td>
+        <td>phronimos</td>
+        <td>prudente, sabio</td>
+        <td>De <em>phronēsis</em> (sabiduría práctica). El que sabe <strong>cómo</strong> administrar.</td>
+      </tr>
+      <tr>
+        <td>θεραπεία</td>
+        <td>therapeia</td>
+        <td>servicio, cuidado</td>
+        <td>La tarea del mayordomo: <strong>cuidar</strong> de los siervos. De aquí viene "terapia".</td>
+      </tr>
+      <tr>
+        <td>σιτομέτριον</td>
+        <td>sitometrion</td>
+        <td>ración de alimento</td>
+        <td>La <strong>porción</strong> de comida que corresponde a cada siervo. La tarea del mayordomo.</td>
+      </tr>
+      <tr>
+        <td>ἐν καιρῷ</td>
+        <td>en kairō</td>
+        <td>a tiempo, en el momento oportuno</td>
+        <td>El <strong>tiempo adecuado</strong>. La fidelidad incluye la <strong>oportunidad</strong>.</td>
+      </tr>
+      <tr>
+        <td>μακάριος</td>
+        <td>makarios</td>
+        <td>bienaventurado, dichoso</td>
+        <td>El mayordomo fiel es <strong>dichoso</strong>. La fidelidad trae <strong>bendición</strong>.</td>
+      </tr>
+      <tr>
+        <td>χρονίζει</td>
+        <td>chronizei</td>
+        <td>tarda, se demora</td>
+        <td>La <strong>demora</strong> del señor. La prueba de la fidelidad.</td>
+      </tr>
+      <tr>
+        <td>τύπτειν</td>
+        <td>typtein</td>
+        <td>golpear</td>
+        <td>La violencia del mayordomo infiel. El <strong>abuso de autoridad</strong>.</td>
+      </tr>
+      <tr>
+        <td>μεθύσκεσθαι</td>
+        <td>methyskesthai</td>
+        <td>embriagarse</td>
+        <td>La <strong>pérdida de control</strong>. El signo de la infidelidad.</td>
+      </tr>
+      <tr>
+        <td>διχοτομήσει</td>
+        <td>dichotomēsei</td>
+        <td>cortar en dos</td>
+        <td>De <em>dicha</em> (dos) + <em>temnō</em> (cortar). Castigo <strong>severo</strong>. De aquí viene "dicotomía".</td>
+      </tr>
+      <tr>
+        <td>δαρήσεται πολλάς</td>
+        <td>darēsetai pollas</td>
+        <td>recibirá muchos azotes</td>
+        <td>El que <strong>sabía</strong> la voluntad del señor. Mayor conocimiento, mayor responsabilidad.</td>
+      </tr>
+      <tr>
+        <td>δαρήσεται ὀλίγας</td>
+        <td>darēsetai oligas</td>
+        <td>recibirá pocos azotes</td>
+        <td>El que <strong>no sabía</strong>. Menor conocimiento, menor responsabilidad.</td>
+      </tr>
+      <tr>
+        <td>ᾧ ἐδόθη πολύ</td>
+        <td>hō edothē poly</td>
+        <td>a quien se dio mucho</td>
+        <td>La <strong>proporcionalidad</strong> de la responsabilidad. El don aumenta la exigencia.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>chronizei</em> ("tarda") es clave. La demora del señor no es abandono: es <strong>prueba</strong>. El mayordomo infiel interpreta la demora como <strong>permiso</strong> para la negligencia. La demora <strong>revela</strong> el corazón del mayordomo: el fiel persevera; el infiel se relaja.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Génesis 39: José como mayordomo fiel. Números 12:7: Moisés fiel en toda la casa de Dios. Talmud Shabat 31a: "¿Fuiste fiel en tu mayordomía?" como pregunta del juicio.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El bodhisattva como mayordomo que cuida de todos los seres. La atención plena (sati) en la tarea cotidiana. El karma como responsabilidad proporcional.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El sabio no acumula: cuanto más hace para los demás, más tiene" (Tao 81). Wu wei: la fidelidad es natural, no forzada. La autoridad es para servir, no para dominar.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 4:58: "Devolved los depósitos a sus dueños". Hadiz: "Cada uno de vosotros es un pastor y es responsable de su rebaño". La fidelidad en la confianza.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">Karma yoga: la acción desinteresada como camino. El dharma: cada uno tiene su deber según su lugar. La fidelidad al dharma es la virtud del mayordomo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El sabio administra los bienes con desapego: no es dueño, es administrador. La fidelidad al deber, independientemente de las circunstancias.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La phrónesis (sabiduría práctica) de saber administrar. La virtud como hábito que se cultiva con la repetición. La justicia distributiva: recompensa proporcional.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">El gobernante como mayordomo del bien común. La fidelidad (zhong) como virtud fundamental. "El hombre superior es exigente consigo mismo" (Analectas 15:20).</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Mayordomía: confianza, administración, servicio</li>
+          <li>Fidelidad: constancia en lo cotidiano</li>
+          <li>Prudencia: sabiduría práctica de administrar</li>
+          <li>Demora: prueba de la fidelidad</li>
+          <li>Autoridad: servicio a los demás</li>
+          <li>Recompensa: confianza ampliada</li>
+          <li>Responsabilidad: proporcional al conocimiento y al don</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Propiedad, dominio, abuso</li>
+          <li>Heroísmo en lo extraordinario</li>
+          <li>Astucia para aprovecharse</li>
+          <li>Excusa para la negligencia</li>
+          <li>Dominio sobre los demás</li>
+          <li>Pago por méritos</li>
+          <li>Igual para todos</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#1a5a4a;"><strong>La mayordomía es una confianza, no una propiedad. La fidelidad se demuestra en lo cotidiano. La demora del Señor es la prueba de la fidelidad. La responsabilidad es proporcional al conocimiento y al don.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Reconozco que soy <strong>mayordomo</strong>, no dueño, de lo que tengo?</div>
+      <div class="item">2. ¿Mi fidelidad se demuestra en lo <strong>cotidiano</strong> o solo en lo extraordinario?</div>
+      <div class="item">3. ¿Doy a <strong>tiempo</strong> lo que se me ha confiado?</div>
+      <div class="item">4. ¿La <strong>demora</strong> del Señor me lleva a la perseverancia o a la negligencia?</div>
+      <div class="item">5. ¿Uso mi <strong>autoridad</strong> para servir o para dominar?</div>
+      <div class="item">6. ¿Me entrego a los <strong>placeres</strong> en lugar de cuidar la casa?</div>
+      <div class="item">7. ¿Reconozco que mi <strong>responsabilidad</strong> es proporcional a lo que he recibido?</div>
+      <div class="item">8. ¿Vivo en <strong>vigilancia</strong> sin caer en la ansiedad?</div>
+      <div class="item">9. ¿Mi <strong>recompensa</strong> es la confianza ampliada o el pago?</div>
+      <div class="item">10. ¿Estoy preparado para <strong>rendir cuentas</strong> al Señor?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Administrar la casa con fidelidad; dar a cada uno lo que necesita <strong>a tiempo</strong>.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser <strong>fiel</strong> en lo cotidiano; no abandonar al amigo en la demora.</div>
+      <div class="app-item"><strong>Comunidad</strong> Dar a cada uno su <strong>ración</strong>; no golpear ni dominar a los hermanos.</div>
+      <div class="app-item"><strong>Trabajo</strong> Administrar los bienes de la empresa con fidelidad; no abusar de la autoridad.</div>
+      <div class="app-item"><strong>Vida interior</strong> Reconocer que todo es <strong>confianza</strong>; no aferrarse a lo que no es propio.</div>
+      <div class="app-item"><strong>Sociedad</strong> Administrar los bienes públicos con fidelidad; no dilapidar ni dominar.</div>
+      <div class="app-item"><strong>Liderazgo</strong> La autoridad es para <strong>servir</strong>, no para dominar. Dar la ración <strong>a tiempo</strong>.</div>
+      <div class="app-item"><strong>Espiritual</strong> Vivir en <strong>vigilancia</strong> sin ansiedad; la mejor preparación es la fidelidad.</div>
+      <div class="app-item"><strong>Crisis</strong> La demora es prueba; perseverar en la <strong>fidelidad</strong> cotidiana.</div>
+      <div class="app-item"><strong>Evangelización</strong> Dar a cada uno la <strong>ración</strong> de la Palabra según su capacidad.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “La mayordomía es una confianza, no una propiedad.<br>La fidelidad se demuestra en lo cotidiano.”
+    <small>El mayordomo fiel da a cada uno su ración a tiempo. La demora del Señor es la prueba de la fidelidad. El mayordomo infiel abusa de su autoridad y se entrega a los placeres. La responsabilidad es proporcional al conocimiento y al don. A quien se le dio mucho, mucho se le demandará.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Mayordomo Fiel y Sabio (Lucas 12:42-48; Mateo 24:45-51) · Bloque 3: El dinero y la mayordomía · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

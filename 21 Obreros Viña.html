@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Los Obreros de la Viña</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #4a6a2a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #4a6a2a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #8a3a4a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c0d8a8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafdf6;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #4a6a2a;
+    border-bottom: 1.5px solid #d8e8c0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #6a8a3a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #4a6a2a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #4a6a2a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8e8c0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f4f8ee;
+  }
+
+  /* LAS HORAS */
+  .horas-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .hora-item {
+    border-radius: 5px;
+    padding: 6px 5px;
+    text-align: center;
+    background: #f4f8ee;
+    border: 1px solid #c0d8a8;
+  }
+  .hora-item .hora {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #4a6a2a;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .hora-item .momento {
+    font-size: 8pt;
+    color: #8a3a4a;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .hora-item .desc {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    line-height: 1.2;
+  }
+
+  /* DOS GRUPOS */
+  .dos-grupos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .grupo-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .grupo-primeros {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .grupo-ultimos {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .grupo-card .icono {
+    font-size: 20pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .grupo-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .grupo-primeros h4 { color: #b02020; }
+  .grupo-ultimos h4 { color: #1a7a3a; }
+  .grupo-card ul {
+    text-align: left;
+  }
+  .grupo-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .grupo-primeros ul li::before { color: #b02020; }
+  .grupo-ultimos ul li::before { color: #1a7a3a; }
+
+  /* DIÁLOGO */
+  .dialogo-box {
+    background: #f8f4ee;
+    border: 2px solid #8a3a4a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .dialogo-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #8a3a4a;
+    margin-bottom: 3px;
+  }
+  .dialogo-box .cita {
+    font-size: 8.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .dialogo-box .cita strong {
+    font-style: normal;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #c0d8a8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f4f8ee;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #4a6a2a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f4f8ee;
+    border-left: 3px solid #4a6a2a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #4a6a2a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c0d8a8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f4f8ee;
+  }
+  .app-item strong {
+    color: #4a6a2a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #4a6a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #4a6a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f4f8ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f4f8ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f4f8ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hora-item { background: #f4f8ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .grupo-primeros { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .grupo-ultimos { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .dialogo-box { background: #f8f4ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de los Obreros de la Viña</h1>
+    <div class="subtitulo">La gracia soberana y la advertencia contra la envidia</div>
+    <div class="referencia">Mateo 20:1-16 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un padre de familia sale a contratar obreros para su viña. Sale <strong>por la mañana</strong>, luego a la hora <strong>tercera</strong>, <strong>sexta</strong>, <strong>novena</strong> y <strong>undécima</strong>. A los primeros les conviene <strong>un denario al día</strong>; a los demás les promete <strong>"lo que sea justo"</strong>.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Al atardecer, el señor ordena pagar, <strong>comenzando por los últimos</strong>. Todos reciben <strong>un denario</strong>. Los primeros <strong>murmuran</strong>: <em>"Estos postreros han trabajado una sola hora, y los has hecho iguales a nosotros"</em>.</p>
+      <p style="font-size:9.5pt;">El señor responde: <em>"Amigo, no te hago agravio; ¿no conviniste conmigo en un denario?... ¿No me es lícito hacer lo que quiero con lo mío? ¿O tienes tú envidia, porque yo soy bueno?"</em>. Y concluye: <strong>"Así los primeros serán postreros, y los postreros, primeros"</strong>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que el trabajo no importe: los primeros <strong>trabajaron</strong> y recibieron su salario.</li>
+        <li>No enseña que Dios sea injusto: el señor <strong>cumple</strong> lo convenido con los primeros.</li>
+        <li>No enseña que todos reciban lo mismo sin importar nada: enseña que Dios es <strong>soberano</strong> en su gracia.</li>
+        <li>No enseña que haya que ser negligente: los últimos <strong>también trabajaron</strong>.</li>
+        <li>No enseña que la envidia sea un pecado menor: es el <strong>blanco</strong> de la parábola.</li>
+        <li>No enseña que la salvación se mida por el esfuerzo: es <strong>gracia</strong>, no recompensa por méritos.</li>
+        <li>No enseña que los últimos sean mejores: la parábola <strong>desplaza</strong> la jerarquía, no la invierte.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>Dios es soberano en su gracia:</strong> da lo que quiere con lo suyo. No debe nada a nadie.</li>
+        <li><strong>La gracia no es recompensa por méritos:</strong> los primeros trabajaron más, pero no recibieron más.</li>
+        <li><strong>Dios no es injusto: es generoso:</strong> cumple lo convenido y da más a los últimos.</li>
+        <li><strong>La envidia es el problema, no la injusticia:</strong> los primeros murmuran porque <strong>comparan</strong>.</li>
+        <li><strong>La comparación arruina el gozo del don:</strong> los primeros olvidan su propio salario.</li>
+        <li><strong>El llamado es universal:</strong> el señor sale a llamar a <strong>todas las horas</strong>.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>Los últimos también son llamados:</strong> estaban desocupados porque <strong>nadie los había contratado</strong>.</li>
+        <li><strong>El salario es el mismo: la vida eterna.</strong></li>
+        <li><strong>Los primeros son advertidos, no condenados:</strong> el señor los llama "amigo" y les explica.</li>
+        <li><strong>La lógica del Reino invierte las jerarquías:</strong> "los primeros serán postreros".</li>
+        <li><strong>El trabajo es un don, no una carga.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS HORAS DEL LLAMADO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🕐 Las horas del llamado: la convocación es persistente</h2>
+    <div class="horas-grid">
+      <div class="hora-item">
+        <span class="hora">Hora 1</span>
+        <span class="momento">6 a.m.</span>
+        <span class="desc">Primeros obreros. Convenio: <strong>un denario</strong>.</span>
+      </div>
+      <div class="hora-item">
+        <span class="hora">Hora 3</span>
+        <span class="momento">9 a.m.</span>
+        <span class="desc">"Id también vosotros; os daré lo que sea justo".</span>
+      </div>
+      <div class="hora-item">
+        <span class="hora">Hora 6</span>
+        <span class="momento">12 p.m.</span>
+        <span class="desc">Mediodía. El señor vuelve a salir.</span>
+      </div>
+      <div class="hora-item">
+        <span class="hora">Hora 9</span>
+        <span class="momento">3 p.m.</span>
+        <span class="desc">Media tarde. Llama a más obreros.</span>
+      </div>
+      <div class="hora-item">
+        <span class="hora">Hora 11</span>
+        <span class="momento">5 p.m.</span>
+        <span class="desc">Última hora. También ellos son llamados.</span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#4a6a2a;"><strong>El señor sale a llamar a todas las horas. Nadie queda excluido por haber llegado tarde. El llamado es universal y persistente.</strong></p>
+  </div>
+
+  <!-- FILA 4: LOS DOS GRUPOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los dos grupos: los primeros y los últimos</h2>
+    <div class="dos-grupos">
+      <div class="grupo-card grupo-primeros">
+        <span class="icono">🔴</span>
+        <h4>Los primeros obreros</h4>
+        <ul>
+          <li>Contratados <strong>al amanecer</strong>.</li>
+          <li>Convenio: <strong>un denario</strong> al día.</li>
+          <li>Soportaron el <strong>peso y el calor</strong>.</li>
+          <li>Reciben <strong>exactamente</strong> lo convenido.</li>
+          <li><strong>Murmuran</strong> porque comparan.</li>
+          <li>Su problema no es la injusticia: es la <strong>envidia</strong>.</li>
+          <li>El señor los llama <strong>"amigo"</strong> y les explica.</li>
+        </ul>
+      </div>
+      <div class="grupo-card grupo-ultimos">
+        <span class="icono">🟢</span>
+        <h4>Los últimos obreros</h4>
+        <ul>
+          <li>Contratados a la <strong>hora undécima</strong>.</li>
+          <li>Estaban <strong>desocupados</strong>: nadie los había contratado.</li>
+          <li>Trabajaron <strong>una sola hora</strong>.</li>
+          <li>Reciben <strong>un denario</strong>: lo mismo que los primeros.</li>
+          <li>No murmuran: <strong>reciben</strong> con gratitud.</li>
+          <li>Su salario es <strong>gracia</strong>, no mérito.</li>
+          <li>Representan a los que el mundo <strong>descarta</strong>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dialogo-box">
+      <div class="titulo">💬 El diálogo clave: "¿O tienes tú envidia, porque yo soy bueno?"</div>
+      <div class="cita">
+        <strong>Primeros obreros:</strong> "Estos postreros han trabajado una sola hora, y los has hecho iguales a nosotros, que hemos soportado el peso y el calor del día".<br>
+        <strong>El señor:</strong> "Amigo, no te hago agravio; ¿no conviniste conmigo en un denario? Toma lo que es tuyo, y vete; pero quiero dar a este postrero, como a ti. ¿No me es lícito hacer lo que quiero con lo mío? ¿O tienes tú envidia, porque yo soy bueno?"<br>
+        <strong>Conclusión:</strong> "Así los primeros serán postreros, y los postreros, primeros; porque muchos son llamados, y pocos escogidos".
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>οἰκοδεσπότης</td>
+        <td>oikodespotēs</td>
+        <td>padre de familia, señor de la casa</td>
+        <td>El dueño de la viña. Representa a Dios. Tiene <strong>autoridad</strong> sobre lo suyo.</td>
+      </tr>
+      <tr>
+        <td>δηνάριον</td>
+        <td>dēnárion</td>
+        <td>denario</td>
+        <td>Salario de un <strong>día</strong> de trabajo. El <strong>jornal mínimo</strong> para la subsistencia.</td>
+      </tr>
+      <tr>
+        <td>ἀργούς</td>
+        <td>argous</td>
+        <td>desocupados, ociosos</td>
+        <td>Los que están <strong>sin trabajo</strong> en la plaza. No son <strong>perezosos</strong>: están <strong>esperando</strong>.</td>
+      </tr>
+      <tr>
+        <td>τὸ δίκαιον</td>
+        <td>to dikaion</td>
+        <td>lo que es justo</td>
+        <td>Lo que el señor promete a los que llama <strong>después</strong>. La <strong>justicia</strong> del señor.</td>
+      </tr>
+      <tr>
+        <td>ἑνδεκάτην ὥραν</td>
+        <td>hendekatēn hōran</td>
+        <td>hora undécima</td>
+        <td>Las <strong>5 p.m.</strong>, una hora antes del atardecer. La <strong>última</strong> oportunidad.</td>
+      </tr>
+      <tr>
+        <td>ὀψίας</td>
+        <td>opsias</td>
+        <td>atardecer, noche</td>
+        <td>El momento del <strong>pago</strong>. La <strong>jornada</strong> ha terminado.</td>
+      </tr>
+      <tr>
+        <td>ἐγόγγυζον</td>
+        <td>egongyzon</td>
+        <td>murmuraban</td>
+        <td>Verbo de <strong>protesta</strong>. De aquí viene "gruñir". Los primeros <strong>protestan</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἐβάστασας τὸ βάρος</td>
+        <td>ebastasas to baros</td>
+        <td>soportaste el peso</td>
+        <td>Los primeros <strong>soportaron</strong> el peso del trabajo. El <strong>esfuerzo</strong> es real.</td>
+      </tr>
+      <tr>
+        <td>καύσωνα</td>
+        <td>kausōna</td>
+        <td>calor ardiente</td>
+        <td>El <strong>calor</strong> del día. El <strong>sufrimiento</strong> de los primeros.</td>
+      </tr>
+      <tr>
+        <td>ἑταῖρε</td>
+        <td>hetaire</td>
+        <td>amigo</td>
+        <td>Tratamiento <strong>respetuoso</strong> pero <strong>distante</strong>. El señor no se enoja: <strong>explica</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἀδικῶ σε</td>
+        <td>adikō se</td>
+        <td>te hago agravio</td>
+        <td>El señor <strong>niega</strong> la injusticia. No le hace <strong>agravio</strong>: le da lo convenido.</td>
+      </tr>
+      <tr>
+        <td>ἔξεστίν μοι</td>
+        <td>exestin moi</td>
+        <td>¿me es lícito?</td>
+        <td>La <strong>libertad</strong> del señor. Puede hacer lo que quiera con lo suyo.</td>
+      </tr>
+      <tr>
+        <td>πονηρός</td>
+        <td>ponēros</td>
+        <td>malo, envidioso</td>
+        <td>El ojo <strong>malo</strong> del que murmura. La <strong>envidia</strong> como pecado.</td>
+      </tr>
+      <tr>
+        <td>πολλοὶ κλητοί, ὀλίγοι ἐκλεκτοί</td>
+        <td>polloi klētoi, oligoi eklektoi</td>
+        <td>muchos llamados, pocos escogidos</td>
+        <td>La <strong>distinción</strong> entre el <strong>llamado</strong> universal y la <strong>respuesta</strong> de pocos.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>egongyzon</em> ("murmuraban") es el mismo que se usa en el Antiguo Testamento para la <strong>murmuración</strong> de Israel en el desierto. La parábola advierte contra la <strong>murmuración</strong> y la <strong>envidia</strong>.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Levítico 19:13: no retengas el salario del jornalero. Deuteronomio 24:14-15: paga en su día. Eclesiástico 34:22: quitar el salario es un asesinato.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La generosidad (dāna) como virtud. La envidia (issā) como veneno. El que envidia sufre por el bien ajeno. La impermanencia de los bienes.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El sabio no acumula: cuanto más hace para los demás, más tiene" (Tao 81). "El que sabe que tiene bastante es rico" (Tao 33).</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 4:40: Dios no hace agravio ni del peso de un átomo. Sura 57:21: la gracia de Dios, que da a quien quiere. Hadiz: Dios ama la generosidad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La limosna (dāna) como virtud. La envidia (īrṣyā) como veneno. El karma: cada uno recibe según sus acciones, pero la gracia también actúa.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La magnificencia: el sabio es generoso. La envidia (invidia) como vicio que daña al que la siente. La autosuficiencia del sabio.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La magnificencia (megaloprepeia): dar con largueza. La envidia (phthonos): dolor por el bien ajeno. La justicia distributiva.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La benevolencia (ren) como virtud. "El hombre superior no envidia a los demás". La rectitud (yi) sobre el provecho.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Gracia: don soberano y gratuito</li>
+          <li>Justicia: cumplir lo convenido</li>
+          <li>Generosidad: dar más de lo convenido</li>
+          <li>Envidia: dolor por el bien ajeno</li>
+          <li>Llamado: universal, persistente</li>
+          <li>Trabajo: don, oportunidad</li>
+          <li>Salario: vida eterna, completa</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Recompensa por méritos</li>
+          <li>Dar a todos lo mismo sin criterio</li>
+          <li>Injusticia con los demás</li>
+          <li>Indignación justa</li>
+          <li>Selectivo, único</li>
+          <li>Carga, obligación</li>
+          <li>Recompensa proporcional</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#4a6a2a;"><strong>La parábola no condena al rico ni al que trabaja mucho: condena la <strong>envidia</strong> y la <strong>murmuración</strong>. El problema no es la injusticia de Dios, sino la <strong>ceguera</strong> del que se cree con derechos.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Confío en la <strong>gracia</strong> o en mis <strong>méritos</strong>?</div>
+      <div class="item">2. ¿Me comparo con los demás o <strong>disfruto</strong> de mi propio don?</div>
+      <div class="item">3. ¿Siento <strong>envidia</strong> por el bien ajeno o me gozo con él?</div>
+      <div class="item">4. ¿Veo mi <strong>trabajo</strong> como don o como carga?</div>
+      <div class="item">5. ¿Reconozco que mi <strong>contratación</strong> también fue un don?</div>
+      <div class="item">6. ¿Murmuro contra Dios o <strong>confío</strong> en su soberanía?</div>
+      <div class="item">7. ¿Mi <strong>salario</strong> es la vida eterna o la recompensa?</div>
+      <div class="item">8. ¿Estoy dispuesto a que Dios sea <strong>generoso</strong> con otros?</div>
+      <div class="item">9. ¿Reconozco que <strong>muchos</strong> son llamados y pocos responden?</div>
+      <div class="item">10. ¿Acepto que los <strong>primeros</strong> puedan ser postreros?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> No comparar a los hijos; cada uno tiene su propio don.</div>
+      <div class="app-item"><strong>Amistad</strong> Gozarse con el bien del amigo; no envidiar sus logros.</div>
+      <div class="app-item"><strong>Comunidad</strong> Recibir a los que llegan tarde con la misma gracia.</div>
+      <div class="app-item"><strong>Trabajo</strong> No medir el propio trabajo por el salario de otros.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar la envidia que arruina el gozo del don.</div>
+      <div class="app-item"><strong>Sociedad</strong> No excluir a los que no han tenido oportunidades.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Ser generoso con los que llegan tarde al proyecto.</div>
+      <div class="app-item"><strong>Espiritual</strong> Recibir la gracia con gratitud, no con exigencia.</div>
+      <div class="app-item"><strong>Crisis</strong> No comparar el propio sufrimiento con el de otros.</div>
+      <div class="app-item"><strong>Evangelización</strong> Llamar a todos sin excluir a nadie, sin importar la hora.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “¿No me es lícito hacer lo que quiero con lo mío?<br>¿O tienes tú envidia, porque yo soy bueno?”
+    <small>El Reino de Dios es como un señor que sale a llamar obreros a todas las horas. A todos les da el mismo denario: la vida eterna. La gracia no es recompensa por méritos, sino don soberano y gratuito. El problema no es la injusticia de Dios, sino la envidia de los que se creen con derechos.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de los Obreros de la Viña (Mateo 20:1-16) · Bloque 3: El dinero y la mayordomía · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

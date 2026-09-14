@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Síntesis Bloque 3 - El Dinero y la Mayordomía</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #1a5a4a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #1a5a4a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #4a8a7a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #b8d8d0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafdfc;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #1a5a4a;
+    border-bottom: 1.5px solid #d0e8e0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #1a5a4a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #1a5a4a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0e8e0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2faf8;
+  }
+
+  /* LAS 7 PARÁBOLAS */
+  .parabolas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .parabola-item {
+    border: 1px solid #b8d8d0;
+    border-radius: 5px;
+    padding: 5px 5px;
+    background: #f2faf8;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .parabola-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .parabola-item .nombre {
+    font-weight: 700;
+    color: #1a5a4a;
+    font-size: 7.5pt;
+    display: block;
+    margin-bottom: 2px;
+    line-height: 1.15;
+  }
+  .parabola-item .tema {
+    font-size: 6.5pt;
+    color: #555;
+    display: block;
+    line-height: 1.2;
+  }
+
+  /* HILOS CONDUCTORES */
+  .hilos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .hilo-item {
+    border-left: 3px solid #1a5a4a;
+    padding: 5px 8px;
+    background: #f2faf8;
+    border-radius: 0 4px 4px 0;
+  }
+  .hilo-item strong {
+    color: #1a5a4a;
+    font-size: 9pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .hilo-item .desc {
+    font-size: 8pt;
+    color: #444;
+    line-height: 1.25;
+  }
+
+  /* SUBVERSIONES */
+  .subversiones-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .subv-item {
+    border: 1px solid #b8d8d0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f2faf8;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .subv-item .icono {
+    font-size: 13pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .titulo {
+    font-weight: 700;
+    color: #1a5a4a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .desc {
+    font-size: 7pt;
+    color: #444;
+    line-height: 1.2;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2faf8;
+    border-left: 3px solid #1a5a4a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #1a5a4a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 11.5pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #b8d8d0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2faf8;
+  }
+  .app-item strong {
+    color: #1a5a4a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #1a5a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #1a5a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2faf8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hilo-item { background: #f2faf8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .subv-item { background: #f2faf8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2faf8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .parabola-item { background: #f2faf8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>Síntesis del Bloque 3: El Dinero y la Mayordomía</h1>
+    <div class="subtitulo">Los siete hilos conductores de las parábolas sobre los bienes</div>
+    <div class="referencia">7 parábolas · Lucas 12, 16, 18; Mateo 19, 20, 25 · Documento de síntesis y aplicación</div>
+  </div>
+
+  <!-- FILA 1: LAS 7 PARÁBOLAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>📚 Las siete parábolas del bloque</h2>
+    <div class="parabolas-grid">
+      <div class="parabola-item">
+        <span class="icono">⚖️</span>
+        <span class="nombre">El mayordomo injusto</span>
+        <span class="tema">La sagacidad mal usada y la mayordomía</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🟢</span>
+        <span class="nombre">El mayordomo fiel</span>
+        <span class="tema">La fidelidad cotidiana y la responsabilidad proporcional</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">💎</span>
+        <span class="nombre">Los talentos</span>
+        <span class="tema">La inversión de los dones recibidos</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🏚️</span>
+        <span class="nombre">El rico insensato</span>
+        <span class="tema">La insensatez de acumular sin contar con Dios</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🔥</span>
+        <span class="nombre">El rico y Lázaro</span>
+        <span class="tema">La indiferencia ante el pobre y el destino eterno</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🍇</span>
+        <span class="nombre">Los obreros de la viña</span>
+        <span class="tema">La gracia soberana y la advertencia contra la envidia</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">👦</span>
+        <span class="nombre">El joven rico</span>
+        <span class="tema">El apego que impide seguir a Jesús</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 2: LOS HILOS CONDUCTORES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🧵 Los siete hilos conductores</h2>
+    <div class="hilos-grid">
+      <div class="hilo-item">
+        <strong>1. Todo lo que tenemos es un don confiado, no una propiedad</strong>
+        <span class="desc">El mayordomo no es dueño: es administrador. Los siervos reciben talentos. La vida misma es un préstamo que Dios reclama.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>2. La fidelidad se demuestra en lo cotidiano, no en lo heroico</strong>
+        <span class="desc">El mayordomo fiel da la ración a tiempo. La fidelidad es constancia en lo pequeño y rutinario.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>3. La riqueza es un medio, no un fin</strong>
+        <span class="desc">El mayordomo injusto la usa para asegurarse; los talentos se invierten; el rico insensato acumula; el rico de la parábola no ve al pobre.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>4. La salvación es gracia, no recompensa por méritos</strong>
+        <span class="desc">El joven rico cumplía los mandamientos, pero no se salvó por eso. Los obreros reciben lo mismo sin importar las horas.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>5. La indiferencia ante el pobre es un pecado grave</strong>
+        <span class="desc">El rico no le hizo nada malo a Lázaro: simplemente no lo vio. Su pecado es de omisión. El prójimo está a la puerta.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>6. El apego a los bienes impide el seguimiento de Jesús</strong>
+        <span class="desc">El joven rico se fue triste porque tenía muchas posesiones. Cualquier apego que impida seguir a Jesús es un obstáculo.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>7. El juicio es real y la responsabilidad es proporcional</strong>
+        <span class="desc">El mayordomo infiel es castigado. El rico insensato pierde su alma. "A quien se le dio mucho, mucho se le demandará".</span>
+      </div>
+      <div class="hilo-item">
+        <strong>✨ La salvación es imposible para el hombre, posible para Dios</strong>
+        <span class="desc">La gracia lo puede todo. El hombre no puede salvarse a sí mismo; Dios puede salvarlo.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS GRANDES SUBVERSIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔄 Las grandes subversiones del bloque</h2>
+    <div class="subversiones-grid">
+      <div class="subv-item">
+        <span class="icono">🌱</span>
+        <span class="titulo">Lo pequeño es lo decisivo</span>
+        <span class="desc">La fidelidad en lo cotidiano, no en lo heroico.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🔑</span>
+        <span class="titulo">Lo confiado es lo que se juzga</span>
+        <span class="desc">No somos dueños, somos administradores.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">📉</span>
+        <span class="titulo">El que acumula para sí, pierde</span>
+        <span class="desc">El rico insensato y el rico y Lázaro lo confirman.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">📈</span>
+        <span class="titulo">El que invierte, gana</span>
+        <span class="desc">Los talentos y el mayordomo fiel lo confirman.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🎁</span>
+        <span class="titulo">La gracia no es deuda</span>
+        <span class="desc">Los obreros de la viña lo gritan.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">⛓️</span>
+        <span class="titulo">El apego es la trampa</span>
+        <span class="desc">El joven rico lo demuestra con su tristeza.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🚪</span>
+        <span class="titulo">La indiferencia es pecado</span>
+        <span class="desc">El rico de la parábola lo demuestra en el abismo.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">✨</span>
+        <span class="titulo">La salvación es gracia</span>
+        <span class="desc">Imposible para el hombre, posible para Dios.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales del bloque</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que el bloque afirma</h4>
+        <ul>
+          <li>Mayordomía: confianza, administración, servicio</li>
+          <li>Riqueza: don de Dios, medio para servir</li>
+          <li>Fidelidad: constancia en lo cotidiano</li>
+          <li>Desapego: puerta del discipulado</li>
+          <li>Gracia: don soberano y gratuito</li>
+          <li>Justicia: cumplir lo convenido</li>
+          <li>Generosidad: dar más de lo convenido</li>
+          <li>Juicio: realidad escatológica, de Dios</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que el bloque niega</h4>
+        <ul>
+          <li>Propiedad, dominio, abuso</li>
+          <li>Fin en sí mismo, ídolo</li>
+          <li>Heroísmo en lo extraordinario</li>
+          <li>Mera posesión sin problema</li>
+          <li>Recompensa por méritos</li>
+          <li>Dar a todos lo mismo sin criterio</li>
+          <li>Injusticia con los demás</li>
+          <li>Metáfora vacía o arbitrariedad</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#1a5a4a;"><strong>Todo lo que tenemos es un don confiado, no una propiedad. La fidelidad se demuestra en lo cotidiano. La riqueza es un medio, no un fin. La salvación es gracia. El apego impide el seguimiento. La responsabilidad es proporcional al don.</strong></p>
+  </div>
+
+  <!-- FILA 5: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento del bloque</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Reconozco que soy <strong>mayordomo</strong>, no dueño, de lo que tengo?</div>
+      <div class="item">2. ¿Mi fidelidad se demuestra en lo <strong>cotidiano</strong> o solo en lo extraordinario?</div>
+      <div class="item">3. ¿Uso la riqueza como <strong>medio</strong> o como <strong>fin</strong>?</div>
+      <div class="item">4. ¿Confío en la <strong>gracia</strong> o en mis <strong>méritos</strong>?</div>
+      <div class="item">5. ¿Veo al prójimo que está <strong>a mi puerta</strong>, o paso de largo?</div>
+      <div class="item">6. ¿Cuál es mi <strong>apego</strong> que me impide seguir a Jesús?</div>
+      <div class="item">7. ¿Estoy dispuesto a <strong>vender</strong> lo que me ata?</div>
+      <div class="item">8. ¿Dónde está mi <strong>tesoro</strong>: en la tierra o en el cielo?</div>
+      <div class="item">9. ¿Reconozco que mi <strong>responsabilidad</strong> es proporcional a lo que he recibido?</div>
+      <div class="item">10. ¿Estoy preparado para <strong>rendir cuentas</strong> a Dios?</div>
+    </div>
+  </div>
+
+  <!-- FILA 6: APLICACIONES TRANSVERSALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones transversales del bloque</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> No aferrarse a los bienes; invertir en relaciones, no en acumulación.</div>
+      <div class="app-item"><strong>Amistad</strong> Compartir lo que se tiene; no reducir las relaciones a intercambios utilitarios.</div>
+      <div class="app-item"><strong>Comunidad</strong> Ser generoso con los bienes; no acumular mientras otros pasan necesidad.</div>
+      <div class="app-item"><strong>Trabajo</strong> Trabajar para vivir, no vivir para trabajar; el trabajo es medio, no fin.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar el propio <strong>apego</strong> y la propia <strong>fidelidad</strong>.</div>
+      <div class="app-item"><strong>Sociedad</strong> Promover la justicia económica; combatir la indiferencia.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Administrar los bienes con <strong>generosidad</strong>, no con avaricia.</div>
+      <div class="app-item"><strong>Espiritual</strong> Invertir en lo eterno: oración, caridad, servicio.</div>
+      <div class="app-item"><strong>Crisis</strong> Recordar que la vida es un préstamo; no aferrarse a lo material.</div>
+      <div class="app-item"><strong>Evangelización</strong> Testimoniar con la <strong>generosidad</strong>, no con la acumulación.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Todo lo que tenemos es un don confiado, no una propiedad.<br>La fidelidad se demuestra en lo cotidiano.”
+    <small>La riqueza es un medio, no un fin. La salvación es gracia, no recompensa por méritos. La indiferencia ante el pobre es un pecado grave. El apego a los bienes impide seguir a Jesús. El juicio es real y la responsabilidad es proporcional al don. A quien se le dio mucho, mucho se le demandará. La salvación es imposible para el hombre, pero posible para Dios.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de síntesis · Bloque 3: El Dinero y la Mayordomía · 7 parábolas de Jesús · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

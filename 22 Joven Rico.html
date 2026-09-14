@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Joven Rico</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #1a3a5a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #1a3a5a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #4a6a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #b8c8d8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafcff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #1a3a5a;
+    border-bottom: 1.5px solid #d0dce8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #3a5a7a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #1a3a5a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #1a3a5a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0dce8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2f7fc;
+  }
+
+  /* DIÁLOGO */
+  .dialogo-box {
+    background: #f0f6fc;
+    border: 2px solid #4a7aaa;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .dialogo-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1a3a5a;
+    margin-bottom: 3px;
+  }
+  .dialogo-box .cita {
+    font-size: 8.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .dialogo-box .cita strong {
+    font-style: normal;
+  }
+
+  /* DOS CAMINOS */
+  .dos-caminos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .camino-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .camino-riqueza {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .camino-vida {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .camino-card .icono {
+    font-size: 20pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .camino-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .camino-riqueza h4 { color: #b02020; }
+  .camino-vida h4 { color: #1a7a3a; }
+  .camino-card ul {
+    text-align: left;
+  }
+  .camino-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .camino-riqueza ul li::before { color: #b02020; }
+  .camino-vida ul li::before { color: #1a7a3a; }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #b8c8d8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f2f7fc;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #1a3a5a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2f7fc;
+    border-left: 3px solid #1a3a5a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #1a3a5a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #b8c8d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2f7fc;
+  }
+  .app-item strong {
+    color: #1a3a5a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #1a3a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #1a3a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .camino-riqueza { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .camino-vida { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .dialogo-box { background: #f0f6fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Joven Rico</h1>
+    <div class="subtitulo">El apego que impide seguir a Jesús</div>
+    <div class="referencia">Mateo 19:16-30 · Marcos 10:17-31 · Lucas 18:18-30 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un joven rico se acerca a Jesús y le pregunta: <em>"Maestro, ¿qué bien haré para tener la vida eterna?"</em>. Jesús le dice que guarde los mandamientos. El joven responde que los ha guardado desde su juventud. Entonces Jesús, <strong>mirándole, le amó</strong>, y le dijo: <em>"Una cosa te falta: anda, vende todo lo que tienes, y dalo a los pobres, y tendrás tesoro en el cielo; y ven, sígueme"</em>.</p>
+      <p style="font-size:9.5pt;">Pero el joven, <strong>entristecido</strong> por aquella palabra, se fue <strong>triste</strong>, porque tenía muchas posesiones. Jesús dijo a sus discípulos: <em>"¡Cuán difícilmente entrarán en el reino de Dios los que tienen riquezas!... Más fácil es pasar un camello por el ojo de una aguja, que entrar un rico en el reino de Dios"</em>.</p>
+      <p style="font-size:9.5pt;">Los discípulos se asombraron: <em>"¿Quién, pues, podrá ser salvo?"</em>. Jesús respondió: <em>"Para los hombres es imposible; mas para Dios, todas las cosas son posibles"</em>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que la riqueza sea mala en sí misma: el problema es el <strong>apego</strong>.</li>
+        <li>No enseña que la salvación se gane por obras: el joven confiaba en sus <strong>méritos</strong>.</li>
+        <li>No enseña que el joven sea malvado: es <strong>moralmente bueno</strong>, pero <strong>apegado</strong>.</li>
+        <li>No enseña que todos deban vender todo: es una llamada <strong>personal</strong> y <strong>radical</strong>.</li>
+        <li>No enseña que los ricos no puedan salvarse: <strong>"para Dios todo es posible"</strong>.</li>
+        <li>No enseña que Jesús lo rechace: lo <strong>miró y lo amó</strong> antes de llamarlo.</li>
+        <li>No enseña que la tristeza sea el fin: es la <strong>revelación</strong> de un corazón dividido.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La vida eterna no se gana con obras:</strong> el joven cumplía los mandamientos, pero le faltaba lo esencial.</li>
+        <li><strong>El apego a los bienes impide seguir a Jesús:</strong> el joven se fue triste porque tenía muchas posesiones.</li>
+        <li><strong>Jesús mira con amor antes de llamar:</strong> "mirándole, le amó". La llamada nace del amor, no del juicio.</li>
+        <li><strong>La radicalidad del seguimiento:</strong> "vende todo... y ven, sígueme". No hay medias tintas.</li>
+        <li><strong>El tesoro en el cielo vale más que los bienes terrenales.</strong></li>
+        <li><strong>La salvación es imposible para el hombre, posible para Dios:</strong> la gracia lo puede todo.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La tristeza revela el corazón:</strong> el joven se entristeció porque su tesoro estaba en la tierra.</li>
+        <li><strong>El desapego es la puerta del discipulado:</strong> no se puede seguir a Jesús aferrado a algo.</li>
+        <li><strong>La mirada de Jesús es la clave:</strong> ve el corazón, no solo las apariencias.</li>
+        <li><strong>La pregunta del joven es la nuestra:</strong> "¿qué me falta?".</li>
+        <li><strong>La respuesta de Jesús es personal:</strong> a cada uno le falta algo distinto.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS DOS CAMINOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Los dos caminos: la riqueza y la vida eterna</h2>
+    <div class="dos-caminos">
+      <div class="camino-card camino-riqueza">
+        <span class="icono">🔴</span>
+        <h4>El camino del joven</h4>
+        <ul>
+          <li>Cumple los <strong>mandamientos</strong> desde joven.</li>
+          <li>Pregunta qué <strong>hacer</strong> para heredar la vida eterna.</li>
+          <li>Confiaba en sus <strong>méritos</strong>.</li>
+          <li>Jesús lo <strong>miró y lo amó</strong>.</li>
+          <li>Le faltaba <strong>una cosa</strong>: vender todo y seguirlo.</li>
+          <li>Se fue <strong>triste</strong> porque tenía muchas posesiones.</li>
+        </ul>
+      </div>
+      <div class="camino-card camino-vida">
+        <span class="icono">🟢</span>
+        <h4>El camino de Jesús</h4>
+        <ul>
+          <li>No basta <strong>cumplir</strong>: hay que <strong>seguir</strong>.</li>
+          <li>No basta <strong>hacer</strong>: hay que <strong>dejarse</strong>.</li>
+          <li>No basta la <strong>riqueza</strong>: hay que el <strong>tesoro en el cielo</strong>.</li>
+          <li>El seguimiento exige <strong>desapego radical</strong>.</li>
+          <li>La salvación es <strong>imposible</strong> para el hombre, <strong>posible</strong> para Dios.</li>
+          <li>La <strong>gracia</strong> es la que salva, no las obras.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dialogo-box">
+      <div class="titulo">💬 El diálogo clave: "Una cosa te falta"</div>
+      <div class="cita">
+        <strong>Joven:</strong> "Maestro, ¿qué bien haré para tener la vida eterna?"<br>
+        <strong>Jesús:</strong> "Guarda los mandamientos".<br>
+        <strong>Joven:</strong> "Todo esto he guardado desde mi juventud. ¿Qué más me falta?"<br>
+        <strong>Jesús:</strong> "Si quieres ser perfecto, anda, vende lo que tienes, y dalo a los pobres, y tendrás tesoro en el cielo; y ven, sígueme".<br>
+        <strong>Joven:</strong> <em>Se fue triste, porque tenía muchas posesiones.</em><br>
+        <strong>Jesús:</strong> "¡Cuán difícilmente entrarán en el reino de Dios los que tienen riquezas!... Para los hombres es imposible; mas para Dios, todas las cosas son posibles".
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>ζωὴν αἰώνιον</td>
+        <td>zōēn aiōnion</td>
+        <td>vida eterna</td>
+        <td>La <strong>vida</strong> del siglo venidero. No solo duración: <strong>calidad</strong> de vida con Dios.</td>
+      </tr>
+      <tr>
+        <td>τηρήσας</td>
+        <td>tērēsas</td>
+        <td>habiendo guardado</td>
+        <td>El joven <strong>guardaba</strong> los mandamientos. Pero guardar <strong>no basta</strong>.</td>
+      </tr>
+      <tr>
+        <td>ὑστερῶ</td>
+        <td>hysterō</td>
+        <td>me falta, estoy falto</td>
+        <td>"Una cosa te falta". El verbo indica <strong>carencia</strong>. De aquí viene "histéresis".</td>
+      </tr>
+      <tr>
+        <td>πωλήσας</td>
+        <td>pōlēsas</td>
+        <td>habiendo vendido</td>
+        <td>Vender <strong>todo</strong>. La entrega es <strong>radical</strong>.</td>
+      </tr>
+      <tr>
+        <td>διάδος</td>
+        <td>diados</td>
+        <td>da, reparte</td>
+        <td>Dar a los <strong>pobres</strong>. La riqueza debe <strong>circular</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἀκολούθει</td>
+        <td>akolouthei</td>
+        <td>sigue</td>
+        <td>Presente continuo: <strong>sigue</strong> de una vez por todas. El discipulado es <strong>camino</strong>.</td>
+      </tr>
+      <tr>
+        <td>λυπούμενος</td>
+        <td>lypoumenos</td>
+        <td>entristecido</td>
+        <td>El joven se <strong>entristeció</strong>. La tristeza revela el <strong>apego</strong>.</td>
+      </tr>
+      <tr>
+        <td>κτήματα</td>
+        <td>ktēmata</td>
+        <td>posesiones, propiedades</td>
+        <td>Tenía <strong>muchas posesiones</strong>. La raíz del problema.</td>
+      </tr>
+      <tr>
+        <td>κάμηλος</td>
+        <td>kamēlos</td>
+        <td>camello</td>
+        <td>Animal grande. La imagen es <strong>hiperbólica</strong>: imposible.</td>
+      </tr>
+      <tr>
+        <td>τρήματος</td>
+        <td>trēmatos</td>
+        <td>ojo, agujero</td>
+        <td>El <strong>ojo de la aguja</strong>. Imagen de <strong>imposibilidad</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἀδύνατον</td>
+        <td>adynaton</td>
+        <td>imposible</td>
+        <td>Para los hombres es <strong>imposible</strong>. La salvación no es obra humana.</td>
+      </tr>
+      <tr>
+        <td>δυνατά</td>
+        <td>dynata</td>
+        <td>posibles</td>
+        <td>Para Dios <strong>todo es posible</strong>. La <strong>gracia</strong> lo puede todo.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>hysterō</em> ("me falta") es clave. El joven <strong>cumplía</strong> los mandamientos, pero le <strong>faltaba</strong> lo esencial: el <strong>desapego</strong>. La salvación no se gana por <strong>obras</strong>, sino que se recibe por <strong>gracia</strong>.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Proverbios 19:17: "A Jehová presta el que da al pobre". Eclesiástico 7:32-36: no vuelvas la cara al pobre. La limosna como camino de salvación.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El desapego (nekkhamma) como camino. La codicia (lobha) como uno de los tres venenos. El rey y los cuatro mensajeros: la impermanencia.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El sabio no acumula: cuanto más hace para los demás, más tiene" (Tao 81). "El que sabe que tiene bastante es rico" (Tao 33). La no acumulación.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 63:9: "Que vuestros bienes no os distraigan del recuerdo de Dios". Hadiz: "Nada llena la boca del hijo de Adán excepto la tierra". La riqueza como prueba.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El desapego (vairāgya) como camino. La limosna (dāna) como virtud. El karma: la riqueza no acompaña al alma después de la muerte.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La indiferencia (adiaphora): la riqueza no es un bien ni un mal. La autosuficiencia (autarkeia): el sabio no depende de los bienes externos.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La eudaimonia: la felicidad no está en la riqueza, sino en la virtud. La magnificencia (megaloprepeia): usar la riqueza para el bien.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">"El hombre superior entiende la rectitud; el inferior, el provecho" (Analectas 4:16). La rectitud sobre el provecho. La comodidad no es el fin del sabio.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Riqueza: don de Dios, medio para servir</li>
+          <li>Apego: obstáculo para el seguimiento</li>
+          <li>Desapego: puerta del discipulado</li>
+          <li>Salvación: gracia, no obras</li>
+          <li>Jesús: mira con amor antes de llamar</li>
+          <li>Tesoro en el cielo: verdadera riqueza</li>
+          <li>Para Dios todo es posible: la gracia lo puede todo</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Fin en sí mismo, ídolo</li>
+          <li>Confianza en los bienes</li>
+          <li>Medias tintas en el seguimiento</li>
+          <li>Recompensa por méritos</li>
+          <li>Rechazo del pecador</li>
+          <li>Acumular tesoros en la tierra</li>
+          <li>Imposibilidad de salvación para el rico</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#1a3a5a;"><strong>El joven no es condenado por ser rico, sino por su <strong>apego</strong>. Jesús lo miró y lo amó antes de llamarlo. La salvación es imposible para el hombre, pero posible para Dios. La gracia lo puede todo.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Qué me falta para seguir a Jesús de verdad?</div>
+      <div class="item">2. ¿Confío en mis <strong>obras</strong> o en la <strong>gracia</strong>?</div>
+      <div class="item">3. ¿Cuál es mi <strong>apego</strong> que me impide seguirlo?</div>
+      <div class="item">4. ¿He sentido la <strong>mirada amorosa</strong> de Jesús sobre mí?</div>
+      <div class="item">5. ¿Estoy dispuesto a <strong>vender</strong> lo que me ata?</div>
+      <div class="item">6. ¿Mi tristeza revela un corazón <strong>dividido</strong>?</div>
+      <div class="item">7. ¿Dónde está mi <strong>tesoro</strong>: en la tierra o en el cielo?</div>
+      <div class="item">8. ¿Reconozco que la salvación es <strong>imposible</strong> para mí, pero <strong>posible</strong> para Dios?</div>
+      <div class="item">9. ¿Sigo a Jesús con <strong>radicalidad</strong> o con medias tintas?</div>
+      <div class="item">10. ¿Qué me impide <strong>dar</strong> a los pobres con generosidad?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> No aferrarse a los bienes; invertir en relaciones, no en acumulación.</div>
+      <div class="app-item"><strong>Amistad</strong> Compartir lo que se tiene; no reducir las relaciones a intercambios utilitarios.</div>
+      <div class="app-item"><strong>Comunidad</strong> Ser generoso con los bienes; no acumular mientras otros pasan necesidad.</div>
+      <div class="app-item"><strong>Trabajo</strong> Trabajar para vivir, no vivir para trabajar; el trabajo es medio, no fin.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar el propio <strong>apego</strong>: ¿qué me impide seguir a Jesús?</div>
+      <div class="app-item"><strong>Sociedad</strong> Promover la justicia económica; no acumular mientras otros sufren.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Administrar los bienes con <strong>generosidad</strong>, no con avaricia.</div>
+      <div class="app-item"><strong>Espiritual</strong> Invertir en lo eterno: oración, caridad, servicio.</div>
+      <div class="app-item"><strong>Crisis</strong> Recordar que la vida es un préstamo; no aferrarse a lo material.</div>
+      <div class="app-item"><strong>Evangelización</strong> Testimoniar con la <strong>generosidad</strong>, no con la acumulación.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Una cosa te falta: vende todo lo que tienes, y dalo a los pobres,<br>y tendrás tesoro en el cielo; y ven, sígueme.”
+    <small>El joven se fue triste porque tenía muchas posesiones. La salvación es imposible para el hombre, pero posible para Dios. La gracia lo puede todo. El apego impide seguir a Jesús; el desapego abre la puerta del discipulado.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Joven Rico (Mateo 19:16-30; Marcos 10:17-31; Lucas 18:18-30) · Bloque 3: El dinero y la mayordomía · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>
