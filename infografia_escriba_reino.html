@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Escriba Instruido en el Reino</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #1a4a5a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #1a4a5a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #4a7a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #b8d0d8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafdfd;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #1a4a5a;
+    border-bottom: 1.5px solid #d0e0e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #3a6a7a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #1a4a5a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #1a4a5a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0e0e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2f8fa;
+  }
+
+  /* EL TESORO */
+  .tesoro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .tesoro-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .nuevo-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .viejo-card {
+    background: #f5ead0;
+    border: 1.5px solid #d0b070;
+  }
+  .tesoro-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .tesoro-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .nuevo-card h4 { color: #1a7a3a; }
+  .viejo-card h4 { color: #8a5a2a; }
+  .tesoro-card ul {
+    text-align: left;
+  }
+  .tesoro-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .nuevo-card ul li::before { color: #1a7a3a; }
+  .viejo-card ul li::before { color: #8a5a2a; }
+
+  /* CONCLUSIÓN BOX */
+  .conclusion-box {
+    background: #f0f8fa;
+    border: 2px solid #4a8a9a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .conclusion-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1a4a5a;
+    margin-bottom: 3px;
+  }
+  .conclusion-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #b8d0d8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f2f8fa;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #1a4a5a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2f8fa;
+    border-left: 3px solid #1a4a5a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #1a4a5a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #b8d0d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2f8fa;
+  }
+  .app-item strong {
+    color: #1a4a5a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #1a4a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #1a4a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2f8fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f2f8fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2f8fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .nuevo-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .viejo-card { background: #f5ead0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .conclusion-box { background: #f0f8fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Escriba Instruido en el Reino</h1>
+    <div class="subtitulo">El tesoro del discípulo: cosas nuevas y cosas viejas</div>
+    <div class="referencia">Mateo 13:52 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Jesús concluye el <strong>discurso de las parábolas del Reino</strong> con una <strong>breve parábola</strong> sobre el <strong>escriba instruido en el Reino</strong>:</p>
+      <p style="font-size:10pt; margin-bottom:4px; padding: 6px 8px; background: #f0f8fa; border-left: 3px solid #1a4a5a;"><em>"Por eso todo escriba docto en el reino de los cielos es semejante a un padre de familia, que saca de su <strong>tesoro</strong> <strong>cosas nuevas</strong> y <strong>cosas viejas</strong>."</em></p>
+      <p style="font-size:9.5pt;">El <strong>escriba</strong> es el <strong>maestro</strong> de la <strong>Ley</strong> que se ha <strong>convertido</strong> en <strong>discípulo</strong> del <strong>Reino</strong>. Su <strong>tesoro</strong> contiene lo <strong>antiguo</strong> (el <strong>Antiguo Testamento</strong>, la <strong>tradición</strong>) y lo <strong>nuevo</strong> (el <strong>Evangelio</strong>, <strong>Cristo</strong>). El <strong>discípulo sabio</strong> <strong>integra</strong> ambos.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que lo <strong>antiguo</strong> deba ser <strong>desechado</strong>: lo antiguo es parte del tesoro.</li>
+        <li>No enseña que lo <strong>nuevo</strong> deba ser <strong>rechazado</strong>: lo nuevo es parte del tesoro.</li>
+        <li>No enseña que haya que <strong>elegir</strong> entre lo uno y lo otro: hay que <strong>integrar</strong> ambos.</li>
+        <li>No enseña que el <strong>escriba</strong> sea un <strong>enemigo</strong> del Reino: el escriba <strong>instruido</strong> es <strong>discípulo</strong> del Reino.</li>
+        <li>No enseña que la <strong>tradición</strong> sea <strong>suficiente</strong>: la tradición sin lo nuevo se vuelve estéril.</li>
+        <li>No enseña que la <strong>novedad</strong> sea <strong>suficiente</strong>: la novedad sin raíz se vuelve superficial.</li>
+        <li>No enseña que el <strong>tesoro</strong> sea <strong>estático</strong>: el tesoro se <strong>saca</strong>, se <strong>comparte</strong>, se <strong>actualiza</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>El discípulo del Reino es un escriba instruido:</strong> conoce la Escritura y el Evangelio.</li>
+        <li><strong>El discípulo tiene un tesoro:</strong> la Palabra de Dios, la tradición, la experiencia.</li>
+        <li><strong>El tesoro contiene cosas nuevas y viejas:</strong> el Antiguo y el Nuevo Testamento, la tradición y la novedad.</li>
+        <li><strong>El discípulo sabe sacar del tesoro:</strong> sabe cuándo usar lo antiguo y cuándo lo nuevo.</li>
+        <li><strong>La sabiduría consiste en integrar:</strong> no en elegir entre lo uno o lo otro.</li>
+        <li><strong>El discípulo es un padre de familia:</strong> comparte el tesoro con los demás.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La tradición tiene valor:</strong> lo antiguo es parte del tesoro.</li>
+        <li><strong>La novedad tiene valor:</strong> lo nuevo es parte del tesoro.</li>
+        <li><strong>El discípulo no desprecia nada:</strong> todo lo bueno es parte del tesoro.</li>
+        <li><strong>El discípulo no se aferra a nada:</strong> sabe cuándo sacar lo antiguo y cuándo lo nuevo.</li>
+        <li><strong>La enseñanza es un servicio:</strong> el discípulo comparte el tesoro con los demás.</li>
+        <li><strong>El Reino integra y supera:</strong> el Reino no niega el pasado, lo cumple y lo supera.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: EL TESORO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>💎 El tesoro del discípulo: cosas nuevas y cosas viejas</h2>
+    <div class="tesoro-grid">
+      <div class="tesoro-card viejo-card">
+        <span class="icono">📜</span>
+        <h4>Cosas viejas</h4>
+        <ul>
+          <li>El <strong>Antiguo Testamento</strong>: la Ley, los Profetas, los Salmos.</li>
+          <li>La <strong>tradición</strong> de Israel: la historia, la sabiduría, la liturgia.</li>
+          <li>La <strong>experiencia</strong> acumulada de la fe.</li>
+          <li>El <strong>depósito</strong> de la fe transmitido por generaciones.</li>
+          <li><strong>Valor:</strong> la raíz, la identidad, la continuidad.</li>
+          <li><strong>Riesgo:</strong> volverse estéril si se aísla de lo nuevo.</li>
+        </ul>
+      </div>
+      <div class="tesoro-card nuevo-card">
+        <span class="icono">✨</span>
+        <h4>Cosas nuevas</h4>
+        <ul>
+          <li>El <strong>Evangelio</strong>: la vida, muerte y resurrección de Jesús.</li>
+          <li>La <strong>novedad</strong> del Reino inaugurado por Cristo.</li>
+          <li>La <strong>acción</strong> del Espíritu Santo en el presente.</li>
+          <li>La <strong>comprensión</strong> nueva de la Escritura a la luz de Cristo.</li>
+          <li><strong>Valor:</strong> la vida, la frescura, la actualidad.</li>
+          <li><strong>Riesgo:</strong> volverse superficial si se aísla de lo antiguo.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="conclusion-box">
+      <div class="titulo">✨ La sabiduría del escriba instruido: integrar lo nuevo y lo viejo</div>
+      <div class="desc">El <strong>discípulo sabio</strong> no <strong>desprecia</strong> lo <strong>antiguo</strong> ni <strong>rechaza</strong> lo <strong>nuevo</strong>. <strong>Integra</strong> ambos en su <strong>tesoro</strong>. <strong>Sabe</strong> cuándo <strong>sacar</strong> lo <strong>antiguo</strong> y cuándo lo <strong>nuevo</strong>. La <strong>tradición</strong> sin <strong>novedad</strong> se <strong>vuelve</strong> <strong>estéril</strong>. La <strong>novedad</strong> sin <strong>raíz</strong> se <strong>vuelve</strong> <strong>superficial</strong>. El <strong>discípulo</strong> es un <strong>puente</strong> entre el <strong>pasado</strong> y el <strong>presente</strong>, entre la <strong>tradición</strong> y la <strong>innovación</strong>. La <strong>sabiduría</strong> consiste en <strong>sacar del tesoro</strong> lo que <strong>cada</strong> <strong>momento</strong> <strong>necesita</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>γραμματεύς</td>
+        <td>grammateus</td>
+        <td>escriba, maestro de la Ley</td>
+        <td>El experto en la Escritura. De aquí viene "gramática". El escriba instruido en el Reino.</td>
+      </tr>
+      <tr>
+        <td>μαθητευθείς</td>
+        <td>mathēteutheis</td>
+        <td>habiendo sido instruido, hecho discípulo</td>
+        <td>De <em>mathēteuō</em> (hacer discípulo). El escriba se ha convertido en discípulo del Reino.</td>
+      </tr>
+      <tr>
+        <td>βασιλεία</td>
+        <td>basileia</td>
+        <td>reino</td>
+        <td>El Reino de los cielos. El ámbito del discipulado.</td>
+      </tr>
+      <tr>
+        <td>οἰκοδεσπότης</td>
+        <td>oikodespotēs</td>
+        <td>padre de familia, dueño de casa</td>
+        <td>De <em>oikos</em> (casa) + <em>despotēs</em> (señor). El que administra el tesoro.</td>
+      </tr>
+      <tr>
+        <td>θησαυρός</td>
+        <td>thēsauros</td>
+        <td>tesoro</td>
+        <td>De aquí viene "tesorería". El depósito de la sabiduría. El tesoro del discípulo.</td>
+      </tr>
+      <tr>
+        <td>ἐκβάλλω</td>
+        <td>ekballō</td>
+        <td>sacar, extraer</td>
+        <td>El padre de familia <strong>saca</strong> del tesoro. La acción de compartir.</td>
+      </tr>
+      <tr>
+        <td>καινός</td>
+        <td>kainos</td>
+        <td>nuevo, reciente</td>
+        <td>No solo "cronológicamente nuevo", sino "cualitativamente nuevo". La novedad del Reino.</td>
+      </tr>
+      <tr>
+        <td>παλαιός</td>
+        <td>palaios</td>
+        <td>viejo, antiguo</td>
+        <td>Lo antiguo, lo tradicional. De aquí viene "paleontología". El Antiguo Testamento.</td>
+      </tr>
+      <tr>
+        <td>λόγος</td>
+        <td>logos</td>
+        <td>palabra, discurso</td>
+        <td>La Palabra de Dios. El contenido del tesoro.</td>
+      </tr>
+      <tr>
+        <td>σοφία</td>
+        <td>sophia</td>
+        <td>sabiduría</td>
+        <td>La sabiduría del discípulo. La capacidad de integrar lo nuevo y lo viejo.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La palabra <em>καινός</em> (kainos, "nuevo") no significa solo "cronológicamente nuevo", sino "cualitativamente nuevo". La novedad del Reino no es solo una cuestión de tiempo: es una <strong>transformación cualitativa</strong>. Y <em>παλαιός</em> (palaios, "antiguo") no es despectivo: lo antiguo tiene valor. La sabiduría del discípulo consiste en <strong>integrar</strong> ambos.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Proverbios 13:22: "El hombre de bien dejará herencia a los hijos de sus hijos". La tradición como tesoro. Mishná Avot 1:1: "Moisés recibió la Torá... y la transmitió". La cadena de transmisión.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La transmisión del dharma de maestro a discípulo. La integración de la sabiduría antigua con la experiencia presente. El loto que brota del barro: la novedad que surge de lo antiguo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El Tao que puede ser nombrado no es el Tao eterno" (Tao 1): la verdad trasciende las formas. Wu wei: la sabiduría fluye entre lo antiguo y lo nuevo. El agua se adapta.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 2:26: Dios propone parábolas. La tradición del Profeta (hadiz) y el Corán. La integración de la sabiduría antigua con la revelación nueva.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La transmisión del guru al discípulo. La integración de los Vedas (antiguo) con la experiencia devocional (nuevo). La sabiduría como tesoro transmitido.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La sabiduría como tesoro interior. La integración de la filosofía antigua con la experiencia presente. La phrónesis de saber cuándo usar cada enseñanza.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La phrónesis: la sabiduría práctica de saber cuándo usar lo antiguo y cuándo lo nuevo. La tradición como base para la innovación.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La transmisión de la tradición. "El hombre superior estudia lo antiguo para comprender lo nuevo" (Analectas 2:11). La integración de tradición e innovación.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Escriba instruido: maestro de la Ley convertido en discípulo del Reino</li>
+          <li>Tesoro: depósito de la sabiduría</li>
+          <li>Cosas nuevas: el Evangelio, la novedad del Reino</li>
+          <li>Cosas viejas: el Antiguo Testamento, la tradición</li>
+          <li>Sabiduría: integrar lo nuevo y lo viejo</li>
+          <li>Discipulado: compartir el tesoro con los demás</li>
+          <li>Padre de familia: el discípulo que administra el tesoro</li>
+          <li>Servicio: la enseñanza como servicio</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Desechar lo antiguo</li>
+          <li>Rechazar lo nuevo</li>
+          <li>Elegir entre lo uno o lo otro</li>
+          <li>Escriba como enemigo del Reino</li>
+          <li>Tradición suficiente sin novedad</li>
+          <li>Novedad suficiente sin raíz</li>
+          <li>Tesoro estático sin compartir</li>
+          <li>Enseñanza como dominio</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#1a4a5a;"><strong>El discípulo del Reino es un escriba instruido: conoce la Escritura y el Evangelio. Su tesoro contiene cosas nuevas y viejas. La sabiduría consiste en integrar ambas. La tradición sin novedad se vuelve estéril. La novedad sin raíz se vuelve superficial. El discípulo comparte el tesoro con los demás.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Soy un <strong>escriba instruido</strong> en el Reino?</div>
+      <div class="item">2. ¿Tengo un <strong>tesoro</strong> de sabiduría?</div>
+      <div class="item">3. ¿<strong>Integro</strong> lo antiguo y lo nuevo?</div>
+      <div class="item">4. ¿<strong>Desprecio</strong> la tradición o la novedad?</div>
+      <div class="item">5. ¿Sé <strong>sacar</strong> del tesoro lo que cada momento necesita?</div>
+      <div class="item">6. ¿<strong>Comparto</strong> el tesoro con los demás?</div>
+      <div class="item">7. ¿Mi <strong>tradición</strong> es viva o estéril?</div>
+      <div class="item">8. ¿Mi <strong>novedad</strong> tiene raíz o es superficial?</div>
+      <div class="item">9. ¿Mi <strong>enseñanza</strong> es servicio o dominio?</div>
+      <div class="item">10. ¿El <strong>Reino</strong> integra y supera mi pasado?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Transmitir el tesoro de la fe: tradición y novedad en el hogar.</div>
+      <div class="app-item"><strong>Amistad</strong> Compartir la sabiduría: lo antiguo y lo nuevo en las relaciones.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>integración</strong>: tradición viva y novedad con raíz.</div>
+      <div class="app-item"><strong>Trabajo</strong> Integrar la experiencia acumulada con la innovación presente.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar el tesoro: la Palabra, la tradición, la experiencia.</div>
+      <div class="app-item"><strong>Sociedad</strong> Integrar la sabiduría antigua con los desafíos nuevos.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar integrando tradición e innovación.</div>
+      <div class="app-item"><strong>Espiritual</strong> Saber sacar del tesoro lo que cada momento necesita.</div>
+      <div class="app-item"><strong>Crisis</strong> Recurrir al tesoro: la tradición y la novedad sostienen en la crisis.</div>
+      <div class="app-item"><strong>Evangelización</strong> Anunciar el Evangelio integrando lo antiguo y lo nuevo.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Todo escriba docto en el reino de los cielos es semejante a un padre de familia,<br>que saca de su tesoro cosas nuevas y cosas viejas.”
+    <small>El discípulo del Reino es un escriba instruido: conoce la Escritura y el Evangelio. Su tesoro contiene cosas nuevas y viejas. La sabiduría consiste en integrar ambas. La tradición sin novedad se vuelve estéril. La novedad sin raíz se vuelve superficial. El discípulo comparte el tesoro con los demás. El Reino no niega el pasado: lo cumple y lo supera.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Escriba Instruido en el Reino (Mateo 13:52) · Bloque 7: El juicio y las consecuencias · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

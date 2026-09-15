@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Rico Insensato</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #8a4a1a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #8a4a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #b07a3a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e0c8a8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fffdf8;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #8a4a1a;
+    border-bottom: 1.5px solid #ede0c8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #a86a2a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #8a4a1a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #8a4a1a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0c8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf6ee;
+  }
+
+  /* DOS RIQUEZAS */
+  .dos-riquezas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .riqueza-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .riqueza-falsa {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .riqueza-verdadera {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .riqueza-card .icono {
+    font-size: 20pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .riqueza-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .riqueza-falsa h4 { color: #b02020; }
+  .riqueza-verdadera h4 { color: #1a7a3a; }
+  .riqueza-card ul {
+    text-align: left;
+  }
+  .riqueza-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .riqueza-falsa ul li::before { color: #b02020; }
+  .riqueza-verdadera ul li::before { color: #1a7a3a; }
+
+  /* DIÁLOGO INTERIOR */
+  .dialogo-box {
+    background: #faf4e8;
+    border: 2px solid #c8a060;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .dialogo-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #8a4a1a;
+    margin-bottom: 3px;
+  }
+  .dialogo-box .cita {
+    font-size: 8.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .dialogo-box .cita strong {
+    font-style: normal;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e0c8a8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf6ee;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #8a4a1a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf6ee;
+    border-left: 3px solid #8a4a1a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #8a4a1a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e0c8a8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf6ee;
+  }
+  .app-item strong {
+    color: #8a4a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #8a4a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #8a4a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .riqueza-falsa { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .riqueza-verdadera { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .dialogo-box { background: #faf4e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Rico Insensato</h1>
+    <div class="subtitulo">La insensatez de acumular sin contar con Dios</div>
+    <div class="referencia">Lucas 12:16-21 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un hombre rico tiene una cosecha <strong>abundante</strong>. Delibera consigo mismo: <em>"¿Qué haré, porque no tengo dónde guardar mis frutos?"</em>. Decide <strong>derribar sus graneros</strong> y construir otros mayores, para almacenar todo y decir a su alma: <em>"Alma, muchos bienes tienes guardados para muchos años; repósate, come, bebe, regocíjate"</em>.</p>
+      <p style="font-size:9.5pt;">Pero Dios le dice: <strong>"Necio, esta noche vienen a pedirte tu alma; y lo que has provisto, ¿de quién será?"</strong>. Jesús concluye: <em>"Así es el que hace para sí tesoro, y no es rico para con Dios"</em>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que la riqueza sea mala en sí misma: el problema es <strong>confiar</strong> en ella.</li>
+        <li>No enseña que la planificación sea mala: el problema es planificar <strong>sin Dios</strong>.</li>
+        <li>No enseña que la cosecha abundante sea castigo: es <strong>bendición</strong> mal administrada.</li>
+        <li>No enseña que el rico sea malvado: no roba, no engaña, no oprime. Es <strong>necio</strong>.</li>
+        <li>No enseña que Dios castigue arbitrariamente: la muerte es el <strong>recordatorio</strong> de la finitud.</li>
+        <li>No enseña que la muerte sea el fin de todo: hay una <strong>vida después de la muerte</strong>.</li>
+        <li>No enseña que haya que vivir sin previsión: la sensatez <strong>incluye a Dios</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La vida no consiste en la abundancia de bienes:</strong> es más que la suma de posesiones.</li>
+        <li><strong>La insensatez de planificar sin Dios:</strong> calcular todo excepto lo esencial.</li>
+        <li><strong>La ilusión de la autosuficiencia:</strong> el monólogo interior de la codicia.</li>
+        <li><strong>La reducción del alma al estómago:</strong> "come, bebe, regocíjate".</li>
+        <li><strong>La muerte llega de improviso:</strong> no avisa, no negocia, no pospone.</li>
+        <li><strong>La vida es un préstamo, no una propiedad:</strong> Dios la reclama.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>Lo acumulado queda para otros:</strong> "¿de quién será?".</li>
+        <li><strong>La verdadera riqueza es ser "rico para con Dios":</strong> invertir en lo eterno.</li>
+        <li><strong>La riqueza es un medio, no un fin:</strong> instrumento, no ídolo.</li>
+        <li><strong>La insensatez no es inmoralidad, sino ceguera:</strong> no ver lo esencial.</li>
+        <li><strong>La generosidad es la respuesta sensata a la abundancia.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS DOS RIQUEZAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>💰 Las dos riquezas: acumular para sí o ser rico para con Dios</h2>
+    <div class="dos-riquezas">
+      <div class="riqueza-card riqueza-falsa">
+        <span class="icono">🔴</span>
+        <h4>La riqueza insensata</h4>
+        <ul>
+          <li>Acumular <strong>para sí</strong>.</li>
+          <li>Confiar en los <strong>bienes</strong>.</li>
+          <li>Planificar <strong>sin Dios</strong>.</li>
+          <li>Decir al alma: <em>"come, bebe, regocíjate"</em>.</li>
+          <li>Creer que la vida es <strong>propiedad</strong>.</li>
+          <li>Termina en la <strong>muerte</strong> y la <strong>pérdida</strong>.</li>
+        </ul>
+      </div>
+      <div class="riqueza-card riqueza-verdadera">
+        <span class="icono">🟢</span>
+        <h4>La riqueza verdadera</h4>
+        <ul>
+          <li>Invertir <strong>en Dios</strong>.</li>
+          <li>Confiar en el <strong>Señor</strong>.</li>
+          <li>Planificar <strong>con Dios</strong>.</li>
+          <li>Decir al alma: <em>"confía en el Señor"</em>.</li>
+          <li>Reconocer que la vida es <strong>préstamo</strong>.</li>
+          <li>Termina en la <strong>vida eterna</strong>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dialogo-box">
+      <div class="titulo">🗣️ El diálogo interior del rico</div>
+      <div class="cita">
+        <strong>"¿Qué haré?"</strong> — Delibera solo consigo mismo. No consulta a Dios, no consulta a los sabios, no consulta a los pobres.<br>
+        <strong>"Esto haré"</strong> — Decide sin consultar. Su planificación es completa en lo material y vacía en lo espiritual.<br>
+        <strong>"Diré a mi alma"</strong> — Trata su alma como estómago. Reduce la vida espiritual a la satisfacción material.<br>
+        <strong>"Necio"</strong> — Dios desenmascara la ilusión. <em>Áphrōn</em>: "sin mente", el que no ha <strong>pensado</strong> en lo esencial.
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>εὐφόρησεν</td>
+        <td>euphorēsen</td>
+        <td>produjo mucho, fue fértil</td>
+        <td>La cosecha <strong>abundante</strong>. Signo de bendición divina en la mentalidad judía.</td>
+      </tr>
+      <tr>
+        <td>διελογίζετο</td>
+        <td>dielogizeto</td>
+        <td>deliberaba, razonaba</td>
+        <td>El hombre rico <strong>razona</strong> consigo mismo. Su diálogo es un <strong>monólogo</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἀποθήκας</td>
+        <td>apothēkas</td>
+        <td>graneros, almacenes</td>
+        <td>Lugares para <strong>almacenar</strong> el grano. El hombre quiere construir otros mayores.</td>
+      </tr>
+      <tr>
+        <td>καθαιρήσω</td>
+        <td>kathairēsō</td>
+        <td>derribaré</td>
+        <td>El hombre no derriba porque estén viejos, sino porque <strong>no le alcanzan</strong>.</td>
+      </tr>
+      <tr>
+        <td>ψυχή</td>
+        <td>psychē</td>
+        <td>alma, vida</td>
+        <td>El hombre trata su alma como <strong>estómago</strong>: "come, bebe, regocíjate".</td>
+      </tr>
+      <tr>
+        <td>ἀναπαύου</td>
+        <td>anapauou</td>
+        <td>reposa, descansa</td>
+        <td>El hombre busca el <strong>descanso</strong> en la acumulación. La verdadera paz no viene de los bienes.</td>
+      </tr>
+      <tr>
+        <td>φάγε, πίε, εὐφραίνου</td>
+        <td>phage, pie, euphrainou</td>
+        <td>come, bebe, regocíjate</td>
+        <td>Eco de <strong>Eclesiastés 8:15</strong>, pero aquí en tono de <strong>autosuficiencia</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἄφρων</td>
+        <td>aphrōn</td>
+        <td>necio, sin razón</td>
+        <td>De <em>a-</em> (sin) + <em>phrēn</em> (mente). No es un insulto: es un <strong>diagnóstico</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἀπαιτοῦσιν</td>
+        <td>apaitousin</td>
+        <td>reclaman, exigen</td>
+        <td>Verbo <strong>legal</strong>: la vida es un <strong>préstamo</strong> que Dios <strong>reclama</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἑτοιμάσας</td>
+        <td>hētoimasas</td>
+        <td>has provisto, has preparado</td>
+        <td>El hombre ha <strong>preparado</strong> todo lo material, pero <strong>no</strong> lo esencial.</td>
+      </tr>
+      <tr>
+        <td>θησαυρίζων ἑαυτῷ</td>
+        <td>thēsaurizōn heautō</td>
+        <td>hace tesoro para sí</td>
+        <td>Acumular para <strong>sí mismo</strong>. La acumulación <strong>egocéntrica</strong>.</td>
+      </tr>
+      <tr>
+        <td>πλουτῶν εἰς θεόν</td>
+        <td>ploutōn eis theon</td>
+        <td>rico para con Dios</td>
+        <td>La <strong>verdadera riqueza</strong>: la relación con Dios. El <strong>inverso</strong> de acumular para sí.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La palabra <em>áphrōn</em> ("necio") es clave. No es un insulto: es un <strong>diagnóstico</strong>. El hombre rico ha <strong>calculado todo</strong> excepto lo esencial. Su razonamiento es impecable en lo material y <strong>vacío</strong> en lo espiritual.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Eclesiastés 2:18-21: la fugacidad del trabajo. Salmo 49: los que confían en sus riquezas. Job 1:21: "desnudo salí, desnudo volveré".</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La impermanencia (anicca): todo es transitorio. El desapego (nekkhamma). Los cuatro mensajeros: nacimiento, enfermedad, vejez, muerte.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El que sabe que tiene bastante es rico" (Tao 33). "No hay desgracia mayor que el deseo de adquirir" (Tao 46). La no acumulación.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 102: "La rivalidad en la acumulación os distrae, hasta que visitáis los sepulcros". Hadiz: "Nada llena la boca del hijo de Adán excepto la tierra".</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El karma y la reencarnación: los bienes no acompañan al alma. El desapego (vairāgya) como camino. Yama, señor de la muerte, llega sin avisar.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La indiferencia (adiaphora): la riqueza no es un bien ni un mal. La autosuficiencia (autarkeia). Memento mori: meditar sobre la muerte.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La eudaimonia: la felicidad no está en la riqueza, sino en la virtud y la contemplación. La prudencia (phrónesis) incompleta del rico.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">"El hombre superior entiende la rectitud; el inferior, el provecho" (Analectas 4:16). La rectitud sobre el provecho. La comodidad no es el fin del sabio.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Riqueza: don de Dios, medio para servir</li>
+          <li>Acumulación: sensata si se ordena a Dios</li>
+          <li>Planificación: sensata si incluye a Dios</li>
+          <li>Seguridad: confianza en Dios</li>
+          <li>Vida: préstamo de Dios</li>
+          <li>Alma: realidad espiritual, inmortal</li>
+          <li>Riqueza verdadera: ser rico para con Dios</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Fin en sí mismo, ídolo</li>
+          <li>Insensata si se hace para sí</li>
+          <li>Insensata si excluye a Dios</li>
+          <li>Confianza en los bienes</li>
+          <li>Propiedad nuestra</li>
+          <li>Estómago que se sacia con bienes</li>
+          <li>Acumular tesoros en la tierra</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#8a4a1a;"><strong>El hombre rico no es condenado por tener mucho, sino por confiar en lo que tiene y olvidar a Dios. La insensatez no es inmoralidad: es ceguera. La verdadera riqueza es ser "rico para con Dios".</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Confío en Dios o en mis bienes?</div>
+      <div class="item">2. ¿Planifico <strong>con</strong> Dios o <strong>sin</strong> él?</div>
+      <div class="item">3. ¿Mi seguridad está en lo que <strong>tengo</strong> o en lo que <strong>soy</strong> ante Dios?</div>
+      <div class="item">4. ¿Trato mi alma como <strong>realidad espiritual</strong> o como <strong>estómago</strong>?</div>
+      <div class="item">5. ¿Reconozco que mi vida es un <strong>préstamo</strong>, no una propiedad?</div>
+      <div class="item">6. ¿Vivo con la <strong>conciencia</strong> de la muerte, o la ignoro?</div>
+      <div class="item">7. ¿Acumulo <strong>para mí</strong> o <strong>para el Reino</strong>?</div>
+      <div class="item">8. ¿Soy <strong>rico para con Dios</strong>, o solo rico para con el mundo?</div>
+      <div class="item">9. ¿Mi abundancia me lleva a <strong>compartir</strong> o a acumular?</div>
+      <div class="item">10. ¿Estoy preparado para <strong>rendir cuentas</strong> a Dios?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> No sacrificar el tiempo con la familia por acumular más bienes.</div>
+      <div class="app-item"><strong>Amistad</strong> Compartir lo que se tiene; no reducir las relaciones a intercambios utilitarios.</div>
+      <div class="app-item"><strong>Comunidad</strong> Ser generoso con los bienes; no acumular mientras otros pasan necesidad.</div>
+      <div class="app-item"><strong>Trabajo</strong> Trabajar para vivir, no vivir para trabajar; el trabajo es medio, no fin.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar en qué confío realmente: ¿en Dios o en mis bienes?</div>
+      <div class="app-item"><strong>Sociedad</strong> Promover la justicia económica; no acumular mientras otros sufren.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Administrar los bienes con <strong>generosidad</strong>, no con avaricia.</div>
+      <div class="app-item"><strong>Espiritual</strong> Invertir en lo eterno: oración, caridad, servicio.</div>
+      <div class="app-item"><strong>Crisis</strong> Recordar que la vida es un préstamo; no aferrarse a lo material.</div>
+      <div class="app-item"><strong>Evangelización</strong> Testimoniar con la generosidad, no con la acumulación.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “La vida no consiste en la abundancia de bienes.<br>El que acumula para sí y no es rico para con Dios es un necio.”
+    <small>Ha calculado todo excepto lo esencial. La muerte llega de improviso y reclama el alma. Todo lo acumulado queda para otros. La verdadera riqueza no es la acumulación material, sino la relación con Dios. La vida es un préstamo, no una propiedad.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Rico Insensato (Lucas 12:16-21) · Bloque 3: El dinero y la mayordomía · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

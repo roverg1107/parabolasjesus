@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Fariseo y el Publicano</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #2a3a6a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #2a3a6a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #4a5a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c0c8e0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafbff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #2a3a6a;
+    border-bottom: 1.5px solid #d0d8e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #4a5a8a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #2a3a6a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #2a3a6a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0d8e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f4f6fc;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* DOS ORANTES */
+  .orantes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .orante-card {
+    border-radius: 5px;
+    padding: 8px 10px;
+  }
+  .fariseo {
+    background: #f5f5f5;
+    border: 1.5px solid #bdbdbd;
+  }
+  .publicano {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .orante-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .fariseo h4 { color: #555; }
+  .publicano h4 { color: #1a7a3a; }
+  .orante-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .fariseo ul li::before { color: #555; }
+  .publicano ul li::before { color: #1a7a3a; }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #c0c8e0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f4f6fc;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #2a3a6a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f4f6fc;
+    border-left: 3px solid #2a3a6a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #2a3a6a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c0c8e0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f4f6fc;
+  }
+  .app-item strong {
+    color: #2a3a6a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #2a3a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #2a3a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f4f6fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f4f6fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f4f6fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .fariseo { background: #f5f5f5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .publicano { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Fariseo y el Publicano</h1>
+    <div class="subtitulo">La humildad que justifica, la soberbia que condena</div>
+    <div class="referencia">Lucas 18:9-14 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Dos hombres suben al templo a orar: un fariseo y un publicano. El fariseo, de pie, ora consigo mismo: <em>"Dios, te doy gracias porque no soy como los demás —ladrones, injustos, adúlteros— ni como este publicano. Ayuno dos veces por semana, doy diezmos de todo"</em>. El publicano, de lejos, no se atreve ni a levantar los ojos al cielo: se golpea el pecho y dice: <em>"Dios, sé propicio a mí, pecador"</em>.</p>
+      <p style="font-size:9.5pt;">Jesús concluye: <strong>"Este descendió a su casa justificado antes que el otro; porque cualquiera que se enaltece, será humillado; y el que se humilla será enaltecido."</strong></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que el fariseo sea un malvado: ayunaba y daba diezmos. Su pecado es la <strong>soberbia espiritual</strong>.</li>
+        <li>No enseña que las buenas obras sean malas: el problema es <strong>confiar en ellas</strong> para justificarse.</li>
+        <li>No enseña que la oración del publicano sea una fórmula mágica a repetir.</li>
+        <li>No enseña que Dios justifique al que sigue pecando: el publicano es justificado por su <strong>humildad y arrepentimiento</strong>.</li>
+        <li>No enseña que haya que menospreciarse: la humildad no es autodesprecio, sino <strong>verdad sobre uno mismo</strong>.</li>
+        <li>No enseña que la santidad consista en sentirse mal.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>Dos formas de orar, dos formas de estar ante Dios:</strong> el fariseo con su currículum; el publicano con su miseria.</li>
+        <li><strong>La autosuficiencia espiritual es una ceguera:</strong> impide ver la propia necesidad.</li>
+        <li><strong>La humildad es la verdad sobre uno mismo:</strong> no pensar mal de sí, sino <em>ver</em> la verdad ante Dios.</li>
+        <li><strong>Dios justifica al que reconoce su necesidad:</strong> la justificación es un don, no un logro.</li>
+        <li><strong>El fariseo se condena por lo que tiene, no por lo que le falta:</strong> su riqueza espiritual se volvió ídolo.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La oración verdadera es diálogo, no monólogo:</strong> el fariseo habla consigo mismo; el publicano, con Dios.</li>
+        <li><strong>La comparación es veneno espiritual:</strong> siempre habrá alguien peor o mejor.</li>
+        <li><strong>La justificación es un don, no un logro:</strong> el publicano no se justifica; es justificado.</li>
+        <li><strong>El que se enaltece será humillado:</strong> la lógica del Reino invierte las categorías humanas.</li>
+        <li><strong>La humildad no es una técnica, sino una relación:</strong> es presentarse ante Dios tal como uno es.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS DOS ORANTES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los dos orantes del templo</h2>
+    <div class="orantes-grid">
+      <div class="orante-card fariseo">
+        <h4>⚪ El fariseo</h4>
+        <ul>
+          <li>Religioso respetable, modelo de piedad.</li>
+          <li>Ora <strong>de pie</strong>, seguro, en voz alta.</li>
+          <li>"Ora consigo mismo": monólogo, no diálogo.</li>
+          <li>Se compara <strong>hacia abajo</strong>: ladrones, injustos, adúlteros, publicanos.</li>
+          <li>Enumera méritos: ayuna dos veces por semana, da diezmos de todo.</li>
+          <li>No pide nada: se presenta con su <strong>currículum espiritual</strong>.</li>
+          <li>Se cree justo. <strong>Por eso se condena.</strong></li>
+        </ul>
+      </div>
+      <div class="orante-card publicano">
+        <h4>🟢 El publicano</h4>
+        <ul>
+          <li>Recaudador de impuestos al servicio de Roma.</li>
+          <li>Considerado <strong>traidor y pecador público</strong>.</li>
+          <li>Ora <strong>de lejos</strong>, sin atreverse a acercarse.</li>
+          <li>No levanta los ojos al cielo.</li>
+          <li>Se <strong>golpea el pecho</strong>: gesto de dolor y arrepentimiento.</li>
+          <li>Su oración es breve y desesperada: <em>"Dios, sé propicio a mí, pecador"</em>.</li>
+          <li>No tiene nada que ofrecer. <strong>Por eso es justificado.</strong></li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#2a3a6a;"><strong>La diferencia no es de postura, sino de corazón. Uno se presenta con sus méritos; el otro, con su miseria. Y Dios justifica al que se presenta con las manos vacías.</strong></p>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>δίκαιος</td>
+        <td>dikaios</td>
+        <td>justo</td>
+        <td>Los destinatarios "confiaban en sí mismos como justos". La justicia propia es el problema.</td>
+      </tr>
+      <tr>
+        <td>ἐξουθενέω</td>
+        <td>exoutheneō</td>
+        <td>menospreciar</td>
+        <td>El fariseo menospreciaba a los demás. La soberbia espiritual desprecia.</td>
+      </tr>
+      <tr>
+        <td>σταθείς</td>
+        <td>statheis</td>
+        <td>puesto en pie</td>
+        <td>Postura normal de oración. No es la postura lo que condena, sino el corazón.</td>
+      </tr>
+      <tr>
+        <td>πρὸς ἑαυτόν</td>
+        <td>pros heauton</td>
+        <td>consigo mismo</td>
+        <td>El fariseo "oraba consigo mismo". Su oración no va a Dios: se queda en él.</td>
+      </tr>
+      <tr>
+        <td>νηστεύω</td>
+        <td>nēsteuō</td>
+        <td>ayunar</td>
+        <td>El fariseo ayuna dos veces por semana. La ley solo exigía una al año.</td>
+      </tr>
+      <tr>
+        <td>ἀποδεκατόω</td>
+        <td>apodekatoō</td>
+        <td>dar diezmo</td>
+        <td>El fariseo da diezmos de todo. Cumplimiento riguroso y ejemplar.</td>
+      </tr>
+      <tr>
+        <td>μακρόθεν</td>
+        <td>makrothen</td>
+        <td>de lejos</td>
+        <td>El publicano se queda lejos. No se atreve a acercarse al altar.</td>
+      </tr>
+      <tr>
+        <td>τύπτω</td>
+        <td>typtō</td>
+        <td>golpear</td>
+        <td>Se golpea el pecho: gesto de dolor y arrepentimiento.</td>
+      </tr>
+      <tr>
+        <td>ἱλάσκομαι</td>
+        <td>hilaskomai</td>
+        <td>sé propicio, expía</td>
+        <td>Verbo del culto sacrificial. Pide <strong>misericordia</strong>, no justicia merecida.</td>
+      </tr>
+      <tr>
+        <td>ἁμαρτωλός</td>
+        <td>hamartōlos</td>
+        <td>pecador</td>
+        <td>El publicano se identifica así. No se justifica ni se excusa.</td>
+      </tr>
+      <tr>
+        <td>δεδικαιωμένος</td>
+        <td>dedikaiōmenos</td>
+        <td>justificado</td>
+        <td>Término legal y religioso. Declarado justo por Dios, no por sus obras.</td>
+      </tr>
+      <tr>
+        <td>ταπεινόω</td>
+        <td>tapeinoō</td>
+        <td>humillar</td>
+        <td>"El que se humilla será enaltecido". La humildad es camino de elevación.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>hilaskomai</em> (sé propicio) es clave: es un verbo del culto sacrificial. El publicano no pide ser justificado por sus obras: pide <strong>misericordia</strong>. Reconoce que no tiene nada que ofrecer excepto su necesidad.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Isaías 66:2: Dios mira al humilde. Salmo 51:17: el corazón contrito. Proverbios 3:34: gracia a los humildes. Talmud Sotá 5b: quien se enaltece será humillado.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">Anattā (no-yo): el ego es ilusión. El fariseo vive en el ego; el publicano se olvida de sí. El discípulo se acerca al maestro con humildad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El bien supremo es como el agua: busca los lugares bajos" (Tao 8). "El sabio no se exhibe, por eso brilla" (Tao 22). La humildad natural del sabio.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 7:23: "Señor, hemos sido injustos con nosotros mismos; si no nos perdonas..." Hadiz: "El que se humilla ante Dios, Dios lo eleva".</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">Bhakti (devoción): el devoto se acerca a Dios con humildad total. Prasāda (gracia) que supera el karma. El sadhu y el pecador transformado.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">Autoconocimiento: el estoico no se engaña sobre sus defectos. El publicano se conoce; el fariseo no. La virtud requiere honestidad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">Megalopsychia: el magnánimo se valora correctamente, sin despreciar a otros. Phrónesis: saber cómo presentarse ante Dios.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">⚖️</span>
+        <span class="nombre">Cinismo</span>
+        <span class="aporte">Crítica a la hipocresía religiosa. El cínico despreciaría al fariseo por su soberbia. La parábola va más allá: el publicano, el despreciado, es el justificado.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que la parábola afirma</h4>
+        <ul>
+          <li>Humildad: verdad sobre uno mismo ante Dios</li>
+          <li>Justificación: don de Dios al que reconoce su necesidad</li>
+          <li>Oración: diálogo con Dios, apertura</li>
+          <li>Arrepentimiento: reconocimiento de la propia miseria</li>
+          <li>Gracia: favor inmerecido de Dios</li>
+          <li>Comparación con Dios: produce humildad</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que la parábola niega</h4>
+        <ul>
+          <li>Autodesprecio o falsa modestia</li>
+          <li>Justicia propia: confianza en los propios méritos</li>
+          <li>Oración como monólogo y autoafirmación</li>
+          <li>Mérito como garantía de justificación</li>
+          <li>Comparación con los demás: veneno espiritual</li>
+          <li>Gracia como recompensa por cumplimiento</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#2a3a6a;"><strong>La humildad no es pensar mal de uno mismo: es ver la verdad de uno mismo ante Dios. El publicano bajó justificado; el fariseo, no.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Me reconozco más en el fariseo o en el publicano?</div>
+      <div class="item">2. ¿Confío en mis méritos o en la misericordia de Dios?</div>
+      <div class="item">3. ¿Me comparo con los demás para sentirme superior?</div>
+      <div class="item">4. ¿Mi oración es diálogo con Dios o monólogo conmigo mismo?</div>
+      <div class="item">5. ¿Reconozco mi propia miseria sin excusas?</div>
+      <div class="item">6. ¿Desprecio a los que no cumplen como yo?</div>
+      <div class="item">7. ¿Me creo justo porque cumplo, o humilde porque reconozco mi necesidad?</div>
+      <div class="item">8. ¿He experimentado la justificación como un don?</div>
+      <div class="item">9. ¿Mi vida espiritual me lleva a la humildad o a la soberbia?</div>
+      <div class="item">10. ¿Estoy dispuesto a golpearme el pecho y pedir misericordia?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> No comparar a los hijos ni a los miembros; reconocer la propia necesidad.</div>
+      <div class="app-item"><strong>Amistad</strong> No despreciar al que ha fallado; reconocer la propia debilidad.</div>
+      <div class="app-item"><strong>Comunidad</strong> No crear jerarquías de "mejores" y "peores"; todos necesitados de gracia.</div>
+      <div class="app-item"><strong>Trabajo</strong> No despreciar al compañero que comete errores; reconocer los propios.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar la propia oración: ¿es diálogo o monólogo?</div>
+      <div class="app-item"><strong>Sociedad</strong> No estigmatizar a los "pecadores" públicos; reconocer la propia sombra.</div>
+      <div class="app-item"><strong>Liderazgo</strong> El líder no se cree superior: reconoce su necesidad de gracia.</div>
+      <div class="app-item"><strong>Espiritual</strong> Orar con humildad, reconociendo la propia miseria.</div>
+      <div class="app-item"><strong>Crisis</strong> No confiar en los propios recursos; pedir misericordia.</div>
+      <div class="app-item"><strong>Perdón</strong> No perdonar desde la superioridad, sino desde la propia necesidad de perdón.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Dios justifica al que reconoce su miseria<br>y resiste al que confía en sus méritos.”
+    <small>La humildad no es pensar mal de uno mismo: es ver la verdad de uno mismo ante Dios. El publicano bajó justificado; el fariseo, no.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Fariseo y el Publicano (Lucas 18:9-14) · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

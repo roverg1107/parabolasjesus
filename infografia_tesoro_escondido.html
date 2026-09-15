@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Tesoro Escondido</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #8a6a00;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #8a6a00;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #b8901a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e0d0a0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fffdf6;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #8a6a00;
+    border-bottom: 1.5px solid #ede0c0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #a8882a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #8a6a00;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #8a6a00;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0c0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf6e8;
+  }
+
+  /* LAS CUATRO ACCIONES */
+  .acciones-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .accion-card {
+    border-radius: 6px;
+    padding: 8px 8px;
+    text-align: center;
+  }
+  .accion-halla {
+    background: #f5f0dc;
+    border: 1.5px solid #c8a830;
+  }
+  .accion-esconde {
+    background: #ede8d0;
+    border: 1.5px solid #b09840;
+  }
+  .accion-vende {
+    background: #f5e8c8;
+    border: 1.5px solid #d0a828;
+  }
+  .accion-compra {
+    background: #e8f0d0;
+    border: 1.5px solid #a8b840;
+  }
+  .accion-card .icono {
+    font-size: 18pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .accion-card h4 {
+    font-size: 9.5pt;
+    margin-bottom: 3px;
+  }
+  .accion-halla h4 { color: #8a6a00; }
+  .accion-esconde h4 { color: #7a5a00; }
+  .accion-vende h4 { color: #8a5a00; }
+  .accion-compra h4 { color: #4a6a00; }
+  .accion-card .desc {
+    font-size: 8pt;
+    color: #444;
+    line-height: 1.25;
+  }
+
+  /* GOZO BOX */
+  .gozo-box {
+    background: #fdf6dc;
+    border: 2px solid #d0a828;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .gozo-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #8a6a00;
+    margin-bottom: 3px;
+  }
+  .gozo-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e0d0a0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf6e8;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #8a6a00;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf6e8;
+    border-left: 3px solid #8a6a00;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #8a6a00;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e0d0a0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf6e8;
+  }
+  .app-item strong {
+    color: #8a6a00;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #8a6a00 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #8a6a00 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf6e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf6e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf6e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .accion-halla { background: #f5f0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .accion-esconde { background: #ede8d0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .accion-vende { background: #f5e8c8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .accion-compra { background: #e8f0d0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .gozo-box { background: #fdf6dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Tesoro Escondido</h1>
+    <div class="subtitulo">El gozo del hallazgo y la entrega radical</div>
+    <div class="referencia">Mateo 13:44 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">El Reino de los cielos es semejante a un <strong>tesoro escondido en un campo</strong>. Un hombre lo <strong>halla</strong> por casualidad, lo <strong>esconde de nuevo</strong>, y <strong>gozoso</strong> va y <strong>vende todo lo que tiene</strong> para comprar aquel campo.</p>
+      <p style="font-size:9pt; margin-top:4px;"><em>"El cual un hombre halla, y lo esconde de nuevo; y gozoso por ello va y vende todo lo que tiene, y compra aquel campo."</em></p>
+      <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>Contexto:</strong> en la antigüedad no había bancos. La gente enterraba sus riquezas en campos para protegerlas. Hallar un tesoro escondido era un acontecimiento extraordinario.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que el Reino se compre con dinero: el hombre compra el <strong>campo</strong>, no el tesoro.</li>
+        <li>No enseña que el Reino sea una transacción comercial: es <strong>don</strong>, no mercancía.</li>
+        <li>No enseña que haya que vender todo literalmente: es imagen de la <strong>entrega total</strong>.</li>
+        <li>No enseña que el hallazgo sea mérito del hombre: <strong>halla</strong>, no busca ni merece.</li>
+        <li>No enseña que el hombre sea un oportunista: es <strong>astuto</strong>, pero legal.</li>
+        <li>No enseña que el Reino se oculte para siempre: la ocultación es <strong>temporal</strong>.</li>
+        <li>No enseña que la venta de todo sea triste: vende <strong>gozoso</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>El Reino es un tesoro de valor supremo:</strong> el bien que supera todos los demás.</li>
+        <li><strong>El Reino se halla por gracia, no por mérito:</strong> el hallazgo es inesperado y gratuito.</li>
+        <li><strong>El hallazgo produce gozo:</strong> la primera respuesta es alegría desbordante.</li>
+        <li><strong>El Reino exige una entrega total:</strong> no se puede poseer el tesoro y aferrarse a lo demás.</li>
+        <li><strong>La entrega no es pérdida, sino inversión:</strong> quien vende todo por el tesoro gana infinitamente más.</li>
+        <li><strong>El Reino se posee en lo secreto:</strong> el hombre esconde de nuevo el tesoro.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>El Reino requiere astucia y prudencia:</strong> compra el campo legalmente para adquirir el tesoro.</li>
+        <li><strong>El hallazgo es personal:</strong> nadie más ve el tesoro; cada uno debe encontrarlo personalmente.</li>
+        <li><strong>El Reino transforma la escala de valores:</strong> lo que antes era importante, ahora es relativo.</li>
+        <li><strong>El Reino es presente y futuro:</strong> se posee ya, pero se espera su manifestación plena.</li>
+        <li><strong>La respuesta al hallazgo es la alegría:</strong> no duda, no calcula, no negocia: se goza.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS CUATRO ACCIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Las cuatro acciones del hombre</h2>
+    <div class="acciones-grid">
+      <div class="accion-card accion-halla">
+        <span class="icono">👀</span>
+        <h4>1. Halla</h4>
+        <span class="desc">Descubrimiento <strong>inesperado</strong>. No busca: <strong>encuentra</strong>. El Reino es gracia, no conquista.</span>
+      </div>
+      <div class="accion-card accion-esconde">
+        <span class="icono">🔒</span>
+        <h4>2. Esconde</h4>
+        <span class="desc">Discreción y <strong>prudencia</strong>. No lo proclama. Posee el tesoro en lo <strong>secreto</strong> del corazón.</span>
+      </div>
+      <div class="accion-card accion-vende">
+        <span class="icono">💰</span>
+        <h4>3. Vende todo</h4>
+        <span class="desc">Entrega <strong>radical</strong> y <strong>gozosa</strong>. No vende lo superfluo: vende <strong>todo</strong>. No es pérdida: es inversión.</span>
+      </div>
+      <div class="accion-card accion-compra">
+        <span class="icono">🏞️</span>
+        <h4>4. Compra el campo</h4>
+        <span class="desc">Respuesta <strong>astuta</strong> y <strong>legal</strong>. No compra el tesoro: compra el campo. La sabiduría práctica responde al hallazgo.</span>
+      </div>
+    </div>
+    <div class="gozo-box">
+      <div class="titulo">✨ El gozo: la atmósfera de la entrega</div>
+      <div class="desc">El hombre vende todo <strong>gozoso</strong>. El participio griego (<em>chairōn</em>) está en presente continuo: <strong>vende mientras se alegra</strong>. La alegría no es puntual, es la <strong>atmósfera</strong> de la entrega. Quien encuentra el tesoro no lamenta lo que deja: se alegra por lo que gana. El gozo es la prueba del hallazgo.</div>
+    </div>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>θησαυρός</td>
+        <td>thēsauros</td>
+        <td>tesoro</td>
+        <td>De aquí viene "tesorería". Riqueza acumulada, oculta, de gran valor.</td>
+      </tr>
+      <tr>
+        <td>κεκρυμμένος</td>
+        <td>kekrymmenos</td>
+        <td>escondido, oculto</td>
+        <td>Participio perfecto: <strong>estaba</strong> escondido y <strong>seguía</strong> escondido. El tesoro estaba allí desde antes.</td>
+      </tr>
+      <tr>
+        <td>ἀγρῷ</td>
+        <td>agrō</td>
+        <td>campo</td>
+        <td>Lugar común, cotidiano. El tesoro está en lo <strong>ordinario</strong>, no en un lugar sagrado.</td>
+      </tr>
+      <tr>
+        <td>εὑρὼν</td>
+        <td>heurōn</td>
+        <td>habiendo hallado</td>
+        <td>Verbo de <strong>descubrimiento</strong>. No dice "buscó", sino "<strong>halló</strong>". El hallazgo es inesperado.</td>
+      </tr>
+      <tr>
+        <td>ἔκρυψεν</td>
+        <td>ekrypsen</td>
+        <td>escondió</td>
+        <td>De <em>kryptō</em> (esconder). El mismo verbo que se usa para la levadura. El hombre <strong>vuelve a esconder</strong> el tesoro.</td>
+      </tr>
+      <tr>
+        <td>χαίρων</td>
+        <td>chairōn</td>
+        <td>gozoso, alegrándose</td>
+        <td>Participio presente: <strong>mientras se alegra</strong>. La alegría es <strong>continua</strong>, no puntual.</td>
+      </tr>
+      <tr>
+        <td>ὑπάγει</td>
+        <td>hypagei</td>
+        <td>va, se marcha</td>
+        <td>Verbo de movimiento. El hombre <strong>actúa</strong> con decisión.</td>
+      </tr>
+      <tr>
+        <td>πωλεῖ</td>
+        <td>pōlei</td>
+        <td>vende</td>
+        <td>Vende <strong>todo</strong>. No una parte: la totalidad.</td>
+      </tr>
+      <tr>
+        <td>πάντα ὅσα εἶχεν</td>
+        <td>panta hosa eichen</td>
+        <td>todo lo que tenía</td>
+        <td>Enfatiza la <strong>totalidad</strong> de la entrega. No hay reservas.</td>
+      </tr>
+      <tr>
+        <td>ἀγοράζει</td>
+        <td>agorazei</td>
+        <td>compra</td>
+        <td>Compra <strong>el campo</strong>, no el tesoro directamente. La compra es legal y astuta.</td>
+      </tr>
+      <tr>
+        <td>τὸν ἀγρὸν ἐκεῖνον</td>
+        <td>ton agron ekeinon</td>
+        <td>aquel campo</td>
+        <td>El campo <strong>específico</strong>. No cualquier campo: <strong>aquel</strong> donde está el tesoro.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>heurōn</em> ("habiendo hallado") es clave. No dice "buscó", "encontró tras esfuerzo", "mereció". Dice <strong>halló</strong>. El hallazgo es <strong>inesperado, gratuito, soberano</strong>. El Reino es <strong>gracia</strong>, no conquista.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Proverbios 2:4-5: buscar la sabiduría como tesoro. Proverbios 3:13-15: la sabiduría más preciosa que las piedras. Salmo 119:162: "Me regocijo como el que halla gran despojo".</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La joya en el manto (Sutra del Loto): un tesoro oculto que siempre llevamos con nosotros. La naturaleza de Buda como tesoro interior que se descubre.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El sabio no acumula tesoros" (Tao 81). "El que sabe que tiene bastante es rico" (Tao 33). La riqueza verdadera es interior.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 62:11: "Lo que está con Dios es mejor que la diversión y el comercio". Sura 18:46: las obras perdurables como tesoro verdadero.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El tesoro del atman: el Sí mismo como tesoro escondido en el corazón. La búsqueda espiritual como descubrimiento del tesoro interior.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El tesoro de la virtud: el único bien verdadero. La riqueza interior del sabio. Contraste: la virtud se cultiva; el tesoro se <strong>halla</strong>.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La eudaimonia (felicidad) como bien supremo. La elección del bien superior sobre los bienes relativos. La razón que reconoce el valor.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La sabiduría como tesoro superior a la riqueza. "El hombre superior entiende la rectitud; el inferior, el provecho" (Analectas 4:16).</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Reino: tesoro de valor supremo, hallado por gracia</li>
+          <li>Hallazgo: inesperado, gratuito, soberano</li>
+          <li>Gozo: respuesta espontánea al hallazgo</li>
+          <li>Entrega: radical, total, gozosa</li>
+          <li>Venta de todo: imagen de la entrega total</li>
+          <li>Tesoro: don gratuito que transforma</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Mercancía que se compra o se merece</li>
+          <li>Búsqueda meritória o conquista</li>
+          <li>Deber triste o cálculo</li>
+          <li>Parcial, calculada, forzada</li>
+          <li>Regla literal para todos</li>
+          <li>Recompensa por esfuerzo</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#8a6a00;"><strong>El Reino es un tesoro escondido en lo ordinario de la vida. Se halla por gracia, no por mérito. La entrega no es pérdida: es la mejor inversión. El gozo es la prueba del hallazgo.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿He hallado el tesoro del Reino, o solo conozco su teoría?</div>
+      <div class="item">2. ¿Mi respuesta al hallazgo es <strong>gozosa</strong> o <strong>calculada</strong>?</div>
+      <div class="item">3. ¿He vendido <strong>todo</strong> por el Reino, o me aferro a algo?</div>
+      <div class="item">4. ¿Mi entrega es <strong>radical</strong> o <strong>parcial</strong>?</div>
+      <div class="item">5. ¿Reconozco que el hallazgo es <strong>gracia</strong>, no mérito?</div>
+      <div class="item">6. ¿Mi escala de valores ha sido transformada por el Reino?</div>
+      <div class="item">7. ¿Poseo el tesoro en lo <strong>secreto</strong> de mi corazón?</div>
+      <div class="item">8. ¿Estoy dispuesto a la <strong>astucia</strong> y <strong>prudencia</strong> en la respuesta al Reino?</div>
+      <div class="item">9. ¿Vivo en la tensión entre el <strong>ya</strong> y el <strong>todavía no</strong> del Reino?</div>
+      <div class="item">10. ¿Mi vida transmite el <strong>gozo</strong> del hallazgo?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Reconocer el Reino como tesoro que da sentido a las relaciones familiares.</div>
+      <div class="app-item"><strong>Amistad</strong> Compartir el gozo del hallazgo sin imponerlo; ser testigo, no propagandista.</div>
+      <div class="app-item"><strong>Comunidad</strong> Vivir con la alegría del hallazgo, no con la tristeza del deber.</div>
+      <div class="app-item"><strong>Trabajo</strong> Ordenar el trabajo al Reino, sin idolatrarlo; el trabajo es medio, no fin.</div>
+      <div class="app-item"><strong>Vida interior</strong> Buscar el tesoro en lo ordinario, no en lo extraordinario.</div>
+      <div class="app-item"><strong>Sociedad</strong> Vivir con una escala de valores transformada por el Reino.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar con gozo, no con cálculo; el líder ha encontrado el tesoro.</div>
+      <div class="app-item"><strong>Espiritual</strong> Cultivar la conciencia del hallazgo; no perder el primer amor.</div>
+      <div class="app-item"><strong>Crisis</strong> Recordar el tesoro en medio de la prueba; nada puede quitarlo.</div>
+      <div class="app-item"><strong>Evangelización</strong> Compartir el gozo del hallazgo, no imponer la venta de todo.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “El Reino de Dios es un tesoro escondido en lo ordinario de la vida.<br>Se halla por gracia, no por mérito.”
+    <small>Quien lo encuentra, lo esconde en su corazón y, gozoso, vende todo lo que tiene para adquirirlo. La entrega no es pérdida: es la mejor inversión. El gozo es la prueba del hallazgo.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Tesoro Escondido (Mateo 13:44) · Bloque 1: El Reino de Dios · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

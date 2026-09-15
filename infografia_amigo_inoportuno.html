@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Amigo Inoportuno</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #1a2a5a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #1a2a5a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #4a5a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c0c8e0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafbff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #1a2a5a;
+    border-bottom: 1.5px solid #d0d8e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #4a5a8a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #1a2a5a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #1a2a5a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0d8e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2f4fc;
+  }
+
+  /* CONTRASTE CLAVE */
+  .contraste-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .contraste-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .amigo-dormido {
+    background: #f0ece4;
+    border: 1.5px solid #bdb5a0;
+  }
+  .padre-despierto {
+    background: #e8f0ff;
+    border: 1.5px solid #7a9ad0;
+  }
+  .contraste-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .contraste-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .amigo-dormido h4 { color: #7a6a4a; }
+  .padre-despierto h4 { color: #1a2a5a; }
+  .contraste-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .contraste-flecha {
+    font-size: 24pt;
+    color: #1a2a5a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* DIÁLOGO */
+  .dialogo-box {
+    background: #f0f4ff;
+    border: 2px solid #4a5a8a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .dialogo-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1a2a5a;
+    margin-bottom: 3px;
+  }
+  .dialogo-box .cita {
+    font-size: 8.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .dialogo-box .cita strong {
+    font-style: normal;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #c0c8e0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f2f4fc;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #1a2a5a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2f4fc;
+    border-left: 3px solid #1a2a5a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #1a2a5a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c0c8e0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2f4fc;
+  }
+  .app-item strong {
+    color: #1a2a5a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #1a2a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #1a2a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f2f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .amigo-dormido { background: #f0ece4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .padre-despierto { background: #e8f0ff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .dialogo-box { background: #f0f4ff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Amigo Inoportuno</h1>
+    <div class="subtitulo">La perseverancia en la oración y la confianza filial</div>
+    <div class="referencia">Lucas 11:5-8 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un hombre tiene un amigo que llega de <strong>viaje a medianoche</strong>. No tiene <strong>pan</strong> para ofrecerle. Va a casa de <strong>otro amigo</strong> y le pide <strong>tres panes</strong>.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">El amigo, desde <strong>dentro</strong>, responde: <em>"No me molestes; la puerta ya está cerrada, y mis niños están conmigo en cama; no puedo levantarme, y darte"</em>.</p>
+      <p style="font-size:9.5pt;">Pero el que pide <strong>insiste</strong>. Y Jesús concluye: <strong>"Aunque no se levante a dárselos por ser su amigo, sin embargo por su importunidad se levantará y le dará todo lo que necesite"</strong>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios sea un amigo dormido y reacio: la parábola lo <strong>contrasta</strong> con Dios.</li>
+        <li>No enseña que haya que molestar a Dios hasta que ceda: la oración es <strong>confianza</strong>, no molestia.</li>
+        <li>No enseña que la oración sea una técnica de presión.</li>
+        <li>No enseña que Dios sea indiferente: se levanta por <strong>amor</strong>, no por insistencia.</li>
+        <li>No enseña que la perseverancia sea virtud en sí misma: es <strong>medio</strong>, no fin.</li>
+        <li>No enseña que la oración sea egoísta: el que pide pide <strong>para su huésped</strong>.</li>
+        <li>No enseña que Dios conceda todo capricho: da <strong>lo necesario</strong> y más.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La perseverancia en la oración es una actitud correcta:</strong> purifica el deseo y fortalece la fe.</li>
+        <li><strong>La oración es confianza, no molestia:</strong> si un amigo imperfecto responde, cuánto más el Padre perfecto.</li>
+        <li><strong>La oración es solidaria, no egoísta:</strong> el que pide pide para su huésped.</li>
+        <li><strong>La perseverancia no se rinde:</strong> insiste a pesar de la negativa inicial.</li>
+        <li><strong>Dios da más de lo que pedimos:</strong> no solo los tres panes: todo lo necesario.</li>
+        <li><strong>La oración es un encuentro personal:</strong> no es fórmula mágica, es relación.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La perseverancia es signo de fe:</strong> el que cree, insiste; el que duda, abandona.</li>
+        <li><strong>La oración no depende de la hora:</strong> se puede orar en cualquier momento.</li>
+        <li><strong>La oración es atrevida:</strong> puede ser audaz y confiada, no tímida.</li>
+        <li><strong>La oración es un medio, no un fin:</strong> el objetivo es la comunión con Dios.</li>
+        <li><strong>La oración perseverante transforma al que ora:</strong> no cambia a Dios, cambia al que reza.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: EL CONTRASTE CLAVE -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ El contraste clave: el amigo dormido y el Padre despierto</h2>
+    <div class="contraste-grid">
+      <div class="contraste-card amigo-dormido">
+        <span class="icono">😴</span>
+        <h4>El amigo dormido</h4>
+        <span class="desc">Está <strong>en la cama</strong>. La puerta está <strong>cerrada</strong>. Los niños <strong>duermen</strong>. No puede levantarse sin <strong>molestar</strong>. Responde con <strong>brusquedad</strong>. Se levanta por <strong>importunidad</strong>, no por amistad.</span>
+      </div>
+      <div class="contraste-flecha">→</div>
+      <div class="contraste-card padre-despierto">
+        <span class="icono">🌅</span>
+        <h4>El Padre despierto</h4>
+        <span class="desc"><strong>Nunca duerme</strong>. La puerta está <strong>abierta</strong>. Está <strong>siempre disponible</strong>. No se <strong>incomoda</strong>. Responde con <strong>amor</strong>. Da <strong>lo necesario</strong> y <strong>más</strong>. Escucha <strong>siempre</strong>.</span>
+      </div>
+    </div>
+    <div class="dialogo-box">
+      <div class="titulo">💬 La lógica del "cuánto más"</div>
+      <div class="cita">
+        <strong>Si</strong> un amigo <strong>imperfecto</strong>, <strong>incomodado</strong> y <strong>brusco</strong> se levanta por la <strong>insistencia</strong> del que pide...<br>
+        <strong>Cuánto más</strong> el <strong>Padre perfecto</strong>, <strong>amoroso</strong> y <strong>generoso</strong> responderá a los que le <strong>piden</strong> con <strong>perseverancia</strong>.<br>
+        La parábola no compara a Dios con el amigo dormido: <strong>lo contrasta</strong> con él.
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>φίλος</td>
+        <td>philos</td>
+        <td>amigo</td>
+        <td>Relación de <strong>amistad</strong>. El que pide va a un <strong>amigo</strong>, no a un extraño.</td>
+      </tr>
+      <tr>
+        <td>μεσονύκτιον</td>
+        <td>mesonyktion</td>
+        <td>medianoche</td>
+        <td>La hora más <strong>inoportuna</strong>. La familia <strong>duerme</strong>.</td>
+      </tr>
+      <tr>
+        <td>δανείζω</td>
+        <td>daneizō</td>
+        <td>prestar</td>
+        <td>El que pide <strong>pide prestado</strong>, no mendiga. Confía en su amigo.</td>
+      </tr>
+      <tr>
+        <td>τρεῖς ἄρτους</td>
+        <td>treis artous</td>
+        <td>tres panes</td>
+        <td>Cantidad <strong>mínima</strong> para una comida. No pide lujo: pide lo <strong>necesario</strong>.</td>
+      </tr>
+      <tr>
+        <td>παραθήσω</td>
+        <td>parathēsō</td>
+        <td>poner delante, ofrecer</td>
+        <td>El que pide <strong>no tiene</strong> qué ofrecer al huésped. La <strong>vergüenza</strong> es real.</td>
+      </tr>
+      <tr>
+        <td>μή μοι κόπους πάρεχε</td>
+        <td>mē moi kopous pareche</td>
+        <td>no me molestes</td>
+        <td>La respuesta <strong>brusca</strong> del amigo. <strong>Contraste</strong> con la bondad de Dios.</td>
+      </tr>
+      <tr>
+        <td>κέκλεισται</td>
+        <td>kekleistai</td>
+        <td>está cerrada</td>
+        <td>Perfecto: está cerrada y <strong>sigue cerrada</strong>. Abrirla <strong>requiere</strong> esfuerzo.</td>
+      </tr>
+      <tr>
+        <td>παιδία</td>
+        <td>paidia</td>
+        <td>niños</td>
+        <td>Los <strong>hijos</strong> están en la cama. Levantarse <strong>despertaría</strong> a todos.</td>
+      </tr>
+      <tr>
+        <td>ἀναίδεια</td>
+        <td>anaideia</td>
+        <td>importunidad, desvergüenza</td>
+        <td>De <em>a-</em> (sin) + <em>aidōs</em> (vergüenza). <strong>Insistencia descarada</strong>. No es virtud: es <strong>necesidad</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἐγερθεὶς</td>
+        <td>egertheis</td>
+        <td>habiéndose levantado</td>
+        <td>El amigo <strong>se levanta</strong> a pesar de la incomodidad. La <strong>insistencia</strong> obtiene la respuesta.</td>
+      </tr>
+      <tr>
+        <td>δώσει</td>
+        <td>dōsei</td>
+        <td>dará</td>
+        <td>El amigo <strong>da</strong>. La <strong>insistencia</strong> obtiene la respuesta.</td>
+      </tr>
+      <tr>
+        <td>ὅσων χρῄζει</td>
+        <td>hosōn chrēzei</td>
+        <td>todo lo que necesite</td>
+        <td>No <strong>solo</strong> los tres panes: <strong>todo</strong> lo necesario. Dios <strong>supera</strong> nuestras peticiones.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La palabra <em>anaideia</em> es clave. No significa "perseverancia" como virtud: significa <strong>desvergüenza</strong>, <strong>insistencia descarada</strong>. La parábola enseña que la oración puede ser <strong>atrevida</strong>, <strong>audaz</strong>, <strong>confiada</strong>. No es tímida ni temerosa.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Génesis 18: Abraham recibe a los huéspedes. Proverbios 3:28: no digas "vuelve mañana". Talmud Shabat 127a: la hospitalidad es una obra cuyo fruto se cosecha.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La perseverancia (vīrya) como pāramitā. La generosidad (dāna) como virtud. El bodhisattva persevera en la búsqueda de la iluminación.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El sabio no acumula: cuanto más hace para los demás, más tiene" (Tao 81). "Lo blando vence a lo duro" (Tao 78). La perseverancia suave.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 2:186: "Estoy cerca; respondo a la invocación del que me invoca". Sura 40:60: "Invocadme, y os responderé". La oración como encuentro.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La perseverancia (tapas) como virtud. La devoción (bhakti) como entrega confiada. La limosna (dāna) como generosidad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La perseverancia (karteria) como virtud. La confianza en la providencia. Contraste: el estoico acepta; el cristiano pide con confianza.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La perseverancia (hypomonē) como virtud. La amistad (philia) como virtud fundamental. La phrónesis de saber cuándo y cómo pedir.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La perseverancia (hèng) como virtud. La benevolencia (ren) y la hospitalidad como deberes. El hombre superior persevera en el camino.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Oración: encuentro personal con el Padre</li>
+          <li>Perseverancia: confianza que no se rinde</li>
+          <li>Confianza: actitud filial, atrevida</li>
+          <li>Intercesión: orar por las necesidades de otros</li>
+          <li>Dios: Padre despierto, generoso</li>
+          <li>Respuesta: Dios da lo necesario y más</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Fórmula mágica o técnica</li>
+          <li>Molestia que fuerza a Dios</li>
+          <li>Timidez o temor</li>
+          <li>Egoísmo o petición por sí mismo</li>
+          <li>Amigo dormido, reacio</li>
+          <li>Dios concede todo capricho</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#1a2a5a;"><strong>La parábola no compara a Dios con el amigo dormido: lo contrasta con él. Si un amigo imperfecto responde a la insistencia, cuánto más el Padre perfecto responderá al amor. La oración no cambia a Dios: cambia al que ora.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Mi oración es <strong>confianza</strong> o <strong>molestia</strong>?</div>
+      <div class="item">2. ¿Persevero en la oración o me <strong>rindo</strong> ante la falta de respuesta?</div>
+      <div class="item">3. ¿Mi oración es <strong>egoísta</strong> o <strong>solidaria</strong>?</div>
+      <div class="item">4. ¿Reconozco que Dios es un <strong>Padre despierto</strong>, no un amigo dormido?</div>
+      <div class="item">5. ¿Mi oración es <strong>atrevida</strong> y <strong>confiada</strong>, o tímida y temerosa?</div>
+      <div class="item">6. ¿La perseverancia <strong>purifica</strong> mi deseo o lo deforma?</div>
+      <div class="item">7. ¿Reconozco que Dios da <strong>lo necesario</strong> y más?</div>
+      <div class="item">8. ¿Mi oración es <strong>encuentro</strong> con el Padre o monólogo conmigo mismo?</div>
+      <div class="item">9. ¿La oración <strong>transforma</strong> mi vida o solo obtiene cosas?</div>
+      <div class="item">10. ¿Rezo <strong>en cualquier momento</strong>, o solo en las horas convenientes?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Perseverar en la oración por la familia; no rendirse ante las dificultades.</div>
+      <div class="app-item"><strong>Amistad</strong> Orar por los amigos; la oración perseverante es <strong>intercesión</strong>.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>oración perseverante</strong> y <strong>solidaria</strong>.</div>
+      <div class="app-item"><strong>Trabajo</strong> Orar por las necesidades del trabajo; no rendirse ante los obstáculos.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar la <strong>perseverancia</strong> en la oración; no rendirse ante la sequedad.</div>
+      <div class="app-item"><strong>Sociedad</strong> Orar por la <strong>justicia</strong> y la <strong>paz</strong>; la oración perseverante transforma.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Orar por los que se lideran; la oración perseverante es servicio.</div>
+      <div class="app-item"><strong>Espiritual</strong> Cultivar la <strong>confianza filial</strong>; no molestar a Dios, sino confiar en Él.</div>
+      <div class="app-item"><strong>Crisis</strong> Perseverar en la oración en medio de la crisis; no desesperar.</div>
+      <div class="app-item"><strong>Evangelización</strong> Orar por los que no conocen a Dios; la oración perseverante prepara el corazón.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “¿Quién de vosotros que tenga un amigo, va a él a medianoche...?<br>Si un amigo imperfecto responde a la insistencia, cuánto más el Padre perfecto.”
+    <small>La parábola del amigo inoportuno enseña la perseverancia en la oración. No porque Dios sea un amigo dormido y reacio, sino porque la insistencia purifica el deseo, fortalece la fe y manifiesta la confianza en el Padre. La oración es confianza filial, no molestia. Es solidaria, no egoísta. Es encuentro, no monólogo. La oración no cambia a Dios: cambia al que ora.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Amigo Inoportuno (Lucas 11:5-8) · Bloque 4: La oración y la persistencia · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

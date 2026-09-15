@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Rey que Calcula la Guerra</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #4a3a2a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #4a3a2a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #7a6a4a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #d8c8a8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fdfbf6;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #4a3a2a;
+    border-bottom: 1.5px solid #e8dcc0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #6a5a3a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #4a3a2a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #4a3a2a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #e8dcc0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf6ee;
+  }
+
+  /* LAS CUATRO ETAPAS */
+  .etapas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .etapa-item {
+    border-radius: 5px;
+    padding: 6px 5px;
+    text-align: center;
+    background: #faf6ee;
+    border: 1px solid #d8c8a8;
+  }
+  .etapa-item .etapa {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #4a3a2a;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .etapa-item .desc {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    line-height: 1.2;
+  }
+  .etapa-critica {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .etapa-critica .etapa { color: #8a3a00; }
+  .etapa-paz {
+    background: #e8f0f8;
+    border: 1.5px solid #7a9ac0;
+  }
+  .etapa-paz .etapa { color: #1a3a6a; }
+  .etapa-logro {
+    background: #e8f5d8;
+    border: 1.5px solid #7ab030;
+  }
+  .etapa-logro .etapa { color: #2a5a10; }
+
+  /* CONTRASTE EJÉRCITOS */
+  .ejercitos-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .ejercito-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .propio-card {
+    background: #e8f0f8;
+    border: 1.5px solid #7a9ac0;
+  }
+  .enemigo-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .ejercito-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .ejercito-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .propio-card h4 { color: #1a3a6a; }
+  .enemigo-card h4 { color: #b02020; }
+  .ejercito-card .cantidad {
+    font-size: 14pt;
+    font-weight: 700;
+    display: block;
+    margin: 3px 0;
+  }
+  .propio-card .cantidad { color: #1a3a6a; }
+  .enemigo-card .cantidad { color: #b02020; }
+  .ejercito-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .ejercito-flecha {
+    font-size: 24pt;
+    color: #4a3a2a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* PAR TORRE-REY */
+  .par-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .par-card {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .par-torre {
+    background: #f0f4f8;
+    border: 1.5px solid #a8b8c8;
+  }
+  .par-rey {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .par-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .par-torre h4 { color: #3a4a5a; }
+  .par-rey h4 { color: #8a5a00; }
+  .par-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .par-torre ul li::before { color: #3a4a5a; }
+  .par-rey ul li::before { color: #8a5a00; }
+
+  /* CITA BOX */
+  .cita-box {
+    background: #faf0e0;
+    border: 2px solid #8a6a3a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .cita-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #4a3a2a;
+    margin-bottom: 3px;
+  }
+  .cita-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #d8c8a8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf6ee;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #4a3a2a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf6ee;
+    border-left: 3px solid #4a3a2a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #4a3a2a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #d8c8a8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf6ee;
+  }
+  .app-item strong {
+    color: #4a3a2a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #4a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #4a3a2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-critica { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-paz { background: #e8f0f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-logro { background: #e8f5d8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .propio-card { background: #e8f0f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .enemigo-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .par-torre { background: #f0f4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .par-rey { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cita-box { background: #faf0e0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Rey que Calcula la Guerra</h1>
+    <div class="subtitulo">La prudencia estratégica y la humildad ante los propios límites</div>
+    <div class="referencia">Lucas 14:31-32 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Jesús pregunta: <em>"¿O qué <strong>rey</strong>, habiendo de <strong>ir a la guerra</strong> contra otro rey, no <strong>se sienta primero</strong> y <strong>considera</strong> si podrá hacer frente en batalla con <strong>diez mil</strong> al que viene contra él con <strong>veinte mil</strong>?"</em></p>
+      <p style="font-size:9.5pt;">"Y si no, cuando el otro está <strong>todavía lejos</strong>, le <strong>envía una embajada</strong> y le <strong>pide condiciones de paz</strong>."</p>
+      <p style="font-size:9pt; margin-top:4px;">La parábola forma <strong>pareja</strong> con la de la torre (Lucas 14:28-30), en la enseñanza sobre el <strong>costo del discipulado</strong> (Lucas 14:25-33).</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña a <strong>rendirse</strong> ante cualquier dificultad: enseña a <strong>evaluar</strong>.</li>
+        <li>No enseña que el discipulado sea una <strong>guerra contra Dios</strong>: el enemigo son las dificultades.</li>
+        <li>No enseña que la <strong>paz</strong> sea siempre la mejor opción: es la alternativa <strong>prudente</strong> cuando no se puede vencer.</li>
+        <li>No enseña que haya que ser <strong>cobarde</strong>: la evaluación realista es <strong>prudencia</strong>.</li>
+        <li>No enseña que haya que <strong>evitar</strong> el conflicto a toda costa.</li>
+        <li>No enseña que el discipulado sea <strong>imposible</strong>: es posible, pero cuesta todo.</li>
+        <li>No enseña que la evaluación sea <strong>solo para líderes</strong>: es para todos los discípulos.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>El discipulado requiere evaluación previa:</strong> no se emprende a la ligera.</li>
+        <li><strong>La evaluación debe ser realista:</strong> sin autoengaño ni presunción.</li>
+        <li><strong>La prudencia incluye reconocer los propios límites:</strong> humildad estratégica.</li>
+        <li><strong>La decisión debe tomarse antes de la crisis:</strong> mientras el enemigo está lejos.</li>
+        <li><strong>La paz es una alternativa prudente:</strong> no es cobardía, es realismo.</li>
+        <li><strong>El discipulado cuesta todo:</strong> familia, vida, posesiones.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La evaluación conduce al compromiso, no a la evasión.</strong></li>
+        <li><strong>El discipulado es posible con la gracia de Dios:</strong> lo imposible para el hombre es posible para Dios.</li>
+        <li><strong>La prudencia es una virtud del discípulo:</strong> no es cobardía, es sabiduría.</li>
+        <li><strong>La humildad es parte de la prudencia:</strong> reconocer los límites y confiar en la gracia.</li>
+        <li><strong>La radicalidad es para todos:</strong> no solo para los discípulos íntimos.</li>
+        <li><strong>El discipulado no es una decisión emocional:</strong> es consciente y deliberado.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS CUATRO ETAPAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚔️ Las cuatro etapas de la decisión del rey</h2>
+    <div class="etapas-grid">
+      <div class="etapa-item">
+        <span class="etapa">1. Conflicto</span>
+        <span class="desc">El enemigo viene con <strong>veinte mil</strong>. La amenaza es real.</span>
+      </div>
+      <div class="etapa-item">
+        <span class="etapa">2. Evaluación</span>
+        <span class="desc">El rey <strong>se sienta primero</strong> y considera sus fuerzas.</span>
+      </div>
+      <div class="etapa-item etapa-paz">
+        <span class="etapa">3. Embajada</span>
+        <span class="desc">Si no puede vencer, <strong>envía embajadores</strong> mientras el enemigo está <strong>lejos</strong>.</span>
+      </div>
+      <div class="etapa-item etapa-logro">
+        <span class="etapa">4. Paz</span>
+        <span class="desc">Pide <strong>condiciones de paz</strong>. Humildad estratégica y realismo.</span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#4a3a2a;"><strong>La evaluación debe hacerse antes de la crisis. La paz es una alternativa prudente cuando no se puede vencer. La humildad estratégica es parte de la prudencia. La evaluación conduce al compromiso, no a la evasión.</strong></p>
+  </div>
+
+  <!-- FILA 4: LOS DOS EJÉRCITOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Los dos ejércitos: la desproporción de fuerzas</h2>
+    <div class="ejercitos-grid">
+      <div class="ejercito-card propio-card">
+        <span class="icono">🛡️</span>
+        <h4>El ejército propio</h4>
+        <span class="cantidad">10.000</span>
+        <span class="desc">La <strong>fuerza propia</strong>. La <strong>evaluación</strong> debe ser <strong>fría</strong>, <strong>realista</strong>, <strong>sin</strong> autoengaño. El <strong>discípulo</strong> evalúa sus <strong>recursos</strong> <strong>espirituales</strong>.</span>
+      </div>
+      <div class="ejercito-flecha">→</div>
+      <div class="ejercito-card enemigo-card">
+        <span class="icono">⚔️</span>
+        <h4>El ejército enemigo</h4>
+        <span class="cantidad">20.000</span>
+        <span class="desc">El <strong>doble</strong> del ejército propio. La <strong>desproporción</strong> es <strong>deliberada</strong>. Las <strong>dificultades</strong>, <strong>tentaciones</strong> y <strong>persecuciones</strong> del discipulado.</span>
+      </div>
+    </div>
+    <div class="cita-box">
+      <div class="titulo">💬 La humildad estratégica</div>
+      <div class="desc">El rey <strong>prudente</strong> <strong>reconoce</strong> su <strong>inferioridad</strong> y <strong>pide</strong> <strong>condiciones</strong> de <strong>paz</strong>. La <strong>humildad</strong> <strong>estratégica</strong> es <strong>parte</strong> de la <strong>prudencia</strong>. El <strong>discípulo</strong> <strong>prudente</strong> <strong>reconoce</strong> sus <strong>límites</strong> y <strong>confía</strong> en la <strong>gracia</strong> de <strong>Dios</strong>. No <strong>lucha</strong> con sus <strong>propias</strong> <strong>fuerzas</strong>: <strong>confía</strong> en <strong>Aquel</strong> que <strong>da</strong> la <strong>victoria</strong>. La <strong>paz</strong> <strong>preserva</strong> la <strong>dignidad</strong> del <strong>rey</strong>: la <strong>negociación</strong> no es <strong>humillación</strong>, es <strong>realismo</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 5: EL PAR TORRE-REY -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔗 El par torre–rey: dos imágenes, una misma enseñanza</h2>
+    <div class="par-grid">
+      <div class="par-card par-torre">
+        <h4>🏗️ La torre</h4>
+        <ul>
+          <li><strong>Ámbito:</strong> construcción civil.</li>
+          <li><strong>Protagonista:</strong> un <strong>constructor</strong>.</li>
+          <li><strong>Acción:</strong> <strong>calcular</strong> los gastos.</li>
+          <li><strong>Riesgo:</strong> la <strong>burla</strong> de los vecinos.</li>
+          <li><strong>Alternativa:</strong> <strong>acabar</strong> la torre.</li>
+          <li><strong>Lección:</strong> prudencia antes de construir.</li>
+        </ul>
+      </div>
+      <div class="par-card par-rey">
+        <h4>⚔️ El rey</h4>
+        <ul>
+          <li><strong>Ámbito:</strong> guerra militar.</li>
+          <li><strong>Protagonista:</strong> un <strong>rey</strong>.</li>
+          <li><strong>Acción:</strong> <strong>considerar</strong> la batalla.</li>
+          <li><strong>Riesgo:</strong> la <strong>derrota</strong> en la guerra.</li>
+          <li><strong>Alternativa:</strong> <strong>pedir</strong> condiciones de paz.</li>
+          <li><strong>Lección:</strong> prudencia antes de luchar.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#4a3a2a;"><strong>Las dos parábolas juntas enseñan que el discipulado requiere cálculo previo: en la construcción (calcular el costo) y en la guerra (evaluar las fuerzas). La prudencia precede al compromiso.</strong></p>
+  </div>
+
+  <!-- FILA 6: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>βασιλεύς</td>
+        <td>basileus</td>
+        <td>rey</td>
+        <td>El <strong>jefe militar</strong> de su pueblo. El que decide ir a la guerra.</td>
+      </tr>
+      <tr>
+        <td>πόλεμος</td>
+        <td>polemos</td>
+        <td>guerra</td>
+        <td>El <strong>conflicto armado</strong>. De aquí viene "polémica".</td>
+      </tr>
+      <tr>
+        <td>καθίσας</td>
+        <td>kathisas</td>
+        <td>habiéndose sentado</td>
+        <td>La <strong>postura</strong> del que considera. La calma y la reflexión.</td>
+      </tr>
+      <tr>
+        <td>βουλεύεται</td>
+        <td>bouleuetai</td>
+        <td>considera, delibera</td>
+        <td>De <em>boulē</em> (consejo, deliberación). El proceso de evaluación racional.</td>
+      </tr>
+      <tr>
+        <td>δύνατος</td>
+        <td>dynatos</td>
+        <td>capaz, poderoso</td>
+        <td>La <strong>capacidad</strong> de hacer frente. La evaluación de las fuerzas.</td>
+      </tr>
+      <tr>
+        <td>ὑπαντῆσαι</td>
+        <td>hypantēsai</td>
+        <td>hacer frente, salir al encuentro</td>
+        <td>La <strong>disposición</strong> para la batalla. El encuentro con el enemigo.</td>
+      </tr>
+      <tr>
+        <td>δέκα χιλιάσιν</td>
+        <td>deka chiliasin</td>
+        <td>diez mil</td>
+        <td>Un <strong>ejército considerable</strong>. La fuerza propia.</td>
+      </tr>
+      <tr>
+        <td>εἴκοσι χιλιάσιν</td>
+        <td>eikosi chiliasin</td>
+        <td>veinte mil</td>
+        <td>El <strong>doble</strong> del ejército propio. La desproporción deliberada.</td>
+      </tr>
+      <tr>
+        <td>ἔτι πόρρω</td>
+        <td>eti porrō</td>
+        <td>todavía lejos</td>
+        <td>La <strong>anticipación</strong> de la decisión. El tiempo para decidir.</td>
+      </tr>
+      <tr>
+        <td>πρεσβείαν</td>
+        <td>presbeian</td>
+        <td>embajada</td>
+        <td>De <em>presbys</em> (anciano, embajador). La negociación con el enemigo.</td>
+      </tr>
+      <tr>
+        <td>ἐρωτᾷ</td>
+        <td>erōta</td>
+        <td>pide, ruega</td>
+        <td>La <strong>petición</strong> de condiciones de paz. La humildad estratégica.</td>
+      </tr>
+      <tr>
+        <td>τὰ πρὸς εἰρήνην</td>
+        <td>ta pros eirēnēn</td>
+        <td>las cosas para la paz</td>
+        <td>La <strong>negociación</strong> de la paz. La alternativa prudente a la guerra.</td>
+      </tr>
+      <tr>
+        <td>ἀποτάσσομαι</td>
+        <td>apotassomai</td>
+        <td>renunciar, despedirse</td>
+        <td>La <strong>renuncia</strong> a todo (v. 33). La radicalidad del discipulado.</td>
+      </tr>
+      <tr>
+        <td>οὐ δύναται</td>
+        <td>ou dynatai</td>
+        <td>no puede</td>
+        <td>La <strong>incapacidad</strong> de ser discípulo sin renunciar a todo.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>bouleuetai</em> ("considera, delibera") viene de <em>boulē</em> ("consejo, deliberación"). De aquí viene "bule" y "abulia" (falta de voluntad). La evaluación es un <strong>proceso racional, deliberado, consciente</strong>. No es impulso: es <strong>reflexión</strong>. Y la expresión <em>ta pros eirēnēn</em> ("las cosas para la paz") no dice "rendición", sino "<strong>condiciones de paz</strong>". La negociación <strong>preserva la dignidad</strong> del rey.</strong></p>
+  </div>
+
+  <!-- FILA 7: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Proverbios 20:18: los pensamientos se afirman con el consejo. Proverbios 21:31: el caballo se prepara para la batalla, mas de Jehová es la victoria. Proverbios 24:6: con sabios consejos harás la guerra.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El Óctuple Sendero requiere discernimiento. La diligencia (appamāda). El discípulo evalúa si puede seguir el camino antes de emprenderlo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">Wu wei: discernimiento sin ansiedad. "El árbol que abraza varios brazos nació de un brote diminuto" (Tao 64). La prudencia precede a la acción.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 8:60: preparad contra ellos todo lo que podáis de fuerza. Sura 59:18: que cada alma considere lo que ha preparado para mañana. La preparación y la evaluación previas.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El Bhagavad Gita: Arjuna evalúa antes de entrar en batalla. El karma yoga: acción desinteresada con discernimiento. El deber (dharma) según la capacidad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La prudencia (phronēsis) de evaluar los recursos antes de actuar. La autosuficiencia (autarkeia). El memento mori ayuda a evaluar prioridades.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La phrónesis: sabiduría práctica de evaluar medios y fines. La virtud como hábito. La eudaimonia como fin último del discipulado.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La prudencia (zhì) como virtud. La diligencia (qín) como trabajo constante. "El hombre superior está siempre preparado".</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 8: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Evaluación: análisis consciente de recursos y riesgos</li>
+          <li>Discipulado: compromiso radical con Jesús</li>
+          <li>Prudencia: sabiduría práctica que precede a la acción</li>
+          <li>Humildad estratégica: reconocer los límites y buscar la paz</li>
+          <li>Paz: alternativa prudente cuando no se puede ganar</li>
+          <li>Guerra: imagen de la lucha espiritual del discípulo</li>
+          <li>Gracia: don que da la fuerza para perseverar</li>
+          <li>Perseverancia: constancia hasta el final</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Ansiedad, escrúpulo o cálculo egoísta</li>
+          <li>Decisión emocional o superficial</li>
+          <li>Cobardía o evasión</li>
+          <li>Rendición incondicional</li>
+          <li>Cobardía o falta de fe</li>
+          <li>Conflicto contra Dios</li>
+          <li>Eliminación del esfuerzo humano</li>
+          <li>Comienzo sin continuidad</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#4a3a2a;"><strong>El discipulado requiere evaluación previa. La prudencia incluye reconocer los propios límites. La paz es una alternativa prudente cuando no se puede vencer. La evaluación conduce al compromiso, no a la evasión. El discipulado es posible con la gracia de Dios.</strong></p>
+  </div>
+
+  <!-- FILA 9: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿He <strong>evaluado</strong> realistamente mis fuerzas para el discipulado?</div>
+      <div class="item">2. ¿Mi seguimiento de Jesús es <strong>consciente</strong> o solo emocional?</div>
+      <div class="item">3. ¿Reconozco mis <strong>límites</strong> y confío en la gracia de Dios?</div>
+      <div class="item">4. ¿Busco la <strong>paz</strong> cuando no puedo vencer?</div>
+      <div class="item">5. ¿Mi evaluación <strong>conduce</strong> al compromiso o a la evasión?</div>
+      <div class="item">6. ¿He <strong>renunciado</strong> a todo lo que me impide seguir a Jesús?</div>
+      <div class="item">7. ¿Mi discipulado es <strong>coherente</strong> o inacabado?</div>
+      <div class="item">8. ¿Estoy dispuesto a <strong>luchar</strong> la guerra espiritual hasta el final?</div>
+      <div class="item">9. ¿Mi prudencia es <strong>sabiduría</strong> o cobardía?</div>
+      <div class="item">10. ¿Confío en que <strong>con la gracia de Dios puedo vencer</strong>?</div>
+    </div>
+  </div>
+
+  <!-- FILA 10: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Evaluar el costo del compromiso familiar; perseverar en la fidelidad.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser consciente del costo de la amistad verdadera; perseverar.</div>
+      <div class="app-item"><strong>Comunidad</strong> Formar discípulos conscientes de lo que implica seguir a Jesús.</div>
+      <div class="app-item"><strong>Trabajo</strong> Evaluar el costo de los proyectos; no comenzar sin evaluar.</div>
+      <div class="app-item"><strong>Vida interior</strong> Evaluar realistamente los recursos espirituales; confiar en la gracia.</div>
+      <div class="app-item"><strong>Sociedad</strong> Evaluar el costo de los compromisos sociales; perseverar.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Formar líderes conscientes de lo que implica el discipulado.</div>
+      <div class="app-item"><strong>Espiritual</strong> Meditar en el costo del discipulado; no seguir a Jesús a la ligera.</div>
+      <div class="app-item"><strong>Crisis</strong> Reevaluar los recursos espirituales en la crisis; confiar en Dios.</div>
+      <div class="app-item"><strong>Evangelización</strong> Presentar el Evangelio con honestidad sobre el costo del discipulado.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “¿O qué rey, habiendo de ir a la guerra contra otro rey,<br>no se sienta primero y considera si podrá hacer frente?”
+    <small>El discipulado requiere evaluación previa. El que quiere seguir a Jesús debe evaluar realistamente sus fuerzas. La prudencia incluye reconocer los propios límites. La paz es una alternativa prudente cuando no se puede vencer. La evaluación conduce al compromiso, no a la evasión. El discipulado es posible con la gracia de Dios.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Rey que Calcula la Guerra (Lucas 14:31-32) · Bloque 5: La vigilancia y la preparación · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

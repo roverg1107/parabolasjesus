@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Síntesis Bloque 2 - La Misericordia y el Perdón</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #3a2a6a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #3a2a6a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #6a5a9a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c8c0e0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fbfaff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #3a2a6a;
+    border-bottom: 1.5px solid #d8d0e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #3a2a6a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #3a2a6a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8d0e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f6f4fc;
+  }
+
+  /* LAS 7 PARÁBOLAS */
+  .parabolas-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .parabola-item {
+    border: 1px solid #c8c0e0;
+    border-radius: 5px;
+    padding: 5px 4px;
+    background: #f6f4fc;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .parabola-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .parabola-item .nombre {
+    font-weight: 700;
+    color: #3a2a6a;
+    font-size: 7.5pt;
+    display: block;
+    margin-bottom: 2px;
+    line-height: 1.15;
+  }
+  .parabola-item .tema {
+    font-size: 6.5pt;
+    color: #555;
+    display: block;
+    line-height: 1.2;
+  }
+
+  /* HILOS CONDUCTORES */
+  .hilos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .hilo-item {
+    border-left: 3px solid #3a2a6a;
+    padding: 5px 8px;
+    background: #f6f4fc;
+    border-radius: 0 4px 4px 0;
+  }
+  .hilo-item strong {
+    color: #3a2a6a;
+    font-size: 9pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .hilo-item .desc {
+    font-size: 8pt;
+    color: #444;
+    line-height: 1.25;
+  }
+
+  /* SUBVERSIONES */
+  .subversiones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .subv-item {
+    border: 1px solid #c8c0e0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f6f4fc;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .subv-item .icono {
+    font-size: 13pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .titulo {
+    font-weight: 700;
+    color: #3a2a6a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .desc {
+    font-size: 7pt;
+    color: #444;
+    line-height: 1.2;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f6f4fc;
+    border-left: 3px solid #3a2a6a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #3a2a6a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 11.5pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c8c0e0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f6f4fc;
+  }
+  .app-item strong {
+    color: #3a2a6a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #3a2a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #3a2a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hilo-item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .subv-item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .parabola-item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>Síntesis del Bloque 2: La Misericordia y el Perdón</h1>
+    <div class="subtitulo">Los siete hilos conductores de las parábolas de la misericordia</div>
+    <div class="referencia">7 parábolas · Lucas 7, 10, 15, 18; Mateo 18 · Documento de síntesis y aplicación</div>
+  </div>
+
+  <!-- FILA 1: LAS 7 PARÁBOLAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>📚 Las siete parábolas del bloque</h2>
+    <div class="parabolas-grid">
+      <div class="parabola-item">
+        <span class="icono">🐑</span>
+        <span class="nombre">La oveja perdida</span>
+        <span class="tema">Dios sale a buscar al perdido</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🪙</span>
+        <span class="nombre">La moneda perdida</span>
+        <span class="tema">Dios busca con diligencia dentro de casa</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">👦</span>
+        <span class="nombre">El hijo pródigo</span>
+        <span class="tema">El padre corre al encuentro de sus dos hijos</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🤝</span>
+        <span class="nombre">El buen samaritano</span>
+        <span class="tema">La misericordia no tiene fronteras</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">⚖️</span>
+        <span class="nombre">El siervo despiadado</span>
+        <span class="tema">La gracia recibida debe ser dada</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">💰</span>
+        <span class="nombre">Los dos deudores</span>
+        <span class="tema">El que se sabe perdonado, ama mucho</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🙏</span>
+        <span class="nombre">El fariseo y el publicano</span>
+        <span class="tema">Dios justifica al humilde</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 2: LOS 7 HILOS CONDUCTORES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🧵 Los siete hilos conductores</h2>
+    <div class="hilos-grid">
+      <div class="hilo-item">
+        <strong>1. Dios toma la iniciativa</strong>
+        <span class="desc">No espera: sale, busca, corre, ruega, se conmueve. La misericordia es acción, no sentimiento pasivo.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>2. El valor del individuo</strong>
+        <span class="desc">Aunque haya noventa y nueve, diez, dos, la una importa. Cada persona tiene valor infinito ante Dios.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>3. La gracia es gratuita e incondicional</strong>
+        <span class="desc">No se merece: se recibe. No es recompensa, es regalo. No negocia, restaura.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>4. La misericordia es concreta y costosa</strong>
+        <span class="desc">Cuesta comodidad, tiempo, dinero, reputación. El samaritano se desvía; el padre corre; el rey perdona lo impagable.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>5. La alegría de la restauración</strong>
+        <span class="desc">Hay fiesta en el cielo. El pastor convoca; la mujer llama; el padre mata el becerro. La misericordia celebra.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>6. La coherencia del perdonado</strong>
+        <span class="desc">Quien recibe perdón debe perdonar. El que no perdona, no ha entendido la gracia. El amor es la prueba.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>7. La humildad como puerta</strong>
+        <span class="desc">El publicano es justificado; el fariseo, no. Sin humildad, la gracia no puede entrar. La autosuficiencia ciega.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>✨ El hilo que los une</strong>
+        <span class="desc">La misericordia de Dios no se merece, se recibe. Y el que la recibe, la da. La humildad es la puerta; la gracia, la casa; la fiesta, el destino.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS GRANDES SUBVERSIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔄 Las grandes subversiones del bloque</h2>
+    <div class="subversiones-grid">
+      <div class="subv-item">
+        <span class="icono">🤝</span>
+        <span class="titulo">El enemigo es el modelo</span>
+        <span class="desc">El samaritano (hereje) es el prójimo; el publicano (traidor) es el justificado.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🐑</span>
+        <span class="titulo">El perdido es el héroe</span>
+        <span class="desc">La oveja, la moneda, el hijo menor, el deudor, el pecador: los protagonistas son los que se pierden.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">⚠️</span>
+        <span class="titulo">El justo es el advertido</span>
+        <span class="desc">El fariseo, el hermano mayor, el siervo despiadado: los que se creen justos son los que necesitan conversión.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🕊️</span>
+        <span class="titulo">La debilidad es la puerta</span>
+        <span class="desc">El que no tiene nada recibe todo; el que cree tener algo, se queda vacío. La gracia entra por la necesidad.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🎉</span>
+        <span class="titulo">La gracia es escandalosa</span>
+        <span class="desc">Perdona lo impagable, restaura lo perdido, celebra lo que parecía muerto. No respeta el protocolo.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales del bloque</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que el bloque afirma</h4>
+        <ul>
+          <li>Misericordia: amor activo que busca y actúa</li>
+          <li>Gracia: don incondicional, impagable, soberano</li>
+          <li>Perdón: cancelación de la deuda, restauración</li>
+          <li>Arrepentimiento: volver en sí, reconocer, ir</li>
+          <li>Humildad: verdad sobre uno mismo ante Dios</li>
+          <li>Justificación: don de Dios al que reconoce su necesidad</li>
+          <li>Amor: respuesta agradecida al perdón recibido</li>
+          <li>Prójimo: cualquiera que necesita ayuda</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que el bloque niega</h4>
+        <ul>
+          <li>Sentimentalismo pasivo que espera</li>
+          <li>Recompensa por méritos o negociación</li>
+          <li>Olvido, negación del daño o sentimiento superficial</li>
+          <li>Solo sentimiento de culpa o remordimiento</li>
+          <li>Autodesprecio o falsa modestia</li>
+          <li>Recompensa por obras o méritos</li>
+          <li>Causa del perdón o precio de la salvación</li>
+          <li>Solo el cercano, el compatriota o el correligionario</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#3a2a6a;"><strong>La misericordia no se merece: se recibe. Y el que la recibe, la da. La humildad es la puerta; la gracia, la casa; la fiesta, el destino.</strong></p>
+  </div>
+
+  <!-- FILA 5: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento del bloque</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Reconozco la magnitud de la deuda que Dios me ha perdonado?</div>
+      <div class="item">2. ¿Mi misericordia es activa o solo sentimental?</div>
+      <div class="item">3. ¿Busco al perdido o espero a que vuelva?</div>
+      <div class="item">4. ¿Me gozo por la restauración del que estaba perdido?</div>
+      <div class="item">5. ¿Me reconozco más en el fariseo o en el publicano?</div>
+      <div class="item">6. ¿Confío en mis méritos o en la misericordia de Dios?</div>
+      <div class="item">7. ¿He convertido mi fidelidad en resentimiento?</div>
+      <div class="item">8. ¿Estoy dispuesto a desviarme de mi camino para ayudar?</div>
+      <div class="item">9. ¿Perdono de labios o "de todo corazón"?</div>
+      <div class="item">10. ¿He experimentado el gozo de ser encontrado?</div>
+    </div>
+  </div>
+
+  <!-- FILA 6: APLICACIONES TRANSVERSALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones transversales del bloque</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Recibir al que vuelve sin reproches; no comparar; perdonar de corazón.</div>
+      <div class="app-item"><strong>Amistad</strong> No dar por perdida una amistad; buscar al distanciado; amar sin cálculos.</div>
+      <div class="app-item"><strong>Comunidad</strong> Buscar activamente a los alejados; crear cultura del perdón; no murmurar.</div>
+      <div class="app-item"><strong>Trabajo</strong> Atender al compañero en dificultad; no cobrar los fallos ajenos.</div>
+      <div class="app-item"><strong>Vida interior</strong> Reconocer la propia deuda; dejarse perdonar; cultivar la humildad.</div>
+      <div class="app-item"><strong>Sociedad</strong> No descartar a los marginados; ofrecer segundas oportunidades reales.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Salir al encuentro de los que se alejan; no creerse superior.</div>
+      <div class="app-item"><strong>Espiritual</strong> Vivir la gracia como regalo, no como recompensa; orar con humildad.</div>
+      <div class="app-item"><strong>Crisis</strong> No desesperar: la deuda es impagable, pero el perdón es gratuito.</div>
+      <div class="app-item"><strong>Perdón</strong> Perdonar como me he sabido perdonado; soltar la deuda, no cobrarla.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Dios sale a buscar al perdido, se conmueve, corre, abraza, perdona y celebra.<br>La misericordia no se merece: se recibe. Y el que la recibe, la da.”
+    <small>La humildad es la puerta; la gracia, la casa; la fiesta, el destino. El que se sabe perdonado, ama mucho; el que se cree justo, ama poco.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de síntesis · Bloque 2: La Misericordia y el Perdón · 7 parábolas de Jesús · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

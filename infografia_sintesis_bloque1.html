@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Síntesis Bloque 1 - El Reino de Dios</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #2a5a1a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #2a5a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #5a8a3a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c0d8b0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafdf8;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #2a5a1a;
+    border-bottom: 1.5px solid #d0e8c0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #2a5a1a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #2a5a1a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0e8c0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f4faf0;
+  }
+
+  /* LAS 8 PARÁBOLAS */
+  .parabolas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .parabola-item {
+    border: 1px solid #c0d8b0;
+    border-radius: 5px;
+    padding: 5px 5px;
+    background: #f4faf0;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .parabola-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .parabola-item .nombre {
+    font-weight: 700;
+    color: #2a5a1a;
+    font-size: 7.5pt;
+    display: block;
+    margin-bottom: 2px;
+    line-height: 1.15;
+  }
+  .parabola-item .tema {
+    font-size: 6.5pt;
+    color: #555;
+    display: block;
+    line-height: 1.2;
+  }
+
+  /* HILOS CONDUCTORES */
+  .hilos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .hilo-item {
+    border-left: 3px solid #2a5a1a;
+    padding: 5px 8px;
+    background: #f4faf0;
+    border-radius: 0 4px 4px 0;
+  }
+  .hilo-item strong {
+    color: #2a5a1a;
+    font-size: 9pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .hilo-item .desc {
+    font-size: 8pt;
+    color: #444;
+    line-height: 1.25;
+  }
+
+  /* SUBVERSIONES */
+  .subversiones-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .subv-item {
+    border: 1px solid #c0d8b0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f4faf0;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .subv-item .icono {
+    font-size: 13pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .titulo {
+    font-weight: 700;
+    color: #2a5a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .desc {
+    font-size: 7pt;
+    color: #444;
+    line-height: 1.2;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f4faf0;
+    border-left: 3px solid #2a5a1a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #2a5a1a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 11.5pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c0d8b0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f4faf0;
+  }
+  .app-item strong {
+    color: #2a5a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #2a5a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #2a5a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f4faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hilo-item { background: #f4faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .subv-item { background: #f4faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f4faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .parabola-item { background: #f4faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>Síntesis del Bloque 1: El Reino de Dios</h1>
+    <div class="subtitulo">Los siete hilos conductores de las parábolas del Reino</div>
+    <div class="referencia">8 parábolas · Mateo 13; Marcos 4; Lucas 8, 13 · Documento de síntesis y aplicación</div>
+  </div>
+
+  <!-- FILA 1: LAS 8 PARÁBOLAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>📚 Las ocho parábolas del bloque</h2>
+    <div class="parabolas-grid">
+      <div class="parabola-item">
+        <span class="icono">🌱</span>
+        <span class="nombre">El sembrador</span>
+        <span class="tema">La recepción de la Palabra según el terreno</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🌾</span>
+        <span class="nombre">La semilla que crece sola</span>
+        <span class="tema">El crecimiento misterioso e invisible</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🌳</span>
+        <span class="nombre">El grano de mostaza</span>
+        <span class="tema">La desproporción entre el inicio y el fin</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🍞</span>
+        <span class="nombre">La levadura</span>
+        <span class="tema">La transformación que actúa desde dentro</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🌿</span>
+        <span class="nombre">El trigo y la cizaña</span>
+        <span class="tema">La coexistencia del bien y del mal hasta la siega</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🕸️</span>
+        <span class="nombre">La red echada al mar</span>
+        <span class="tema">La convocación universal y la selección escatológica</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">💎</span>
+        <span class="nombre">El tesoro escondido</span>
+        <span class="tema">El gozo del hallazgo inesperado</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🦪</span>
+        <span class="nombre">La perla de gran precio</span>
+        <span class="tema">La búsqueda perseverante del valor supremo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 2: LOS HILOS CONDUCTORES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🧵 Los siete hilos conductores</h2>
+    <div class="hilos-grid">
+      <div class="hilo-item">
+        <strong>1. El Reino es una realidad dinámica que crece</strong>
+        <span class="desc">No es doctrina estática ni institución inmóvil: es realidad viva que germina, crece, fermenta y se expande.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>2. El crecimiento es obra de Dios, no del hombre</strong>
+        <span class="desc">El sembrador siembra; Dios hace crecer. El campesino duerme; la semilla brota. La confianza es la actitud del discípulo.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>3. El inicio es pequeño, el fin es desproporcionado</strong>
+        <span class="desc">La semilla más pequeña se convierte en árbol; un poco de levadura transforma toda la masa. Dios elige lo pequeño.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>4. El Reino transforma desde dentro</strong>
+        <span class="desc">La levadura se esconde en la masa; el tesoro está enterrado; la semilla germina en lo secreto. No se impone: fermenta.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>5. El Reino convoca a todos; la selección es de Dios</strong>
+        <span class="desc">La red recoge toda clase de peces; el campo tiene trigo y cizaña. La convocación es universal; el juicio es de Dios.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>6. El Reino exige una entrega radical</strong>
+        <span class="desc">El hombre vende todo por el tesoro; el mercader vende todo por la perla. No admite medias tintas. La entrega es gozosa.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>7. El Reino es un tesoro de valor supremo</strong>
+        <span class="desc">El tesoro y la perla subrayan que el Reino vale más que todo. No es una opción entre muchas: es <em>la</em> opción.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>✨ La paciencia escatológica</strong>
+        <span class="desc">El trigo y la cizaña crecen juntos hasta la siega. El Reino tiene su ritmo, que no es el ritmo humano. La paciencia es confianza.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS GRANDES SUBVERSIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔄 Las grandes subversiones del bloque</h2>
+    <div class="subversiones-grid">
+      <div class="subv-item">
+        <span class="icono">🌱</span>
+        <span class="titulo">Lo pequeño es grande</span>
+        <span class="desc">La semilla más pequeña se convierte en árbol; un poco de levadura transforma toda la masa.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🔒</span>
+        <span class="titulo">Lo oculto es poderoso</span>
+        <span class="desc">La levadura actúa escondida; el tesoro está enterrado; la semilla germina en lo secreto.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🏞️</span>
+        <span class="titulo">Lo ordinario es sagrado</span>
+        <span class="desc">El tesoro está en un campo común; la levadura en la masa cotidiana; el Reino crece en lo ordinario.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🌾</span>
+        <span class="titulo">El mal coexiste con el bien</span>
+        <span class="desc">El trigo y la cizaña crecen juntos; la red recoge peces buenos y malos. La coexistencia es temporal.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">💎</span>
+        <span class="titulo">Gracia y búsqueda se complementan</span>
+        <span class="desc">El tesoro se halla (gracia); la perla se busca (esfuerzo). No se oponen: se complementan.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">⚖️</span>
+        <span class="titulo">El juicio es de Dios, no del hombre</span>
+        <span class="desc">No arrancamos la cizaña; no separamos los peces. El juicio pertenece a Dios, y llegará a su tiempo.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales del bloque</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que el bloque afirma</h4>
+        <ul>
+          <li>Reino: realidad dinámica que crece, transforma y convoca</li>
+          <li>Crecimiento: obra de Dios, misteriosa, progresiva</li>
+          <li>Semilla: Palabra del Reino, fe, comunidad</li>
+          <li>Transformación: interna, gradual, total, irreversible</li>
+          <li>Convocación: universal, sin distinción</li>
+          <li>Juicio: prerrogativa de Dios, escatológico</li>
+          <li>Entrega: radical, total, gozosa</li>
+          <li>Tesoro: don supremo que desplaza a todos los demás</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que el bloque niega</h4>
+        <ul>
+          <li>Doctrina estática, institución inmóvil</li>
+          <li>Esfuerzo humano, controlable, inmediato</li>
+          <li>Algo insignificante o sin valor</li>
+          <li>Externa, inmediata, parcial, reversible</li>
+          <li>Selectiva, solo para justos</li>
+          <li>Tarea humana, inmediato, arbitrario</li>
+          <li>Parcial, calculada, forzada</li>
+          <li>Una entre muchas opciones</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#2a5a1a;"><strong>El Reino es un tesoro de valor supremo que crece desde lo pequeño y oculto, transforma desde dentro, convoca a todos sin distinción y exige una entrega radical y gozosa. La paciencia escatológica es necesaria: el juicio pertenece a Dios.</strong></p>
+  </div>
+
+  <!-- FILA 5: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento del bloque</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Reconozco que el Reino es una realidad dinámica que crece, o lo veo como algo estático?</div>
+      <div class="item">2. ¿Confío en que Dios hace crecer, o me angustio por controlar el proceso?</div>
+      <div class="item">3. ¿Desprecio los inicios pequeños, o confío en el crecimiento?</div>
+      <div class="item">4. ¿Estoy transformando desde dentro o imponiendo desde fuera?</div>
+      <div class="item">5. ¿Juzgo prematuramente a los demás, o dejo el juicio a Dios?</div>
+      <div class="item">6. ¿He vendido <strong>todo</strong> por el Reino, o me aferro a algo?</div>
+      <div class="item">7. ¿Mi respuesta al hallazgo es <strong>gozosa</strong> o <strong>calculada</strong>?</div>
+      <div class="item">8. ¿Busco el Reino con perseverancia, o lo espero pasivamente?</div>
+      <div class="item">9. ¿Vivo con la conciencia de que hay un juicio final?</div>
+      <div class="item">10. ¿Mi vida transmite el <strong>gozo</strong> del hallazgo?</div>
+    </div>
+  </div>
+
+  <!-- FILA 6: APLICACIONES TRANSVERSALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones transversales del bloque</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Sembrar valores y confiar en el crecimiento; no forzar ni controlar.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser levadura en las relaciones: transformar por presencia, no por imposición.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear condiciones para el crecimiento, sin forzar resultados.</div>
+      <div class="app-item"><strong>Trabajo</strong> Ordenar el trabajo al Reino, sin idolatrarlo; el trabajo es medio, no fin.</div>
+      <div class="app-item"><strong>Vida interior</strong> Dejar que el Reino transforme <strong>toda</strong> la vida, no solo fragmentos.</div>
+      <div class="app-item"><strong>Sociedad</strong> Transformar la sociedad desde dentro, por contagio, no por revolución.</div>
+      <div class="app-item"><strong>Liderazgo</strong> El líder es levadura: transforma por presencia, no por imposición.</div>
+      <div class="app-item"><strong>Espiritual</strong> Confiar en el poder transformador de la gracia, aunque no se vea el proceso.</div>
+      <div class="app-item"><strong>Crisis</strong> No desesperar: la transformación es gradual, pero irreversible.</div>
+      <div class="app-item"><strong>Evangelización</strong> Convocar a todos sin distinción; dejar a Dios la selección.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “El Reino de Dios es una realidad dinámica que crece por el poder de Dios,<br>no por el esfuerzo humano.”
+    <small>Comienza pequeño y oculto, pero se expande de manera desproporcionada y transforma todo desde dentro. Convoca a todos sin distinción, pero la selección es de Dios. Exige una entrega radical y gozosa, porque es un tesoro de valor supremo. La paciencia escatológica es necesaria: el juicio pertenece a Dios, y llegará a su tiempo.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de síntesis · Bloque 1: El Reino de Dios · 8 parábolas de Jesús · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

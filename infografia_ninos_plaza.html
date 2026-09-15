@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Los Niños en la Plaza</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #2a5a6a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #2a5a6a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #5a8a9a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #b8d8e0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafdfe;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #2a5a6a;
+    border-bottom: 1.5px solid #d0e8f0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #3a7a8a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #2a5a6a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #2a5a6a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0e8f0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2fafc;
+  }
+
+  /* LOS DOS JUEGOS */
+  .juegos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .juego-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .boda-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .funeral-card {
+    background: #ece8e0;
+    border: 1.5px solid #b0a894;
+  }
+  .juego-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .juego-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .boda-card h4 { color: #1a7a3a; }
+  .funeral-card h4 { color: #6a5a3a; }
+  .juego-card ul {
+    text-align: left;
+  }
+  .juego-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .boda-card ul li::before { color: #1a7a3a; }
+  .funeral-card ul li::before { color: #6a5a3a; }
+
+  /* CONTRASTE JUAN-JESÚS */
+  .contraste-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .contraste-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .juan-card {
+    background: #e8eef4;
+    border: 1.5px solid #8aa0b8;
+  }
+  .jesus-card {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .contraste-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .contraste-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .juan-card h4 { color: #2a4a6a; }
+  .jesus-card h4 { color: #8a5a00; }
+  .contraste-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .contraste-flecha {
+    font-size: 24pt;
+    color: #2a5a6a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* CONCLUSIÓN BOX */
+  .conclusion-box {
+    background: #f0f8fa;
+    border: 2px solid #4a8a9a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .conclusion-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #2a5a6a;
+    margin-bottom: 3px;
+  }
+  .conclusion-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #b8d8e0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f2fafc;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #2a5a6a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2fafc;
+    border-left: 3px solid #2a5a6a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #2a5a6a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #b8d8e0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2fafc;
+  }
+  .app-item strong {
+    color: #2a5a6a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #2a5a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #2a5a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2fafc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f2fafc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2fafc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .boda-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .funeral-card { background: #ece8e0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .juan-card { background: #e8eef4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .jesus-card { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .conclusion-box { background: #f0f8fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de los Niños en la Plaza</h1>
+    <div class="subtitulo">La crítica inconsistente y la sabiduría justificada por sus frutos</div>
+    <div class="referencia">Mateo 11:16-19 · Lucas 7:31-35 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Jesús pregunta: <em>"¿A qué compararé esta generación? Es semejante a los <strong>muchachos</strong> que se sientan en las <strong>plazas</strong>, y dan voces a sus compañeros, diciendo: <strong>Os tocamos flauta, y no bailasteis; os endechamos, y no lamentasteis</strong>."</em></p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">"Porque vino <strong>Juan</strong>, que ni comía ni bebía, y dicen: <strong>Demonio tiene</strong>. Vino el <strong>Hijo del Hombre</strong>, que come y bebe, y dicen: <strong>He aquí un hombre comilón, y bebedor de vino, amigo de publicanos y de pecadores</strong>."</p>
+      <p style="font-size:9.5pt;"><strong>"Pero la sabiduría es justificada por sus hijos."</strong></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que haya que <strong>elegir</strong> entre el estilo de Juan y el de Jesús: ambos son instrumentos de la sabiduría.</li>
+        <li>No enseña que la <strong>crítica</strong> sea siempre mala: la crítica constructiva es buena.</li>
+        <li>No enseña que haya que <strong>complacer</strong> a todos: es imposible complacer a los caprichosos.</li>
+        <li>No enseña que Juan o Jesús sean <strong>modelos de estilo</strong> para todos: cada uno tiene su estilo legítimo.</li>
+        <li>No enseña que la generación sea <strong>malvada</strong> en su totalidad: la puerta del arrepentimiento queda abierta.</li>
+        <li>No enseña que el <strong>mensaje</strong> no importe: el mensaje es lo esencial.</li>
+        <li>No enseña que haya que <strong>evitar</strong> la crítica: la crítica es inevitable.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La inconsistencia de los críticos:</strong> rechazan cualquier estilo por capricho.</li>
+        <li><strong>Es imposible complacer a los caprichosos:</strong> siempre habrá críticas.</li>
+        <li><strong>La crítica revela el corazón del crítico:</strong> manifiesta la dureza o la apertura.</li>
+        <li><strong>El rechazo del mensaje se disfraza de crítica al estilo.</strong></li>
+        <li><strong>La sabiduría se manifiesta en la diversidad de estilos.</strong></li>
+        <li><strong>La sabiduría se justifica por sus obras:</strong> los frutos son el criterio.</li>
+        <li><strong>Los frutos son el criterio del discernimiento.</strong></li>
+      </ul>
+      <ul class="check">
+        <li><strong>La generación que rechaza es estéril:</strong> pierde el Reino.</li>
+        <li><strong>La sabiduría de Dios supera la crítica humana.</strong></li>
+        <li><strong>La crítica no debe paralizar al discípulo.</strong></li>
+        <li><strong>Cada uno tiene su propio estilo legítimo.</strong></li>
+        <li><strong>La crítica caprichosa no merece respuesta argumentativa:</strong> las obras hablan.</li>
+        <li><strong>La sabiduría es humilde y paciente.</strong></li>
+        <li><strong>La crítica revela la generación, no al criticado.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS DOS JUEGOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎭 Los dos juegos: la boda y el funeral</h2>
+    <div class="juegos-grid">
+      <div class="juego-card boda-card">
+        <span class="icono">🎵</span>
+        <h4>El juego de la boda</h4>
+        <ul>
+          <li>Los niños <strong>tocan la flauta</strong>.</li>
+          <li>Imitan la <strong>música festiva</strong> de una boda.</li>
+          <li><strong>Esperan</strong> que los otros <strong>bailen</strong>.</li>
+          <li>Los otros <strong>no bailan</strong>.</li>
+          <li>Los niños <strong>reclaman</strong>: "No bailasteis".</li>
+          <li>La <strong>invitación</strong> al gozo es <strong>rechazada</strong>.</li>
+        </ul>
+      </div>
+      <div class="juego-card funeral-card">
+        <span class="icono">😢</span>
+        <h4>El juego del funeral</h4>
+        <ul>
+          <li>Los niños <strong>cantan lamentos</strong>.</li>
+          <li>Imitan el <strong>lamento fúnebre</strong>.</li>
+          <li><strong>Esperan</strong> que los otros <strong>lloren</strong>.</li>
+          <li>Los otros <strong>no lloran</strong>.</li>
+          <li>Los niños <strong>reclaman</strong>: "No lamentasteis".</li>
+          <li>La <strong>invitación</strong> al duelo es <strong>rechazada</strong>.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#2a5a6a;"><strong>Los niños caprichosos rechazan los dos juegos: ni bailan cuando tocan música festiva, ni lloran cuando cantan lamentos fúnebres. La generación es igual: rechaza cualquier estilo porque no quiere aceptar el mensaje.</strong></p>
+  </div>
+
+  <!-- FILA 4: EL CONTRASTE JUAN-JESÚS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ El contraste: Juan el austero y Jesús el social</h2>
+    <div class="contraste-grid">
+      <div class="contraste-card juan-card">
+        <span class="icono">🌵</span>
+        <h4>Juan el Bautista</h4>
+        <span class="desc"><strong>No comía ni bebía vino.</strong> Vivía con <strong>austeridad</strong>. Su estilo era <strong>ascético</strong> y <strong>profético</strong>. <strong>Criticaban</strong>: "Demonio tiene". <strong>Rechazaban</strong> el mensaje criticando el estilo.</span>
+      </div>
+      <div class="contraste-flecha">→</div>
+      <div class="contraste-card jesus-card">
+        <span class="icono">🍷</span>
+        <h4>Jesús el Hijo del Hombre</h4>
+        <span class="desc"><strong>Come y bebe.</strong> Vive <strong>socialmente</strong>. Su estilo era <strong>cercano</strong> y <strong>misericordioso</strong>. <strong>Criticaban</strong>: "Comilón y bebedor de vino, amigo de publicanos y de pecadores". <strong>Rechazaban</strong> el mensaje criticando el estilo.</span>
+      </div>
+    </div>
+    <div class="conclusion-box">
+      <div class="titulo">✨ La conclusión: "La sabiduría es justificada por sus hijos"</div>
+      <div class="desc">La <strong>sabiduría</strong> se <strong>manifiesta</strong> en la <strong>diversidad</strong> de <strong>estilos</strong>. <strong>Juan</strong> es <strong>austero</strong>; <strong>Jesús</strong> es <strong>social</strong>. <strong>Ambos</strong> son <strong>instrumentos</strong> de la <strong>sabiduría divina</strong>. La <strong>sabiduría</strong> no se <strong>limita</strong> a un <strong>estilo</strong>: se <strong>manifiesta</strong> en <strong>muchos</strong>. Y se <strong>reconoce</strong> por sus <strong>frutos</strong>, no por las <strong>críticas</strong> de los <strong>que</strong> <strong>rechazan</strong>. La <strong>crítica inconsistente</strong> no <strong>puede</strong> <strong>ocultar</strong> la <strong>evidencia</strong> de las <strong>obras sabias</strong>. La <strong>sabiduría</strong> se <strong>justifica</strong> por <strong>sus hijos</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>γενεά</td>
+        <td>genea</td>
+        <td>generación</td>
+        <td>La generación contemporánea de Jesús. La generación que rechaza.</td>
+      </tr>
+      <tr>
+        <td>παιδία</td>
+        <td>paidia</td>
+        <td>niños, muchachos</td>
+        <td>Los niños que juegan en la plaza. La imagen del juego infantil.</td>
+      </tr>
+      <tr>
+        <td>ἀγορά</td>
+        <td>agora</td>
+        <td>plaza, mercado</td>
+        <td>El lugar público donde juegan los niños. De aquí viene "ágora".</td>
+      </tr>
+      <tr>
+        <td>προσφωνοῦντα</td>
+        <td>prosphōnounta</td>
+        <td>llamando, dando voces</td>
+        <td>Los niños llaman a sus compañeros. La invitación al juego.</td>
+      </tr>
+      <tr>
+        <td>ηὐλήσαμεν</td>
+        <td>ēulēsamen</td>
+        <td>tocamos flauta</td>
+        <td>El juego de las bodas. La música festiva. De aquí viene "aulético".</td>
+      </tr>
+      <tr>
+        <td>ὠρχήσασθε</td>
+        <td>ōrchēsasthe</td>
+        <td>bailasteis</td>
+        <td>La respuesta esperada al juego de las bodas. Los niños no bailaron.</td>
+      </tr>
+      <tr>
+        <td>ἐθρηνήσαμεν</td>
+        <td>ethrēnēsamen</td>
+        <td>endechamos, cantamos lamentos</td>
+        <td>El juego de los funerales. El lamento fúnebre. De aquí viene "treno".</td>
+      </tr>
+      <tr>
+        <td>ἐκόψασθε</td>
+        <td>ekopsasthe</td>
+        <td>lamentasteis, os golpeasteis</td>
+        <td>La respuesta esperada al juego fúnebre. Los niños no lloraron.</td>
+      </tr>
+      <tr>
+        <td>ἦλθεν</td>
+        <td>ēlthen</td>
+        <td>vino</td>
+        <td>Juan vino con un estilo; Jesús vino con otro. Ambos vinieron de Dios.</td>
+      </tr>
+      <tr>
+        <td>δαιμόνιον</td>
+        <td>daimonion</td>
+        <td>demonio</td>
+        <td>La acusación contra Juan. La crítica inconsistente.</td>
+      </tr>
+      <tr>
+        <td>φάγος</td>
+        <td>phagos</td>
+        <td>comilón, glotón</td>
+        <td>La acusación contra Jesús. La crítica inconsistente.</td>
+      </tr>
+      <tr>
+        <td>οἰνοπότης</td>
+        <td>oinopotēs</td>
+        <td>bebedor de vino</td>
+        <td>La acusación contra Jesús. De aquí viene "enópata".</td>
+      </tr>
+      <tr>
+        <td>τελωνῶν</td>
+        <td>telōnōn</td>
+        <td>publicanos</td>
+        <td>Los recaudadores de impuestos. Considerados pecadores.</td>
+      </tr>
+      <tr>
+        <td>ἁμαρτωλῶν</td>
+        <td>hamartōlōn</td>
+        <td>pecadores</td>
+        <td>Los pecadores. La acusación contra Jesús por acompañarlos.</td>
+      </tr>
+      <tr>
+        <td>σοφία</td>
+        <td>sophia</td>
+        <td>sabiduría</td>
+        <td>La sabiduría divina. La sabiduría que se justifica por sus obras.</td>
+      </tr>
+      <tr>
+        <td>ἐδικαιώθη</td>
+        <td>edikaiōthē</td>
+        <td>fue justificada, fue declarada justa</td>
+        <td>La sabiduría es justificada, declarada justa por sus hijos/obras.</td>
+      </tr>
+      <tr>
+        <td>τέκνων</td>
+        <td>teknōn</td>
+        <td>hijos, obras</td>
+        <td>Los hijos de la sabiduría. Las obras que manifiestan la sabiduría.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La palabra <em>paidia</em> ("niños") es significativa. Jesús usa la imagen del juego infantil para describir la actitud caprichosa de la generación. Y la palabra <em>sophia</em> ("sabiduría") es un atributo divino: en Proverbios 8, la sabiduría es personificada como presente en la creación. Jesús identifica la sabiduría divina con su misión y la de Juan. La sabiduría se manifiesta en ambos estilos. Y el verbo <em>edikaiōthē</em> ("fue justificada") subraya que la sabiduría es declarada justa por sus frutos, no por las críticas inconsistentes.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Proverbios 1:20-33: la sabiduría clama en las calles y plazas. Proverbios 8: la sabiduría divina eterna. Eclesiastés 3:1-8: todo tiene su tiempo. Eclesiástico 22:6: música en tiempo de luto es inoportuna.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La adaptabilidad de los medios (upāya): la verdad se adapta a los oyentes. La atención plena (sati): discernir el momento adecuado. El loto florece en diferentes condiciones.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El Tao que puede ser nombrado no es el Tao eterno" (Tao 1): la verdad trasciende las formas particulares. "El agua se adapta" (Tao 8). Wu wei: actuar sin forzar.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 2:286: Dios no impone sino en la medida de la capacidad. Sura 16:125: llama al camino de tu Señor con sabiduría y buena exhortación. Hadiz: el mejor es el que más beneficia a los demás.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La adaptabilidad del guru: adapta la enseñanza a la capacidad del discípulo. El karma yoga: acción desinteresada sin buscar reconocimiento. La devoción (bhakti) con confianza en Dios.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La coherencia (homologia): el sabio vive en coherencia. La indiferencia (adiaphora): el sabio es indiferente a las críticas inconsistentes. La autosuficiencia (autarkeia): no necesita aprobación ajena.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La phrónesis: saber actuar en cada circunstancia. La virtud como hábito. La eudaimonia no depende de la aprobación ajena, sino de la virtud.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La coherencia (xìn): el hombre superior cumple sus promesas. "Modesto en sus palabras y diligente en sus acciones" (Analectas 4:24). La rectitud (yi): actuar sin buscar reconocimiento ajeno.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Sabiduría: manifiesta en frutos y en diversidad de estilos</li>
+          <li>Crítica: constructiva y discernidora</li>
+          <li>Estilo: legítimo en su diversidad</li>
+          <li>Mensaje: esencial</li>
+          <li>Frutos: criterio del discernimiento</li>
+          <li>Diversidad: legítima y enriquecedora</li>
+          <li>Discernimiento: reconocer la sabiduría por sus frutos</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Limitada a un solo estilo</li>
+          <li>Inconsistente y caprichosa</li>
+          <li>Criterio absoluto de verdad</li>
+          <li>Sustituido por el estilo</li>
+          <li>Palabras o críticas</li>
+          <li>Uniformidad impuesta</li>
+          <li>Aceptar cualquier crítica</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#2a5a6a;"><strong>La generación que rechaza es como niños caprichosos que no se dejan complacer por nada. La crítica al estilo disfraza el rechazo del mensaje. La sabiduría se manifiesta en la diversidad de estilos y se justifica por sus frutos. La crítica inconsistente revela el corazón del crítico. La crítica no debe paralizar al discípulo.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿<strong>Critico</strong> constructivamente o caprichosamente?</div>
+      <div class="item">2. ¿Mi crítica <strong>revela</strong> un corazón abierto o cerrado?</div>
+      <div class="item">3. ¿Rechazo el <strong>mensaje</strong> disfrazándolo de crítica al estilo?</div>
+      <div class="item">4. ¿Reconozco la <strong>sabiduría</strong> en la diversidad de estilos?</div>
+      <div class="item">5. ¿<strong>Discierno</strong> la sabiduría por sus frutos o por mis preferencias?</div>
+      <div class="item">6. ¿Mi crítica <strong>edifica</strong> o destruye?</div>
+      <div class="item">7. ¿Me dejo <strong>paralizar</strong> por la crítica inconsistente?</div>
+      <div class="item">8. ¿<strong>Busco</strong> la aprobación ajena o la fidelidad a Dios?</div>
+      <div class="item">9. ¿Mi vida <strong>manifiesta</strong> la sabiduría divina?</div>
+      <div class="item">10. ¿Reconozco que <strong>siempre</strong> habrá críticas sin importar lo que haga?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> No criticar a los hijos por su estilo sin discernir el fondo.</div>
+      <div class="app-item"><strong>Amistad</strong> Discernir la sabiduría del amigo por sus frutos, no por su estilo.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de discernimiento y diversidad de estilos.</div>
+      <div class="app-item"><strong>Trabajo</strong> No dejarse paralizar por críticas inconsistentes.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar la propia disposición a criticar o a discernir.</div>
+      <div class="app-item"><strong>Sociedad</strong> Discernir la sabiduría pública por sus frutos.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar con sabiduría y coherencia, sin buscar aprobación ajena.</div>
+      <div class="app-item"><strong>Espiritual</strong> Discernir la voluntad de Dios por sus frutos.</div>
+      <div class="app-item"><strong>Crisis</strong> Mantener la coherencia aunque haya críticas.</div>
+      <div class="app-item"><strong>Evangelización</strong> Adaptar el estilo al oyente sin cambiar el mensaje.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Os tocamos flauta, y no bailasteis;<br>os endechamos, y no lamentasteis.”
+    <small>La generación que rechaza es como niños caprichosos que no se dejan complacer por nada. Rechazan a Juan porque es austero; rechazan a Jesús porque es social. La crítica al estilo disfraza el rechazo del mensaje. La sabiduría se manifiesta en la diversidad de estilos y se justifica por sus frutos. La crítica inconsistente revela el corazón del crítico. La crítica no debe paralizar al discípulo. La sabiduría es humilde y paciente. La sabiduría se justifica por sus hijos.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de los Niños en la Plaza (Mateo 11:16-19; Lucas 7:31-35) · Bloque 6: La humildad y el servicio · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

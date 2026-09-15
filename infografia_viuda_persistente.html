@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: La Viuda Persistente y el Juez Injusto</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #5a1a6a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #5a1a6a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #8a4a9a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #d8b8e0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fdfaff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #5a1a6a;
+    border-bottom: 1.5px solid #e8d0f0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #7a3a8a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #5a1a6a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #5a1a6a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #e8d0f0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf5fc;
+  }
+
+  /* CONTRASTE CLAVE */
+  .contraste-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .contraste-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .juez-injusto {
+    background: #f0ece4;
+    border: 1.5px solid #bdb5a0;
+  }
+  .dios-justo {
+    background: #f0e8f8;
+    border: 1.5px solid #b8a0d0;
+  }
+  .contraste-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .contraste-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .juez-injusto h4 { color: #7a6a4a; }
+  .dios-justo h4 { color: #5a1a6a; }
+  .contraste-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .contraste-flecha {
+    font-size: 24pt;
+    color: #5a1a6a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* DOS PERSONAJES */
+  .dos-personajes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .personaje-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .juez-card {
+    background: #f0ece4;
+    border: 1.5px solid #bdb5a0;
+  }
+  .viuda-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .personaje-card .icono {
+    font-size: 20pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .personaje-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .juez-card h4 { color: #7a6a4a; }
+  .viuda-card h4 { color: #1a7a3a; }
+  .personaje-card ul {
+    text-align: left;
+  }
+  .personaje-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .juez-card ul li::before { color: #7a6a4a; }
+  .viuda-card ul li::before { color: #1a7a3a; }
+
+  /* DIÁLOGO */
+  .dialogo-box {
+    background: #f8f0fc;
+    border: 2px solid #8a4a9a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .dialogo-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #5a1a6a;
+    margin-bottom: 3px;
+  }
+  .dialogo-box .cita {
+    font-size: 8.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .dialogo-box .cita strong {
+    font-style: normal;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #d8b8e0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf5fc;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #5a1a6a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf5fc;
+    border-left: 3px solid #5a1a6a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #5a1a6a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #d8b8e0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf5fc;
+  }
+  .app-item strong {
+    color: #5a1a6a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #5a1a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #5a1a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf5fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf5fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf5fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .juez-injusto { background: #f0ece4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .dios-justo { background: #f0e8f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .juez-card { background: #f0ece4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .viuda-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .dialogo-box { background: #f8f0fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de la Viuda Persistente</h1>
+    <div class="subtitulo">La oración perseverante que confía en la justicia de Dios</div>
+    <div class="referencia">Lucas 18:1-8 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Había en una ciudad un <strong>juez</strong> que <strong>ni temía a Dios, ni respetaba a hombre</strong>. Había también una <strong>viuda</strong> que venía a él, diciendo: <em>"Hazme justicia de mi adversario"</em>. El juez <strong>no quiso</strong> por algún tiempo.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Pero después dijo <strong>dentro de sí</strong>: <em>"Aunque ni temo a Dios, ni tengo respeto a hombre, sin embargo, porque esta viuda me es molesta, le haré justicia, para que no venga y me muela a golpes"</em>.</p>
+      <p style="font-size:9.5pt;">Y Jesús concluyó: <strong>"¿Y acaso Dios no hará justicia a sus escogidos, que claman a él día y noche? ¿Se tardará en responderles? Os digo que pronto les hará justicia. Pero cuando venga el Hijo del Hombre, ¿hallará fe en la tierra?"</strong>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios sea un juez injusto: la parábola lo <strong>contrasta</strong> con Dios.</li>
+        <li>No enseña que haya que molestar a Dios hasta que ceda: la oración es <strong>confianza</strong>, no molestia.</li>
+        <li>No enseña que la oración sea una técnica de presión.</li>
+        <li>No enseña que Dios sea indiferente a la injusticia.</li>
+        <li>No enseña que la perseverancia sea virtud en sí misma: es <strong>medio</strong>, no fin.</li>
+        <li>No enseña que Dios conceda todo capricho: da <strong>lo necesario</strong> para la justicia.</li>
+        <li>No enseña que la justicia llegue de inmediato: la <strong>demora</strong> es real.</li>
+        <li>No enseña que la fe sea fácil: la pregunta final <strong>advierte</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La oración perseverante es una necesidad:</strong> "orar siempre, y no desmayar".</li>
+        <li><strong>La perseverancia no se rinde:</strong> la viuda insiste día y noche.</li>
+        <li><strong>La oración es confianza, no molestia:</strong> si un juez injusto responde, cuánto más Dios.</li>
+        <li><strong>La oración perseverante confía en la justicia de Dios:</strong> pide justicia, no venganza.</li>
+        <li><strong>Dios no es como el juez:</strong> el juez es injusto; Dios es justo y santo.</li>
+        <li><strong>Dios escucha a sus escogidos:</strong> está atento a los que claman día y noche.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La justicia de Dios es cierta:</strong> "pronto les hará justicia".</li>
+        <li><strong>La demora es una prueba:</strong> purifica el deseo y fortalece la fe.</li>
+        <li><strong>La fe puede perderse:</strong> la demora puede quebrar la fe.</li>
+        <li><strong>La oración perseverante es intercesión:</strong> busca la justicia de Dios.</li>
+        <li><strong>La oración perseverante transforma al que ora:</strong> no cambia a Dios, cambia al que reza.</li>
+        <li><strong>La oración perseverante es escatológica:</strong> preparación para la venida del Señor.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: EL CONTRASTE CLAVE -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ El contraste clave: el juez injusto y Dios justo</h2>
+    <div class="contraste-grid">
+      <div class="contraste-card juez-injusto">
+        <span class="icono">👨‍⚖️</span>
+        <h4>El juez injusto</h4>
+        <span class="desc"><strong>Ni teme a Dios</strong>. <strong>Ni respeta a hombre</strong>. <strong>No quiere</strong> hacer justicia. Se rinde por <strong>molestia</strong>, no por <strong>justicia</strong>. Tarda <strong>mucho</strong>. Actúa por <strong>cansancio</strong>.</span>
+      </div>
+      <div class="contraste-flecha">→</div>
+      <div class="contraste-card dios-justo">
+        <span class="icono">✨</span>
+        <h4>Dios justo</h4>
+        <span class="desc"><strong>Es justo</strong> y <strong>santo</strong>. <strong>Escucha</strong> a sus escogidos. <strong>Quiere</strong> hacer justicia. Actúa por <strong>amor</strong>, no por molestia. Hará justicia <strong>pronto</strong>. Actúa por <strong>fidelidad</strong>.</span>
+      </div>
+    </div>
+    <div class="dialogo-box">
+      <div class="titulo">💬 La lógica del "cuánto más"</div>
+      <div class="cita">
+        <strong>Si</strong> un juez <strong>injusto</strong>, que <strong>ni teme a Dios ni respeta a hombre</strong>, hace justicia por la <strong>insistencia</strong> de una viuda...<br>
+        <strong>Cuánto más</strong> Dios, que es <strong>justo</strong>, <strong>santo</strong> y <strong>amoroso</strong>, hará justicia a sus <strong>escogidos</strong> que claman <strong>día y noche</strong>.<br>
+        La parábola no compara a Dios con el juez injusto: <strong>lo contrasta</strong> con él.
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: LOS DOS PERSONAJES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los dos personajes: el juez y la viuda</h2>
+    <div class="dos-personajes">
+      <div class="personaje-card juez-card">
+        <span class="icono">👨‍⚖️</span>
+        <h4>El juez injusto</h4>
+        <ul>
+          <li><strong>Ni teme a Dios</strong>: negación de la religión.</li>
+          <li><strong>Ni respeta a hombre</strong>: negación de la ética.</li>
+          <li><strong>No quiere</strong> hacer justicia.</li>
+          <li>Tarda <strong>mucho</strong> en responder.</li>
+          <li>Se rinde por <strong>molestia</strong>.</li>
+          <li><strong>Teme</strong> que la viuda lo <strong>agote</strong>.</li>
+          <li>Representa la <strong>injusticia</strong> institucional.</li>
+        </ul>
+      </div>
+      <div class="personaje-card viuda-card">
+        <span class="icono">👩</span>
+        <h4>La viuda persistente</h4>
+        <ul>
+          <li><strong>Vulnerable</strong>: sin esposo, sin recursos, sin defensa.</li>
+          <li><strong>Pide justicia</strong>, no venganza.</li>
+          <li><strong>Insiste</strong> día y noche.</li>
+          <li><strong>No se rinde</strong> ante la negativa.</li>
+          <li><strong>Confía</strong> en la justicia.</li>
+          <li><strong>Agota</strong> al juez con su insistencia.</li>
+          <li>Representa al <strong>desvalido</strong> que clama a Dios.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>κριτής</td>
+        <td>kritēs</td>
+        <td>juez</td>
+        <td>El que <strong>juzga</strong>. De aquí viene "criterio". El juez <strong>injusto</strong> de la parábola.</td>
+      </tr>
+      <tr>
+        <td>ἀδικία</td>
+        <td>adikia</td>
+        <td>injusticia</td>
+        <td>La <strong>injusticia</strong> del juez. Lo <strong>opuesto</strong> a la justicia de Dios.</td>
+      </tr>
+      <tr>
+        <td>μὴ φοβούμενος τὸν θεόν</td>
+        <td>mē phoboumenos ton theon</td>
+        <td>no temiendo a Dios</td>
+        <td>El juez <strong>no teme</strong> a Dios. La <strong>negación</strong> de la religión.</td>
+      </tr>
+      <tr>
+        <td>μὴ ἐντρεπόμενος ἄνθρωπον</td>
+        <td>mē entrepomenos anthrōpon</td>
+        <td>no respetando a hombre</td>
+        <td>El juez <strong>no respeta</strong> a nadie. La <strong>negación</strong> de la ética.</td>
+      </tr>
+      <tr>
+        <td>χήρα</td>
+        <td>chēra</td>
+        <td>viuda</td>
+        <td>La <strong>viuda</strong> era una de las personas más <strong>vulnerables</strong> en la sociedad judía.</td>
+      </tr>
+      <tr>
+        <td>ἐκδίκησον</td>
+        <td>ekdikēson</td>
+        <td>hazme justicia</td>
+        <td>La <strong>petición</strong> de la viuda. No pide <strong>venganza</strong>: pide <strong>justicia</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἀντίδικος</td>
+        <td>antidikos</td>
+        <td>adversario</td>
+        <td>El que <strong>oprime</strong> a la viuda. El <strong>enemigo</strong> de la justicia.</td>
+      </tr>
+      <tr>
+        <td>ὑπωπιάζῃ</td>
+        <td>hypōpiazē</td>
+        <td>me muela a golpes</td>
+        <td>De <em>hypōpion</em> ("bajo el ojo"). Literalmente: <strong>golpear bajo el ojo</strong>. Imagen <strong>deportiva</strong> de boxeo: la viuda <strong>agota</strong> al juez.</td>
+      </tr>
+      <tr>
+        <td>εἰς τέλος</td>
+        <td>eis telos</td>
+        <td>hasta el fin, siempre</td>
+        <td>La <strong>perseverancia</strong> de la viuda: <strong>hasta el fin</strong>. La oración <strong>sin desmayar</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἐκλεκτῶν</td>
+        <td>eklektōn</td>
+        <td>escogidos, elegidos</td>
+        <td>Los <strong>elegidos</strong> de Dios. Los que <strong>confían</strong> en Él. Los que <strong>perseveran</strong>.</td>
+      </tr>
+      <tr>
+        <td>βοώντων</td>
+        <td>boōntōn</td>
+        <td>clamando</td>
+        <td>La <strong>oración</strong> de los escogidos. <strong>Claman</strong> día y noche. Verbo de <strong>intensidad</strong>.</td>
+      </tr>
+      <tr>
+        <td>μακροθυμεῖ</td>
+        <td>makrothymei</td>
+        <td>tarda, es paciente</td>
+        <td>La <strong>demora</strong> de Dios. No es <strong>indiferencia</strong>: es <strong>paciencia</strong>.</td>
+      </tr>
+      <tr>
+        <td>ποιήσει τὴν ἐκδίκησιν</td>
+        <td>poiēsei tēn ekdikēsin</td>
+        <td>hará la justicia</td>
+        <td>La <strong>certeza</strong> de la justicia de Dios. Dios <strong>hará justicia</strong> a sus escogidos.</td>
+      </tr>
+      <tr>
+        <td>ἐν τάχει</td>
+        <td>en tachei</td>
+        <td>pronto, en breve</td>
+        <td>La <strong>rapidez</strong> de la justicia de Dios. Aunque <strong>parezca</strong> tardar, <strong>llega</strong>.</td>
+      </tr>
+      <tr>
+        <td>εὑρήσει τὴν πίστιν</td>
+        <td>heurēsei tēn pistin</td>
+        <td>hallará la fe</td>
+        <td>La <strong>pregunta final</strong>. ¿Habrá <strong>fe</strong> cuando venga el Hijo del Hombre?</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>hypōpiazē</em> ("me muela a golpes") viene de <em>hypōpion</em> ("bajo el ojo"). Literalmente: <strong>golpear bajo el ojo</strong>. Es una imagen <strong>deportiva</strong> de boxeo: la viuda <strong>agota</strong> al juez con su insistencia. La parábola enseña que la <strong>insistencia</strong> es persistente y agotadora.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Éxodo 22:22-24: no afligiréis a la viuda. Isaías 1:17: amparad a la viuda. Salmo 68:5: Dios es defensor de viudas.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La perseverancia (vīrya) como pāramitā. La compasión (karuṇā) hacia todos los seres. La justicia (dharma) como orden cósmico.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El sabio no acumula: cuanto más hace para los demás, más tiene" (Tao 81). "Lo blando vence a lo duro" (Tao 78). La perseverancia suave.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 4:75: Dios escucha el clamor de los oprimidos. Sura 2:186: "Estoy cerca; respondo al que me invoca". La oración como encuentro.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La perseverancia (tapas) como virtud. La devoción (bhakti) como entrega confiada. La justicia (dharma) como orden cósmico.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La perseverancia (karteria) como virtud. La confianza en la providencia. Contraste: el estoico acepta; el cristiano pide con confianza.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La perseverancia (hypomonē) como virtud. La justicia (dikaiosynē) como virtud fundamental. La phrónesis de saber cuándo y cómo pedir.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La perseverancia (hèng) como virtud. La justicia (yi) como virtud fundamental. La benevolencia (ren) como compasión con los oprimidos.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Oración: encuentro personal con el Padre</li>
+          <li>Perseverancia: confianza que no se rinde</li>
+          <li>Confianza: actitud filial, atrevida</li>
+          <li>Justicia: petición de lo justo, no de venganza</li>
+          <li>Dios: Padre justo, atento</li>
+          <li>Insistencia: signo de fe</li>
+          <li>Demora: prueba de la fe</li>
+          <li>Fe: confianza perseverante</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Fórmula mágica o técnica</li>
+          <li>Molestia que fuerza a Dios</li>
+          <li>Timidez o temor</li>
+          <li>Venganza o castigo</li>
+          <li>Juez injusto, indiferente</li>
+          <li>Virtud en sí misma</li>
+          <li>Abandono de Dios</li>
+          <li>Certeza sin dudas</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#5a1a6a;"><strong>La parábola no compara a Dios con el juez injusto: lo contrasta con él. Si un juez injusto responde a la insistencia, cuánto más el Padre justo responderá al amor. La oración no cambia a Dios: cambia al que ora.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Mi oración es <strong>confianza</strong> o <strong>molestia</strong>?</div>
+      <div class="item">2. ¿Persevero en la oración o me <strong>rindo</strong> ante la falta de respuesta?</div>
+      <div class="item">3. ¿Mi oración es <strong>egoísta</strong> o <strong>solidaria</strong>?</div>
+      <div class="item">4. ¿Reconozco que Dios es un <strong>Padre justo</strong>, no un juez indiferente?</div>
+      <div class="item">5. ¿Mi oración es <strong>atrevida</strong> y <strong>confiada</strong>, o tímida y temerosa?</div>
+      <div class="item">6. ¿La perseverancia <strong>purifica</strong> mi deseo o lo deforma?</div>
+      <div class="item">7. ¿Reconozco que Dios <strong>hará justicia</strong> a sus escogidos?</div>
+      <div class="item">8. ¿Mi oración es <strong>encuentro</strong> con el Padre o monólogo conmigo mismo?</div>
+      <div class="item">9. ¿La oración <strong>transforma</strong> mi vida o solo obtiene cosas?</div>
+      <div class="item">10. ¿Persevero <strong>hasta el final</strong>, o me desanimo ante la demora?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Perseverar en la oración por la familia; no rendirse ante las dificultades.</div>
+      <div class="app-item"><strong>Amistad</strong> Orar por los amigos; la oración perseverante es <strong>intercesión</strong>.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>oración perseverante</strong> y <strong>solidaria</strong>.</div>
+      <div class="app-item"><strong>Trabajo</strong> Orar por las necesidades del trabajo; no rendirse ante los obstáculos.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar la <strong>perseverancia</strong> en la oración; no rendirse ante la sequedad.</div>
+      <div class="app-item"><strong>Sociedad</strong> Orar por la <strong>justicia</strong> y la <strong>paz</strong>; la oración perseverante transforma.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Orar por los que se lideran; la oración perseverante es servicio.</div>
+      <div class="app-item"><strong>Espiritual</strong> Cultivar la <strong>confianza filial</strong>; no molestar a Dios, sino confiar en Él.</div>
+      <div class="app-item"><strong>Crisis</strong> Perseverar en la oración en medio de la crisis; no desesperar.</div>
+      <div class="app-item"><strong>Evangelización</strong> Orar por los que no conocen a Dios; la oración perseverante prepara el corazón.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “¿Y acaso Dios no hará justicia a sus escogidos,<br>que claman a él día y noche?”
+    <small>La parábola de la viuda persistente enseña la perseverancia en la oración. No porque Dios sea un juez injusto y reacio, sino porque la insistencia purifica el deseo, fortalece la fe y manifiesta la confianza en el Padre. La oración es confianza filial, no molestia. Es solidaria, no egoísta. Es encuentro, no monólogo. Dios hará justicia a sus escogidos. La demora es una prueba; la fe puede perderse. Perseverad hasta el final.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de la Viuda Persistente y el Juez Injusto (Lucas 18:1-8) · Bloque 4: La oración y la persistencia · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Los Dos Hijos</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #5a2a4a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #5a2a4a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #8a4a7a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e0c0d8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fdfafc;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #5a2a4a;
+    border-bottom: 1.5px solid #ede0e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #7a3a6a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #5a2a4a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #5a2a4a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf4f8;
+  }
+
+  /* LOS DOS HIJOS */
+  .hijos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .hijo-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .primer-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .segundo-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .hijo-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .hijo-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .primer-card h4 { color: #1a7a3a; }
+  .segundo-card h4 { color: #b02020; }
+  .hijo-card ul {
+    text-align: left;
+  }
+  .hijo-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .primer-card ul li::before { color: #1a7a3a; }
+  .segundo-card ul li::before { color: #b02020; }
+
+  /* DIÁLOGO */
+  .dialogo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .dialogo-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+  .padre-card {
+    background: #e8eef4;
+    border: 1.5px solid #8aa0b8;
+  }
+  .hijo1-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .hijo2-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .dialogo-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .padre-card h4 { color: #2a4a6a; }
+  .hijo1-card h4 { color: #1a7a3a; }
+  .hijo2-card h4 { color: #b02020; }
+  .dialogo-card .cita {
+    font-size: 8.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .dialogo-card .cita strong {
+    font-style: normal;
+  }
+
+  /* ENSEÑANZA BOX */
+  .ensenanza-box {
+    background: #f8f0f8;
+    border: 2px solid #8a4a7a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .ensenanza-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #5a2a4a;
+    margin-bottom: 3px;
+  }
+  .ensenanza-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e0c0d8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf4f8;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #5a2a4a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf4f8;
+    border-left: 3px solid #5a2a4a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #5a2a4a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e0c0d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf4f8;
+  }
+  .app-item strong {
+    color: #5a2a4a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #5a2a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #5a2a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .primer-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .segundo-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .padre-card { background: #e8eef4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hijo1-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hijo2-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .ensenanza-box { background: #f8f0f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de los Dos Hijos</h1>
+    <div class="subtitulo">La obediencia que se traduce en obras, no la que se queda en palabras</div>
+    <div class="referencia">Mateo 21:28-32 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un hombre tenía <strong>dos hijos</strong>. Al <strong>primero</strong> le dijo: <em>"Hijo, ve hoy a trabajar en mi viña"</em>. El primero respondió: <strong>"No quiero"</strong>; pero después, <strong>arrepentido, fue</strong>. Al <strong>segundo</strong> le dijo lo mismo. El segundo respondió: <strong>"Sí, señor, voy"</strong>. Pero <strong>no fue</strong>.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Jesús preguntó: <strong>"¿Cuál de los dos hizo la voluntad de su padre?"</strong>. Ellos dijeron: <strong>"El primero"</strong>.</p>
+      <p style="font-size:9.5pt;">Y Jesús concluyó: <em>"De cierto os digo, que los <strong>publicanos</strong> y las <strong>rameras</strong> van delante de vosotros al reino de Dios. Porque vino a vosotros Juan en camino de justicia, y no le creísteis; pero los publicanos y las rameras <strong>le creyeron</strong>; y vosotros, viéndolo, <strong>no os arrepentisteis</strong> después para creerle."</em></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que esté bien <strong>rechazar</strong> a Dios inicialmente: el primer hijo no es modelo por su rechazo, sino por su arrepentimiento.</li>
+        <li>No enseña que el <strong>decir correcto</strong> sea malo: el segundo dijo lo correcto, pero no lo hizo.</li>
+        <li>No enseña que las <strong>palabras</strong> no importen: importan, pero no bastan.</li>
+        <li>No enseña que la <strong>obediencia tardía</strong> sea mejor que la inmediata: es mejor que la desobediencia final.</li>
+        <li>No enseña que los publicanos y las rameras sean <strong>modelos de moralidad</strong>: son modelos de arrepentimiento.</li>
+        <li>No enseña que los líderes religiosos estén <strong>condenados sin remedio</strong>: la puerta queda abierta.</li>
+        <li>No enseña que la <strong>religión</strong> sea mala: los líderes no son condenados por ser religiosos, sino por no arrepentirse.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La obediencia verdadera se traduce en obras:</strong> no basta decir; hay que hacer.</li>
+        <li><strong>El decir sin hacer es estéril:</strong> la palabra sin obra es vacía.</li>
+        <li><strong>El arrepentimiento verdadero cambia la conducta:</strong> no es solo sentimiento.</li>
+        <li><strong>La obediencia tardía es mejor que la desobediencia final.</strong></li>
+        <li><strong>La coherencia entre el decir y el hacer es esencial.</strong></li>
+        <li><strong>La fe verdadera produce obras.</strong></li>
+      </ul>
+      <ul class="check">
+        <li><strong>El arrepentimiento es posible hasta el final:</strong> la puerta está abierta mientras hay tiempo.</li>
+        <li><strong>Los pecadores pueden entrar antes que los religiosos.</strong></li>
+        <li><strong>La religiosidad sin arrepentimiento no salva.</strong></li>
+        <li><strong>El ejemplo de los pecadores arrepentidos avergüenza a los religiosos no arrepentidos.</strong></li>
+        <li><strong>La urgencia del arrepentimiento es real.</strong></li>
+        <li><strong>Dios valora las obras, no las promesas.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS DOS HIJOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los dos hijos: el que dijo no y fue, y el que dijo sí y no fue</h2>
+    <div class="hijos-grid">
+      <div class="hijo-card primer-card">
+        <span class="icono">🟢</span>
+        <h4>El primer hijo</h4>
+        <ul>
+          <li>Recibe la <strong>orden</strong> del padre: "Ve a trabajar".</li>
+          <li><strong>Rechaza</strong> abiertamente: <strong>"No quiero"</strong>.</li>
+          <li>Su respuesta es <strong>descarada</strong> e irrespetuosa.</li>
+          <li>Pero <strong>después se arrepiente</strong>.</li>
+          <li><strong>Va</strong> a trabajar en la viña.</li>
+          <li><strong>Hace</strong> la voluntad del padre.</li>
+          <li><strong>Obedece con obras</strong>, no solo con palabras.</li>
+        </ul>
+      </div>
+      <div class="hijo-card segundo-card">
+        <span class="icono">🔴</span>
+        <h4>El segundo hijo</h4>
+        <ul>
+          <li>Recibe la <strong>misma orden</strong> del padre.</li>
+          <li><strong>Acepta</strong> formalmente: <strong>"Sí, señor, voy"</strong>.</li>
+          <li>Su respuesta es <strong>cortés</strong> y respetuosa.</li>
+          <li>Pero <strong>no se arrepiente</strong> ni cambia.</li>
+          <li><strong>No va</strong> a trabajar en la viña.</li>
+          <li><strong>No hace</strong> la voluntad del padre.</li>
+          <li><strong>Promete con palabras</strong>, pero no cumple.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ensenanza-box">
+      <div class="titulo">⚖️ La lección central: el hacer vale más que el decir</div>
+      <div class="desc">El <strong>primer hijo</strong> <strong>rechazó</strong> inicialmente, pero se <strong>arrepintió</strong> y <strong>obedeció</strong>. El <strong>segundo hijo</strong> <strong>prometió</strong>, pero <strong>no cumplió</strong>. La <strong>obediencia verdadera</strong> no está en las <strong>palabras</strong>, sino en las <strong>obras</strong>. El <strong>decir correcto</strong> sin <strong>hacer</strong> es <strong>estéril</strong>. La <strong>fe</strong> sin <strong>obras</strong> es <strong>muerta</strong> (Santiago 2:26). La parábola subraya la <strong>importancia</strong> de la <strong>coherencia</strong> entre el <strong>decir</strong> y el <strong>hacer</strong>. El <strong>arrepentimiento verdadero</strong> cambia la <strong>conducta</strong>. No basta <strong>decir</strong>: hay que <strong>hacer</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 4: EL DIÁLOGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>💬 El diálogo: la orden del padre y las respuestas de los hijos</h2>
+    <div class="dialogo-grid">
+      <div class="dialogo-card padre-card">
+        <h4>👨‍🌾 El padre</h4>
+        <div class="cita">
+          <strong>"Hijo, ve hoy a trabajar en mi viña."</strong><br><br>
+          El padre <strong>invita</strong> a sus hijos a <strong>trabajar</strong> en su <strong>viña</strong>. La <strong>invitación</strong> es <strong>personal</strong> y <strong>directa</strong>. La <strong>viña</strong> es <strong>símbolo</strong> de <strong>Israel</strong> (Isaías 5:1-7). El padre es <strong>imagen</strong> de <strong>Dios</strong> que llama a su pueblo a <strong>trabajar</strong> en su <strong>Reino</strong>.
+        </div>
+      </div>
+      <div class="dialogo-card hijo1-card">
+        <h4>🟢 El primer hijo (dice no y va)</h4>
+        <div class="cita">
+          <strong>"No quiero."</strong><br><br>
+          <em>...pero después, arrepentido, fue.</em><br><br>
+          El primer hijo <strong>rechaza</strong> la orden con <strong>descaro</strong>. Pero <strong>después</strong> se <strong>arrepiente</strong> y <strong>obedece</strong>. Su <strong>arrepentimiento</strong> <strong>cambia</strong> su <strong>conducta</strong>. <strong>Hace</strong> la voluntad del padre, aunque <strong>primero</strong> la rechazó.
+        </div>
+      </div>
+    </div>
+    <div class="dialogo-grid" style="margin-top:6px;">
+      <div class="dialogo-card hijo2-card">
+        <h4>🔴 El segundo hijo (dice sí y no va)</h4>
+        <div class="cita">
+          <strong>"Sí, señor, voy."</strong><br><br>
+          <em>...y no fue.</em><br><br>
+          El segundo hijo <strong>acepta</strong> formalmente la orden. Su respuesta es <strong>cortés</strong> y <strong>respetuosa</strong>. Pero <strong>no cumple</strong> su promesa. Su <strong>respuesta</strong> fue <strong>correcta</strong>, pero su <strong>conducta</strong> fue <strong>incorrecta</strong>. La <strong>contradicción</strong> entre el <strong>decir</strong> y el <strong>hacer</strong> lo <strong>condena</strong>.
+        </div>
+      </div>
+      <div class="dialogo-card padre-card">
+        <h4>❓ La pregunta de Jesús</h4>
+        <div class="cita">
+          <strong>"¿Cuál de los dos hizo la voluntad de su padre?"</strong><br><br>
+          <em>Dijeron ellos: El primero.</em><br><br>
+          La respuesta es <strong>obvia</strong>. El <strong>primero</strong> <strong>hizo</strong> la voluntad del padre <strong>aunque</strong> primero la rechazó. El <strong>segundo</strong> no la <strong>hizo</strong> <strong>aunque</strong> primero la aceptó. La <strong>obediencia</strong> se mide por las <strong>obras</strong>, no por las <strong>palabras</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>ἄνθρωπος</td>
+        <td>anthrōpos</td>
+        <td>hombre</td>
+        <td>El padre de los dos hijos. Imagen de Dios.</td>
+      </tr>
+      <tr>
+        <td>τέκνα</td>
+        <td>tekna</td>
+        <td>hijos</td>
+        <td>Los dos hijos. La relación familiar es esencial.</td>
+      </tr>
+      <tr>
+        <td>ἀμπελών</td>
+        <td>ampelōn</td>
+        <td>viña</td>
+        <td>La viña del padre. Símbolo clásico de Israel (Isaías 5).</td>
+      </tr>
+      <tr>
+        <td>ὕπαγε</td>
+        <td>hypage</td>
+        <td>ve</td>
+        <td>El imperativo del padre. La orden directa y personal.</td>
+      </tr>
+      <tr>
+        <td>οὐ θέλω</td>
+        <td>ou thelō</td>
+        <td>no quiero</td>
+        <td>La respuesta descarada del primer hijo. Rebelde, irrespetuosa.</td>
+      </tr>
+      <tr>
+        <td>μεταμεληθεὶς</td>
+        <td>metamelētheis</td>
+        <td>habiéndose arrepentido</td>
+        <td>De <em>metamelomai</em>. El cambio interior que produce obras.</td>
+      </tr>
+      <tr>
+        <td>ἀπῆλθεν</td>
+        <td>apēlthen</td>
+        <td>fue, se fue</td>
+        <td>El primer hijo fue a trabajar. La obediencia práctica.</td>
+      </tr>
+      <tr>
+        <td>ἐγὼ κύριε</td>
+        <td>egō kyrie</td>
+        <td>yo, señor</td>
+        <td>La respuesta correcta del segundo hijo. Cortés, respetuosa, formal.</td>
+      </tr>
+      <tr>
+        <td>οὐκ ἀπῆλθεν</td>
+        <td>ouk apēlthen</td>
+        <td>no fue</td>
+        <td>El segundo hijo no fue. La contradicción entre el decir y el hacer.</td>
+      </tr>
+      <tr>
+        <td>τὸ θέλημα</td>
+        <td>to thelēma</td>
+        <td>la voluntad</td>
+        <td>La voluntad del padre. El hacer la voluntad del padre es lo esencial.</td>
+      </tr>
+      <tr>
+        <td>τελῶναι</td>
+        <td>telōnai</td>
+        <td>publicanos</td>
+        <td>Los recaudadores de impuestos. Considerados pecadores públicos.</td>
+      </tr>
+      <tr>
+        <td>πόρναι</td>
+        <td>pornai</td>
+        <td>rameras, prostitutas</td>
+        <td>Las prostitutas. Consideradas pecadoras públicas.</td>
+      </tr>
+      <tr>
+        <td>προάγουσιν</td>
+        <td>proagousin</td>
+        <td>van delante</td>
+        <td>Los pecadores van delante de los religiosos al Reino. La inversión de categorías.</td>
+      </tr>
+      <tr>
+        <td>βασιλεία</td>
+        <td>basileia</td>
+        <td>reino</td>
+        <td>El Reino de Dios. La meta del discipulado.</td>
+      </tr>
+      <tr>
+        <td>μετανοέω</td>
+        <td>metanoeō</td>
+        <td>arrepentirse</td>
+        <td>El arrepentimiento verdadero. Cambio de mente y de conducta.</td>
+      </tr>
+      <tr>
+        <td>πιστεύω</td>
+        <td>pisteuō</td>
+        <td>creer</td>
+        <td>La fe que produce obras. Los pecadores creyeron; los religiosos no.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>metamelētheis</em> ("habiéndose arrepentido") viene de <em>metamelomai</em>, que significa "cambiar de opinión, arrepentirse". Es diferente de <em>metanoeō</em> ("cambiar de mente"). <em>Metamelētheis</em> subraya el <strong>cambio de conducta</strong>. El primer hijo <strong>cambió su conducta</strong>: fue. Y la palabra <em>proagousin</em> ("van delante") es significativa: los pecadores van delante de los religiosos al Reino. La parábola invierte las categorías sociales y religiosas.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Ezequiel 18:21-22: si el impío se convierte, vivirá. Ezequiel 33:11: Dios quiere la conversión del pecador. Talmud Berajot 34b: los penitentes superan a los justos.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El arrepentimiento (kukkucca) como paso hacia la purificación. La intención (cetanā) esencial en la acción. El karma: el arrepentimiento cambia las consecuencias.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">Wu wei: la obediencia verdadera fluye naturalmente. "El sabio no se muestra, por eso brilla" (Tao 22): actúa con humildad, sin prometer mucho.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 39:53: no desesperéis de la misericordia de Dios. Sura 25:70: Dios cambia las malas acciones en buenas. Hadiz: el que se arrepiente es como el que no pecó.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El arrepentimiento (paścāttāpa) como purificación. El karma: la conducta recta mejora las consecuencias. La devoción (bhakti) con obras, no solo con palabras.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La coherencia (homologia): el sabio vive en coherencia entre lo que dice y lo que hace. La filosofía no es discurso: es vida.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La phrónesis: saber actuar coherentemente. La akrasia: debilidad de la voluntad. El segundo hijo es un ejemplo de akrasia.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La coherencia (xìn): el hombre superior cumple sus promesas. "Modesto en sus palabras y diligente en sus acciones" (Analectas 4:24).</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Obediencia: hacer la voluntad del padre</li>
+          <li>Arrepentimiento: cambio de conducta</li>
+          <li>Coherencia: unidad entre decir y hacer</li>
+          <li>Fe: confianza que produce obras</li>
+          <li>Obras: manifestación de la fe verdadera</li>
+          <li>Arrepentimiento tardío: mejor que desobediencia final</li>
+          <li>Integridad: unidad de vida</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Decir que se hará sin hacerlo</li>
+          <li>Solo sentimiento de culpa</li>
+          <li>Palabras vacías</li>
+          <li>Solo sentimiento o palabra</li>
+          <li>Precio de la salvación</li>
+          <li>Ideal de la obediencia</li>
+          <li>Solo apariencia externa</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#5a2a4a;"><strong>La obediencia verdadera se traduce en obras. El decir sin hacer es estéril. El arrepentimiento verdadero cambia la conducta. La coherencia entre el decir y el hacer es esencial. Los pecadores pueden entrar antes que los religiosos. Dios valora las obras, no las promesas.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿<strong>Hago</strong> la voluntad de Dios o solo <strong>digo</strong> que la haré?</div>
+      <div class="item">2. ¿Mi <strong>fe</strong> se manifiesta en obras o solo en palabras?</div>
+      <div class="item">3. ¿Mi <strong>arrepentimiento</strong> cambia mi conducta o solo mis sentimientos?</div>
+      <div class="item">4. ¿Soy <strong>coherente</strong> entre lo que digo y lo que hago?</div>
+      <div class="item">5. ¿He <strong>rechazado</strong> a Dios inicialmente y luego me he arrepentido?</div>
+      <div class="item">6. ¿Me considero <strong>justo</strong> y no necesito arrepentirme?</div>
+      <div class="item">7. ¿He <strong>creído</strong> a los mensajeros de Dios o los he rechazado?</div>
+      <div class="item">8. ¿Me <strong>sorprende</strong> que los pecadores entren antes que los religiosos?</div>
+      <div class="item">9. ¿Mi <strong>religiosidad</strong> es externa o interior?</div>
+      <div class="item">10. ¿Estoy <strong>dispuesto</strong> a arrepentirme cuando Dios me lo pida?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Ser coherente entre el decir y el hacer en el hogar.</div>
+      <div class="app-item"><strong>Amistad</strong> Cumplir las promesas hechas a los amigos.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de coherencia y obediencia práctica.</div>
+      <div class="app-item"><strong>Trabajo</strong> Cumplir los compromisos laborales, no solo prometerlos.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar la coherencia entre la fe profesada y la vida vivida.</div>
+      <div class="app-item"><strong>Sociedad</strong> Cumplir los compromisos sociales y políticos.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar con coherencia entre el decir y el hacer.</div>
+      <div class="app-item"><strong>Espiritual</strong> Arrepentirse sinceramente y cambiar la conducta.</div>
+      <div class="app-item"><strong>Crisis</strong> Reconocer la necesidad de arrepentimiento y cambiar.</div>
+      <div class="app-item"><strong>Evangelización</strong> Testimoniar con obras, no solo con palabras.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “¿Cuál de los dos hizo la voluntad de su padre?<br>Dijeron ellos: El primero.”
+    <small>La obediencia verdadera se traduce en obras. El decir sin hacer es estéril. El arrepentimiento verdadero cambia la conducta. La obediencia tardía es mejor que la desobediencia final. La coherencia entre el decir y el hacer es esencial. La fe verdadera produce obras. Los pecadores pueden entrar antes que los religiosos. La religiosidad sin arrepentimiento no salva. Dios valora las obras, no las promesas.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de los Dos Hijos (Mateo 21:28-32) · Bloque 6: La humildad y el servicio · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Síntesis General - Las Parábolas de Jesús</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #2a2a5a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #2a2a5a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #5a5a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c0c0d8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafafd;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #2a2a5a;
+    border-bottom: 1.5px solid #d8d8e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #2a2a5a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #2a2a5a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8d8e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2f2fa;
+  }
+
+  /* LOS 7 BLOQUES */
+  .bloques-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .bloque-item {
+    border: 1px solid #c0c0d8;
+    border-radius: 5px;
+    padding: 5px 5px;
+    background: #f2f2fa;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .bloque-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .bloque-item .nombre {
+    font-weight: 700;
+    color: #2a2a5a;
+    font-size: 7.5pt;
+    display: block;
+    margin-bottom: 2px;
+    line-height: 1.15;
+  }
+  .bloque-item .parabolas {
+    font-size: 6.5pt;
+    color: #555;
+    display: block;
+    line-height: 1.2;
+  }
+  .bloque-item .tema {
+    font-size: 6pt;
+    color: #666;
+    display: block;
+    line-height: 1.15;
+    margin-top: 1px;
+  }
+
+  /* HILOS CONDUCTORES */
+  .hilos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .hilo-item {
+    border-left: 3px solid #2a2a5a;
+    padding: 5px 8px;
+    background: #f2f2fa;
+    border-radius: 0 4px 4px 0;
+  }
+  .hilo-item strong {
+    color: #2a2a5a;
+    font-size: 8.5pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .hilo-item .desc {
+    font-size: 7.5pt;
+    color: #444;
+    line-height: 1.2;
+  }
+
+  /* SUBVERSIONES */
+  .subversiones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .subv-item {
+    border: 1px solid #c0c0d8;
+    border-radius: 5px;
+    padding: 4px 5px;
+    background: #f2f2fa;
+    text-align: center;
+    font-size: 7pt;
+  }
+  .subv-item .icono {
+    font-size: 12pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+  .subv-item .titulo {
+    font-weight: 700;
+    color: #2a2a5a;
+    font-size: 7.5pt;
+    display: block;
+    margin-bottom: 1px;
+    line-height: 1.15;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 9.5pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2f2fa;
+    border-left: 3px solid #2a2a5a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #2a2a5a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 11pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c0c0d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2f2fa;
+  }
+  .app-item strong {
+    color: #2a2a5a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #2a2a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #2a2a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2f2fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hilo-item { background: #f2f2fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .subv-item { background: #f2f2fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2f2fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .bloque-item { background: #f2f2fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>Síntesis General: Las Parábolas de Jesús</h1>
+    <div class="subtitulo">Los diez hilos conductores de las 43 parábolas</div>
+    <div class="referencia">7 bloques · 43 parábolas · Mateo, Marcos, Lucas · Documento de síntesis y aplicación</div>
+  </div>
+
+  <!-- FILA 1: LOS 7 BLOQUES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>📚 Los siete bloques del proyecto</h2>
+    <div class="bloques-grid">
+      <div class="bloque-item">
+        <span class="icono">🌱</span>
+        <span class="nombre">El Reino de Dios</span>
+        <span class="parabolas">8 parábolas</span>
+        <span class="tema">La realidad dinámica que crece, transforma y convoca</span>
+      </div>
+      <div class="bloque-item">
+        <span class="icono">💚</span>
+        <span class="nombre">La misericordia y el perdón</span>
+        <span class="parabolas">7 parábolas</span>
+        <span class="tema">La gracia que busca, perdona y celebra</span>
+      </div>
+      <div class="bloque-item">
+        <span class="icono">💰</span>
+        <span class="nombre">El dinero y la mayordomía</span>
+        <span class="parabolas">7 parábolas</span>
+        <span class="tema">La administración fiel de los bienes confiados</span>
+      </div>
+      <div class="bloque-item">
+        <span class="icono">🙏</span>
+        <span class="nombre">La oración y la persistencia</span>
+        <span class="parabolas">2 parábolas</span>
+        <span class="tema">La confianza filial que no se rinde</span>
+      </div>
+      <div class="bloque-item">
+        <span class="icono">👁️</span>
+        <span class="nombre">La vigilancia y la preparación</span>
+        <span class="parabolas">8 parábolas</span>
+        <span class="tema">La preparación activa para la venida del Señor</span>
+      </div>
+      <div class="bloque-item">
+        <span class="icono">🤲</span>
+        <span class="nombre">La humildad y el servicio</span>
+        <span class="parabolas">4 parábolas</span>
+        <span class="tema">La humildad que conduce a la exaltación</span>
+      </div>
+      <div class="bloque-item">
+        <span class="icono">⚖️</span>
+        <span class="nombre">El juicio y las consecuencias</span>
+        <span class="parabolas">7 parábolas</span>
+        <span class="tema">La respuesta libre y sus consecuencias eternas</span>
+      </div>
+      <div class="bloque-item" style="background: #e8e8f0; border: 1.5px solid #2a2a5a;">
+        <span class="icono">📖</span>
+        <span class="nombre" style="color: #1a1a3a;">Total</span>
+        <span class="parabolas" style="color: #1a1a3a;"><strong>43 parábolas</strong></span>
+        <span class="tema" style="color: #333;">7 bloques temáticos</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 2: LOS HILOS CONDUCTORES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🧵 Los diez hilos conductores generales</h2>
+    <div class="hilos-grid">
+      <div class="hilo-item">
+        <strong>1. Dios toma la iniciativa</strong>
+        <span class="desc">Dios no espera: sale, busca, corre, ruega, envía, invita. La misericordia es acción, no sentimiento pasivo.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>2. La gracia es gratuita e incondicional</strong>
+        <span class="desc">El Reino no se merece: se recibe. La gracia no es recompensa: es regalo. No es salario: es don.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>3. El valor del individuo</strong>
+        <span class="desc">Aunque haya noventa y nueve, diez, dos, la una importa. Cada persona tiene valor infinito ante Dios.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>4. La misericordia es concreta y costosa</strong>
+        <span class="desc">Cuesta comodidad, tiempo, dinero, reputación. No es sentimentalismo: es acción concreta.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>5. La fe verdadera se manifiesta en obras</strong>
+        <span class="desc">El que oye y hace edifica sobre la roca. El decir sin hacer es estéril. La fe sin obras es muerta.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>6. La humildad es la puerta del Reino</strong>
+        <span class="desc">El publicano es justificado; el fariseo, no. La humildad es verdad sobre uno mismo ante Dios.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>7. El fundamento determina la resistencia</strong>
+        <span class="desc">La casa sobre la roca resiste; la casa sobre la arena cae. Las tormentas vienen sobre todos. La crisis revela el fundamento.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>8. La vigilancia es preparación activa</strong>
+        <span class="desc">No es miedo ni insomnio: es preparación, prudencia, amor. El que ama, vela. El que no ama, duerme.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>9. La respuesta es libre pero tiene consecuencias</strong>
+        <span class="desc">La invitación es universal; la respuesta es libre. Pero la respuesta tiene consecuencias: exclusión, destrucción, pérdida.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>10. Dios transforma el mal en bien</strong>
+        <span class="desc">La piedra desechada se convierte en piedra angular. La cruz se convierte en victoria. La gracia supera la justicia.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS GRANDES SUBVERSIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔄 Las grandes subversiones del proyecto</h2>
+    <div class="subversiones-grid">
+      <div class="subv-item">
+        <span class="icono">🌱</span>
+        <span class="titulo">Lo pequeño es grande</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🔒</span>
+        <span class="titulo">Lo oculto es poderoso</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🐑</span>
+        <span class="titulo">El perdido es el héroe</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">⚠️</span>
+        <span class="titulo">El justo es el advertido</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🤝</span>
+        <span class="titulo">El enemigo es el modelo</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">📉</span>
+        <span class="titulo">El que acumula, pierde</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">📈</span>
+        <span class="titulo">El que invierte, gana</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🎁</span>
+        <span class="titulo">La gracia no es deuda</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">⛓️</span>
+        <span class="titulo">El apego es la trampa</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🚪</span>
+        <span class="titulo">La indiferencia es pecado</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🪨</span>
+        <span class="titulo">El rechazo se convierte en fundamento</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🔄</span>
+        <span class="titulo">Los excluidos son invitados</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🧹</span>
+        <span class="titulo">La limpieza sin llenado empeora</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🍷</span>
+        <span class="titulo">El vino nuevo exige odres nuevos</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🚫</span>
+        <span class="titulo">La neutralidad no existe</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales generales</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que el proyecto afirma</h4>
+        <ul>
+          <li>Misericordia: amor activo que busca y actúa</li>
+          <li>Gracia: don incondicional, impagable</li>
+          <li>Perdón: cancelación de la deuda, restauración</li>
+          <li>Arrepentimiento: volver en sí, reconocer, ir</li>
+          <li>Humildad: verdad sobre uno mismo ante Dios</li>
+          <li>Justificación: don de Dios al que reconoce su necesidad</li>
+          <li>Amor: respuesta agradecida al perdón recibido</li>
+          <li>Prójimo: cualquiera que necesita ayuda</li>
+          <li>Mayordomía: confianza, administración, servicio</li>
+          <li>Vigilancia: preparación activa, prudente, amorosa</li>
+          <li>Fundamento: obediencia a las palabras de Jesús</li>
+          <li>Juicio: consecuencia de la respuesta libre</li>
+          <li>Reino: fiesta, comunión, celebración</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que el proyecto niega</h4>
+        <ul>
+          <li>Sentimentalismo pasivo que espera</li>
+          <li>Recompensa por méritos o negociación</li>
+          <li>Olvido, negación del daño o sentimiento superficial</li>
+          <li>Solo sentimiento de culpa o remordimiento</li>
+          <li>Autodesprecio o falsa modestia</li>
+          <li>Recompensa por obras o méritos</li>
+          <li>Causa del perdón o precio de la salvación</li>
+          <li>Solo el cercano, el compatriota o el correligionario</li>
+          <li>Propiedad, dominio, abuso</li>
+          <li>Ansiedad, miedo o insomnio</li>
+          <li>Doctrina abstracta o sentimiento</li>
+          <li>Castigo arbitrario</li>
+          <li>Obligación o carga</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#2a2a5a;"><strong>Dios toma la iniciativa: sale a buscar al perdido, se conmueve, corre, abraza, perdona y celebra. La gracia es gratuita e incondicional; no se merece: se recibe. La misericordia es concreta y costosa. La fe verdadera se manifiesta en obras. La humildad es la puerta del Reino. El fundamento determina la resistencia. La vigilancia es preparación activa. La respuesta es libre pero tiene consecuencias. Dios transforma el mal en bien. El Reino es una fiesta.</strong></p>
+  </div>
+
+  <!-- FILA 5: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento generales</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Reconozco que <strong>Dios toma la iniciativa</strong> en mi vida?</div>
+      <div class="item">2. ¿Vivo la <strong>gracia</strong> como don o como recompensa?</div>
+      <div class="item">3. ¿Reconozco el <strong>valor infinito</strong> de cada persona?</div>
+      <div class="item">4. ¿Mi <strong>misericordia</strong> es activa o solo sentimental?</div>
+      <div class="item">5. ¿Mi <strong>fe</strong> se manifiesta en obras?</div>
+      <div class="item">6. ¿Vivo la <strong>humildad</strong> como verdad sobre mí mismo?</div>
+      <div class="item">7. ¿Sobre qué <strong>fundamento</strong> estoy construyendo mi vida?</div>
+      <div class="item">8. ¿Mi <strong>vigilancia</strong> es amor o miedo?</div>
+      <div class="item">9. ¿Reconozco que mi <strong>respuesta</strong> tiene consecuencias?</div>
+      <div class="item">10. ¿Confío en que <strong>Dios transforma</strong> el mal en bien?</div>
+    </div>
+  </div>
+
+  <!-- FILA 6: APLICACIONES TRANSVERSALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones transversales generales</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Vivir la misericordia, la humildad y la coherencia en el hogar.</div>
+      <div class="app-item"><strong>Amistad</strong> Servir al amigo gratuitamente; perdonar de corazón; invitar a la fe.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de gracia, perdón, servicio y vigilancia.</div>
+      <div class="app-item"><strong>Trabajo</strong> Administrar los bienes con fidelidad; integrar tradición e innovación.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar la humildad, la coherencia y el discernimiento.</div>
+      <div class="app-item"><strong>Sociedad</strong> Servir al bien común; combatir la indiferencia; promover la justicia.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar sirviendo, con humildad y prudencia.</div>
+      <div class="app-item"><strong>Espiritual</strong> Confiar en la gracia; servir con humildad; perseverar hasta el final.</div>
+      <div class="app-item"><strong>Crisis</strong> La crisis revela el fundamento; confiar en el tiempo de Dios.</div>
+      <div class="app-item"><strong>Evangelización</strong> Anunciar el Evangelio con alegría, humildad y coherencia.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Dios toma la iniciativa: sale a buscar al perdido, se conmueve, corre, abraza, perdona y celebra.<br>La gracia es gratuita e incondicional; no se merece: se recibe.”
+    <small>La misericordia es concreta y costosa. La fe verdadera se manifiesta en obras. La humildad es la puerta del Reino. El fundamento determina la resistencia. La vigilancia es preparación activa, no ansiedad. La respuesta humana es libre, pero tiene consecuencias. Dios transforma el mal en bien: la piedra desechada se convierte en piedra angular. El Reino es una fiesta, no una obligación. El fundamento es Jesucristo. El que se sabe perdonado, ama mucho; el que se cree justo, ama poco. La humildad es la puerta; la gracia, la casa; la fiesta, el destino.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de síntesis general · Las Parábolas de Jesús · 7 bloques · 43 parábolas · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

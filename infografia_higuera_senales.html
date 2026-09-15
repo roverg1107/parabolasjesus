@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: La Higuera (Señales de los Tiempos)</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #2a5a1a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #2a5a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #5a8a3a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c0d8a8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafdf6;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #2a5a1a;
+    border-bottom: 1.5px solid #d8e8c0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #5a7a2a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #2a5a1a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #2a5a1a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8e8c0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f4faf0;
+  }
+
+  /* LAS CUATRO ESTACIONES */
+  .estaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .estacion-item {
+    border-radius: 5px;
+    padding: 6px 5px;
+    text-align: center;
+    background: #f4faf0;
+    border: 1px solid #c0d8a8;
+  }
+  .estacion-item .estacion {
+    font-size: 9pt;
+    font-weight: 700;
+    color: #2a5a1a;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .estacion-item .meses {
+    font-size: 8pt;
+    color: #5a7a2a;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .estacion-item .desc {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    line-height: 1.2;
+  }
+  .estacion-verano {
+    background: #e8f5d8;
+    border: 1.5px solid #7ab030;
+  }
+  .estacion-verano .estacion { color: #2a5a10; }
+
+  /* DIAGRAMA HIGUERA */
+  .higuera-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .higuera-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .invierno-card {
+    background: #e8e4dc;
+    border: 1.5px solid #b0a894;
+  }
+  .verano-card {
+    background: #e8f5d8;
+    border: 1.5px solid #a5d6a7;
+  }
+  .higuera-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .higuera-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .invierno-card h4 { color: #6a5a3a; }
+  .verano-card h4 { color: #2a5a10; }
+  .higuera-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .higuera-flecha {
+    font-size: 24pt;
+    color: #2a5a1a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* PALABRA BOX */
+  .palabra-box {
+    background: #f0f8e8;
+    border: 2px solid #7ab030;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .palabra-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #2a5a10;
+    margin-bottom: 3px;
+  }
+  .palabra-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #c0d8a8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f4faf0;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #2a5a1a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f4faf0;
+    border-left: 3px solid #2a5a1a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #2a5a1a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c0d8a8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f4faf0;
+  }
+  .app-item strong {
+    color: #2a5a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #2a5a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #2a5a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f4faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f4faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f4faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .estacion-item { background: #f4faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .estacion-verano { background: #e8f5d8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .invierno-card { background: #e8e4dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .verano-card { background: #e8f5d8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .palabra-box { background: #f0f8e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de la Higuera (Señales de los Tiempos)</h1>
+    <div class="subtitulo">El discernimiento de las señales de la venida del Señor</div>
+    <div class="referencia">Mateo 24:32-35 · Marcos 13:28-31 · Lucas 21:29-33 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;"><strong>"De la higuera aprended la parábola: Cuando ya su rama está tierna, y brotan las hojas, sabéis que el verano está cerca."</strong></p>
+      <p style="font-size:9.5pt; margin-bottom:4px;"><strong>"Así también vosotros, cuando veáis todas estas cosas, conoced que está cerca, a las puertas."</strong></p>
+      <p style="font-size:9.5pt;">Y Jesús añade: <em>"De cierto os digo, que no pasará esta generación hasta que todo esto acontezca. El cielo y la tierra pasarán, pero mis palabras no pasarán."</em></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña a <strong>predecir</strong> la fecha exacta de la venida.</li>
+        <li>No enseña que las señales sean <strong>espectaculares</strong>: son cotidianas.</li>
+        <li>No enseña que haya que <strong>abandonar</strong> la vida cotidiana.</li>
+        <li>No enseña que las señales sean <strong>fáciles</strong> de interpretar: requieren discernimiento.</li>
+        <li>No enseña que las señales sean para <strong>asustar</strong>: son buena noticia.</li>
+        <li>No enseña que la venida sea <strong>inmediata</strong>: es "cerca", no "ya".</li>
+        <li>No enseña que las señales <strong>causen</strong> la venida: solo la indican.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>Las señales de los tiempos son discernibles:</strong> la higuera las muestra al atento.</li>
+        <li><strong>El discernimiento requiere aprendizaje:</strong> "de la higuera aprended".</li>
+        <li><strong>Las señales indican proximidad, no fecha:</strong> el verano está cerca, no el día exacto.</li>
+        <li><strong>Las señales son cotidianas, no espectaculares:</strong> rama tierna, hojas nuevas.</li>
+        <li><strong>La venida de Cristo es buena noticia:</strong> el verano es la estación de la cosecha.</li>
+        <li><strong>La Palabra de Jesús es más permanente que el cielo y la tierra:</strong> "mis palabras no pasarán".</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La venida está "a las puertas":</strong> proximidad inmediata.</li>
+        <li><strong>El discípulo discierne en comunidad:</strong> "mirad la higuera y todos los árboles".</li>
+        <li><strong>El discernimiento conduce a la vigilancia.</strong></li>
+        <li><strong>La Palabra de Jesús es la clave del discernimiento.</strong></li>
+        <li><strong>El discípulo vive en la tensión entre el "ya" y el "todavía no".</strong></li>
+        <li><strong>La higuera es un llamado a la esperanza:</strong> el invierno pasa, el verano llega.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS CUATRO ESTACIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🌿 Las estaciones y la higuera: el discernimiento de las señales</h2>
+    <div class="estaciones-grid">
+      <div class="estacion-item">
+        <span class="estacion">Invierno</span>
+        <span class="meses">dic-mar</span>
+        <span class="desc">La higuera pierde sus hojas. Parece muerta. La espera silenciosa.</span>
+      </div>
+      <div class="estacion-item">
+        <span class="estacion">Primavera</span>
+        <span class="meses">mar-may</span>
+        <span class="desc">La rama se pone tierna. Brotan las hojas nuevas. La señal visible.</span>
+      </div>
+      <div class="estacion-item estacion-verano">
+        <span class="estacion">Verano</span>
+        <span class="meses">may-sep</span>
+        <span class="desc">La cosecha y la madurez de los frutos. El verano está cerca.</span>
+      </div>
+      <div class="estacion-item">
+        <span class="estacion">Otoño</span>
+        <span class="meses">sep-dic</span>
+        <span class="desc">La recolección de los frutos. El ciclo se cierra.</span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#2a5a1a;"><strong>La higuera no dice el día exacto del verano: indica que el verano está cerca. Así también las señales indican proximidad, no fecha. El discípulo aprende a leer las señales de los tiempos.</strong></p>
+  </div>
+
+  <!-- FILA 4: EL DIAGRAMA DE LA HIGUERA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🌳 El diagrama de la higuera: del invierno al verano</h2>
+    <div class="higuera-grid">
+      <div class="higuera-card invierno-card">
+        <span class="icono">🌰</span>
+        <h4>Invierno: la espera</h4>
+        <span class="desc">La higuera <strong>pierde sus hojas</strong>. Parece <strong>muerta</strong>. No hay <strong>señales</strong> visibles. El discípulo <strong>espera</strong> con <strong>paciencia</strong>.</span>
+      </div>
+      <div class="higuera-flecha">→</div>
+      <div class="higuera-card verano-card">
+        <span class="icono">🌿</span>
+        <h4>Primavera-verano: la señal</h4>
+        <span class="desc">La rama se pone <strong>tierna</strong>. <strong>Brotan</strong> las hojas nuevas. El <strong>verano</strong> está <strong>cerca</strong>. El discípulo <strong>discierne</strong> y <strong>se prepara</strong>.</span>
+      </div>
+    </div>
+    <div class="palabra-box">
+      <div class="titulo">📖 "El cielo y la tierra pasarán, pero mis palabras no pasarán"</div>
+      <div class="desc">La <strong>Palabra</strong> de Jesús es <strong>eterna</strong>, <strong>firme</strong> y <strong>confiable</strong>. Las <strong>señales</strong> pueden <strong>pasar</strong>, el <strong>cielo</strong> y la <strong>tierra</strong> pueden <strong>pasar</strong>, pero la <strong>Palabra</strong> de Jesús <strong>permanece</strong>. Ella es la <strong>clave</strong> para interpretar las <strong>señales</strong> de los tiempos. Sin la <strong>Palabra</strong>, las señales son <strong>ambiguas</strong>. Con la <strong>Palabra</strong>, las señales <strong>hablan</strong> claro. El discípulo <strong>discierne</strong> a la luz de la <strong>Palabra</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>συκῆ</td>
+        <td>sykē</td>
+        <td>higuera</td>
+        <td>Árbol <strong>común</strong> en Israel. Pierde sus hojas en invierno y las recupera en primavera.</td>
+      </tr>
+      <tr>
+        <td>ἁπαλὸς</td>
+        <td>hapalos</td>
+        <td>tierno, blando, joven</td>
+        <td>La <strong>rama</strong> que se vuelve tierna. La <strong>savia</strong> comienza a circular de nuevo.</td>
+      </tr>
+      <tr>
+        <td>ἐκφύῃ</td>
+        <td>ekphyē</td>
+        <td>brota, sale</td>
+        <td>El <strong>brote</strong> de las hojas nuevas. La <strong>señal</strong> visible del verano.</td>
+      </tr>
+      <tr>
+        <td>φύλλα</td>
+        <td>phylla</td>
+        <td>hojas</td>
+        <td>Las <strong>hojas</strong> de la higuera. Su <strong>brote</strong> es la <strong>señal</strong> del verano.</td>
+      </tr>
+      <tr>
+        <td>θέρος</td>
+        <td>theros</td>
+        <td>verano</td>
+        <td>La <strong>estación</strong> de la <strong>cosecha</strong> y de la madurez. En Israel, abril-octubre.</td>
+      </tr>
+      <tr>
+        <td>ἐπὶ θύραις</td>
+        <td>epi thyrais</td>
+        <td>a las puertas</td>
+        <td>Expresión <strong>proverbial</strong> para indicar <strong>proximidad</strong> inmediata.</td>
+      </tr>
+      <tr>
+        <td>γενεά</td>
+        <td>genea</td>
+        <td>generación, linaje</td>
+        <td>Puede significar "generación" (contemporáneos) o "linaje". Interpretación discutida.</td>
+      </tr>
+      <tr>
+        <td>παρέλθῃ</td>
+        <td>parelthē</td>
+        <td>pase, desaparezca</td>
+        <td>El <strong>paso</strong> del cielo y la tierra. La <strong>fugacidad</strong> de la creación.</td>
+      </tr>
+      <tr>
+        <td>οἱ λόγοι μου</td>
+        <td>hoi logoi mou</td>
+        <td>mis palabras</td>
+        <td>La <strong>Palabra</strong> de Jesús. <strong>Eterna</strong> y <strong>confiable</strong>.</td>
+      </tr>
+      <tr>
+        <td>οὐ μὴ παρέλθωσιν</td>
+        <td>ou mē parelthōsin</td>
+        <td>no pasarán</td>
+        <td>La <strong>doble negación</strong> griega enfatiza la <strong>certeza</strong>: <strong>jamás</strong> pasarán.</td>
+      </tr>
+      <tr>
+        <td>μάθετε</td>
+        <td>mathete</td>
+        <td>aprended</td>
+        <td>De aquí viene "matemática". El <strong>discernimiento</strong> requiere <strong>aprendizaje</strong>.</td>
+      </tr>
+      <tr>
+        <td>γινώσκετε</td>
+        <td>ginōskete</td>
+        <td>conoced, sabed</td>
+        <td>El <strong>conocimiento</strong> experiencial de las señales. No es teórico: es vivencial.</td>
+      </tr>
+      <tr>
+        <td>ἐγγύς</td>
+        <td>engys</td>
+        <td>cerca</td>
+        <td>La <strong>proximidad</strong> de la venida. No es inmediata, pero <strong>está cerca</strong>.</td>
+      </tr>
+      <tr>
+        <td>ὁ καιρός</td>
+        <td>ho kairos</td>
+        <td>el tiempo oportuno</td>
+        <td>No es <em>chronos</em> (tiempo cronológico), sino <em>kairos</em> (tiempo oportuno).</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>mathete</em> ("aprended") es significativo. De aquí viene "matemática" (lo que se aprende). El <strong>discernimiento</strong> de las señales <strong>requiere aprendizaje</strong>. Y la expresión <em>ou mē parelthōsin</em> ("no pasarán") usa la <strong>doble negación</strong> griega, la forma más enfática de negación: la Palabra de Jesús <strong>jamás</strong> pasará.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Isaías 55:10-11: la Palabra de Dios no vuelve vacía. Cantar 2:11-13: "ha pasado el invierno... la higuera ha echado sus higos". Salmo 1:3: el árbol que da fruto a su tiempo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La atención plena (sati) como discernimiento. La impermanencia (anicca): las señales son discernibles. El loto que brota como señal de vida y transformación.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">Wu wei: discernimiento sin ansiedad. La presencia atenta. Las señales del Tao son discernibles para quien está en armonía con la naturaleza.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 47:18: "Ya han llegado sus señales". Sura 21:1: la cuenta se acerca. Hadiz: aprovecha cinco cosas antes de cinco. Urgencia y discernimiento.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La impermanencia: las señales son discernibles para el sabio. El deber (dharma) de discernir mientras se vive. La devoción (bhakti) como espera activa.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El <em>memento mori</em>: meditar sobre la fugacidad. La prudencia (phronēsis) de discernir las señales de los tiempos.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La phrónesis como sabiduría práctica de discernir. La virtud como hábito. La eudaimonia como fin último hacia el que se discierne.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La prudencia (zhì) como virtud. La diligencia (qín) como trabajo constante. "El hombre superior está siempre preparado".</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Discernimiento: lectura atenta de las señales</li>
+          <li>Señales: indicadores de proximidad</li>
+          <li>Proximidad: cercanía inmediata ("a las puertas")</li>
+          <li>Verano: estación de la cosecha y madurez</li>
+          <li>Higuera: árbol común que enseña</li>
+          <li>Palabra de Jesús: eterna, confiable, permanente</li>
+          <li>Aprendizaje: cultivo del discernimiento</li>
+          <li>Vigilancia: consecuencia del discernimiento</li>
+          <li>Esperanza: actitud del que discierne</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Predicción de fechas</li>
+          <li>Causas de la venida</li>
+          <li>Inmediatez calculable</li>
+          <li>Amenaza o castigo</li>
+          <li>Símbolo exclusivo de Israel</li>
+          <li>Fugaz como el cielo y la tierra</li>
+          <li>Conocimiento automático</li>
+          <li>Ansiedad o miedo</li>
+          <li>Temor o resignación</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#2a5a1a;"><strong>Las señales son discernibles para quien está atento. El discernimiento se cultiva con aprendizaje. La Palabra de Jesús es más permanente que el cielo y la tierra. La venida de Cristo es buena noticia para los que esperan. El discípulo discierne en comunidad y vive en estado de preparación gozosa.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Estoy <strong>atento</strong> a las señales de los tiempos?</div>
+      <div class="item">2. ¿He <strong>aprendido</strong> a discernir las señales de Dios en mi vida?</div>
+      <div class="item">3. ¿Mi <strong>discernimiento</strong> me lleva a la vigilancia o a la ansiedad?</div>
+      <div class="item">4. ¿Reconozco que las <strong>señales</strong> indican proximidad, no fecha?</div>
+      <div class="item">5. ¿Mi <strong>discernimiento</strong> es individual o comunitario?</div>
+      <div class="item">6. ¿Mi <strong>discernimiento</strong> se funda en la Palabra de Jesús?</div>
+      <div class="item">7. ¿Vivo con <strong>esperanza</strong> la proximidad de la venida?</div>
+      <div class="item">8. ¿Reconozco que la <strong>Palabra</strong> de Jesús es más permanente que el cielo y la tierra?</div>
+      <div class="item">9. ¿Mi <strong>vida</strong> refleja la urgencia de la preparación?</div>
+      <div class="item">10. ¿Estoy <strong>preparado</strong> para recibir al Señor con gozo?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Cultivar el discernimiento en el hogar: leer las señales de Dios en lo cotidiano.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser atento a las señales de las necesidades de los amigos.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>discernimiento</strong> comunitario de los tiempos.</div>
+      <div class="app-item"><strong>Trabajo</strong> Discernir las señales de los tiempos en el trabajo, con prudencia.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar el <strong>discernimiento</strong> como actitud interior.</div>
+      <div class="app-item"><strong>Sociedad</strong> Leer las <strong>señales</strong> de los tiempos con prudencia y esperanza.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Guiar a la comunidad en el <strong>discernimiento</strong> de los tiempos.</div>
+      <div class="app-item"><strong>Espiritual</strong> Cultivar el <strong>discernimiento</strong> como signo de madurez espiritual.</div>
+      <div class="app-item"><strong>Crisis</strong> Leer las <strong>señales</strong> de Dios en medio de la crisis.</div>
+      <div class="app-item"><strong>Evangelización</strong> Llamar al <strong>discernimiento</strong> de las señales de los tiempos.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “De la higuera aprended la parábola:<br>cuando su rama está tierna y brotan las hojas, sabéis que el verano está cerca.”
+    <small>Las señales son discernibles para quien está atento. El discernimiento se cultiva con aprendizaje. La Palabra de Jesús es más permanente que el cielo y la tierra. La venida de Cristo es buena noticia para los que esperan. El discípulo discierne en comunidad y vive en estado de preparación gozosa.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de la Higuera (Señales de los Tiempos) (Mateo 24:32-35; Marcos 13:28-31; Lucas 21:29-33) · Bloque 5: La vigilancia y la preparación · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

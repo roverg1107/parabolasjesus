@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: La Levadura</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #8a6a1a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #8a6a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #b08a3a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e0d0b0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fffdf8;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #8a6a1a;
+    border-bottom: 1.5px solid #ede0c8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #a88a3a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #8a6a1a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #8a6a1a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0c8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf6ee;
+  }
+
+  /* TRANSFORMACIÓN */
+  .transformacion-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .transf-card {
+    border-radius: 6px;
+    padding: 10px 10px;
+    text-align: center;
+  }
+  .transf-antes {
+    background: #f5f0e4;
+    border: 1.5px solid #d0c0a0;
+  }
+  .transf-despues {
+    background: #f0e8c8;
+    border: 1.5px solid #c8a860;
+  }
+  .transf-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .transf-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .transf-antes h4 { color: #7a6a4a; }
+  .transf-despues h4 { color: #5a4a1a; }
+  .transf-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .transf-flecha {
+    font-size: 24pt;
+    color: #8a6a1a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* ESCONDER */
+  .esconder-box {
+    background: #faf4e4;
+    border: 2px solid #c8a860;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .esconder-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #5a4a1a;
+    margin-bottom: 3px;
+  }
+  .esconder-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e0d0b0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf6ee;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #8a6a1a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf6ee;
+    border-left: 3px solid #8a6a1a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #8a6a1a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e0d0b0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf6ee;
+  }
+  .app-item strong {
+    color: #8a6a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #8a6a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #8a6a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf6ee !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .transf-antes { background: #f5f0e4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .transf-despues { background: #f0e8c8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .esconder-box { background: #faf4e4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de la Levadura</h1>
+    <div class="subtitulo">La transformación que actúa desde dentro</div>
+    <div class="referencia">Mateo 13:33 · Lucas 13:20-21 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">El Reino de los cielos es semejante a la levadura que <strong>tomó una mujer</strong> y <strong>escondió en tres medidas de harina</strong>, hasta que <strong>todo</strong> fue leudado.</p>
+      <p style="font-size:9pt; margin-top:4px;"><em>"Semejante es a la levadura que tomó una mujer, y escondió en tres medidas de harina, hasta que todo fue leudado."</em></p>
+      <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>Tres medidas</strong> (tria sata) = unos 39 litros de harina. Suficiente para más de 100 personas. La desproporción entre la levadura y la masa es deliberada.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que el Reino sea pequeño o insignificante: el énfasis está en la <strong>desproporción</strong>.</li>
+        <li>No enseña que la transformación sea inmediata: la levadura actúa <strong>con el tiempo</strong>.</li>
+        <li>No enseña que la transformación sea visible desde fuera: la levadura trabaja <strong>escondida</strong>.</li>
+        <li>No enseña que la mujer sea una figura divina literal.</li>
+        <li>No enseña que la levadura sea símbolo negativo aquí: aunque en el AT simboliza corrupción, Jesús la usa en <strong>sentido positivo</strong>.</li>
+        <li>No enseña que el Reino se imponga desde fuera: se <strong>esconde dentro</strong>.</li>
+        <li>No enseña que la transformación sea parcial: el texto dice <strong>"todo"</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>El Reino transforma desde dentro:</strong> no se pone encima, se esconde dentro.</li>
+        <li><strong>El Reino es una fuerza viva y activa:</strong> no es doctrina estática, es vida que fermenta.</li>
+        <li><strong>El Reino actúa de manera oculta:</strong> trabaja en silencio, en lo profundo.</li>
+        <li><strong>El Reino transforma de manera gradual:</strong> poco a poco, con paciencia.</li>
+        <li><strong>El Reino transforma de manera total:</strong> "hasta que todo fue leudado".</li>
+      </ul>
+      <ul class="check">
+        <li><strong>El Reino es desproporcionado:</strong> una cantidad mínima transforma una cantidad enorme.</li>
+        <li><strong>El Reino es contagioso:</strong> se extiende por contacto, no por imposición.</li>
+        <li><strong>La mujer como protagonista:</strong> Dios también se representa con imagen femenina.</li>
+        <li><strong>El Reino no respeta la separación:</strong> se mezcla para transformar, no se separa para conservar pureza.</li>
+        <li><strong>El Reino es irreversible:</strong> una vez que fermenta, no hay vuelta atrás.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LA TRANSFORMACIÓN -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔄 La transformación desde dentro</h2>
+    <div class="transformacion-grid">
+      <div class="transf-card transf-antes">
+        <span class="icono">🌾</span>
+        <h4>Antes: la masa</h4>
+        <span class="desc">Harina + agua. Materia inerte, sin vida. Espera ser transformada. Sin levadura, no hay pan.</span>
+      </div>
+      <div class="transf-flecha">→</div>
+      <div class="transf-card transf-despues">
+        <span class="icono">🍞</span>
+        <h4>Después: el pan</h4>
+        <span class="desc">La masa ha sido transformada <strong>toda</strong>. No es "masa con levadura": es pan. La transformación es <strong>sustancial</strong>, no accidental.</span>
+      </div>
+    </div>
+    <div class="esconder-box">
+      <div class="titulo">🔒 "Escondió" · ἐνέκρυψεν (enekrypsen)</div>
+      <div class="desc">La levadura no se pone <strong>encima</strong> de la masa, ni se mezcla superficialmente: se <strong>esconde dentro</strong>. De esta palabra griega viene "encriptar". El Reino actúa como un <strong>código oculto</strong> que transforma desde dentro. No se ve el proceso, pero el resultado es total. La transformación es <strong>interna, gradual, total e irreversible</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>ζύμη</td>
+        <td>zymē</td>
+        <td>levadura</td>
+        <td>En el AT, símbolo ambivalente: corrupción (Pascua) y vida (pan). Aquí, Jesús la usa en sentido <strong>positivo</strong>.</td>
+      </tr>
+      <tr>
+        <td>λαβοῦσα</td>
+        <td>labousa</td>
+        <td>tomando</td>
+        <td>La mujer <strong>toma</strong> la levadura. Acción deliberada, no accidental.</td>
+      </tr>
+      <tr>
+        <td>ἐνέκρυψεν</td>
+        <td>enekrypsen</td>
+        <td>escondió</td>
+        <td>De <em>enkryptō</em> (esconder, ocultar). De aquí viene "encriptar". La levadura no se exhibe: se <strong>esconde dentro</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἀλεύρου</td>
+        <td>aleurou</td>
+        <td>harina</td>
+        <td>La masa que será transformada.</td>
+      </tr>
+      <tr>
+        <td>τρία σάτα</td>
+        <td>tria sata</td>
+        <td>tres medidas</td>
+        <td>Un "sata" = unos 13 litros. Tres = unos 39 litros. Suficiente para más de 100 personas.</td>
+      </tr>
+      <tr>
+        <td>ἐζυμώθη</td>
+        <td>ezymōthē</td>
+        <td>fue leudado</td>
+        <td>Verbo en <strong>pasiva</strong>: la masa <strong>fue</strong> leudada. La transformación es <strong>recibida</strong>, no producida por la masa.</td>
+      </tr>
+      <tr>
+        <td>ὅλον</td>
+        <td>holon</td>
+        <td>todo</td>
+        <td>"Hasta que <strong>todo</strong> fue leudado". La transformación es <strong>total</strong>, no parcial.</td>
+      </tr>
+      <tr>
+        <td>γυνή</td>
+        <td>gynē</td>
+        <td>mujer</td>
+        <td>Protagonista de la parábola. Jesús elige a una mujer como figura de la acción divina.</td>
+      </tr>
+      <tr>
+        <td>ἕως</td>
+        <td>heōs</td>
+        <td>hasta que</td>
+        <td>Indica <strong>proceso</strong>, <strong>duración</strong>, <strong>paciencia</strong>. No es instantáneo.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>ezymōthē</em> está en pasiva: la masa no se leuda a sí misma; <strong>es leudada</strong> por la levadura. La transformación es <strong>recibida</strong>, no producida. Y el texto dice <em>holon</em> ("todo"): la transformación del Reino es <strong>integral</strong>, no parcial.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Éxodo 12: la levadura prohibida en Pascua (símbolo de corrupción). Levítico 2:11: sin levadura en el culto. Génesis 18:6: "tres medidas de flor de harina" para los huéspedes.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">Efecto mariposa: un pequeño cambio afecta a todo el sistema. La iluminación germina desde dentro, no se impone desde fuera. Transformación interna.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El Tao no hace nada, y sin embargo nada queda sin hacer". El sabio no se muestra, por eso brilla. Lo blando vence a lo duro. Transformación silenciosa.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 2:261: un grano produce siete espigas, cada una con cien granos. Sura 14: el buen árbol de raíz firme. Multiplicación desproporcionada.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">La fermentación del soma como transformación sagrada. El yoga como transformación interior. La alquimia espiritual tántrica: transformar energías en conciencia.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">Logoi spermatikoi: semillas de razón que fermentan la materia. La virtud como presencia transformadora. El sabio transforma por contagio, no por imposición.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">Entelequia: la masa tiene la potencialidad de ser pan; la levadura actualiza esa potencialidad. Cambio sustancial, no accidental.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">El gobernante virtuoso transforma al pueblo por contagio, no por imposición. "El hombre superior transforma por su ejemplo". La virtud es como la levadura.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Reino: fuerza viva que transforma desde dentro</li>
+          <li>Transformación: interna, gradual, total, irreversible</li>
+          <li>Levadura: presencia viva que fermenta</li>
+          <li>Mujer: figura de la acción transformadora de Dios</li>
+          <li>Esconder: introducir dentro para transformar</li>
+          <li>Todo: transformación integral de la realidad</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Poder externo que se impone desde fuera</li>
+          <li>Externa, inmediata, parcial, reversible</li>
+          <li>Ingrediente inerte que se añade</li>
+          <li>Solo un personaje doméstico</li>
+          <li>Ocultar para no ser visto</li>
+          <li>Transformación parcial o superficial</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#8a6a1a;"><strong>El Reino no se impone desde fuera: fermenta desde dentro. No transforma una parte: transforma todo. La grandeza del Reino no está en su tamaño, sino en su poder de transformación.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Estoy transformando desde dentro o imponiendo desde fuera?</div>
+      <div class="item">2. ¿Confío en el poder de la pequeña presencia o busco la grandeza visible?</div>
+      <div class="item">3. ¿Soy paciente con el proceso de transformación, o exijo resultados inmediatos?</div>
+      <div class="item">4. ¿Mi fe transforma toda mi vida, o solo fragmentos?</div>
+      <div class="item">5. ¿Reconozco que la transformación es obra de Dios, no mía?</div>
+      <div class="item">6. ¿Estoy dispuesto a ser "escondido" en la masa, sin buscar reconocimiento?</div>
+      <div class="item">7. ¿Mi presencia transforma el entorno, o paso desapercibido?</div>
+      <div class="item">8. ¿Confío en que lo pequeño puede transformar lo grande?</div>
+      <div class="item">9. ¿He experimentado la transformación interna del Reino en mi vida?</div>
+      <div class="item">10. ¿Estoy dispuesto a que el Reino transforme <strong>todo</strong>, no solo lo que me conviene?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Transformar el hogar desde dentro, con presencia constante y amor oculto.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser levadura en las relaciones: transformar por presencia, no por imposición.</div>
+      <div class="app-item"><strong>Comunidad</strong> Transformar la comunidad desde dentro, sin buscar el poder ni el protagonismo.</div>
+      <div class="app-item"><strong>Trabajo</strong> Ser levadura en el ambiente laboral: transformar por presencia y testimonio.</div>
+      <div class="app-item"><strong>Vida interior</strong> Dejar que el Reino transforme <strong>toda</strong> la vida, no solo fragmentos.</div>
+      <div class="app-item"><strong>Sociedad</strong> Transformar la sociedad desde dentro, por contagio, no por revolución.</div>
+      <div class="app-item"><strong>Liderazgo</strong> El líder es levadura: transforma por presencia, no por imposición.</div>
+      <div class="app-item"><strong>Espiritual</strong> Confiar en el poder transformador de la gracia, aunque no se vea el proceso.</div>
+      <div class="app-item"><strong>Crisis</strong> No desesperar: la transformación es gradual, pero irreversible.</div>
+      <div class="app-item"><strong>Evangelización</strong> Ser levadura en la masa: transformar por presencia, no por conquista.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “El Reino de Dios es como la levadura: una presencia pequeña, oculta y viva<br>que se esconde dentro de la masa y la transforma toda.”
+    <small>No se impone desde fuera: fermenta desde dentro. No transforma una parte: transforma todo. No actúa de golpe: actúa con el tiempo. La grandeza del Reino no está en su tamaño, sino en su poder de transformación.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de la Levadura (Mateo 13:33; Lucas 13:20-21) · Bloque 1: El Reino de Dios · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

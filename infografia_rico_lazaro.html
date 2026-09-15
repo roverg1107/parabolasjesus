@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Rico y Lázaro</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #5a1a5a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #5a1a5a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #8a4a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #d8b8d8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fdfaff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #5a1a5a;
+    border-bottom: 1.5px solid #e8d0e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #7a3a7a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #5a1a5a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #5a1a5a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #e8d0e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf5fa;
+  }
+
+  /* DOS PERSONAJES */
+  .dos-personajes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .personaje-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .rico-card {
+    background: #f5e8f5;
+    border: 1.5px solid #b07ab0;
+  }
+  .lazaro-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .personaje-card .icono {
+    font-size: 20pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .personaje-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .rico-card h4 { color: #8a3a8a; }
+  .lazaro-card h4 { color: #1a7a3a; }
+  .personaje-card ul {
+    text-align: left;
+  }
+  .personaje-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .rico-card ul li::before { color: #8a3a8a; }
+  .lazaro-card ul li::before { color: #1a7a3a; }
+
+  /* DOS DESTINOS */
+  .destinos-box {
+    background: #f8f0f8;
+    border: 2px solid #8a4a8a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .destinos-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #5a1a5a;
+    margin-bottom: 3px;
+  }
+  .destinos-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #d8b8d8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf5fa;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #5a1a5a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf5fa;
+    border-left: 3px solid #5a1a5a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #5a1a5a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #d8b8d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf5fa;
+  }
+  .app-item strong {
+    color: #5a1a5a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #5a1a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #5a1a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf5fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf5fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf5fa !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .rico-card { background: #f5e8f5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .lazaro-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .destinos-box { background: #f8f0f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Rico y Lázaro</h1>
+    <div class="subtitulo">La indiferencia ante el pobre y el destino eterno</div>
+    <div class="referencia">Lucas 16:19-31 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Un hombre rico se viste de <strong>púrpura y lino fino</strong> y banquetea cada día con esplendidez. A su puerta yace un mendigo llamado <strong>Lázaro</strong>, lleno de llagas, que desea saciarse de las migajas. Los perros le lamen las llagas.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Ambos mueren: Lázaro es llevado al <strong>seno de Abraham</strong>; el rico va al <strong>Hades</strong>, en tormentos. El rico pide agua y que Lázaro advierta a sus hermanos. Abraham responde: <em>"A Moisés y a los profetas tienen; óiganlos... Si no oyen a Moisés y a los profetas, tampoco se persuadirán aunque alguno se levantare de los muertos."</em></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que la riqueza sea mala en sí: el problema es la <strong>indiferencia</strong>.</li>
+        <li>No enseña que la pobreza salve por sí misma: Lázaro se salva por su <strong>fe</strong>.</li>
+        <li>No enseña que haya segunda oportunidad después de la muerte: la sima es <strong>infranqueable</strong>.</li>
+        <li>No enseña que los milagros sean el camino ordinario de la fe: la <strong>Escritura</strong> es suficiente.</li>
+        <li>No enseña que los ricos sean todos malvados: el rico es <strong>indiferente</strong>, no malvado activo.</li>
+        <li>No enseña que el cielo y el infierno sean solo símbolos: describen <strong>realidad</strong> de consuelo y tormento.</li>
+        <li>No enseña que la salvación se gane por obras: la <strong>gracia</strong> es la que salva.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La indiferencia ante el pobre es un pecado grave:</strong> el rico no le hizo nada malo; simplemente no lo vio.</li>
+        <li><strong>El prójimo está a la puerta:</strong> no hay que buscarlo lejos; está en lo cotidiano.</li>
+        <li><strong>El lujo puede cegar:</strong> el estilo de vida del rico lo aisló de la realidad del sufrimiento.</li>
+        <li><strong>La muerte invierte las apariencias:</strong> Lázaro es consolado; el rico, atormentado.</li>
+        <li><strong>La Escritura es suficiente para la salvación:</strong> "a Moisés y a los profetas tienen".</li>
+        <li><strong>Los milagros no producen fe:</strong> la incredulidad no se vence con milagros, sino con la Palabra.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>El destino eterno es irreversible:</strong> la sima es infranqueable; no hay retorno.</li>
+        <li><strong>La riqueza es responsabilidad, no privilegio:</strong> el que tiene mucho, debe mucho.</li>
+        <li><strong>La verdadera riqueza es la comunión con Dios:</strong> Lázaro, el pobre, es el verdadero rico.</li>
+        <li><strong>El nombre de Lázaro es significativo:</strong> "Dios ayuda"; en su miseria, confió en Dios.</li>
+        <li><strong>El amor al prójimo es la prueba del amor a Dios:</strong> el rico no amó al que veía.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LOS DOS PERSONAJES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los dos personajes: el rico y Lázaro</h2>
+    <div class="dos-personajes">
+      <div class="personaje-card rico-card">
+        <span class="icono">🔴</span>
+        <h4>El hombre rico (sin nombre)</h4>
+        <ul>
+          <li>Se viste de <strong>púrpura y lino fino</strong>.</li>
+          <li>Banquetea <strong>cada día</strong> con esplendidez.</li>
+          <li>No se dice su <strong>nombre</strong>: su identidad es su <strong>riqueza</strong>.</li>
+          <li><strong>No ve</strong> al mendigo a su puerta.</li>
+          <li>En el Hades, <strong>alza los ojos</strong> y ve a Lázaro.</li>
+          <li>Pide <strong>agua</strong> y un <strong>milagro</strong>.</li>
+          <li>Termina <strong>atormentado</strong> y <strong>sin nombre</strong>.</li>
+        </ul>
+      </div>
+      <div class="personaje-card lazaro-card">
+        <span class="icono">🟢</span>
+        <h4>Lázaro, el mendigo</h4>
+        <ul>
+          <li>Yace <strong>a la puerta</strong> del rico.</li>
+          <li>Está <strong>lleno de llagas</strong>.</li>
+          <li>Desea <strong>las migajas</strong> que caen de la mesa.</li>
+          <li>Los <strong>perros</strong> le lamen las llagas.</li>
+          <li>Su nombre significa <strong>"Dios ayuda"</strong>.</li>
+          <li>Es <strong>llevado</strong> por los ángeles al seno de Abraham.</li>
+          <li>Termina <strong>consolado</strong> y con <strong>nombre</strong>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="destinos-box">
+      <div class="titulo">⚖️ Los dos destinos: el seno de Abraham y el Hades</div>
+      <div class="desc">Una <strong>gran sima</strong> (χάσμα) está puesta entre los dos destinos: <strong>infranqueable</strong>. No hay comunicación, no hay retorno, no hay segunda oportunidad. La <strong>muerte</strong> fija el destino. La parábola subraya la <strong>irreversibilidad</strong> de la decisión presente. <em>"Si no oyen a Moisés y a los profetas, tampoco se persuadirán aunque alguno se levantare de los muertos."</em> La <strong>Escritura</strong> es suficiente; los <strong>milagros</strong> no producen fe.</div>
+    </div>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>πλούσιος</td>
+        <td>plousios</td>
+        <td>rico</td>
+        <td>El hombre rico. No se dice su <strong>nombre</strong>. Su identidad es su <strong>riqueza</strong>.</td>
+      </tr>
+      <tr>
+        <td>πορφύραν καὶ βύσσον</td>
+        <td>porphyran kai bysson</td>
+        <td>púrpura y lino fino</td>
+        <td>Vestimenta <strong>lujosa</strong>. La púrpura era un tinte carísimo; el lino fino, signo de refinamiento.</td>
+      </tr>
+      <tr>
+        <td>εὐφραινόμενος</td>
+        <td>euphrainomenos</td>
+        <td>banqueteando</td>
+        <td>Participio presente: <strong>banqueteaba cada día</strong>. Su vida era un <strong>banquete continuo</strong>.</td>
+      </tr>
+      <tr>
+        <td>Λάζαρος</td>
+        <td>Lazaros</td>
+        <td>Lázaro</td>
+        <td>Del hebreo <em>Eleazar</em>, <strong>"Dios ayuda"</strong>. El <strong>único</strong> personaje de una parábola con nombre propio.</td>
+      </tr>
+      <tr>
+        <td>εἱλκωμένος</td>
+        <td>heilkōmenos</td>
+        <td>lleno de llagas</td>
+        <td>Participio perfecto: <strong>estaba cubierto de llagas</strong>. Miseria <strong>absoluta</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἐπιθυμῶν χορτασθῆναι</td>
+        <td>epithymōn chortasthēnai</td>
+        <td>deseando saciarse</td>
+        <td>El mendigo <strong>deseaba</strong> saciarse. No se dice que <strong>comiera</strong>: solo <strong>deseaba</strong>.</td>
+      </tr>
+      <tr>
+        <td>ψιχίων</td>
+        <td>psichiōn</td>
+        <td>migajas</td>
+        <td>Las <strong>migajas</strong> que caían de la mesa. El rico no le daba nada: Lázaro esperaba <strong>sobras</strong>.</td>
+      </tr>
+      <tr>
+        <td>κύνες</td>
+        <td>kynes</td>
+        <td>perros</td>
+        <td>Animales <strong>impuros</strong>. Lamían las llagas de Lázaro. Subraya su <strong>miseria absoluta</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἀπενεχθῆναι</td>
+        <td>apenechthēnai</td>
+        <td>ser llevado</td>
+        <td>Lázaro <strong>fue llevado</strong> por los ángeles. Verbo <strong>pasivo</strong>: el consuelo es <strong>don</strong>, no conquista.</td>
+      </tr>
+      <tr>
+        <td>κόλπος Ἀβραάμ</td>
+        <td>kolpos Abraam</td>
+        <td>seno de Abraham</td>
+        <td>Lugar de <strong>descanso</strong> y <strong>comunión</strong> con los patriarcas. Imagen de <strong>intimidad</strong>.</td>
+      </tr>
+      <tr>
+        <td>ᾅδης</td>
+        <td>hadēs</td>
+        <td>Hades</td>
+        <td>Lugar de los muertos. En el judaísmo intertestamentario, lugar de <strong>tormento</strong> para los impíos.</td>
+      </tr>
+      <tr>
+        <td>χάσμα μέγα</td>
+        <td>chasma mega</td>
+        <td>gran sima, abismo</td>
+        <td><strong>Abismo infranqueable</strong>. La separación entre los dos destinos es <strong>definitiva</strong>.</td>
+      </tr>
+      <tr>
+        <td>Μωϋσῆς καὶ οἱ προφῆται</td>
+        <td>Mōusēs kai hoi prophētai</td>
+        <td>Moisés y los profetas</td>
+        <td>La <strong>Escritura</strong>. Es <strong>suficiente</strong> para la salvación.</td>
+      </tr>
+      <tr>
+        <td>ἀνάστηθι</td>
+        <td>anastēthi</td>
+        <td>levantarse</td>
+        <td>Verbo de <strong>resurrección</strong>. El rico pide un <strong>milagro</strong>. Abraham responde que <strong>no</strong> es necesario.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El nombre <em>Lazaros</em> es clave. Es el <strong>único</strong> personaje de una parábola de Jesús con <strong>nombre propio</strong>. Significa <strong>"Dios ayuda"</strong>. En su miseria, Lázaro <strong>confió</strong> en Dios. El rico, en cambio, <strong>no tiene nombre</strong>: su identidad se reduce a su riqueza.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Eclesiástico 7:32-36: no vuelvas la cara al pobre. Proverbios 14:31: el que oprime al pobre afrenta a Dios. Isaías 58: el verdadero ayuno es partir el pan.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">La compasión (karuṇā) hacia todos los seres. El rey y los cuatro mensajeros: nacimiento, enfermedad, vejez, muerte. La indiferencia acumula karma negativo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El sabio no acumula: cuanto más hace para los demás, más tiene" (Tao 81). "El que sabe que tiene bastante es rico" (Tao 33).</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 102: la rivalidad en la acumulación os distrae. Sura 104: ¡ay de los que acumulan! Hadiz: "El que tiene un vecino hambriento y no lo alimenta, no es creyente".</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El deber (dharma) de ayudar al prójimo. La limosna (dāna) como virtud. Yama, señor de la muerte, juzga según las acciones.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La solidaridad (sympatheia) con todos los seres humanos. La indiferencia es contraria a la virtud. La riqueza es indiferente (adiaphora).</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La justicia distributiva: el rico no la practica. La magnanimidad usa la riqueza para el bien. La amistad (philia) como solidaridad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La benevolencia (ren) como virtud fundamental. "El hombre superior se preocupa por los que sufren". La rectitud sobre el provecho.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Riqueza: don de Dios, responsabilidad</li>
+          <li>Pobreza: condición que puede ser ocasión de fe</li>
+          <li>Indiferencia: pecado de omisión, falta grave</li>
+          <li>Limosna: deber de justicia y caridad</li>
+          <li>Escritura: medio ordinario de la gracia, suficiente</li>
+          <li>Destino eterno: irreversible, fijado por la muerte</li>
+          <li>Seno de Abraham: comunión con los patriarcas</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Privilegio, fin en sí mismo</li>
+          <li>Garantía de salvación</li>
+          <li>Neutralidad o inocencia</li>
+          <li>Opción o gesto puntual</li>
+          <li>Insuficiente o superada</li>
+          <li>Reversible, con segunda oportunidad</li>
+          <li>Lugar físico o metáfora vacía</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#5a1a5a;"><strong>La parábola no condena al rico por ser rico, sino por su <strong>indiferencia</strong> ante el pobre que estaba a su puerta. La muerte invierte las apariencias: Lázaro es consolado, el rico atormentado. La sima es infranqueable.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Veo al prójimo que está <strong>a mi puerta</strong>, o paso de largo?</div>
+      <div class="item">2. ¿Mi estilo de vida me <strong>ciega</strong> ante el sufrimiento de los demás?</div>
+      <div class="item">3. ¿Confío en mis bienes o en Dios?</div>
+      <div class="item">4. ¿Comparto lo que tengo o acumulo para mí?</div>
+      <div class="item">5. ¿Reconozco que la <strong>indiferencia</strong> es un pecado grave?</div>
+      <div class="item">6. ¿Escucho la <strong>Palabra de Dios</strong>, o espero milagros para creer?</div>
+      <div class="item">7. ¿Vivo con la <strong>conciencia</strong> de la muerte y del juicio?</div>
+      <div class="item">8. ¿Mi <strong>fe</strong> produce frutos de amor al prójimo?</div>
+      <div class="item">9. ¿Reconozco que la <strong>verdadera riqueza</strong> es la comunión con Dios?</div>
+      <div class="item">10. ¿Estoy preparado para <strong>rendir cuentas</strong> a Dios?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> No ignorar al familiar que sufre; estar atento al que está <strong>a la puerta</strong>.</div>
+      <div class="app-item"><strong>Amistad</strong> No ser indiferente al amigo en necesidad; compartir lo que se tiene.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>solidaridad</strong>, no de indiferencia.</div>
+      <div class="app-item"><strong>Trabajo</strong> No ignorar al compañero en dificultad; compartir los recursos.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar las <strong>cegueras</strong> que me impiden ver al prójimo.</div>
+      <div class="app-item"><strong>Sociedad</strong> Combatir la <strong>globalización de la indiferencia</strong>; promover la justicia.</div>
+      <div class="app-item"><strong>Liderazgo</strong> No usar el poder para <strong>acumular</strong>, sino para <strong>servir</strong>.</div>
+      <div class="app-item"><strong>Espiritual</strong> Escuchar la <strong>Palabra de Dios</strong>; no esperar milagros para creer.</div>
+      <div class="app-item"><strong>Crisis</strong> No aferrarse a los bienes; confiar en Dios y compartir.</div>
+      <div class="app-item"><strong>Evangelización</strong> Testimoniar con la <strong>solidaridad</strong>, no con la acumulación.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “El rico no es condenado por tener mucho,<br>sino por no ver al pobre que está a su puerta.”
+    <small>La muerte invierte las apariencias: Lázaro es consolado, el rico atormentado. La sima es infranqueable: el destino eterno es irreversible. La Escritura es suficiente para la salvación; los milagros no producen fe. La verdadera riqueza no es la material, sino la comunión con Dios.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Rico y Lázaro (Lucas 16:19-31) · Bloque 3: El dinero y la mayordomía · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Síntesis Bloque 7 - El Juicio y las Consecuencias</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #6a1a1a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #6a1a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #9a4a4a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #d8b8b8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fdfafa;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #6a1a1a;
+    border-bottom: 1.5px solid #ede0e0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #6a1a1a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #6a1a1a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0e0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf4f4;
+  }
+
+  /* LAS 7 PARÁBOLAS */
+  .parabolas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .parabola-item {
+    border: 1px solid #d8b8b8;
+    border-radius: 5px;
+    padding: 5px 5px;
+    background: #faf4f4;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .parabola-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .parabola-item .nombre {
+    font-weight: 700;
+    color: #6a1a1a;
+    font-size: 7.5pt;
+    display: block;
+    margin-bottom: 2px;
+    line-height: 1.15;
+  }
+  .parabola-item .tema {
+    font-size: 6.5pt;
+    color: #555;
+    display: block;
+    line-height: 1.2;
+  }
+
+  /* HILOS CONDUCTORES */
+  .hilos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .hilo-item {
+    border-left: 3px solid #6a1a1a;
+    padding: 5px 8px;
+    background: #faf4f4;
+    border-radius: 0 4px 4px 0;
+  }
+  .hilo-item strong {
+    color: #6a1a1a;
+    font-size: 9pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .hilo-item .desc {
+    font-size: 8pt;
+    color: #444;
+    line-height: 1.25;
+  }
+
+  /* SUBVERSIONES */
+  .subversiones-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .subv-item {
+    border: 1px solid #d8b8b8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf4f4;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .subv-item .icono {
+    font-size: 13pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .titulo {
+    font-weight: 700;
+    color: #6a1a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .desc {
+    font-size: 7pt;
+    color: #444;
+    line-height: 1.2;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf4f4;
+    border-left: 3px solid #6a1a1a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #6a1a1a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 11.5pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #d8b8b8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf4f4;
+  }
+  .app-item strong {
+    color: #6a1a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #6a1a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #6a1a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf4f4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hilo-item { background: #faf4f4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .subv-item { background: #faf4f4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf4f4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .parabola-item { background: #faf4f4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>Síntesis del Bloque 7: El Juicio y las Consecuencias</h1>
+    <div class="subtitulo">Los siete hilos conductores de las parábolas del juicio</div>
+    <div class="referencia">7 parábolas · Mateo 9, 12, 13, 21, 22; Marcos 2, 12; Lucas 5, 11, 14, 20 · Documento de síntesis y aplicación</div>
+  </div>
+
+  <!-- FILA 1: LAS 7 PARÁBOLAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>📚 Las siete parábolas del bloque</h2>
+    <div class="parabolas-grid">
+      <div class="parabola-item">
+        <span class="icono">🍇</span>
+        <span class="nombre">Los viñadores homicidas</span>
+        <span class="tema">El rechazo de los mensajeros y del Hijo</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🪨</span>
+        <span class="nombre">La piedra desechada</span>
+        <span class="tema">El rechazo que se convierte en fundamento</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">💍</span>
+        <span class="nombre">El banquete de bodas</span>
+        <span class="tema">La invitación universal y la preparación necesaria</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🍽️</span>
+        <span class="nombre">El gran banquete</span>
+        <span class="tema">La invitación a los excluidos</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🍷</span>
+        <span class="nombre">El vino nuevo</span>
+        <span class="tema">La novedad del Reino y la alegría del Esposo</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🏚️</span>
+        <span class="nombre">El espíritu inmundo que regresa</span>
+        <span class="tema">El peligro del vacío espiritual</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">📜</span>
+        <span class="nombre">El escriba instruido</span>
+        <span class="tema">La sabiduría de integrar lo nuevo y lo viejo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 2: LOS HILOS CONDUCTORES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🧵 Los siete hilos conductores</h2>
+    <div class="hilos-grid">
+      <div class="hilo-item">
+        <strong>1. Dios envía a sus mensajeros con paciencia</strong>
+        <span class="desc">Los viñadores, el banquete de bodas y el gran banquete muestran a Dios enviando repetidamente a sus siervos. La paciencia de Dios es proverbial.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>2. El rechazo de los mensajeros es el rechazo de Dios</strong>
+        <span class="desc">La violencia contra los profetas es violencia contra Dios. El rechazo de los mensajeros es el rechazo de Dios mismo.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>3. La invitación de Dios es universal</strong>
+        <span class="desc">El banquete de bodas invita a malos y buenos. El gran banquete invita a pobres, mancos, cojos y ciegos. La invitación alcanza a todos.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>4. La respuesta humana es libre pero tiene consecuencias</strong>
+        <span class="desc">La invitación es universal; la respuesta es libre. El rechazo tiene consecuencias: destrucción, exclusión, pérdida.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>5. La novedad del Reino no cabe en estructuras viejas</strong>
+        <span class="desc">El paño nuevo no se mezcla con el vestido viejo. El vino nuevo exige odres nuevos. El Reino exige corazones renovados.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>6. El vacío espiritual invita a la recaída</strong>
+        <span class="desc">La casa barrida y adornada pero vacía es peligrosa. La limpieza sin llenado empeora la situación. La neutralidad espiritual no existe.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>7. La sabiduría integra lo antiguo y lo nuevo</strong>
+        <span class="desc">El escriba instruido saca de su tesoro cosas nuevas y viejas. La tradición sin novedad es estéril; la novedad sin raíz es superficial.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>✨ Dios transforma el rechazo en fundamento</strong>
+        <span class="desc">La piedra desechada se convierte en piedra angular. El rechazo de Cristo no impide el plan de Dios: lo cumple. Dios transforma el mal en bien.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS GRANDES SUBVERSIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔄 Las grandes subversiones del bloque</h2>
+    <div class="subversiones-grid">
+      <div class="subv-item">
+        <span class="icono">🪨</span>
+        <span class="titulo">El rechazo se convierte en fundamento</span>
+        <span class="desc">La piedra desechada se convierte en piedra angular.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🔄</span>
+        <span class="titulo">Los excluidos son invitados</span>
+        <span class="desc">Los pobres y marginales ocupan el lugar de los notables.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🧹</span>
+        <span class="titulo">La limpieza sin llenado empeora</span>
+        <span class="desc">El postrer estado es peor que el primero.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🍷</span>
+        <span class="titulo">El vino nuevo exige odres nuevos</span>
+        <span class="desc">La novedad del Reino no cabe en estructuras viejas.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">📜</span>
+        <span class="titulo">La sabiduría integra</span>
+        <span class="desc">El escriba instruido saca cosas nuevas y viejas.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">⚖️</span>
+        <span class="titulo">El juicio comienza ahora</span>
+        <span class="desc">La decisión presente determina el destino eterno.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🎉</span>
+        <span class="titulo">El Reino es fiesta</span>
+        <span class="desc">La invitación es un honor, no una obligación.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🚫</span>
+        <span class="titulo">La neutralidad no existe</span>
+        <span class="desc">El que no está con Jesús está contra él.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales del bloque</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que el bloque afirma</h4>
+        <ul>
+          <li>Invitación: universal, para todos</li>
+          <li>Respuesta: libre, personal, con consecuencias</li>
+          <li>Limpieza: reforma moral externa</li>
+          <li>Llenado: presencia de Dios, Espíritu Santo</li>
+          <li>Tradición: raíz, identidad, continuidad</li>
+          <li>Novedad: vida, frescura, actualidad</li>
+          <li>Sabiduría: integrar lo nuevo y lo viejo</li>
+          <li>Juicio: consecuencia de la respuesta libre</li>
+          <li>Gracia: don que transforma el mal en bien</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que el bloque niega</h4>
+        <ul>
+          <li>Selectiva, solo para algunos</li>
+          <li>Forzada o automática</li>
+          <li>Llenado interior por Dios</li>
+          <li>Neutralidad espiritual</li>
+          <li>Obstáculo para la novedad</li>
+          <li>Ruptura total con el pasado</li>
+          <li>Elegir entre uno u otro</li>
+          <li>Castigo arbitrario</li>
+          <li>Eliminación de la responsabilidad</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#6a1a1a;"><strong>Dios envía a sus mensajeros con paciencia. La invitación es universal; la respuesta es libre y tiene consecuencias. La limpieza sin llenado es peligrosa. La novedad del Reino exige estructuras nuevas. La sabiduría integra lo antiguo y lo nuevo. El juicio comienza ahora. El Reino es una fiesta.</strong></p>
+  </div>
+
+  <!-- FILA 5: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento del bloque</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿He <strong>aceptado</strong> la invitación de Dios o la he rechazado?</div>
+      <div class="item">2. ¿He <strong>llenado</strong> mi vida con Dios o solo la he limpiado externamente?</div>
+      <div class="item">3. ¿Reconozco que mi <strong>respuesta</strong> tiene consecuencias?</div>
+      <div class="item">4. ¿Soy un <strong>odre nuevo</strong> o un odre viejo?</div>
+      <div class="item">5. ¿Mi <strong>tradición</strong> es viva o estéril?</div>
+      <div class="item">6. ¿Mi <strong>novedad</strong> tiene raíz o es superficial?</div>
+      <div class="item">7. ¿<strong>Integro</strong> lo antiguo y lo nuevo en mi vida?</div>
+      <div class="item">8. ¿Reconozco a <strong>Cristo</strong> como la piedra angular de mi vida?</div>
+      <div class="item">9. ¿Mi <strong>vida cristiana</strong> es activa o pasiva?</div>
+      <div class="item">10. ¿Confío en que <strong>Dios transforma</strong> el mal en bien?</div>
+    </div>
+  </div>
+
+  <!-- FILA 6: APLICACIONES TRANSVERSALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones transversales del bloque</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Transmitir el tesoro de la fe: tradición y novedad en el hogar.</div>
+      <div class="app-item"><strong>Amistad</strong> Invitar a los amigos a la fe; no forzar la respuesta.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de invitación universal y de llenado espiritual.</div>
+      <div class="app-item"><strong>Trabajo</strong> Integrar la experiencia acumulada con la innovación presente.</div>
+      <div class="app-item"><strong>Vida interior</strong> Llenar la vida con Dios, no solo limpiarla externamente.</div>
+      <div class="app-item"><strong>Sociedad</strong> Invitar a todos al banquete del Reino, pobres y marginales.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar integrando tradición e innovación.</div>
+      <div class="app-item"><strong>Espiritual</strong> Responder a la invitación con inmediatez y coherencia.</div>
+      <div class="app-item"><strong>Crisis</strong> No dejar la casa vacía en la crisis: llenarla con Dios.</div>
+      <div class="app-item"><strong>Evangelización</strong> Anunciar el Evangelio integrando lo antiguo y lo nuevo.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “La piedra que desecharon los edificadores,<br>ha venido a ser cabeza del ángulo.”
+    <small>Dios envía a sus mensajeros con paciencia. La invitación es universal; la respuesta es libre y tiene consecuencias. El rechazo de los mensajeros es el rechazo de Dios. Pero Dios transforma el rechazo en fundamento. La novedad del Reino no cabe en estructuras viejas. La limpieza sin llenado es peligrosa. La neutralidad espiritual no existe. La sabiduría integra lo antiguo y lo nuevo. El juicio comienza ahora. El Reino es una fiesta. La gracia de Dios transforma el mal en bien.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de síntesis · Bloque 7: El Juicio y las Consecuencias · 7 parábolas de Jesús · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

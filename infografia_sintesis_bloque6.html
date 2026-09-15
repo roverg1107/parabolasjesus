@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Síntesis Bloque 6 - La Humildad y el Servicio</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #5a2a4a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #5a2a4a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #8a4a7a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e0c0d8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fdfafc;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #5a2a4a;
+    border-bottom: 1.5px solid #ede0e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #5a2a4a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #5a2a4a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf4f8;
+  }
+
+  /* LAS 4 PARÁBOLAS */
+  .parabolas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .parabola-item {
+    border: 1px solid #e0c0d8;
+    border-radius: 5px;
+    padding: 5px 5px;
+    background: #faf4f8;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .parabola-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .parabola-item .nombre {
+    font-weight: 700;
+    color: #5a2a4a;
+    font-size: 7.5pt;
+    display: block;
+    margin-bottom: 2px;
+    line-height: 1.15;
+  }
+  .parabola-item .tema {
+    font-size: 6.5pt;
+    color: #555;
+    display: block;
+    line-height: 1.2;
+  }
+
+  /* HILOS CONDUCTORES */
+  .hilos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .hilo-item {
+    border-left: 3px solid #5a2a4a;
+    padding: 5px 8px;
+    background: #faf4f8;
+    border-radius: 0 4px 4px 0;
+  }
+  .hilo-item strong {
+    color: #5a2a4a;
+    font-size: 9pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .hilo-item .desc {
+    font-size: 8pt;
+    color: #444;
+    line-height: 1.25;
+  }
+
+  /* SUBVERSIONES */
+  .subversiones-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .subv-item {
+    border: 1px solid #e0c0d8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf4f8;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .subv-item .icono {
+    font-size: 13pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .titulo {
+    font-weight: 700;
+    color: #5a2a4a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .desc {
+    font-size: 7pt;
+    color: #444;
+    line-height: 1.2;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf4f8;
+    border-left: 3px solid #5a2a4a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #5a2a4a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 11.5pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e0c0d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf4f8;
+  }
+  .app-item strong {
+    color: #5a2a4a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #5a2a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #5a2a4a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hilo-item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .subv-item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .parabola-item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>Síntesis del Bloque 6: La Humildad y el Servicio</h1>
+    <div class="subtitulo">Los siete hilos conductores de las parábolas de la humildad</div>
+    <div class="referencia">4 parábolas · Lucas 14, 17; Mateo 11, 21 · Documento de síntesis y aplicación</div>
+  </div>
+
+  <!-- FILA 1: LAS 4 PARÁBOLAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>📚 Las cuatro parábolas del bloque</h2>
+    <div class="parabolas-grid">
+      <div class="parabola-item">
+        <span class="icono">🪑</span>
+        <span class="nombre">El invitado que toma el primer lugar</span>
+        <span class="tema">La humildad que conduce a la exaltación</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🤲</span>
+        <span class="nombre">El siervo que solo cumple su deber</span>
+        <span class="tema">El servicio como deber, no como mérito</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🍇</span>
+        <span class="nombre">Los dos hijos</span>
+        <span class="tema">La obediencia que se traduce en obras</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🎭</span>
+        <span class="nombre">Los niños en la plaza</span>
+        <span class="tema">La crítica inconsistente y la sabiduría por sus frutos</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 2: LOS HILOS CONDUCTORES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🧵 Los siete hilos conductores</h2>
+    <div class="hilos-grid">
+      <div class="hilo-item">
+        <strong>1. La humildad es la actitud del discípulo</strong>
+        <span class="desc">El invitado humilde ocupa el último lugar. El siervo reconoce que solo cumple su deber. La humildad no es opcional: es esencial.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>2. La humildad no busca la exaltación</strong>
+        <span class="desc">La humildad verdadera confía en Dios y espera de Él la gloria. No busca el primer lugar, no exige recompensa, no se luce.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>3. El servicio es un deber, no un mérito</strong>
+        <span class="desc">El siervo no puede poner a Dios en deuda. No podemos exigir recompensa como deuda: todo es gracia.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>4. La obediencia verdadera se traduce en obras</strong>
+        <span class="desc">El hijo que dice no y luego obedece es alabado. El hijo que dice sí y no obedece es reprendido. El decir sin hacer es estéril.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>5. La sabiduría se manifiesta en la diversidad de estilos</strong>
+        <span class="desc">Juan es austero; Jesús es social. Ambos son instrumentos de la sabiduría divina. La sabiduría no se limita a un estilo.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>6. La sabiduría se justifica por sus frutos</strong>
+        <span class="desc">No por las palabras, no por las críticas, no por los estilos: por los frutos. Los frutos son el criterio del discernimiento.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>7. La religiosidad sin coherencia no salva</strong>
+        <span class="desc">El segundo hijo prometió pero no cumplió. Los líderes religiosos conocían la Ley pero no creyeron. La coherencia es esencial.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>✨ El arrepentimiento es posible hasta el final</strong>
+        <span class="desc">El primer hijo rechazó inicialmente pero se arrepintió y obedeció. Los pecadores arrepentidos van delante de los religiosos no arrepentidos.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS GRANDES SUBVERSIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔄 Las grandes subversiones del bloque</h2>
+    <div class="subversiones-grid">
+      <div class="subv-item">
+        <span class="icono">⬇️</span>
+        <span class="titulo">La humildad no busca la exaltación</span>
+        <span class="desc">Confía en Dios y espera de Él la gloria. No busca el primer lugar.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🎁</span>
+        <span class="titulo">El servicio es deber, no mérito</span>
+        <span class="desc">No podemos poner a Dios en deuda. Todo es gracia.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🛠️</span>
+        <span class="titulo">El hacer vale más que el decir</span>
+        <span class="desc">La obediencia verdadera se traduce en obras. La coherencia es esencial.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🔍</span>
+        <span class="titulo">La crítica inconsistente revela el corazón</span>
+        <span class="desc">El rechazo del mensaje se disfraza de crítica al estilo.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🌈</span>
+        <span class="titulo">La sabiduría se manifiesta en la diversidad</span>
+        <span class="desc">No se limita a un solo estilo. Juan y Jesús son instrumentos de la sabiduría.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🌳</span>
+        <span class="titulo">La sabiduría se justifica por sus frutos</span>
+        <span class="desc">No por las palabras, no por las críticas. Los frutos son el criterio.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🙏</span>
+        <span class="titulo">Los pecadores entran antes que los religiosos</span>
+        <span class="desc">La gracia sorprende. El arrepentimiento verdadero supera la religiosidad externa.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🚪</span>
+        <span class="titulo">El arrepentimiento es posible hasta el final</span>
+        <span class="desc">La puerta está abierta mientras hay tiempo. La urgencia es real.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales del bloque</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que el bloque afirma</h4>
+        <ul>
+          <li>Humildad: verdad sobre uno mismo ante Dios</li>
+          <li>Exaltación: don de Dios al humilde</li>
+          <li>Servicio: deber cumplido con humildad y amor</li>
+          <li>Obediencia: hacer la voluntad del padre</li>
+          <li>Coherencia: unidad entre decir y hacer</li>
+          <li>Sabiduría: manifiesta en frutos y diversidad de estilos</li>
+          <li>Frutos: criterio del discernimiento</li>
+          <li>Arrepentimiento: cambio de conducta</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que el bloque niega</h4>
+        <ul>
+          <li>Autodesprecio o falsa modestia</li>
+          <li>Conquista del soberbio</li>
+          <li>Mérito que pone a Dios en deuda</li>
+          <li>Decir que se hará sin hacerlo</li>
+          <li>Palabras vacías</li>
+          <li>Limitada a un solo estilo</li>
+          <li>Palabras o críticas</li>
+          <li>Solo sentimiento de culpa</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#5a2a4a;"><strong>La humildad es la actitud del discípulo. El servicio es un deber, no un mérito. La obediencia verdadera se traduce en obras. La coherencia entre el decir y el hacer es esencial. La sabiduría se manifiesta en la diversidad de estilos y se justifica por sus frutos. El arrepentimiento es posible hasta el final.</strong></p>
+  </div>
+
+  <!-- FILA 5: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento del bloque</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Busco el <strong>primer lugar</strong> o el último?</div>
+      <div class="item">2. ¿Mi <strong>humildad</strong> es verdadera o calculada?</div>
+      <div class="item">3. ¿Reconozco que el <strong>servicio</strong> es un deber, no un mérito?</div>
+      <div class="item">4. ¿<strong>Hago</strong> la voluntad de Dios o solo digo que la haré?</div>
+      <div class="item">5. ¿Mi <strong>fe</strong> se manifiesta en obras o solo en palabras?</div>
+      <div class="item">6. ¿Soy <strong>coherente</strong> entre lo que digo y lo que hago?</div>
+      <div class="item">7. ¿<strong>Critico</strong> constructivamente o caprichosamente?</div>
+      <div class="item">8. ¿<strong>Discierno</strong> la sabiduría por sus frutos o por mis preferencias?</div>
+      <div class="item">9. ¿Me considero <strong>justo</strong> y no necesito arrepentirme?</div>
+      <div class="item">10. ¿Estoy <strong>dispuesto</strong> a arrepentirme cuando Dios me lo pida?</div>
+    </div>
+  </div>
+
+  <!-- FILA 6: APLICACIONES TRANSVERSALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones transversales del bloque</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Practicar la humildad y el servicio en el hogar; ser coherente entre el decir y el hacer.</div>
+      <div class="app-item"><strong>Amistad</strong> Servir al amigo gratuitamente; cumplir las promesas hechas.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>humildad</strong>, <strong>servicio</strong> y <strong>coherencia</strong>.</div>
+      <div class="app-item"><strong>Trabajo</strong> Servir con excelencia sin buscar reconocimiento ansiosamente.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar la <strong>humildad</strong>, la <strong>coherencia</strong> y el <strong>discernimiento</strong>.</div>
+      <div class="app-item"><strong>Sociedad</strong> Servir al bien común gratuitamente; discernir la sabiduría por sus frutos.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar con humildad sirviendo, como Cristo.</div>
+      <div class="app-item"><strong>Espiritual</strong> Confiar en la gracia, servir con humildad, arrepentirse sinceramente.</div>
+      <div class="app-item"><strong>Crisis</strong> Mantener la coherencia y la humildad en medio de la prueba.</div>
+      <div class="app-item"><strong>Evangelización</strong> Testimoniar con obras y coherencia, no solo con palabras.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Cualquiera que se enaltece, será humillado;<br>y el que se humilla será enaltecido.”
+    <small>La humildad es la actitud del discípulo. El servicio es un deber, no un mérito. La obediencia verdadera se traduce en obras. La coherencia entre el decir y el hacer es esencial. La sabiduría se manifiesta en la diversidad de estilos y se justifica por sus frutos. La crítica inconsistente revela el corazón del crítico. La religiosidad sin coherencia no salva. El arrepentimiento es posible hasta el final. Los pecadores pueden entrar antes que los religiosos. La humildad no busca la exaltación: confía en Dios y espera de Él la gloria.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de síntesis · Bloque 6: La Humildad y el Servicio · 4 parábolas de Jesús · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

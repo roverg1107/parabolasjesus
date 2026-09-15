@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Espíritu Inmundo que Regresa</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #3a2a5a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #3a2a5a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #6a5a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c8b8e0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fbfaff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #3a2a5a;
+    border-bottom: 1.5px solid #d8d0e8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #5a3a7a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #3a2a5a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #3a2a5a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8d0e8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f6f4fc;
+  }
+
+  /* LAS CUATRO ETAPAS */
+  .etapas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .etapa-item {
+    border-radius: 5px;
+    padding: 6px 5px;
+    text-align: center;
+    background: #f6f4fc;
+    border: 1px solid #c8b8e0;
+  }
+  .etapa-item .momento {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #3a2a5a;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .etapa-item .desc {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    line-height: 1.2;
+  }
+  .etapa-salida {
+    background: #f5ead0;
+    border: 1.5px solid #d0b070;
+  }
+  .etapa-salida .momento { color: #8a5a2a; }
+  .etapa-vacio {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .etapa-vacio .momento { color: #8a5a00; }
+  .etapa-recaida {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .etapa-recaida .momento { color: #b02020; }
+
+  /* LA CASA VACÍA */
+  .casa-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .casa-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .vacia-card {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .llena-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .casa-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .casa-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .vacia-card h4 { color: #b02020; }
+  .llena-card h4 { color: #1a7a3a; }
+  .casa-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .casa-flecha {
+    font-size: 24pt;
+    color: #3a2a5a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* CONCLUSIÓN BOX */
+  .conclusion-box {
+    background: #f0eaff;
+    border: 2px solid #5a3a8a;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .conclusion-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #3a2a5a;
+    margin-bottom: 3px;
+  }
+  .conclusion-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #c8b8e0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f6f4fc;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #3a2a5a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f6f4fc;
+    border-left: 3px solid #3a2a5a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #3a2a5a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c8b8e0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f6f4fc;
+  }
+  .app-item strong {
+    color: #3a2a5a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #3a2a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #3a2a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-item { background: #f6f4fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-salida { background: #f5ead0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-vacio { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .etapa-recaida { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .vacia-card { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .llena-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .conclusion-box { background: #f0eaff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Espíritu Inmundo que Regresa</h1>
+    <div class="subtitulo">El peligro del vacío espiritual y la necesidad de llenar la casa con Dios</div>
+    <div class="referencia">Mateo 12:43-45 · Lucas 11:24-26 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Cuando el <strong>espíritu inmundo</strong> sale del hombre, <strong>anda por lugares secos</strong>, buscando <strong>reposo</strong>, y no lo halla. Entonces dice: <em>"Volveré a mi casa de donde salí"</em>. Cuando llega, la halla <strong>desocupada, barrida y adornada</strong>.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Entonces va y toma consigo <strong>otros siete espíritus peores</strong> que él, y entrados, <strong>moran allí</strong>. Y el <strong>postrer estado</strong> de aquel hombre viene a ser <strong>peor que el primero</strong>.</p>
+      <p style="font-size:9.5pt;">Y Jesús concluye: <strong>"Así también acontecerá a esta generación malvada"</strong>.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que la <strong>expulsión</strong> del demonio sea inútil: es real y necesaria. El problema es la falta de ocupación.</li>
+        <li>No enseña que la <strong>limpieza moral</strong> sea mala: es buena, pero sin llenado es peligrosa.</li>
+        <li>No enseña que la casa deba quedar <strong>vacía</strong>: debe ser ocupada por Dios.</li>
+        <li>No enseña que la <strong>reforma moral</strong> sea suficiente: sin conversión interna no salva.</li>
+        <li>No enseña que la generación esté <strong>condenada sin remedio</strong>: la puerta del arrepentimiento queda abierta.</li>
+        <li>No enseña que los demonios <strong>siempre</strong> regresen: solo si la casa está vacía.</li>
+        <li>No enseña que el número <strong>siete</strong> sea literal: indica plenitud de maldad.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La limpieza sin llenado es peligrosa:</strong> la casa barrida pero vacía expone a la recaída.</li>
+        <li><strong>El vacío espiritual invita a la recaída:</strong> la casa desocupada es presa fácil del mal.</li>
+        <li><strong>La reforma sin conversión empeora la situación:</strong> el postrer estado es peor que el primero.</li>
+        <li><strong>La neutralidad espiritual no existe:</strong> el que no está con Jesús está contra él.</li>
+        <li><strong>La presencia de Dios llena la casa:</strong> el Espíritu Santo ocupa la vida del creyente.</li>
+        <li><strong>La conversión es más que moralismo:</strong> transforma el corazón, no solo la conducta.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>El mal es real y activo:</strong> el espíritu busca ocupar las vidas vacías.</li>
+        <li><strong>La recaída es peor que el estado inicial:</strong> agrega maldad a la maldad anterior.</li>
+        <li><strong>La generación que rechaza a Jesús queda peor.</strong></li>
+        <li><strong>La oportunidad de recibir a Jesús es única.</strong></li>
+        <li><strong>La gracia de Dios puede impedir la recaída.</strong></li>
+        <li><strong>La vida cristiana requiere ocupación activa por Dios.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS CUATRO ETAPAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔄 Las cuatro etapas del espíritu inmundo</h2>
+    <div class="etapas-grid">
+      <div class="etapa-item etapa-salida">
+        <span class="momento">1. La salida</span>
+        <span class="desc">El espíritu inmundo <strong>sale</strong> del hombre. La expulsión es real y necesaria.</span>
+      </div>
+      <div class="etapa-item">
+        <span class="momento">2. La búsqueda</span>
+        <span class="desc">Anda por <strong>lugares secos</strong>, buscando <strong>reposo</strong>, y no lo halla.</span>
+      </div>
+      <div class="etapa-item etapa-vacio">
+        <span class="momento">3. El regreso</span>
+        <span class="desc">Vuelve a su casa y la halla <strong>desocupada, barrida y adornada</strong>. La casa está vacía.</span>
+      </div>
+      <div class="etapa-item etapa-recaida">
+        <span class="momento">4. La recaída</span>
+        <span class="desc">Toma <strong>siete espíritus peores</strong> y moran allí. El postrer estado es <strong>peor</strong>.</span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#3a2a5a;"><strong>La limpieza externa sin llenado interno expone a la recaída. La casa desocupada es presa fácil del mal. La reforma sin conversión empeora la situación.</strong></p>
+  </div>
+
+  <!-- FILA 4: LA CASA VACÍA Y LA CASA LLENA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏠 La casa vacía y la casa llena</h2>
+    <div class="casa-grid">
+      <div class="casa-card vacia-card">
+        <span class="icono">🏚️</span>
+        <h4>Casa vacía</h4>
+        <span class="desc"><strong>Barrida y adornada</strong>, pero <strong>sin ocupante</strong>. La limpieza externa sin llenado interno. El <strong>vacío</strong> invita al <strong>regreso</strong> del mal. La <strong>reforma moral</strong> sin <strong>conversión</strong> es peligrosa.</span>
+      </div>
+      <div class="casa-flecha">→</div>
+      <div class="casa-card llena-card">
+        <span class="icono">🏡</span>
+        <h4>Casa llena</h4>
+        <span class="desc">Ocupada por la <strong>presencia de Dios</strong>. El <strong>Espíritu Santo</strong> llena la vida. La <strong>casa llena</strong> no puede ser ocupada por el mal. La <strong>plenitud</strong> del Espíritu es <strong>protección</strong> contra la recaída.</span>
+      </div>
+    </div>
+    <div class="conclusion-box">
+      <div class="titulo">✨ La lección central: la limpieza sin llenado es peligrosa</div>
+      <div class="desc">La <strong>casa</strong> <strong>barrida</strong> y <strong>adornada</strong> pero <strong>vacía</strong> es <strong>peligrosa</strong>. La <strong>limpieza</strong> <strong>externa</strong> sin <strong>llenado</strong> <strong>interno</strong> <strong>expone</strong> a la <strong>recaída</strong>. La <strong>reforma</strong> <strong>moral</strong> sin <strong>conversión</strong> <strong>espiritual</strong> no <strong>basta</strong>. La <strong>casa</strong> debe ser <strong>ocupada</strong> por <strong>Dios</strong>. La <strong>conversión</strong> es <strong>más</strong> que <strong>moralismo</strong>: <strong>transforma</strong> el <strong>corazón</strong>, no solo la <strong>conducta</strong>. La <strong>vida</strong> <strong>cristiana</strong> <strong>requiere</strong> <strong>ocupación</strong> <strong>activa</strong> por <strong>Dios</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>πνεῦμα ἀκάθαρτον</td>
+        <td>pneuma akatharton</td>
+        <td>espíritu inmundo</td>
+        <td>Demonio. En el judaísmo, los demonios causaban enfermedades y opresión.</td>
+      </tr>
+      <tr>
+        <td>ἐξέρχομαι</td>
+        <td>exerchomai</td>
+        <td>salir, salir de</td>
+        <td>El espíritu sale del hombre. La expulsión es real.</td>
+      </tr>
+      <tr>
+        <td>ἄνυδρος</td>
+        <td>anydros</td>
+        <td>seco, sin agua</td>
+        <td>Los lugares secos, desiertos. Símbolo de maldición y ausencia de vida.</td>
+      </tr>
+      <tr>
+        <td>ἀνάπαυσις</td>
+        <td>anapausis</td>
+        <td>reposo, descanso</td>
+        <td>El espíritu busca reposo y no lo halla.</td>
+      </tr>
+      <tr>
+        <td>οἶκος</td>
+        <td>oikos</td>
+        <td>casa</td>
+        <td>La casa es el hombre. La vida de la persona. De aquí viene "economía".</td>
+      </tr>
+      <tr>
+        <td>σχολάζοντα</td>
+        <td>scholazonta</td>
+        <td>desocupada, vacía</td>
+        <td>De <em>scholē</em> (ocio). De aquí viene "escuela". La casa está vacía.</td>
+      </tr>
+      <tr>
+        <td>σεσαρωμένον</td>
+        <td>sesarōmenon</td>
+        <td>barrida</td>
+        <td>La casa está limpia. La limpieza externa.</td>
+      </tr>
+      <tr>
+        <td>κεκοσμημένον</td>
+        <td>kekosmēmenon</td>
+        <td>adornada</td>
+        <td>De <em>kosmeō</em> (ordenar). De aquí viene "cosmos". Orden externo.</td>
+      </tr>
+      <tr>
+        <td>ἑπτὰ ἕτερα πνεύματα</td>
+        <td>hepta hetera pneumata</td>
+        <td>siete espíritus</td>
+        <td>El número siete indica plenitud de maldad.</td>
+      </tr>
+      <tr>
+        <td>πονηρότερα</td>
+        <td>ponērotera</td>
+        <td>peores</td>
+        <td>Los nuevos espíritus son peores que el primero.</td>
+      </tr>
+      <tr>
+        <td>κατοικέω</td>
+        <td>katoikeō</td>
+        <td>morar, habitar</td>
+        <td>Los espíritus moran en la casa. La ocupación de la vida.</td>
+      </tr>
+      <tr>
+        <td>ἔσχατα</td>
+        <td>eschata</td>
+        <td>postrero, último</td>
+        <td>El postrer estado. De aquí viene "escatología".</td>
+      </tr>
+      <tr>
+        <td>χείρονα</td>
+        <td>cheirona</td>
+        <td>peor</td>
+        <td>El postrer estado es peor que el primero.</td>
+      </tr>
+      <tr>
+        <td>γενεά πονηρά</td>
+        <td>genea ponēra</td>
+        <td>generación malvada</td>
+        <td>La generación que rechaza a Jesús.</td>
+      </tr>
+      <tr>
+        <td>μετανοέω</td>
+        <td>metanoeō</td>
+        <td>arrepentirse</td>
+        <td>El arrepentimiento verdadero. La conversión del corazón.</td>
+      </tr>
+      <tr>
+        <td>πληρόω</td>
+        <td>plēroō</td>
+        <td>llenar</td>
+        <td>La casa debe ser llena de Dios. De aquí viene "plenitud".</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La palabra <em>scholazonta</em> ("desocupada") viene de <em>scholē</em> ("ocio"): de aquí viene "escuela". La casa desocupada es una casa vacía, sin ocupante. Y la palabra <em>kekosmēmenon</em> ("adornada") viene de <em>kosmeō</em> ("ordenar"): de aquí viene "cosmos". La casa adornada es una casa ordenada externamente, pero vacía internamente. La reforma externa sin llenado interno es peligrosa.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">1 Samuel 16: David tocaba el arpa y el espíritu malo se apartaba de Saúl: la música llenaba el vacío. Talmud Berajot 5a: el estudio de la Torá aleja el mal. Proverbios 26:11: el perro vuelve a su vómito.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El vacío (śūnyatā) lleno de compasión. La atención plena (sati) llena la mente con conciencia. El karma: la recaída agrava las consecuencias. La reforma sin transformación interna no basta.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El vacío del vaso es lo que hace útil el vaso" (Tao 11): el vacío es útil si está lleno de Tao. Wu wei: el sabio llena su vida con el Tao. El agua llena los espacios vacíos.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 13:28: "Con el recuerdo de Dios se tranquilizan los corazones". Hadiz: "El corazón que no recuerda a Dios es como una casa abandonada". El recuerdo de Dios llena el corazón.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El karma: la recaída agrava las consecuencias. La devoción (bhakti) llena el corazón con Dios. El guru llena el vacío del discípulo con sabiduría.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La virtud como llenado de la vida. La autosuficiencia (autarkeia): el sabio llena su vida con virtud. La atención (prosoche) protege contra la recaída.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La virtud como hábito: la vida virtuosa llena la vida con bien. La phrónesis: saber llenar la vida con bien. La eudaimonia como fin último.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La rectitud (yi) llena la vida. La lealtad (zhōng) llena la vida con compromiso. "El hombre superior entiende la rectitud; el inferior, el provecho".</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Limpieza: reforma moral externa</li>
+          <li>Vacío: ausencia de Dios</li>
+          <li>Llenado: presencia de Dios, Espíritu Santo</li>
+          <li>Conversión: transformación del corazón</li>
+          <li>Recaída: empeoramiento del estado inicial</li>
+          <li>Mal: real y activo</li>
+          <li>Presencia de Dios: protección contra el mal</li>
+          <li>Ocupación: vida activa de fe</li>
+          <li>Gracia: don de Dios que llena la vida</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Llenado interior por Dios</li>
+          <li>Neutralidad espiritual</li>
+          <li>Moralismo o reforma externa</li>
+          <li>Solo cambio de conducta</li>
+          <li>Simple retorno al estado anterior</li>
+          <li>Ilusión o pasividad</li>
+          <li>Eliminación de la responsabilidad humana</li>
+          <li>Posición intermedia</li>
+          <li>Eliminación del esfuerzo humano</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#3a2a5a;"><strong>La limpieza sin llenado es peligrosa. El vacío espiritual invita a la recaída. La reforma sin conversión empeora la situación. La neutralidad espiritual no existe. La presencia de Dios llena la casa. La vida cristiana requiere ocupación activa por Dios.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿He <strong>llenado</strong> mi vida con Dios o solo la he limpiado externamente?</div>
+      <div class="item">2. ¿Mi vida está <strong>vacía</strong> o ocupada por Dios?</div>
+      <div class="item">3. ¿He confundido <strong>reforma moral</strong> con conversión?</div>
+      <div class="item">4. ¿Mi vida cristiana es <strong>activa</strong> o pasiva?</div>
+      <div class="item">5. ¿Reconozco que la <strong>neutralidad espiritual</strong> no existe?</div>
+      <div class="item">6. ¿He experimentado una <strong>recaída</strong> después de una mejora?</div>
+      <div class="item">7. ¿Mi casa está <strong>barrida</strong> y adornada pero vacía?</div>
+      <div class="item">8. ¿He invitado al <strong>Espíritu Santo</strong> a llenar mi vida?</div>
+      <div class="item">9. ¿Mi <strong>ocupación espiritual</strong> protege contra el mal?</div>
+      <div class="item">10. ¿Confío en la <strong>gracia</strong> de Dios para perseverar?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Llenar el hogar con la presencia de Dios, no solo con orden externo.</div>
+      <div class="app-item"><strong>Amistad</strong> No solo evitar el mal: llenar las relaciones con Dios.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>llenado espiritual</strong>, no solo de reforma externa.</div>
+      <div class="app-item"><strong>Trabajo</strong> No solo evitar la corrupción: llenar el trabajo con ética y presencia de Dios.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar si mi vida está <strong>vacía</strong> o llena de Dios.</div>
+      <div class="app-item"><strong>Sociedad</strong> No solo evitar el mal: llenar la sociedad con justicia y misericordia.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar llenando el vacío espiritual con Dios.</div>
+      <div class="app-item"><strong>Espiritual</strong> Llenar la vida con la Palabra, la oración y los sacramentos.</div>
+      <div class="app-item"><strong>Crisis</strong> No dejar la casa vacía en la crisis: llenarla con Dios.</div>
+      <div class="app-item"><strong>Evangelización</strong> Anunciar que la vida vacía necesita ser llenada con Dios.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Cuando el espíritu inmundo sale del hombre...<br>y el postrer estado de aquel hombre viene a ser peor que el primero.”
+    <small>La limpieza sin llenado es peligrosa. El vacío espiritual invita a la recaída. La reforma sin conversión empeora la situación. La neutralidad espiritual no existe. La presencia de Dios llena la casa. La conversión es más que moralismo. El mal es real y activo. La recaída es peor que el estado inicial. La generación que rechaza a Jesús queda peor. La oportunidad de recibir a Jesús es única. La gracia de Dios puede impedir la recaída. La vida cristiana requiere ocupación activa por Dios.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Espíritu Inmundo que Regresa (Mateo 12:43-45; Lucas 11:24-26) · Bloque 7: El juicio y las consecuencias · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

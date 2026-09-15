@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: La Red Echada al Mar</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #1a4a6a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #1a4a6a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #4a7a9a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #b8d0e0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafdff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #1a4a6a;
+    border-bottom: 1.5px solid #d0e0ec;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #3a6a8a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #1a4a6a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #1a4a6a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0e0ec;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2f8fc;
+  }
+
+  /* LA PESCA Y LA SELECCIÓN */
+  .fases-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .fase-card {
+    border-radius: 6px;
+    padding: 10px 10px;
+    text-align: center;
+  }
+  .fase-pesca {
+    background: #e0eef8;
+    border: 1.5px solid #7ab0d0;
+  }
+  .fase-seleccion {
+    background: #f5eec0;
+    border: 1.5px solid #c8a830;
+  }
+  .fase-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .fase-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .fase-pesca h4 { color: #1a4a6a; }
+  .fase-seleccion h4 { color: #8a6a1a; }
+  .fase-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .fase-flecha {
+    font-size: 24pt;
+    color: #1a4a6a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* BUENOS Y MALOS */
+  .peces-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .pez-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .pez-bueno {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .pez-malo {
+    background: #e0e0d8;
+    border: 1.5px solid #8a8a7a;
+  }
+  .pez-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .pez-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .pez-bueno h4 { color: #1a7a3a; }
+  .pez-malo h4 { color: #5a5a4a; }
+  .pez-card ul {
+    text-align: left;
+  }
+  .pez-card ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+  .pez-bueno ul li::before { color: #1a7a3a; }
+  .pez-malo ul li::before { color: #5a5a4a; }
+
+  /* JUICIO BOX */
+  .juicio-box {
+    background: #fdf0e8;
+    border: 2px solid #c87840;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .juicio-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #8a4a1a;
+    margin-bottom: 3px;
+  }
+  .juicio-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #b8d0e0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f2f8fc;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #1a4a6a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2f8fc;
+    border-left: 3px solid #1a4a6a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #1a4a6a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #b8d0e0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2f8fc;
+  }
+  .app-item strong {
+    color: #1a4a6a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #1a4a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #1a4a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2f8fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f2f8fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2f8fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .fase-pesca { background: #e0eef8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .fase-seleccion { background: #f5eec0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pez-bueno { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pez-malo { background: #e0e0d8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .juicio-box { background: #fdf0e8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de la Red Echada al Mar</h1>
+    <div class="subtitulo">La convocación universal y la selección escatológica</div>
+    <div class="referencia">Mateo 13:47-50 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">El Reino de los cielos es semejante a una <strong>red barredera</strong> echada en el mar, que recogió <strong>toda clase de peces</strong>. Cuando se llenó, los pescadores la sacaron a la orilla y, <strong>sentados</strong>, recogieron lo bueno en cestas y echaron fuera lo malo.</p>
+      <p style="font-size:9pt; margin-top:4px;"><strong>Así será al fin del siglo:</strong> los ángeles saldrán, apartarán a los malos de entre los justos, y los echarán en el horno de fuego; allí será el lloro y el crujir de dientes.</p>
+      <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La red</strong> (σαγήνη) = red barredera grande. Recoge <strong>todo</strong> lo que encuentra: peces buenos, malos y desechos.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que el Reino sea selectivo en la convocación: la red recoge <strong>todo</strong>.</li>
+        <li>No enseña que la separación sea tarea humana: los que separan son los <strong>ángeles</strong>.</li>
+        <li>No enseña que la Iglesia deba expulsar a los "malos" ahora: la parábola es <strong>escatológica</strong>.</li>
+        <li>No enseña que todos los peces sean iguales: hay <strong>buenos</strong> y <strong>malos</strong>.</li>
+        <li>No enseña que la red sea el Reino en su totalidad: la red es el <strong>instrumento</strong> de la convocación.</li>
+        <li>No enseña que el juicio sea arbitrario: se basa en una <strong>distinción real</strong>.</li>
+        <li>No enseña que el juicio sea solo metáfora: es una <strong>realidad escatológica</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>El Reino convoca a todos sin distinción:</strong> la red recoge "de todas clases de peces".</li>
+        <li><strong>La convocación no es la selección:</strong> estar en la red no garantiza la salvación.</li>
+        <li><strong>La coexistencia es temporal:</strong> la mezcla dura durante la pesca; la separación es en la orilla.</li>
+        <li><strong>El juicio es real y definitivo:</strong> hay separación entre buenos y malos.</li>
+        <li><strong>El juicio pertenece a Dios, no al hombre:</strong> los que separan son los ángeles.</li>
+        <li><strong>La separación se hace con calma y deliberación:</strong> "sentados" separan los pescadores.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>El destino de los malos es la condena:</strong> el horno de fuego, el lloro y el crujir de dientes.</li>
+        <li><strong>El destino de los justos es la comunión:</strong> los peces buenos se recogen en cestas.</li>
+        <li><strong>El juicio revela lo que ya éramos:</strong> los peces no cambian de naturaleza en la orilla.</li>
+        <li><strong>La urgencia de la conversión:</strong> el tiempo de la misericordia es ahora.</li>
+        <li><strong>La esperanza está en ser "buen pez":</strong> la invitación es a vivir de tal manera que seamos recogidos.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS DOS FASES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎣 Las dos fases: la pesca y la selección</h2>
+    <div class="fases-grid">
+      <div class="fase-card fase-pesca">
+        <span class="icono">🕸️</span>
+        <h4>La pesca: convocación universal</h4>
+        <span class="desc">La red se echa al mar y recoge <strong>todo</strong>: peces buenos, malos y desechos. No discrimina. El Reino convoca a <strong>todos</strong> sin distinción: justos y pecadores, cercanos y lejanos.</span>
+      </div>
+      <div class="fase-flecha">→</div>
+      <div class="fase-card fase-seleccion">
+        <span class="icono">🧺</span>
+        <h4>La selección: juicio escatológico</h4>
+        <span class="desc">En la orilla, los pescadores se <strong>sientan</strong> y separan: lo bueno en cestas, lo malo fuera. La separación es <strong>definitiva</strong>, hecha con <strong>calma</strong> y <strong>deliberación</strong>. Es obra de los ángeles, no de los hombres.</span>
+      </div>
+    </div>
+    <div class="juicio-box">
+      <div class="titulo">🔥 El juicio final: realidad y solemnidad</div>
+      <div class="desc">La parábola no edulcora el juicio. El <strong>horno de fuego</strong>, el <strong>lloro</strong> y el <strong>crujir de dientes</strong> son imágenes de una condena <strong>real</strong> y <strong>severa</strong>. Pero el juicio no es arbitrario: se basa en una <strong>distinción real</strong> entre buenos y malos. Los peces no cambian de naturaleza en la orilla: el juicio <strong>revela</strong> lo que ya eran. La vida presente es el tiempo de la siembra; la cosecha revela lo que se sembró.</div>
+    </div>
+  </div>
+
+  <!-- FILA 4: BUENOS Y MALOS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🐟 Los dos destinos: buenos y malos</h2>
+    <div class="peces-grid">
+      <div class="pez-card pez-bueno">
+        <span class="icono">🐟</span>
+        <h4>Los peces buenos</h4>
+        <ul>
+          <li>Recogidos en <strong>cestas</strong>.</li>
+          <li>Imagen de <strong>cuidado</strong> y <strong>pertenencia</strong>.</li>
+          <li>Representan a los <strong>justos</strong>.</li>
+          <li>Su destino es la <strong>comunión</strong> con Dios.</li>
+          <li>No son perfectos: son <strong>fieles</strong>.</li>
+          <li>La esperanza está en ser <strong>buen pez</strong>.</li>
+        </ul>
+      </div>
+      <div class="pez-card pez-malo">
+        <span class="icono">🐟</span>
+        <h4>Los peces malos</h4>
+        <ul>
+          <li>Echados <strong>fuera</strong>.</li>
+          <li>La palabra griega (<em>sapra</em>) significa <strong>podridos</strong>.</li>
+          <li>No solo "no buenos": <strong>corruptos</strong>, inútiles.</li>
+          <li>Representan a los <strong>malos</strong>.</li>
+          <li>Su destino es el <strong>horno de fuego</strong>.</li>
+          <li>La condena es <strong>real</strong> y <strong>severa</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>σαγήνη</td>
+        <td>sagēnē</td>
+        <td>red barredera</td>
+        <td>Red grande que se arrastra hasta la playa. Recoge <strong>todo</strong> lo que encuentra.</td>
+      </tr>
+      <tr>
+        <td>βληθείσῃ</td>
+        <td>blētheisē</td>
+        <td>echada</td>
+        <td>La red se <strong>echa</strong> al mar. La convocación es <strong>amplia</strong>, no selectiva.</td>
+      </tr>
+      <tr>
+        <td>ἐκ παντὸς γένους</td>
+        <td>ek pantos genous</td>
+        <td>de toda clase</td>
+        <td>La red recoge <strong>toda clase</strong> de peces. La convocación es universal.</td>
+      </tr>
+      <tr>
+        <td>ἀναβιβάσαντες</td>
+        <td>anabibasantes</td>
+        <td>sacaron, subieron</td>
+        <td>Los pescadores <strong>suben</strong> la red a la orilla. La separación ocurre en tierra, no en el mar.</td>
+      </tr>
+      <tr>
+        <td>καθίσαντες</td>
+        <td>kathisantes</td>
+        <td>sentados</td>
+        <td>Imagen de <strong>calma, deliberación, juicio</strong>. No es una separación apresurada.</td>
+      </tr>
+      <tr>
+        <td>συνέλεξαν</td>
+        <td>synelexan</td>
+        <td>recogieron</td>
+        <td>Los peces buenos se <strong>recogen</strong> en cestas. Acción deliberada.</td>
+      </tr>
+      <tr>
+        <td>σκεύη</td>
+        <td>skeuē</td>
+        <td>cestas, vasijas</td>
+        <td>Recipientes para guardar los peces buenos. Imagen de <strong>cuidado</strong> y <strong>pertenencia</strong>.</td>
+      </tr>
+      <tr>
+        <td>σαπρὰ</td>
+        <td>sapra</td>
+        <td>malos, podridos</td>
+        <td>No solo "malos": <strong>podridos</strong>, inútiles, corrompidos. No sirven.</td>
+      </tr>
+      <tr>
+        <td>ἔξω ἔβαλον</td>
+        <td>exō ebalon</td>
+        <td>echaron fuera</td>
+        <td>Los peces malos se <strong>echan fuera</strong>. Separación definitiva.</td>
+      </tr>
+      <tr>
+        <td>συντελείᾳ τοῦ αἰῶνος</td>
+        <td>synteleia tou aiōnos</td>
+        <td>fin del siglo</td>
+        <td>El juicio escatológico. El fin de la historia presente.</td>
+      </tr>
+      <tr>
+        <td>ἀφοριοῦσιν</td>
+        <td>aphoriousin</td>
+        <td>apartarán, separarán</td>
+        <td>Los ángeles <strong>apartan</strong> a los malos de los justos. De aquí viene "horizonte": establecen un <strong>límite definitivo</strong>.</td>
+      </tr>
+      <tr>
+        <td>κάμινος τοῦ πυρός</td>
+        <td>kaminos tou pyros</td>
+        <td>horno de fuego</td>
+        <td>Imagen del juicio escatológico. Condena <strong>real</strong> y <strong>severa</strong>.</td>
+      </tr>
+      <tr>
+        <td>κλαυθμὸς καὶ βρυγμὸς τῶν ὀδόντων</td>
+        <td>klauthmos kai brygmos tōn odontōn</td>
+        <td>lloro y crujir de dientes</td>
+        <td>Expresión de <strong>dolor</strong> y <strong>desesperación</strong>. La condena es consciente y dolorosa.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>aphoriousin</em> ("apartarán") es clave. Viene de <em>aphorizō</em> (separar, delimitar). De aquí viene "horizonte". Los ángeles <strong>apartan</strong> a los malos de los justos: establecen un <strong>límite definitivo</strong>. La separación no es arbitraria: es el <strong>horizonte</strong> de la historia.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Daniel 12:2-3: unos para vida eterna, otros para vergüenza. Malaquías 3:18: discernir entre justo e impío. Sofonías 1:14-18: el día de Jehová como juicio severo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El karma como siega que llega a su tiempo. Los seis reinos de la existencia: renacimiento según las acciones. El juicio de Yama, señor de la muerte.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">El Tao todo lo abraza: no rechaza nada. El yin y el yang: bien y mal coexisten. Contraste: el taoísmo no tiene doctrina del juicio final.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 99:6-8: "Quien haya hecho el peso de un átomo de bien lo verá". Sura 57:20: la vida presente como preparación. Sura 56:7-10: la separación en tres grupos.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El karma y la reencarnación: la separación final es la liberación (moksha). El juicio de Yama según las acciones. El campo de batalla de Kurukshetra.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">El mal como ausencia de virtud, no como enemigo personal. El juicio como discernimiento interno. Contraste: el estoicismo no tiene escatología.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">La virtud como hábito que se revela en el fruto. La prudencia (<em>phrónesis</em>) que discierne. La paciencia como forma de sabiduría práctica.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La coexistencia de buenos y malos en la sociedad. "El hombre superior no se desespera". La paciencia como virtud del gobernante.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Convocación: universal, sin distinción</li>
+          <li>Selección: escatológica, obra de los ángeles</li>
+          <li>Juicio: real, definitivo, de Dios</li>
+          <li>Coexistencia: temporal, durante la pesca</li>
+          <li>Separación: definitiva, en la orilla</li>
+          <li>Red: instrumento de convocación</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Selectiva, solo para justos</li>
+          <li>Inmediata, tarea humana</li>
+          <li>Metáfora vacía o arbitrariedad</li>
+          <li>Estado final o definitivo</li>
+          <li>Proceso continuo o reversible</li>
+          <li>El Reino en su totalidad</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#1a4a6a;"><strong>El juicio pertenece a Dios, no al hombre. La urgencia de la conversión es realismo escatológico: el tiempo de la misericordia es ahora; el tiempo del juicio será después.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Reconozco que el Reino convoca a todos, no solo a los "buenos"?</div>
+      <div class="item">2. ¿Confío en que la selección es obra de Dios, no mía?</div>
+      <div class="item">3. ¿Juzgo prematuramente a los demás, o dejo el juicio a Dios?</div>
+      <div class="item">4. ¿Vivo con la conciencia de que hay un juicio final?</div>
+      <div class="item">5. ¿Estoy preparado para la separación final?</div>
+      <div class="item">6. ¿Soy "buen pez" o "pez podrido"?</div>
+      <div class="item">7. ¿Mi pertenencia externa al Reino refleja una transformación interna?</div>
+      <div class="item">8. ¿Vivo la urgencia de la conversión sin caer en el fanatismo?</div>
+      <div class="item">9. ¿Confío en la misericordia de Dios sin presumir de ella?</div>
+      <div class="item">10. ¿Estoy dispuesto a ser recogido en las cestas del Reino?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> No juzgar prematuramente a los hijos; confiar en el juicio de Dios.</div>
+      <div class="app-item"><strong>Amistad</strong> No descartar al amigo que falla; dar tiempo a la transformación.</div>
+      <div class="app-item"><strong>Comunidad</strong> No expulsar prematuramente a los que fallan; la Iglesia es red que recoge a todos.</div>
+      <div class="app-item"><strong>Trabajo</strong> No juzgar al compañero por sus errores; la paciencia es prudencia.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar si soy "buen pez" o "pez podrido"; no presumir de la misericordia.</div>
+      <div class="app-item"><strong>Sociedad</strong> No pretender eliminar el mal por la fuerza; el juicio es de Dios.</div>
+      <div class="app-item"><strong>Liderazgo</strong> No juzgar prematuramente; dar tiempo al crecimiento y a la transformación.</div>
+      <div class="app-item"><strong>Espiritual</strong> Vivir con la conciencia del juicio final; no presumir ni desesperar.</div>
+      <div class="app-item"><strong>Crisis</strong> No desesperar por la presencia del mal; confiar en el tiempo de Dios.</div>
+      <div class="app-item"><strong>Evangelización</strong> Convocar a todos sin distinción; dejar a Dios la selección.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “El Reino de Dios es como una red que recoge a todos sin distinción.<br>La convocación es universal; la selección es escatológica.”
+    <small>En la orilla, los ángeles separan lo bueno de lo malo: los justos son guardados en cestas; los malos son echados al horno de fuego. El juicio pertenece a Dios, no al hombre. La urgencia de la conversión es realismo escatológico.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de la Red Echada al Mar (Mateo 13:47-50) · Bloque 1: El Reino de Dios · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

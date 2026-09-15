@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Síntesis Bloque 5 - La Vigilancia y la Preparación</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #1a3a5a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #1a3a5a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #4a6a8a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #b8c8d8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fafcff;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #1a3a5a;
+    border-bottom: 1.5px solid #d0dce8;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #1a3a5a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #1a3a5a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d0dce8;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f2f7fc;
+  }
+
+  /* LAS 8 PARÁBOLAS */
+  .parabolas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .parabola-item {
+    border: 1px solid #b8c8d8;
+    border-radius: 5px;
+    padding: 5px 5px;
+    background: #f2f7fc;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .parabola-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .parabola-item .nombre {
+    font-weight: 700;
+    color: #1a3a5a;
+    font-size: 7.5pt;
+    display: block;
+    margin-bottom: 2px;
+    line-height: 1.15;
+  }
+  .parabola-item .tema {
+    font-size: 6.5pt;
+    color: #555;
+    display: block;
+    line-height: 1.2;
+  }
+
+  /* HILOS CONDUCTORES */
+  .hilos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .hilo-item {
+    border-left: 3px solid #1a3a5a;
+    padding: 5px 8px;
+    background: #f2f7fc;
+    border-radius: 0 4px 4px 0;
+  }
+  .hilo-item strong {
+    color: #1a3a5a;
+    font-size: 9pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .hilo-item .desc {
+    font-size: 8pt;
+    color: #444;
+    line-height: 1.25;
+  }
+
+  /* SUBVERSIONES */
+  .subversiones-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .subv-item {
+    border: 1px solid #b8c8d8;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f2f7fc;
+    text-align: center;
+    font-size: 7.5pt;
+  }
+  .subv-item .icono {
+    font-size: 13pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .titulo {
+    font-weight: 700;
+    color: #1a3a5a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .subv-item .desc {
+    font-size: 7pt;
+    color: #444;
+    line-height: 1.2;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f2f7fc;
+    border-left: 3px solid #1a3a5a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #1a3a5a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 11.5pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #b8c8d8;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f2f7fc;
+  }
+  .app-item strong {
+    color: #1a3a5a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #1a3a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #1a3a5a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hilo-item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .subv-item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .parabola-item { background: #f2f7fc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>Síntesis del Bloque 5: La Vigilancia y la Preparación</h1>
+    <div class="subtitulo">Los siete hilos conductores de las parábolas de la vigilia</div>
+    <div class="referencia">8 parábolas · Mateo 7, 24, 25; Marcos 13; Lucas 6, 12, 13, 14, 21 · Documento de síntesis y aplicación</div>
+  </div>
+
+  <!-- FILA 1: LAS 8 PARÁBOLAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>📚 Las ocho parábolas del bloque</h2>
+    <div class="parabolas-grid">
+      <div class="parabola-item">
+        <span class="icono">🕯️</span>
+        <span class="nombre">Las diez vírgenes</span>
+        <span class="tema">La vigilancia como preparación activa</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🏠</span>
+        <span class="nombre">El dueño de casa vigilante</span>
+        <span class="tema">La vigilancia ante lo imprevisible</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">👁️</span>
+        <span class="nombre">Los siervos vigilantes</span>
+        <span class="tema">La vigilancia activa y gozosa</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🌿</span>
+        <span class="nombre">La higuera (señales)</span>
+        <span class="tema">El discernimiento de las señales de los tiempos</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🌳</span>
+        <span class="nombre">La higuera estéril</span>
+        <span class="tema">La paciencia de Dios y la urgencia del fruto</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🏗️</span>
+        <span class="nombre">La torre</span>
+        <span class="tema">La prudencia que precede al discipulado</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">⚔️</span>
+        <span class="nombre">El rey que calcula la guerra</span>
+        <span class="tema">La humildad estratégica y la evaluación</span>
+      </div>
+      <div class="parabola-item">
+        <span class="icono">🏡</span>
+        <span class="nombre">La casa sobre la roca y la arena</span>
+        <span class="tema">El fundamento que resiste la tormenta</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 2: LOS HILOS CONDUCTORES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🧵 Los siete hilos conductores</h2>
+    <div class="hilos-grid">
+      <div class="hilo-item">
+        <strong>1. La venida es cierta, la hora es incierta</strong>
+        <span class="desc">El esposo viene, pero no se sabe cuándo. El Hijo del Hombre vendrá "a la hora que no pensáis". Humildad escatológica.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>2. La vigilancia es preparación activa, no ansiedad</strong>
+        <span class="desc">No es miedo ni insomnio: es fidelidad en la espera. Los siervos trabajan y velan. Las vírgenes prudentes llevan aceite de reserva.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>3. La preparación es personal e intransferible</strong>
+        <span class="desc">Las vírgenes prudentes no pueden compartir su aceite. Cada uno responde por su casa. La fe no se hereda: se cultiva.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>4. El discernimiento de las señales es esencial</strong>
+        <span class="desc">La higuera enseña a leer las señales de los tiempos. Las señales indican proximidad, no fecha. El discernimiento conduce a la vigilancia.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>5. La paciencia de Dios y la urgencia del fruto</strong>
+        <span class="desc">La higuera estéril muestra la paciencia de Dios, pero también su límite. La gracia da tiempo al arrepentimiento. El fruto requiere arrepentimiento.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>6. El cálculo del costo del discipulado</strong>
+        <span class="desc">La torre y el rey enseñan que el discipulado requiere cálculo previo. La prudencia precede al compromiso. La evaluación conduce al compromiso, no a la evasión.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>7. El fundamento determina la resistencia</strong>
+        <span class="desc">La casa sobre la roca resiste; la casa sobre la arena cae. Las tormentas vienen sobre todos. La crisis revela el fundamento. El fundamento es Jesucristo.</span>
+      </div>
+      <div class="hilo-item">
+        <strong>✨ La perseverancia hasta el final</strong>
+        <span class="desc">El que acaba la torre persevera. El que vence la guerra persevera. El que resiste la tormenta persevera. No basta empezar bien: hay que acabar bien.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS GRANDES SUBVERSIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔄 Las grandes subversiones del bloque</h2>
+    <div class="subversiones-grid">
+      <div class="subv-item">
+        <span class="icono">💤</span>
+        <span class="titulo">La vigilancia no es ansiedad</span>
+        <span class="desc">Es preparación activa y amorosa. No es insomnio: es fidelidad en la espera.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">⏳</span>
+        <span class="titulo">La preparación no se improvisa</span>
+        <span class="desc">Se cultiva con tiempo. El aceite no se compra en el último momento.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🔒</span>
+        <span class="titulo">El aceite no se comparte</span>
+        <span class="desc">La preparación es personal e intransferible. Nadie puede creer por otro.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🔍</span>
+        <span class="titulo">Las señales indican proximidad, no fecha</span>
+        <span class="desc">No podemos predecir el día ni la hora. La humildad escatológica es necesaria.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">⏰</span>
+        <span class="titulo">La paciencia de Dios tiene un límite</span>
+        <span class="desc">La urgencia del fruto es real. La gracia da tiempo al arrepentimiento, pero no es indefinida.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🎯</span>
+        <span class="titulo">El cálculo conduce al compromiso</span>
+        <span class="desc">No a la evasión. La prudencia no es cobardía: es sabiduría.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🌩️</span>
+        <span class="titulo">El fundamento se revela en la crisis</span>
+        <span class="desc">La tormenta manifiesta lo que somos. El fundamento está oculto, pero se revela en la prueba.</span>
+      </div>
+      <div class="subv-item">
+        <span class="icono">🏁</span>
+        <span class="titulo">La perseverancia es más importante que el comienzo</span>
+        <span class="desc">El que acaba, vence. No basta empezar bien: hay que acabar bien.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales del bloque</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que el bloque afirma</h4>
+        <ul>
+          <li>Vigilancia: preparación activa, prudente, amorosa</li>
+          <li>Preparación: continua, personal, cotidiana</li>
+          <li>Discernimiento: lectura atenta de las señales</li>
+          <li>Fruto: signo de vida, consecuencia de la gracia</li>
+          <li>Paciencia de Dios: prolongada, con límite</li>
+          <li>Cálculo: evaluación consciente de recursos</li>
+          <li>Prudencia: sabiduría práctica que precede a la acción</li>
+          <li>Fundamento: obediencia a las palabras de Jesús</li>
+          <li>Perseverancia: constancia hasta el final</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que el bloque niega</h4>
+        <ul>
+          <li>Ansiedad, miedo o insomnio</li>
+          <li>Puntual, colectiva, heroica</li>
+          <li>Predicción de fechas</li>
+          <li>Precio de la salvación</li>
+          <li>Indiferencia o permisividad</li>
+          <li>Ansiedad o cálculo egoísta</li>
+          <li>Cobardía o evasión</li>
+          <li>Doctrina abstracta o sentimiento</li>
+          <li>Comienzo sin continuidad</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#1a3a5a;"><strong>La venida del Señor es cierta, pero la hora es incierta. La vigilancia es preparación activa, no ansiedad. La preparación es personal e intransferible. El discernimiento conduce a la vigilancia. El fundamento determina la resistencia. La perseverancia es esencial hasta el final.</strong></p>
+  </div>
+
+  <!-- FILA 5: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento del bloque</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Vivo en <strong>estado</strong> de preparación para la venida del Señor?</div>
+      <div class="item">2. ¿Mi <strong>vigilancia</strong> es <strong>amor</strong> o <strong>miedo</strong>?</div>
+      <div class="item">3. ¿Mi <strong>preparación</strong> es continua o solo esporádica?</div>
+      <div class="item">4. ¿Estoy <strong>atento</strong> a las señales de los tiempos?</div>
+      <div class="item">5. ¿Estoy <strong>produciendo fruto</strong> en mi vida?</div>
+      <div class="item">6. ¿He <strong>calculado</strong> el costo del discipulado?</div>
+      <div class="item">7. ¿He <strong>construido</strong> mi vida sobre la roca o sobre la arena?</div>
+      <div class="item">8. ¿Mi <strong>fe</strong> se manifiesta en obras?</div>
+      <div class="item">9. ¿He <strong>perseverado</strong> hasta el final o me he desanimado?</div>
+      <div class="item">10. ¿Confío en que <strong>con la gracia de Dios puedo vencer</strong>?</div>
+    </div>
+  </div>
+
+  <!-- FILA 6: APLICACIONES TRANSVERSALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones transversales del bloque</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Cultivar la vigilancia y la preparación en el hogar; perseverar en la fidelidad.</div>
+      <div class="app-item"><strong>Amistad</strong> Ser vigilante en las relaciones: no descuidar los vínculos.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>preparación</strong> y <strong>vigilancia</strong> comunitaria.</div>
+      <div class="app-item"><strong>Trabajo</strong> Prepararse cotidianamente, no solo en las emergencias.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar el <strong>discernimiento</strong>, la <strong>vigilancia</strong> y el <strong>fundamento sólido</strong>.</div>
+      <div class="app-item"><strong>Sociedad</strong> Vivir con la <strong>conciencia</strong> de la urgencia escatológica.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Formar <strong>líderes conscientes</strong> de lo que implica el discipulado.</div>
+      <div class="app-item"><strong>Espiritual</strong> Cultivar la <strong>vigilancia</strong>, el <strong>discernimiento</strong> y la <strong>perseverancia</strong>.</div>
+      <div class="app-item"><strong>Crisis</strong> La crisis <strong>revela</strong> el fundamento de la vida.</div>
+      <div class="app-item"><strong>Evangelización</strong> Presentar el Evangelio con <strong>honestidad</strong> sobre el costo del discipulado.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Velad, pues, porque no sabéis el día ni la hora.<br>El que oye mis palabras y las hace, edifica sobre la roca.”
+    <small>La venida del Señor es cierta, pero la hora es incierta. La vigilancia es preparación activa, prudente y amorosa. La preparación es personal e intransferible. El discernimiento de las señales es esencial. La paciencia de Dios tiene un límite: la urgencia del fruto es real. El discipulado requiere cálculo previo. El fundamento determina la resistencia. La perseverancia es esencial hasta el final. La crisis revela el fundamento. El fundamento es Jesucristo.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de síntesis · Bloque 5: La Vigilancia y la Preparación · 8 parábolas de Jesús · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

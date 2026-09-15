@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Los Dos Deudores</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #a8345a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #a8345a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #c86484;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e8c8d4;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fffafc;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #a8345a;
+    border-bottom: 1.5px solid #f0d8e0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #c86484;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #a8345a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #a8345a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #f0d8e0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #fdf6f8;
+  }
+
+  /* COMPARATIVA */
+  .comparativa {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .comparativa .col {
+    border-radius: 5px;
+    padding: 6px 8px;
+  }
+  .comparativa .virtud {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .comparativa .vicio {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .comparativa .col h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .comparativa .virtud h4 { color: #1a7a3a; }
+  .comparativa .vicio h4 { color: #b02020; }
+  .comparativa .col ul li {
+    font-size: 8.5pt;
+    padding-left: 12px;
+    margin-bottom: 2px;
+  }
+
+  /* LOS DOS DEUDORES */
+  .deudores-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .deudor-card {
+    border-radius: 5px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+  .deudor-500 {
+    background: #fdecea;
+    border: 1.5px solid #ef9a9a;
+  }
+  .deudor-50 {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .deudor-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .deudor-500 h4 { color: #b02020; }
+  .deudor-50 h4 { color: #1a7a3a; }
+  .deudor-card .cantidad {
+    font-size: 14pt;
+    font-weight: 700;
+    display: block;
+    margin: 3px 0;
+  }
+  .deudor-500 .cantidad { color: #b02020; }
+  .deudor-50 .cantidad { color: #1a7a3a; }
+  .deudor-card .detalle {
+    font-size: 8.5pt;
+    color: #555;
+    display: block;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e8c8d4;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #fdf6f8;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #a8345a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #fdf6f8;
+    border-left: 3px solid #a8345a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #a8345a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e8c8d4;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #fdf6f8;
+  }
+  .app-item strong {
+    color: #a8345a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #a8345a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #a8345a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .virtud { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .comparativa .vicio { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #fdf6f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #fdf6f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #fdf6f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .deudor-500 { background: #fdecea !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .deudor-50 { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola de los Dos Deudores</h1>
+    <div class="subtitulo">El que se sabe perdonado, ama mucho</div>
+    <div class="referencia">Lucas 7:41-43 (contexto: Lucas 7:36-50) · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Jesús está a la mesa en casa de Simón el fariseo. Una mujer "pecadora" irrumpe, llora a sus pies, los lava con sus lágrimas, los seca con sus cabellos, los besa y los unge con perfume. Simón se escandaliza interiormente. Jesús le cuenta:</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;"><em>"Un acreedor tenía dos deudores: el uno le debía quinientos denarios, y el otro cincuenta. Y no teniendo ellos con qué pagar, perdonó a ambos. Di, pues, ¿cuál de ellos le amará más?"</em></p>
+      <p style="font-size:9.5pt;">Simón responde: "Aquel a quien perdonó más". Jesús confirma: "Rectamente has juzgado". Y aplica: la mujer amó mucho porque se sabía perdonada mucho; Simón amó poco porque se creía justo.</p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que Dios perdone a unos más que a otros: perdonó <strong>a ambos</strong>.</li>
+        <li>No enseña que el amor sea la causa del perdón: <strong>primero el perdón, luego el amor</strong>.</li>
+        <li>No enseña que haya que pecar más para amar más: invita a <strong>reconocer</strong> la deuda.</li>
+        <li>No enseña que el fariseo sea un malvado: su error es la <strong>ceguera</strong> sobre su propia condición.</li>
+        <li>No enseña que las obras de la mujer sean el precio del perdón: son <strong>respuesta agradecida</strong>.</li>
+        <li>No enseña que la salvación se mida por emociones: se mide por la <strong>conciencia</strong> de la deuda.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>Todos somos deudores:</strong> no hay uno bueno y uno malo: hay dos deudores.</li>
+        <li><strong>Ninguno puede pagar:</strong> ni el de quinientos ni el de cincuenta. La incapacidad es común.</li>
+        <li><strong>El perdón es gratuito para ambos:</strong> la gracia no es proporcional al monto.</li>
+        <li><strong>La conciencia de la deuda determina la intensidad del amor:</strong> el que se sabe perdonado mucho, ama mucho.</li>
+        <li><strong>El amor es la prueba del perdón:</strong> no la causa, sino la evidencia.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>La ceguera del justo es más peligrosa que el pecado del pecador:</strong> la autosuficiencia impide amar.</li>
+        <li><strong>Jesús perdona pecados:</strong> la parábola prepara la declaración "Tus pecados te son perdonados".</li>
+        <li><strong>La fe es la puerta del perdón:</strong> "Tu fe te ha salvado; ve en paz".</li>
+        <li><strong>El amor es derroche, no cálculo:</strong> lágrimas, cabellos, besos, perfume.</li>
+        <li><strong>La parábola es un espejo, no una condena:</strong> busca despertar la conciencia.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS DOS DEUDAS -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>💰 Las dos deudas: uno debe diez veces más</h2>
+    <div class="deudores-grid">
+      <div class="deudor-card deudor-500">
+        <h4>🔴 El primer deudor</h4>
+        <span class="cantidad">500 denarios</span>
+        <span class="detalle">= 500 días de trabajo</span>
+        <span class="detalle">= casi <strong>año y medio</strong> de salario</span>
+        <span class="detalle">Deuda grande, pero no impagable en teoría.</span>
+        <span class="detalle" style="margin-top:4px;"><strong>El que se sabe perdonado mucho, ama mucho.</strong></span>
+      </div>
+      <div class="deudor-card deudor-50">
+        <h4>🟢 El segundo deudor</h4>
+        <span class="cantidad">50 denarios</span>
+        <span class="detalle">= 50 días de trabajo</span>
+        <span class="detalle">= menos de <strong>dos meses</strong> de salario</span>
+        <span class="detalle">Deuda menor, pero igualmente impagable para él.</span>
+        <span class="detalle" style="margin-top:4px;"><strong>El que se cree justo, ama poco.</strong></span>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#a8345a;"><strong>El acreedor perdonó a ambos. La diferencia no está en el perdón recibido, sino en la conciencia de la deuda. La mujer es el deudor de quinientos; Simón, el de cincuenta. Y Simón no lo sabe.</strong></p>
+  </div>
+
+  <!-- FILA 4: LOS DOS PERSONAJES DE LA ESCENA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>👥 Los dos personajes de la escena</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">💧 La mujer pecadora</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Conocida en la ciudad como "pecadora".</li>
+          <li>Irrumpe en el banquete sin invitación.</li>
+          <li>Llora a los pies de Jesús.</li>
+          <li>Lava, seca, besa y unge sus pies.</li>
+          <li>Se suelta el cabello en público (escándalo).</li>
+          <li>Derrocha un perfume costoso.</li>
+          <li><strong>Se sabe perdonada. Por eso ama mucho.</strong></li>
+        </ul>
+      </div>
+      <div style="background:#f5f5f5; border:1.5px solid #bdbdbd; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#555; font-size:10pt; margin-bottom:4px; text-align:center;">⚪ Simón el fariseo</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Fariseo respetable, invita a Jesús a su casa.</li>
+          <li>Cumple con los ritos y la ley.</li>
+          <li>No ofrece agua, beso ni aceite a Jesús.</li>
+          <li>Juzga interiormente a la mujer y a Jesús.</li>
+          <li>Se cree justo, sin deuda que reconocer.</li>
+          <li>Responde correctamente la parábola, pero no se ve en ella.</li>
+          <li><strong>No reconoce su deuda. Por eso ama poco.</strong></li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#a8345a;"><strong>Simón piensa que es el juez; la parábola le muestra que es el otro deudor. La parábola es un espejo: no condena, despierta.</strong></p>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>χρεοφειλέτης</td>
+        <td>chreopheiletēs</td>
+        <td>deudor</td>
+        <td>Literalmente "el que debe una deuda". Dos deudores, no uno bueno y uno malo.</td>
+      </tr>
+      <tr>
+        <td>δηνάριον</td>
+        <td>dēnárion</td>
+        <td>denario</td>
+        <td>Salario de un día. 500 = casi año y medio. 50 = menos de dos meses.</td>
+      </tr>
+      <tr>
+        <td>μὴ ἐχόντων ἀποδοῦναι</td>
+        <td>mē echontōn apodounai</td>
+        <td>no teniendo con qué pagar</td>
+        <td>Ninguno de los dos podía pagar. La incapacidad es común.</td>
+      </tr>
+      <tr>
+        <td>ἐχαρίσατο</td>
+        <td>echarisato</td>
+        <td>perdonó graciosamente</td>
+        <td>De <em>charis</em> (gracia). No es solo cancelar: es <strong>regalar</strong> el perdón.</td>
+      </tr>
+      <tr>
+        <td>ἀγαπάω</td>
+        <td>agapaō</td>
+        <td>amar</td>
+        <td>Amor de entrega, no solo sentimiento. La mujer <strong>ama con obras</strong>.</td>
+      </tr>
+      <tr>
+        <td>ἁμαρτωλός</td>
+        <td>hamartōlos</td>
+        <td>pecadora</td>
+        <td>La mujer es identificada así por la ciudad. Lucas la llama "pecadora".</td>
+      </tr>
+      <tr>
+        <td>καταφιλέω</td>
+        <td>kataphileō</td>
+        <td>besar repetidamente</td>
+        <td>Beso intenso, prolongado. No es saludo formal: es efusión de amor.</td>
+      </tr>
+      <tr>
+        <td>ἀλείφω</td>
+        <td>aleiphō</td>
+        <td>ungir</td>
+        <td>Acción de ungir con aceite o perfume. La mujer unge los pies de Jesús.</td>
+      </tr>
+      <tr>
+        <td>σώζω</td>
+        <td>sōzō</td>
+        <td>salvar</td>
+        <td>"Tu fe te ha salvado". Salvación como plenitud, no solo perdón.</td>
+      </tr>
+      <tr>
+        <td>πορεύου εἰς εἰρήνην</td>
+        <td>poreuou eis eirēnēn</td>
+        <td>ve en paz</td>
+        <td>Despedida de restauración. La mujer no es solo perdonada: es <strong>enviada en paz</strong>.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>echarisato</em> viene de <em>charis</em> (gracia). El perdón es un <strong>regalo gratuito</strong>, no una transacción. Y el verbo <em>agapaō</em> describe el amor de entrega, el mismo que se usa para el amor de Dios.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Levítico 25: año del jubileo. Eclesiástico 28:2-7: perdona y serás perdonado. Talmud Berajot 34b: los penitentes están más cerca de Dios que los justos.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">Metta y karuṇā: amor y compasión universales. El amor como liberación interior. El monje que bendice al ladrón.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El bien supremo es como el agua": beneficia sin competir. Wu wei: el amor fluye con naturalidad, no se calcula.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 39:53: no desesperéis de la misericordia de Dios. Sura 25:70: Dios cambia las malas acciones en buenas. Hadiz: Dios se alegra por el arrepentido.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">Kṣamā (perdón) como virtud. Bhakti (devoción): amor apasionado por Dios. La mujer es una bhakta: ama sin condiciones.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">Apatheia: control de las emociones. Contraste: la mujer <strong>llora y se desborda</strong>. El evangelio alaba el amor sin medida.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">Amistad por virtud, no por utilidad ni placer. Contraste: la mujer se humilla a los pies de Jesús. Subvierte la magnanimidad.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">⚖️</span>
+        <span class="nombre">Cinismo</span>
+        <span class="aporte">Crítica a la hipocresía farisea. Simón se cree justo. El cínico despreciaría su doblez; la parábola va más allá y muestra el camino.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="comparativa">
+      <div class="col virtud">
+        <h4>✔ Lo que la parábola afirma</h4>
+        <ul>
+          <li>Perdón: cancelación gratuita de la deuda</li>
+          <li>Amor: respuesta agradecida al perdón recibido</li>
+          <li>Deuda: ofensa real, medida y concreta</li>
+          <li>Gracia: don incondicional, impagable, soberano</li>
+          <li>Conciencia: reconocimiento de la propia deuda</li>
+          <li>Fe: confianza en el amor que perdona</li>
+        </ul>
+      </div>
+      <div class="col vicio">
+        <h4>✘ Lo que la parábola niega</h4>
+        <ul>
+          <li>Perdón como transacción o recompensa por méritos</li>
+          <li>Amor como causa del perdón o precio de la salvación</li>
+          <li>Deuda como algo imaginario o insignificante</li>
+          <li>Gracia como recompensa por obras o negociación</li>
+          <li>Autosuficiencia: creerse justo sin necesidad de perdón</li>
+          <li>Fe como sentimiento o emoción pasajera</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#a8345a;"><strong>El amor no es la causa del perdón: es la prueba de haberlo recibido. El que se sabe perdonado mucho, ama mucho; el que se cree justo, ama poco.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Me reconozco como deudor o como juez?</div>
+      <div class="item">2. ¿Reconozco la magnitud de mi deuda con Dios?</div>
+      <div class="item">3. ¿Mi amor es proporcional al perdón que he recibido?</div>
+      <div class="item">4. ¿Me creo justo y por eso amo poco?</div>
+      <div class="item">5. ¿He experimentado el perdón como un regalo gratuito?</div>
+      <div class="item">6. ¿Mi amor es cálculo o derroche?</div>
+      <div class="item">7. ¿Juzgo a otros desde mi autosuficiencia?</div>
+      <div class="item">8. ¿Reconozco que yo también soy el otro deudor?</div>
+      <div class="item">9. ¿Mi fe se traduce en amor concreto?</div>
+      <div class="item">10. ¿He escuchado la palabra "ve en paz" en mi vida?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Reconocer las propias faltas antes de juzgar las de los demás.</div>
+      <div class="app-item"><strong>Amistad</strong> Amar sin cálculos, sin llevar cuenta de las ofensas.</div>
+      <div class="app-item"><strong>Comunidad</strong> No creerse superior a los que han fallado; reconocer la propia deuda.</div>
+      <div class="app-item"><strong>Trabajo</strong> No juzgar a los compañeros desde la autosuficiencia.</div>
+      <div class="app-item"><strong>Vida interior</strong> Reconocer la propia deuda y dejarse perdonar.</div>
+      <div class="app-item"><strong>Sociedad</strong> No estigmatizar a los "pecadores" públicos; reconocer la propia sombra.</div>
+      <div class="app-item"><strong>Liderazgo</strong> El líder no se cree justo: se sabe deudor.</div>
+      <div class="app-item"><strong>Espiritual</strong> Vivir la gracia como regalo, no como recompensa.</div>
+      <div class="app-item"><strong>Crisis</strong> No desesperar: la deuda es impagable, pero el perdón es gratuito.</div>
+      <div class="app-item"><strong>Perdón</strong> Perdonar a otros como me he sabido perdonado.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “Todos somos deudores que no pueden pagar.<br>El que reconoce su deuda, ama mucho; el que se cree justo, ama poco.”
+    <small>El amor no es la causa del perdón: es la prueba de haberlo recibido.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de los Dos Deudores (Lucas 7:41-43) · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Las Parábolas de Jesús · Estudio integral</title>
+<meta name="description" content="Estudio integral de las parábolas de Jesús: 43 parábolas analizadas con rigor exegético, diálogo interdisciplinario y aplicación práctica.">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #fafbfc;
+    color: #1a1a1a;
+    line-height: 1.55;
+    font-size: 16px;
+    padding: 0;
+  }
+
+  /* CONTENEDOR PRINCIPAL */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  /* CABECERA */
+  header.hero {
+    background: #ffffff;
+    border-bottom: 3px solid #2a2a5a;
+    padding: 3rem 0 2.5rem 0;
+    text-align: center;
+  }
+
+  header.hero h1 {
+    font-size: 2.4rem;
+    color: #2a2a5a;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  header.hero .subtitulo {
+    font-size: 1.15rem;
+    color: #5a5a8a;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  header.hero .descripcion {
+    font-size: 1rem;
+    color: #444;
+    max-width: 720px;
+    margin: 0 auto 1.5rem auto;
+    line-height: 1.6;
+  }
+
+  /* ESTADÍSTICAS */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0ec;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat .numero {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2a2a5a;
+    line-height: 1;
+  }
+
+  .stat .etiqueta {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.3rem;
+  }
+
+  /* SECCIONES */
+  section {
+    padding: 2.5rem 0;
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+    color: #2a2a5a;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  section .subtitulo-seccion {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  /* SÍNTESIS GENERAL DESTACADA */
+  .sintesis-general {
+    background: linear-gradient(135deg, #2a2a5a 0%, #3a3a7a 100%);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 14px rgba(42, 42, 90, 0.15);
+    text-align: center;
+  }
+
+  .sintesis-general h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+  }
+
+  .sintesis-general p {
+    font-size: 0.95rem;
+    opacity: 0.92;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .btn-sintesis {
+    display: inline-block;
+    background: #ffffff;
+    color: #2a2a5a;
+    padding: 0.65rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn-sintesis:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  /* BLOQUES */
+  .bloques-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .bloque {
+    background: #ffffff;
+    border: 1.5px solid #d0d0e0;
+    border-radius: 10px;
+    padding: 1.5rem 1.75rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .bloque:hover {
+    border-color: #2a2a5a;
+    box-shadow: 0 4px 14px rgba(42, 42, 90, 0.08);
+  }
+
+  .bloque-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ececf4;
+  }
+
+  .bloque-icono {
+    font-size: 2rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .bloque-info {
+    flex: 1;
+  }
+
+  .bloque-numero {
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+  }
+
+  .bloque-titulo {
+    font-size: 1.25rem;
+    color: #2a2a5a;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    line-height: 1.25;
+  }
+
+  .bloque-tema {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+  }
+
+  /* LISTA DE PARÁBOLAS */
+  .parabolas-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+  }
+
+  .parabolas-lista li {
+    margin-bottom: 0.35rem;
+  }
+
+  .parabolas-lista a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    color: #2a2a5a;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.15s ease, color 0.15s ease;
+    border-left: 3px solid transparent;
+  }
+
+  .parabolas-lista a:hover {
+    background: #f0f0f8;
+    border-left-color: #2a2a5a;
+    color: #1a1a3a;
+  }
+
+  .parabolas-lista .ref {
+    color: #888;
+    font-size: 0.85rem;
+    margin-left: auto;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* ENLACE A SÍNTESIS DE BLOQUE */
+  .bloque-sintesis {
+    display: inline-block;
+    background: #f0f0f8;
+    color: #2a2a5a;
+    padding: 0.55rem 1.1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1.5px solid #d0d0e0;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .bloque-sintesis:hover {
+    background: #2a2a5a;
+    color: #ffffff;
+    border-color: #2a2a5a;
+  }
+
+  /* METODOLOGÍA */
+  .metodologia {
+    background: #ffffff;
+    border: 1.5px solid #d0d0e0;
+    border-radius: 10px;
+    padding: 1.75rem 2rem;
+    margin-top: 1rem;
+  }
+
+  .metodologia h3 {
+    font-size: 1.15rem;
+    color: #2a2a5a;
+    margin-bottom: 1rem;
+  }
+
+  .metodologia ol {
+    padding-left: 1.25rem;
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .metodologia ol li {
+    margin-bottom: 0.35rem;
+  }
+
+  /* PIE */
+  footer {
+    background: #ffffff;
+    border-top: 1px solid #e0e0ec;
+    padding: 2rem 0;
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+  }
+
+  footer p {
+    margin-bottom: 0.4rem;
+  }
+
+  footer .creditos {
+    font-size: 0.85rem;
+    color: #888;
+  }
+
+  /* RESPONSIVE */
+  @media (min-width: 720px) {
+    .bloques-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    header.hero {
+      padding: 2rem 0 1.75rem 0;
+    }
+
+    header.hero h1 {
+      font-size: 1.7rem;
+    }
+
+    header.hero .subtitulo {
+      font-size: 1rem;
+    }
+
+    .stats {
+      gap: 1.5rem;
+    }
+
+    .stat .numero {
+      font-size: 1.5rem;
+    }
+
+    .bloque {
+      padding: 1.25rem 1.25rem;
+    }
+
+    .bloque-header {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .parabolas-lista a {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.15rem;
+    }
+
+    .parabolas-lista .ref {
+      margin-left: 0;
+      text-align: left;
+    }
+
+    .sintesis-general {
+      padding: 1.5rem 1.25rem;
+    }
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      background: #ffffff;
+      font-size: 10pt;
+    }
+
+    header.hero {
+      padding: 1rem 0;
+      border-bottom: 2px solid #2a2a5a;
+    }
+
+    .sintesis-general {
+      background: #2a2a5a !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .bloque {
+      break-inside: avoid;
+      page-break-inside: avoid;
+      border-color: #999;
+    }
+
+    a {
+      color: #2a2a5a;
+      text-decoration: none;
+    }
+
+    .parabolas-lista a:hover {
+      background: transparent;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- CABECERA -->
+<header class="hero">
+  <div class="container">
+    <h1>Las Parábolas de Jesús</h1>
+    <p class="subtitulo">Estudio integral · Análisis exegético · Aplicación práctica</p>
+    <p class="descripcion">
+      Un recorrido completo por las parábolas de Jesús, organizado en siete bloques temáticos.
+      Cada parábola ha sido analizada con rigor exegético, en diálogo con otras tradiciones
+      filosóficas y religiosas, y con aplicación práctica a la vida cotidiana.
+    </p>
+    <div class="stats">
+      <div class="stat">
+        <span class="numero">43</span>
+        <span class="etiqueta">Parábolas</span>
+      </div>
+      <div class="stat">
+        <span class="numero">7</span>
+        <span class="etiqueta">Bloques</span>
+      </div>
+      <div class="stat">
+        <span class="numero">43</span>
+        <span class="etiqueta">Infografías</span>
+      </div>
+      <div class="stat">
+        <span class="numero">8</span>
+        <span class="etiqueta">Síntesis</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SÍNTESIS GENERAL DESTACADA -->
+<div class="container">
+  <div class="sintesis-general">
+    <h3>📖 Síntesis General del Proyecto</h3>
+    <p>
+      Los diez hilos conductores que atraviesan las 43 parábolas: la iniciativa de Dios,
+      la gratuidad de la gracia, el valor del individuo, la misericordia costosa, la fe
+      que se manifiesta en obras, la humildad como puerta, el fundamento que resiste,
+      la vigilancia activa, la respuesta libre y la transformación del mal en bien.
+    </p>
+    <a href="infografia_sintesis_general.html" class="btn-sintesis">Ver síntesis general →</a>
+  </div>
+</div>
+
+<!-- BLOQUES -->
+<section>
+  <div class="container">
+    <h2>📚 Los siete bloques temáticos</h2>
+    <p class="subtitulo-seccion">
+      Haz clic en cualquier parábola para abrir su infografía. Cada infografía está optimizada
+      para imprimir en tamaño carta.
+    </p>
+
+    <div class="bloques-grid">
+
+      <!-- BLOQUE 1 -->
+      <div class="bloque">
+        <div class="bloque-header">
+          <div class="bloque-icono">🌱</div>
+          <div class="bloque-info">
+            <div class="bloque-numero">Bloque 1</div>
+            <div class="bloque-titulo">El Reino de Dios</div>
+            <div class="bloque-tema">La realidad dinámica que crece, transforma y convoca</div>
+          </div>
+        </div>
+        <ul class="parabolas-lista">
+          <li><a href="infografia_sembrador.html">El sembrador <span class="ref">Mateo 13:1-23</span></a></li>
+          <li><a href="infografia_semilla_crece_sola.html">La semilla que crece sola <span class="ref">Marcos 4:26-29</span></a></li>
+          <li><a href="infografia_grano_mostaza.html">El grano de mostaza <span class="ref">Mateo 13:31-32</span></a></li>
+          <li><a href="infografia_levadura.html">La levadura <span class="ref">Mateo 13:33</span></a></li>
+          <li><a href="infografia_trigo_cizana.html">El trigo y la cizaña <span class="ref">Mateo 13:24-30</span></a></li>
+          <li><a href="infografia_red_mar.html">La red echada al mar <span class="ref">Mateo 13:47-50</span></a></li>
+          <li><a href="infografia_tesoro_escondido.html">El tesoro escondido <span class="ref">Mateo 13:44</span></a></li>
+          <li><a href="infografia_perla_gran_precio.html">La perla de gran precio <span class="ref">Mateo 13:45-46</span></a></li>
+        </ul>
+        <a href="infografia_sintesis_bloque1.html" class="bloque-sintesis">Ver síntesis del Bloque 1 →</a>
+      </div>
+
+      <!-- BLOQUE 2 -->
+      <div class="bloque">
+        <div class="bloque-header">
+          <div class="bloque-icono">💚</div>
+          <div class="bloque-info">
+            <div class="bloque-numero">Bloque 2</div>
+            <div class="bloque-titulo">La misericordia y el perdón</div>
+            <div class="bloque-tema">La gracia que busca, perdona y celebra</div>
+          </div>
+        </div>
+        <ul class="parabolas-lista">
+          <li><a href="infografia_oveja_perdida.html">La oveja perdida <span class="ref">Lucas 15:3-7</span></a></li>
+          <li><a href="infografia_moneda_perdida.html">La moneda perdida <span class="ref">Lucas 15:8-10</span></a></li>
+          <li><a href="infografia_hijo_prodigo.html">El hijo pródigo <span class="ref">Lucas 15:11-32</span></a></li>
+          <li><a href="infografia_buen_samaritano.html">El buen samaritano <span class="ref">Lucas 10:25-37</span></a></li>
+          <li><a href="infografia_siervo_despiadado.html">El siervo despiadado <span class="ref">Mateo 18:23-35</span></a></li>
+          <li><a href="infografia_dos_deudores.html">Los dos deudores <span class="ref">Lucas 7:41-43</span></a></li>
+          <li><a href="infografia_fariseo_publicano.html">El fariseo y el publicano <span class="ref">Lucas 18:9-14</span></a></li>
+        </ul>
+        <a href="infografia_sintesis_bloque2.html" class="bloque-sintesis">Ver síntesis del Bloque 2 →</a>
+      </div>
+
+      <!-- BLOQUE 3 -->
+      <div class="bloque">
+        <div class="bloque-header">
+          <div class="bloque-icono">💰</div>
+          <div class="bloque-info">
+            <div class="bloque-numero">Bloque 3</div>
+            <div class="bloque-titulo">El dinero y la mayordomía</div>
+            <div class="bloque-tema">La administración fiel de los bienes confiados</div>
+          </div>
+        </div>
+        <ul class="parabolas-lista">
+          <li><a href="infografia_mayordomo_injusto.html">El mayordomo injusto <span class="ref">Lucas 16:1-15</span></a></li>
+          <li><a href="infografia_mayordomo_fiel.html">El mayordomo fiel y sabio <span class="ref">Lucas 12:42-48</span></a></li>
+          <li><a href="infografia_talentos.html">Los talentos <span class="ref">Mateo 25:14-30</span></a></li>
+          <li><a href="infografia_rico_insensato.html">El rico insensato <span class="ref">Lucas 12:16-21</span></a></li>
+          <li><a href="infografia_rico_lazaro.html">El rico y Lázaro <span class="ref">Lucas 16:19-31</span></a></li>
+          <li><a href="infografia_obreros_vina.html">Los obreros de la viña <span class="ref">Mateo 20:1-16</span></a></li>
+          <li><a href="infografia_joven_rico.html">El joven rico <span class="ref">Mateo 19:16-30</span></a></li>
+        </ul>
+        <a href="infografia_sintesis_bloque3.html" class="bloque-sintesis">Ver síntesis del Bloque 3 →</a>
+      </div>
+
+      <!-- BLOQUE 4 -->
+      <div class="bloque">
+        <div class="bloque-header">
+          <div class="bloque-icono">🙏</div>
+          <div class="bloque-info">
+            <div class="bloque-numero">Bloque 4</div>
+            <div class="bloque-titulo">La oración y la persistencia</div>
+            <div class="bloque-tema">La confianza filial que no se rinde</div>
+          </div>
+        </div>
+        <ul class="parabolas-lista">
+          <li><a href="infografia_amigo_inoportuno.html">El amigo inoportuno <span class="ref">Lucas 11:5-8</span></a></li>
+          <li><a href="infografia_viuda_persistente.html">La viuda persistente <span class="ref">Lucas 18:1-8</span></a></li>
+        </ul>
+        <a href="infografia_sintesis_bloque4.html" class="bloque-sintesis">Ver síntesis del Bloque 4 →</a>
+      </div>
+
+      <!-- BLOQUE 5 -->
+      <div class="bloque">
+        <div class="bloque-header">
+          <div class="bloque-icono">👁️</div>
+          <div class="bloque-info">
+            <div class="bloque-numero">Bloque 5</div>
+            <div class="bloque-titulo">La vigilancia y la preparación</div>
+            <div class="bloque-tema">La preparación activa para la venida del Señor</div>
+          </div>
+        </div>
+        <ul class="parabolas-lista">
+          <li><a href="infografia_diez_virgenes.html">Las diez vírgenes <span class="ref">Mateo 25:1-13</span></a></li>
+          <li><a href="infografia_dueno_casa_vigilante.html">El dueño de casa vigilante <span class="ref">Mateo 24:42-44</span></a></li>
+          <li><a href="infografia_siervos_vigilantes.html">Los siervos vigilantes <span class="ref">Marcos 13:33-37</span></a></li>
+          <li><a href="infografia_higuera_senales.html">La higuera (señales) <span class="ref">Mateo 24:32-35</span></a></li>
+          <li><a href="infografia_higuera_esteril.html">La higuera estéril <span class="ref">Lucas 13:6-9</span></a></li>
+          <li><a href="infografia_torre.html">La torre (calcular el costo) <span class="ref">Lucas 14:28-30</span></a></li>
+          <li><a href="infografia_rey_guerra.html">El rey que calcula la guerra <span class="ref">Lucas 14:31-33</span></a></li>
+          <li><a href="infografia_casa_roca_arena.html">La casa sobre la roca y la arena <span class="ref">Mateo 7:24-27</span></a></li>
+        </ul>
+        <a href="infografia_sintesis_bloque5.html" class="bloque-sintesis">Ver síntesis del Bloque 5 →</a>
+      </div>
+
+      <!-- BLOQUE 6 -->
+      <div class="bloque">
+        <div class="bloque-header">
+          <div class="bloque-icono">🤲</div>
+          <div class="bloque-info">
+            <div class="bloque-numero">Bloque 6</div>
+            <div class="bloque-titulo">La humildad y el servicio</div>
+            <div class="bloque-tema">La humildad que conduce a la exaltación</div>
+          </div>
+        </div>
+        <ul class="parabolas-lista">
+          <li><a href="infografia_invitado_primer_lugar.html">El invitado que toma el primer lugar <span class="ref">Lucas 14:7-11</span></a></li>
+          <li><a href="infografia_siervo_deber.html">El siervo que solo cumple su deber <span class="ref">Lucas 17:7-10</span></a></li>
+          <li><a href="infografia_dos_hijos.html">Los dos hijos <span class="ref">Mateo 21:28-32</span></a></li>
+          <li><a href="infografia_ninos_plaza.html">Los niños en la plaza <span class="ref">Mateo 11:16-19</span></a></li>
+        </ul>
+        <a href="infografia_sintesis_bloque6.html" class="bloque-sintesis">Ver síntesis del Bloque 6 →</a>
+      </div>
+
+      <!-- BLOQUE 7 -->
+      <div class="bloque">
+        <div class="bloque-header">
+          <div class="bloque-icono">⚖️</div>
+          <div class="bloque-info">
+            <div class="bloque-numero">Bloque 7</div>
+            <div class="bloque-titulo">El juicio y las consecuencias</div>
+            <div class="bloque-tema">La respuesta libre y sus consecuencias eternas</div>
+          </div>
+        </div>
+        <ul class="parabolas-lista">
+          <li><a href="infografia_vinadores_homicidas.html">Los viñadores homicidas <span class="ref">Mateo 21:33-46</span></a></li>
+          <li><a href="infografia_piedra_desechada.html">La piedra desechada <span class="ref">Mateo 21:42-44</span></a></li>
+          <li><a href="infografia_banquete_bodas.html">El banquete de bodas <span class="ref">Mateo 22:1-14</span></a></li>
+          <li><a href="infografia_gran_banquete.html">El gran banquete <span class="ref">Lucas 14:15-24</span></a></li>
+          <li><a href="infografia_amigos_novio.html">Los amigos del novio / el vino nuevo <span class="ref">Mateo 9:14-17</span></a></li>
+          <li><a href="infografia_espiritu_inmundo.html">El espíritu inmundo que regresa <span class="ref">Mateo 12:43-45</span></a></li>
+          <li><a href="infografia_escriba_reino.html">El escriba instruido en el Reino <span class="ref">Mateo 13:52</span></a></li>
+        </ul>
+        <a href="infografia_sintesis_bloque7.html" class="bloque-sintesis">Ver síntesis del Bloque 7 →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGÍA -->
+<section>
+  <div class="container">
+    <h2>🔍 Metodología del proyecto</h2>
+    <p class="subtitulo-seccion">
+      Cada parábola ha sido analizada siguiendo una misma estructura de 13 pasos, para
+      garantizar rigor, coherencia y profundidad.
+    </p>
+    <div class="metodologia">
+      <h3>Los 13 pasos del análisis</h3>
+      <ol>
+        <li><strong>Texto bíblico</strong> — el pasaje completo, con su referencia exacta.</li>
+        <li><strong>Contexto inmediato</strong> — a quién se dirige, por qué, qué pasa antes y después.</li>
+        <li><strong>Relato en síntesis</strong> — explicación breve y clara.</li>
+        <li><strong>Lo que NO enseña</strong> — errores comunes de interpretación.</li>
+        <li><strong>Lo que SÍ enseña</strong> — enseñanzas centrales.</li>
+        <li><strong>Palabras clave del original</strong> — griego o hebreo, con su matiz.</li>
+        <li><strong>Paralelos en otras tradiciones</strong> — judaísmo, budismo, taoísmo, islam, hinduismo, estoicismo, aristotelismo, confucianismo, cinismo.</li>
+        <li><strong>Aportes de fuentes cristianas</strong> — Padres de la Iglesia, santos, teólogos, documentos.</li>
+        <li><strong>Distinciones conceptuales</strong> — lo que la parábola afirma y niega.</li>
+        <li><strong>Criterios de discernimiento</strong> — preguntas para examinarse.</li>
+        <li><strong>Aplicaciones prácticas por ámbito</strong> — familia, amistad, comunidad, trabajo, vida interior, sociedad, liderazgo, espiritual, crisis, evangelización.</li>
+        <li><strong>Frase resumen</strong> — la idea central en una sola frase.</li>
+        <li><strong>Infografía</strong> — una o dos páginas tamaño carta, fondo blanco, lista para imprimir.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PIE -->
+<footer>
+  <div class="container">
+    <p><strong>Las Parábolas de Jesús</strong> · Estudio integral</p>
+    <p class="creditos">
+      43 parábolas · 7 bloques temáticos · 43 infografías individuales · 8 síntesis
+    </p>
+    <p class="creditos">
+      Documento de referencia y aplicación práctica · Para uso personal, docente o pastoral
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

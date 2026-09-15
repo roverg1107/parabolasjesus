@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: El Grano de Mostaza</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #5a7a1a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #5a7a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #8aaa4a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #c8d8b0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fbfdf8;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #5a7a1a;
+    border-bottom: 1.5px solid #d8e8c0;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #7a9a3a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #5a7a1a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #5a7a1a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #d8e8c0;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #f6faf0;
+  }
+
+  /* DE LO PEQUEÑO A LO GRANDE */
+  .desproporcion-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px;
+    margin-top: 6px;
+    align-items: center;
+  }
+  .desp-card {
+    border-radius: 6px;
+    padding: 10px 10px;
+    text-align: center;
+  }
+  .desp-pequeno {
+    background: #f0ece4;
+    border: 1.5px solid #bdb5a0;
+  }
+  .desp-grande {
+    background: #c8e8a8;
+    border: 1.5px solid #6a9a30;
+  }
+  .desp-card .icono {
+    font-size: 22pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .desp-card h4 {
+    font-size: 10pt;
+    margin-bottom: 3px;
+  }
+  .desp-pequeno h4 { color: #7a6a4a; }
+  .desp-grande h4 { color: #2a4a00; }
+  .desp-card .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.25;
+  }
+  .desp-flecha {
+    font-size: 24pt;
+    color: #5a7a1a;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  /* AVES Y REFUGIO */
+  .aves-box {
+    background: #f0f8e0;
+    border: 2px solid #6a9a30;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .aves-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #3a5a10;
+    margin-bottom: 3px;
+  }
+  .aves-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #c8d8b0;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #f6faf0;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #5a7a1a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #f6faf0;
+    border-left: 3px solid #5a7a1a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #5a7a1a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #c8d8b0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #f6faf0;
+  }
+  .app-item strong {
+    color: #5a7a1a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 18pt; }
+    .frase-final { background: #5a7a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #5a7a1a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #f6faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #f6faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #f6faf0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .desp-pequeno { background: #f0ece4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .desp-grande { background: #c8e8a8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .aves-box { background: #f0f8e0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>La Parábola del Grano de Mostaza</h1>
+    <div class="subtitulo">La desproporción entre el inicio pequeño y el fin grandioso</div>
+    <div class="referencia">Mateo 13:31-32 · Marcos 4:30-32 · Lucas 13:18-19 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">El Reino de Dios es como un grano de mostaza, <strong>la más pequeña de todas las semillas</strong>. Un hombre la toma y la siembra en su campo (o huerto). Cuando crece, se convierte en <strong>la mayor de las hortalizas</strong>, se hace árbol, y <strong>las aves del cielo vienen y hacen nidos en sus ramas</strong>.</p>
+      <p style="font-size:9pt; margin-top:4px;"><em>"Es como el grano de mostaza, que cuando se siembra en tierra, es la más pequeña de todas las semillas; pero después de sembrado, crece, y se hace la mayor de todas las hortalizas."</em></p>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que el Reino sea pequeño: el énfasis está en la <strong>desproporción</strong> entre inicio y fin.</li>
+        <li>No enseña que el crecimiento sea mágico o instantáneo: la semilla crece <strong>con el tiempo</strong>.</li>
+        <li>No enseña que el Reino crezca por el esfuerzo humano: el hombre siembra; la planta crece sola.</li>
+        <li>No enseña que el Reino sea un cedro majestuoso: Jesús elige una <strong>mostaza</strong>, planta humilde e invasiva.</li>
+        <li>No enseña que el Reino respete los límites establecidos: la mostaza se <strong>desborda</strong>.</li>
+        <li>No enseña que las aves sean solo pájaros: son símbolo de los <strong>pueblos y naciones</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>El Reino tiene un inicio pequeño y humilde:</strong> la semilla más pequeña, el pesebre, los pescadores.</li>
+        <li><strong>El Reino crece de manera desproporcionada:</strong> lo diminuto se convierte en refugio para muchos.</li>
+        <li><strong>El crecimiento es obra de Dios:</strong> el hombre siembra; la planta crece por su propia fuerza.</li>
+        <li><strong>El Reino es un refugio para todos:</strong> las aves del cielo son los pueblos y naciones.</li>
+        <li><strong>El Reino se desborda:</strong> la mostaza era planta invasiva, casi maleza, sembrada en huerto.</li>
+      </ul>
+      <ul class="check">
+        <li><strong>El Reino transforma el paisaje:</strong> no es solo creencia privada; cambia el entorno.</li>
+        <li><strong>La grandeza no es la del poder:</strong> no es cedro majestuoso, sino mostaza que acoge.</li>
+        <li><strong>El Reino tiene una fuerza propia:</strong> la semilla germina por su propia energía.</li>
+        <li><strong>Dios elige lo pequeño y despreciado:</strong> la semilla despreciada se convierte en refugio.</li>
+        <li><strong>La paciencia es necesaria:</strong> el Reino no se construye en un día; se cultiva con el tiempo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: DE LO PEQUEÑO A LO GRANDE -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🌱 De lo más pequeño a lo más grande</h2>
+    <div class="desproporcion-grid">
+      <div class="desp-card desp-pequeno">
+        <span class="icono">🌰</span>
+        <h4>El grano de mostaza</h4>
+        <span class="desc">La más pequeña de todas las semillas. Proverbialmente diminuta. Símbolo de lo mínimo, lo humilde, lo despreciado.</span>
+      </div>
+      <div class="desp-flecha">→</div>
+      <div class="desp-card desp-grande">
+        <span class="icono">🌳</span>
+        <h4>Un árbol que acoge</h4>
+        <span class="desc">La mayor de las hortalizas. Arbusto de 3-4 metros. Las aves del cielo anidan en sus ramas. Refugio para muchos.</span>
+      </div>
+    </div>
+    <div class="aves-box">
+      <div class="titulo">🕊️ Las aves del cielo: símbolo de los pueblos y naciones</div>
+      <div class="desc">En el Antiguo Testamento (Ezequiel 17:22-24; 31:6; Daniel 4:12), las aves que anidan en las ramas de un árbol simbolizan los <strong>pueblos y naciones</strong> que encuentran refugio. El Reino no es solo para Israel: es un <strong>refugio universal</strong>. La grandeza del Reino no es la del poder, sino la de la <strong>acogida</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 4: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>κόκκος σινάπεως</td>
+        <td>kokkos sinapeōs</td>
+        <td>grano de mostaza</td>
+        <td>Proverbialmente la semilla más pequeña. Símbolo de lo mínimo.</td>
+      </tr>
+      <tr>
+        <td>μικρότερον</td>
+        <td>mikroteron</td>
+        <td>más pequeño</td>
+        <td>Comparativo. <strong>La más pequeña</strong> de todas las semillas. No es solo pequeña: es la mínima.</td>
+      </tr>
+      <tr>
+        <td>σπείρει</td>
+        <td>speirei</td>
+        <td>siembra</td>
+        <td>Acción inicial del sembrador. El hombre siembra; Dios hace crecer.</td>
+      </tr>
+      <tr>
+        <td>αὔξησιν</td>
+        <td>auxēsin</td>
+        <td>crecimiento</td>
+        <td>El crecimiento es <strong>orgánico</strong>, natural, no mecánico.</td>
+      </tr>
+      <tr>
+        <td>μεῖζον</td>
+        <td>meizon</td>
+        <td>mayor</td>
+        <td>Comparativo. <strong>La mayor</strong> de las hortalizas. La desproporción es deliberada.</td>
+      </tr>
+      <tr>
+        <td>λάχανον</td>
+        <td>lachanon</td>
+        <td>hortaliza, verdura</td>
+        <td>Jesús no dice "árbol majestuoso", sino "la mayor de las hortalizas". Palabra humilde, casi doméstica.</td>
+      </tr>
+      <tr>
+        <td>δένδρον</td>
+        <td>dendron</td>
+        <td>árbol</td>
+        <td>Jesús usa lenguaje <strong>hiperbólico</strong>: la mostaza no es árbol, sino arbusto grande.</td>
+      </tr>
+      <tr>
+        <td>κλάδοι</td>
+        <td>kladoi</td>
+        <td>ramas</td>
+        <td>En Marcos: "echa grandes ramas". Imagen de expansión y acogida.</td>
+      </tr>
+      <tr>
+        <td>κατασκηνοῦν</td>
+        <td>kataskēnoun</td>
+        <td>habitar, anidar</td>
+        <td>Las aves <strong>habitan</strong> en las ramas. Imagen de refugio y pertenencia. No es lugar de paso: es hogar.</td>
+      </tr>
+      <tr>
+        <td>πετεινά τοῦ οὐρανοῦ</td>
+        <td>peteina tou ouranou</td>
+        <td>aves del cielo</td>
+        <td>Símbolo de los <strong>pueblos y naciones</strong> (Ez 17:22-24; 31:6; Dn 4:12).</td>
+      </tr>
+      <tr>
+        <td>κῆπος</td>
+        <td>kēpos</td>
+        <td>huerto, jardín</td>
+        <td>En Lucas: "en su huerto". La mostaza en un huerto era <strong>sorprendente</strong>: planta invasiva en espacio cuidado.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>El verbo <em>kataskēnoun</em> es clave: no dice que las aves "se posan" o "pasan", sino que <strong>habitan</strong>, que <strong>anidan</strong>. El Reino no es un lugar de paso: es un <strong>hogar</strong> para los que buscan cobijo.</strong></p>
+  </div>
+
+  <!-- FILA 5: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Ezequiel 17:22-24: el cedro que acoge a las aves. Daniel 4:12: el árbol como refugio de las naciones. Jesús transforma la imagen: no es cedro, es mostaza.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">Kisagotami y el grano de mostaza: lo pequeño revela lo universal. El loto que crece en el barro. Una acción pequeña puede tener efectos desproporcionados.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"Un viaje de mil li comienza con un paso". "El árbol que abraza varios brazos nació de un brote diminuto". La desproporción natural entre lo pequeño y lo grande.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 2:261: un grano produce siete espigas, cada una con cien granos. Sura 14:24-25: el buen árbol de raíz firme y ramas que llegan al cielo.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El árbol cósmico Ashvattha (Gita 15:1-4): raíces arriba, ramas abajo, acoge a todos los seres. El banyan que se extiende indefinidamente.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">Logoi spermatikoi: semillas de razón presentes en toda la realidad. Una semilla pequeña contiene la razón de todo el desarrollo posterior.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">Entelequia: cada ser tiene una potencialidad interna que lo lleva a su fin. El crecimiento es el paso de la potencia al acto.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">Mencius y las cuatro semillas: todos tenemos semillas de virtud que deben ser cultivadas. El hombre superior no desprecia lo pequeño.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 6: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Reino: realidad que crece desde lo pequeño</li>
+          <li>Crecimiento: obra de Dios, desproporcionada, orgánica</li>
+          <li>Semilla: Palabra del Reino, fe, comunidad</li>
+          <li>Desproporción: lo pequeño se convierte en refugio</li>
+          <li>Aves: símbolo de los pueblos y naciones</li>
+          <li>Acogida: el Reino como refugio universal</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Poder imponente o institución majestuosa</li>
+          <li>Esfuerzo humano, controlable, inmediato</li>
+          <li>Algo insignificante o sin valor</li>
+          <li>Proporción lógica o previsible</li>
+          <li>Solo pájaros literales</li>
+          <li>Exclusividad o gueto religioso</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#5a7a1a;"><strong>La grandeza del Reino no es la del poder, sino la de la acogida. No desprecies lo pequeño: Dios hace crecer lo que siembras.</strong></p>
+  </div>
+
+  <!-- FILA 7: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Desprecio los inicios pequeños o confío en el crecimiento?</div>
+      <div class="item">2. ¿Confío en que Dios hace crecer el Reino, o me angustio por los resultados?</div>
+      <div class="item">3. ¿Estoy dispuesto a ser una "mostaza" en lugar de un "cedro"?</div>
+      <div class="item">4. ¿Mi comunidad es un refugio para los que buscan cobijo, o un club exclusivo?</div>
+      <div class="item">5. ¿Reconozco que el Reino crece donde no lo espero?</div>
+      <div class="item">6. ¿Soy paciente con los procesos de crecimiento?</div>
+      <div class="item">7. ¿He sembrado algo pequeño que se ha convertido en grande?</div>
+      <div class="item">8. ¿Estoy dispuesto a que el Reino se desborde de mis límites?</div>
+      <div class="item">9. ¿Mi fe es una realidad que transforma el entorno, o solo una creencia privada?</div>
+      <div class="item">10. ¿Confío en que el Reino crecerá aunque no lo vea?</div>
+    </div>
+  </div>
+
+  <!-- FILA 8: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> No despreciar los pequeños gestos: el amor crece con el tiempo.</div>
+      <div class="app-item"><strong>Amistad</strong> Sembrar pequeños gestos de cuidado que se convierten en vínculos sólidos.</div>
+      <div class="app-item"><strong>Comunidad</strong> Ser un refugio para los que buscan cobijo, no un club exclusivo.</div>
+      <div class="app-item"><strong>Trabajo</strong> No despreciar los inicios humildes; confiar en el crecimiento.</div>
+      <div class="app-item"><strong>Vida interior</strong> Cultivar pequeños hábitos que transforman la vida.</div>
+      <div class="app-item"><strong>Sociedad</strong> Sembrar justicia y valores que transforman el entorno.</div>
+      <div class="app-item"><strong>Liderazgo</strong> No despreciar los pequeños comienzos; confiar en el proceso.</div>
+      <div class="app-item"><strong>Espiritual</strong> Confiar en que Dios hace crecer lo que sembramos.</div>
+      <div class="app-item"><strong>Crisis</strong> No desesperar por lo pequeño: el Reino crece en lo oculto.</div>
+      <div class="app-item"><strong>Evangelización</strong> Sembrar sin miedo; dejar a Dios el crecimiento.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “El Reino de Dios comienza como un grano de mostaza:<br>lo más pequeño, lo más humilde, lo más despreciado.”
+    <small>Pero crece de manera desproporcionada, se convierte en refugio para todos, y transforma el paisaje. La grandeza del Reino no es la del poder, sino la de la acogida. No desprecies lo pequeño: Dios hace crecer lo que siembras.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola del Grano de Mostaza (Mateo 13:31-32; Marcos 4:30-32; Lucas 13:18-19) · Bloque 1: El Reino de Dios · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>

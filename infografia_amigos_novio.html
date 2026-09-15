@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía: Los Amigos del Novio / El Ayuno / El Vino Nuevo</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.5cm;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.35;
+    font-size: 10pt;
+    padding: 0.4cm;
+  }
+
+  .infografia {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
+
+  /* CABECERA */
+  .header {
+    text-align: center;
+    border-bottom: 3px solid #7a3a6a;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-size: 19pt;
+    color: #7a3a6a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .header .subtitulo {
+    font-size: 11pt;
+    color: #a86a9a;
+    font-style: italic;
+  }
+  .header .referencia {
+    font-size: 9pt;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* GRID PRINCIPAL */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* TARJETAS */
+  .card {
+    border: 1.5px solid #e0c8dc;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #fdfafd;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: 11pt;
+    color: #7a3a6a;
+    border-bottom: 1.5px solid #ede0ea;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card h3 {
+    font-size: 9.5pt;
+    color: #9a5a8a;
+    margin: 5px 0 3px 0;
+  }
+
+  /* LISTAS */
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2.5px;
+    font-size: 9.5pt;
+  }
+  ul li::before {
+    content: "•";
+    position: absolute;
+    left: 2px;
+    color: #7a3a6a;
+    font-weight: bold;
+  }
+  ul.check li::before {
+    content: "✔";
+    color: #1a7a3a;
+    font-size: 8pt;
+  }
+  ul.cross li::before {
+    content: "✘";
+    color: #b02020;
+    font-size: 8pt;
+  }
+
+  /* TABLAS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-top: 4px;
+  }
+  th {
+    background: #7a3a6a;
+    color: #fff;
+    padding: 4px 6px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 9pt;
+  }
+  td {
+    padding: 3.5px 6px;
+    border-bottom: 1px solid #ede0ea;
+    vertical-align: top;
+  }
+  tr:nth-child(even) td {
+    background: #faf4f8;
+  }
+
+  /* LAS TRES IMÁGENES */
+  .imagenes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .imagen-card {
+    border-radius: 6px;
+    padding: 8px 8px;
+    text-align: center;
+  }
+  .esposo-card {
+    background: #fdf0dc;
+    border: 1.5px solid #d0a030;
+  }
+  .vestido-card {
+    background: #e8eef4;
+    border: 1.5px solid #8aa0b8;
+  }
+  .vino-card {
+    background: #f5e0e0;
+    border: 1.5px solid #c08080;
+  }
+  .imagen-card .icono {
+    font-size: 20pt;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .imagen-card h4 {
+    font-size: 9.5pt;
+    margin-bottom: 4px;
+  }
+  .esposo-card h4 { color: #8a5a00; }
+  .vestido-card h4 { color: #2a4a6a; }
+  .vino-card h4 { color: #8a3a3a; }
+  .imagen-card .cita {
+    font-size: 7.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.25;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .imagen-card .significado {
+    font-size: 7.5pt;
+    color: #555;
+    display: block;
+    line-height: 1.2;
+    padding-top: 3px;
+    border-top: 1px dashed #ccc;
+    text-align: left;
+  }
+
+  /* DIÁLOGO */
+  .dialogo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .dialogo-card {
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+  .pregunta-card {
+    background: #f5ead0;
+    border: 1.5px solid #d0b070;
+  }
+  .respuesta-card {
+    background: #e8f5e9;
+    border: 1.5px solid #a5d6a7;
+  }
+  .dialogo-card h4 {
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+  .pregunta-card h4 { color: #8a5a2a; }
+  .respuesta-card h4 { color: #1a7a3a; }
+  .dialogo-card .cita {
+    font-size: 8.5pt;
+    color: #444;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .dialogo-card .cita strong {
+    font-style: normal;
+  }
+
+  /* CONCLUSIÓN BOX */
+  .conclusion-box {
+    background: #fdf0dc;
+    border: 2px solid #c8a030;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    text-align: center;
+  }
+  .conclusion-box .titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #7a3a6a;
+    margin-bottom: 3px;
+  }
+  .conclusion-box .desc {
+    font-size: 8.5pt;
+    color: #444;
+    line-height: 1.3;
+  }
+
+  /* FILOSOFÍA */
+  .filosofia-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .filo-item {
+    border: 1px solid #e0c8dc;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background: #faf4f8;
+    text-align: center;
+  }
+  .filo-item .icono {
+    font-size: 14pt;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .filo-item .nombre {
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: #7a3a6a;
+    display: block;
+  }
+  .filo-item .aporte {
+    font-size: 7.5pt;
+    color: #444;
+    display: block;
+    margin-top: 2px;
+    line-height: 1.25;
+  }
+
+  /* CRITERIOS */
+  .criterios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .criterios-grid .item {
+    font-size: 9pt;
+    padding: 3px 6px;
+    background: #faf4f8;
+    border-left: 3px solid #7a3a6a;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* FRASE FINAL */
+  .frase-final {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #7a3a6a;
+    color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: 700;
+    line-height: 1.4;
+    break-inside: avoid;
+  }
+  .frase-final small {
+    display: block;
+    font-size: 8pt;
+    font-weight: 400;
+    margin-top: 4px;
+    opacity: 0.85;
+  }
+
+  /* APLICACIONES */
+  .aplicaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .app-item {
+    border: 1px solid #e0c8dc;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 7.5pt;
+    background: #faf4f8;
+  }
+  .app-item strong {
+    color: #7a3a6a;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  /* PIE */
+  .pie {
+    text-align: center;
+    font-size: 7.5pt;
+    color: #888;
+    margin-top: 8px;
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+
+  /* IMPRESIÓN */
+  @media print {
+    body {
+      padding: 0;
+      font-size: 9.5pt;
+    }
+    .infografia {
+      max-width: 100%;
+    }
+    .card {
+      background: #fff !important;
+    }
+    .header h1 { font-size: 17pt; }
+    .frase-final { background: #7a3a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    th { background: #7a3a6a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .criterios-grid .item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .filo-item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .app-item { background: #faf4f8 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .esposo-card { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .vestido-card { background: #e8eef4 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .vino-card { background: #f5e0e0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pregunta-card { background: #f5ead0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .respuesta-card { background: #e8f5e9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .conclusion-box { background: #fdf0dc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="infografia">
+
+  <!-- CABECERA -->
+  <div class="header">
+    <h1>Los Amigos del Novio · El Ayuno · El Vino Nuevo</h1>
+    <div class="subtitulo">La novedad del Reino y la alegría de la presencia del Esposo</div>
+    <div class="referencia">Mateo 9:14-17 · Marcos 2:18-22 · Lucas 5:33-39 · Documento de referencia y aplicación práctica</div>
+  </div>
+
+  <!-- FILA 1: RELATO + LO QUE NO ENSEÑA -->
+  <div class="grid-2">
+    <div class="card">
+      <h2>📖 El Relato</h2>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Los discípulos de Juan preguntan a Jesús: <em>"¿Por qué nosotros y los fariseos ayunamos muchas veces, y tus discípulos no ayunan?"</em>.</p>
+      <p style="font-size:9.5pt; margin-bottom:4px;">Jesús responde con <strong>tres imágenes</strong>:</p>
+      <ul style="font-size:9pt;">
+        <li><strong>El esposo:</strong> "¿Acaso pueden los que están de bodas tener luto entre tanto que el esposo está con ellos? Pero vendrán días cuando el esposo les será quitado, y entonces ayunarán".</li>
+        <li><strong>El paño nuevo:</strong> "Nadie pone remiendo de paño nuevo en vestido viejo; porque tal remiendo tira del vestido, y se hace peor la rotura".</li>
+        <li><strong>El vino nuevo:</strong> "Ni echan vino nuevo en odres viejos; de otra manera los odres se rompen... pero echan el vino nuevo en odres nuevos, y lo uno y lo otro se conservan".</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>🚫 Lo que NO enseña</h2>
+      <ul class="cross">
+        <li>No enseña que el <strong>ayuno</strong> sea malo: Jesús dice que sus discípulos ayunarán cuando el esposo sea quitado.</li>
+        <li>No enseña que el <strong>judaísmo</strong> sea malo y el cristianismo bueno: la parábola subraya la novedad, no la maldad de lo antiguo.</li>
+        <li>No enseña que la <strong>tradición</strong> sea siempre mala: tiene su valor; lo nuevo la cumple y la supera.</li>
+        <li>No enseña que Jesús rechace el <strong>ayuno</strong>: Él mismo ayunó cuarenta días en el desierto.</li>
+        <li>No enseña que los discípulos de Juan sean <strong>malos</strong>: ayunaban por devoción sincera.</li>
+        <li>No enseña que la <strong>alegría</strong> sea superficial: es la alegría profunda del Reino.</li>
+        <li>No enseña que el <strong>cambio</strong> sea fácil: la frase final de Lucas subraya la resistencia humana.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 2: LO QUE SÍ ENSEÑA -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>✅ Lo que SÍ enseña</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <ul class="check">
+        <li><strong>La presencia del esposo inaugura un tiempo de alegría:</strong> el ayuno es incompatible con la fiesta.</li>
+        <li><strong>El ayuno tiene su tiempo:</strong> el tiempo de la ausencia del esposo.</li>
+        <li><strong>Jesús es el esposo:</strong> su presencia es la presencia del Mesías.</li>
+        <li><strong>El Reino es nuevo y no puede contenerse en estructuras viejas.</strong></li>
+        <li><strong>Lo nuevo no se mezcla con lo viejo:</strong> el paño nuevo y el vino nuevo exigen estructuras nuevas.</li>
+        <li><strong>La novedad del Reino exige conversión.</strong></li>
+      </ul>
+      <ul class="check">
+        <li><strong>La resistencia al cambio es humana:</strong> "el añejo es mejor".</li>
+        <li><strong>La alegría del Reino es profunda:</strong> es la alegría de la presencia del Mesías.</li>
+        <li><strong>El Reino cumple y supera lo antiguo.</strong></li>
+        <li><strong>La presencia de Jesús transforma la vida.</strong></li>
+        <li><strong>La tradición sin apertura se vuelve estéril.</strong></li>
+        <li><strong>El Reino exige flexibilidad:</strong> odres nuevos para vino nuevo.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FILA 3: LAS TRES IMÁGENES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎨 Las tres imágenes: novedad, incompatibilidad y conversión</h2>
+    <div class="imagenes-grid">
+      <div class="imagen-card esposo-card">
+        <span class="icono">💍</span>
+        <h4>1. El esposo</h4>
+        <span class="cita">"¿Acaso pueden los que están de bodas tener luto entre tanto que el esposo está con ellos?"</span>
+        <span class="significado"><strong>Significado:</strong> La <strong>presencia</strong> del <strong>esposo</strong> (Jesús, el Mesías) inaugura un <strong>tiempo</strong> de <strong>alegría</strong>. El <strong>ayuno</strong> (signo de luto) es incompatible con la <strong>fiesta</strong> nupcial.</span>
+      </div>
+      <div class="imagen-card vestido-card">
+        <span class="icono">🧵</span>
+        <h4>2. El paño nuevo</h4>
+        <span class="cita">"Nadie pone remiendo de paño nuevo en vestido viejo; porque tal remiendo tira del vestido, y se hace peor la rotura."</span>
+        <span class="significado"><strong>Significado:</strong> El <strong>paño nuevo</strong> (el Evangelio) <strong>encoge</strong> y <strong>rompe</strong> el <strong>vestido viejo</strong> (las estructuras antiguas). La <strong>novedad</strong> del Reino <strong>no</strong> se <strong>mezcla</strong> con lo <strong>antiguo</strong>.</span>
+      </div>
+      <div class="imagen-card vino-card">
+        <span class="icono">🍷</span>
+        <h4>3. El vino nuevo</h4>
+        <span class="cita">"Ni echan vino nuevo en odres viejos; de otra manera los odres se rompen... pero echan el vino nuevo en odres nuevos."</span>
+        <span class="significado"><strong>Significado:</strong> El <strong>vino nuevo</strong> (la gracia) <strong>fermenta</strong> y <strong>rompe</strong> los <strong>odres viejos</strong> (los corazones endurecidos). La <strong>novedad</strong> exige <strong>estructuras nuevas</strong>: <strong>conversión</strong>.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 4: EL DIÁLOGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>💬 El diálogo: la pregunta de los discípulos de Juan y la respuesta de Jesús</h2>
+    <div class="dialogo-grid">
+      <div class="dialogo-card pregunta-card">
+        <h4>❓ La pregunta</h4>
+        <div class="cita">
+          <strong>"¿Por qué nosotros y los fariseos ayunamos muchas veces, y tus discípulos no ayunan?"</strong><br><br>
+          Los <strong>discípulos</strong> de <strong>Juan</strong> y los <strong>fariseos</strong> <strong>ayunaban</strong> con <strong>frecuencia</strong> como <strong>signo</strong> de <strong>penitencia</strong> y de <strong>espera</strong> del <strong>Mesías</strong>. La <strong>pregunta</strong> revela su <strong>incomprensión</strong> del <strong>tiempo</strong> <strong>presente</strong>.
+        </div>
+      </div>
+      <div class="dialogo-card respuesta-card">
+        <h4>✅ La respuesta</h4>
+        <div class="cita">
+          <strong>"¿Acaso pueden los que están de bodas tener luto entre tanto que el esposo está con ellos? Pero vendrán días cuando el esposo les será quitado, y entonces ayunarán."</strong><br><br>
+          La <strong>presencia</strong> de <strong>Jesús</strong> es la <strong>presencia</strong> del <strong>Mesías</strong>. El <strong>tiempo</strong> <strong>presente</strong> es un <strong>tiempo</strong> de <strong>alegría</strong>, no de <strong>luto</strong>. El <strong>ayuno</strong> tendrá su <strong>tiempo</strong>: el <strong>tiempo</strong> de la <strong>ausencia</strong> del <strong>esposo</strong>.
+        </div>
+      </div>
+    </div>
+    <div class="conclusion-box">
+      <div class="titulo">✨ La novedad del Reino: el vino nuevo exige odres nuevos</div>
+      <div class="desc">La <strong>parábola</strong> <strong>subraya</strong> la <strong>novedad</strong> <strong>radical</strong> del <strong>Reino</strong> <strong>inaugurado</strong> por <strong>Jesús</strong>. La <strong>presencia</strong> del <strong>esposo</strong> <strong>inaugura</strong> un <strong>tiempo</strong> de <strong>alegría</strong> y de <strong>fiesta</strong>; el <strong>ayuno</strong> ya <strong>no</strong> es <strong>apropiado</strong>. El <strong>Reino</strong> <strong>nuevo</strong> <strong>no</strong> puede <strong>ser</strong> <strong>contenido</strong> en las <strong>estructuras</strong> <strong>viejas</strong> del <strong>judaísmo</strong> <strong>fariseo</strong>. La <strong>novedad</strong> <strong>exige</strong> <strong>estructuras</strong> <strong>nuevas</strong>: <strong>corazones</strong> <strong>renovados</strong>, <strong>mentalidades</strong> <strong>nuevas</strong>, <strong>formas</strong> <strong>nuevas</strong> de <strong>vivir</strong> la <strong>fe</strong>. La <strong>conversión</strong> es la <strong>transformación</strong> <strong>interior</strong> que <strong>permite</strong> <strong>recibir</strong> el <strong>Reino</strong>.</div>
+    </div>
+  </div>
+
+  <!-- FILA 5: PALABRAS CLAVE DEL GRIEGO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔤 Palabras clave del original griego</h2>
+    <table>
+      <tr>
+        <th>Griego</th>
+        <th>Transliteración</th>
+        <th>Significado</th>
+        <th>Matiz</th>
+      </tr>
+      <tr>
+        <td>νηστεύω</td>
+        <td>nēsteuō</td>
+        <td>ayunar</td>
+        <td>El ayuno religioso. Los discípulos de Juan y los fariseos ayunaban.</td>
+      </tr>
+      <tr>
+        <td>νυμφών</td>
+        <td>nymphōn</td>
+        <td>cámara nupcial</td>
+        <td>La cámara nupcial donde se celebra la boda.</td>
+      </tr>
+      <tr>
+        <td>υἱοὶ τοῦ νυμφῶνος</td>
+        <td>huioi tou nymphōnos</td>
+        <td>hijos de la cámara nupcial</td>
+        <td>Los amigos íntimos del novio. Los que acompañan al novio durante la semana de bodas.</td>
+      </tr>
+      <tr>
+        <td>νυμφίος</td>
+        <td>nymphios</td>
+        <td>esposo, novio</td>
+        <td>El esposo. Símbolo del Mesías. Jesús se identifica con el esposo.</td>
+      </tr>
+      <tr>
+        <td>πένθος</td>
+        <td>penthos</td>
+        <td>luto, tristeza</td>
+        <td>El luto. El ayuno es signo de luto. El luto es incompatible con la fiesta nupcial.</td>
+      </tr>
+      <tr>
+        <td>ἀπαρθῇ</td>
+        <td>apairthē</td>
+        <td>sea quitado, sea llevado</td>
+        <td>El esposo será quitado. La imagen anticipa la muerte de Jesús.</td>
+      </tr>
+      <tr>
+        <td>ἐπιβάλλω</td>
+        <td>epiballō</td>
+        <td>echar, poner sobre</td>
+        <td>El verbo de poner el remiendo en el vestido.</td>
+      </tr>
+      <tr>
+        <td>ῥάκος</td>
+        <td>rhakos</td>
+        <td>remiendo, paño</td>
+        <td>El paño nuevo del remiendo. De aquí viene "raqueta" (raíz común).</td>
+      </tr>
+      <tr>
+        <td>ἄγναφος</td>
+        <td>agnaphos</td>
+        <td>nuevo, sin lavar</td>
+        <td>El paño nuevo sin lavar. El paño nuevo encoge al lavarse.</td>
+      </tr>
+      <tr>
+        <td>ἱμάτιον</td>
+        <td>himation</td>
+        <td>vestido, manto</td>
+        <td>El vestido viejo. La imagen de la tradición antigua.</td>
+      </tr>
+      <tr>
+        <td>παλαιός</td>
+        <td>palaios</td>
+        <td>viejo, antiguo</td>
+        <td>El vestido viejo. De aquí viene "paleontología".</td>
+      </tr>
+      <tr>
+        <td>σχίσμα</td>
+        <td>schisma</td>
+        <td>rotura, rasgadura</td>
+        <td>La rotura del vestido. De aquí viene "cisma" (división).</td>
+      </tr>
+      <tr>
+        <td>ἀσκός</td>
+        <td>askos</td>
+        <td>odre, cuero</td>
+        <td>El recipiente de cuero para el vino. Los odres viejos no resisten el vino nuevo.</td>
+      </tr>
+      <tr>
+        <td>οἶνος</td>
+        <td>oinos</td>
+        <td>vino</td>
+        <td>El vino nuevo. De aquí viene "enología" (estudio del vino).</td>
+      </tr>
+      <tr>
+        <td>νέος</td>
+        <td>neos</td>
+        <td>nuevo, joven</td>
+        <td>El vino nuevo. La novedad del Reino.</td>
+      </tr>
+      <tr>
+        <td>ῥήγνυσιν</td>
+        <td>rhēgnysin</td>
+        <td>rompe, rasga</td>
+        <td>El vino nuevo rompe los odres viejos.</td>
+      </tr>
+      <tr>
+        <td>ἐκχέω</td>
+        <td>ekcheō</td>
+        <td>derramar</td>
+        <td>El vino se derrama. La pérdida del vino nuevo.</td>
+      </tr>
+      <tr>
+        <td>ἀπόλλυμι</td>
+        <td>apollymi</td>
+        <td>perder, destruir</td>
+        <td>Los odres se pierden. La imagen de la pérdida.</td>
+      </tr>
+      <tr>
+        <td>βλητέον</td>
+        <td>blēteon</td>
+        <td>se ha de echar</td>
+        <td>El vino nuevo se ha de echar en odres nuevos.</td>
+      </tr>
+      <tr>
+        <td>χρηστός</td>
+        <td>chrēstos</td>
+        <td>bueno, agradable</td>
+        <td>El vino añejo es "bueno". De aquí viene "cristiano" (raíz común).</td>
+      </tr>
+      <tr>
+        <td>εὐθέως</td>
+        <td>eutheōs</td>
+        <td>en seguida, inmediatamente</td>
+        <td>El que bebe el añejo no quiere inmediatamente el nuevo.</td>
+      </tr>
+    </table>
+    <p style="font-size:8.5pt; margin-top:5px; color:#555;"><strong>La expresión <em>huioi tou nymphōnos</em> ("hijos de la cámara nupcial") designa a los amigos íntimos del novio, que lo acompañaban durante la semana de bodas. Y la palabra <em>nymphios</em> ("esposo") es clave: en el Antiguo Testamento, Dios es descrito como esposo de Israel (Isaías 62:5; Oseas 2:16-20). Jesús se identifica con el esposo: su presencia es la presencia del Mesías.</strong></p>
+  </div>
+
+  <!-- FILA 6: PARALELOS EN OTRAS TRADICIONES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🏛️ Paralelos en otras tradiciones</h2>
+    <div class="filosofia-grid">
+      <div class="filo-item">
+        <span class="icono">✡️</span>
+        <span class="nombre">Judaísmo</span>
+        <span class="aporte">Isaías 62:5: Dios como esposo. Oseas 2:16-20: el desposorio. Levítico 16: el ayuno del Yom Kipur. Talmud Berajot 17a: la alegría del sábado supera la tristeza del ayuno.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☸️</span>
+        <span class="nombre">Budismo</span>
+        <span class="aporte">El camino medio: el Buda descubrió que el extremo ascetismo no conduce a la iluminación. La alegría de la iluminación. El loto que brota del barro.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☯️</span>
+        <span class="nombre">Taoísmo</span>
+        <span class="aporte">"El Tao que puede ser nombrado no es el Tao eterno" (Tao 1): la verdad trasciende las formas. "El agua se adapta" (Tao 8). Wu wei: la novedad fluye sin forzar.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">☪️</span>
+        <span class="nombre">Islam</span>
+        <span class="aporte">Sura 2:183-185: el ayuno del Ramadán. Sura 2:286: Dios adapta la carga a la capacidad. Hadiz: el mejor es el que más beneficia a los demás.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🕉️</span>
+        <span class="nombre">Hinduismo</span>
+        <span class="aporte">El ayuno (upavāsa) como práctica espiritual. El karma yoga: acción desinteresada. La devoción (bhakti): la alegría de la relación con Dios supera la tristeza del ayuno.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">🏺</span>
+        <span class="nombre">Estoicismo</span>
+        <span class="aporte">La moderación (sōphrosynē) como virtud. La autosuficiencia (autarkeia): el sabio no depende de la comida para ser feliz. La alegría interior del sabio.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📐</span>
+        <span class="nombre">Aristotelismo</span>
+        <span class="aporte">El justo medio: la virtud entre dos extremos. La phrónesis: saber cuándo ayunar y cuándo festejar. La eudaimonia como fin último.</span>
+      </div>
+      <div class="filo-item">
+        <span class="icono">📿</span>
+        <span class="nombre">Confucianismo</span>
+        <span class="aporte">La rectitud (yi): el tiempo adecuado para cada cosa. La lealtad (zhōng) al esposo (Jesús). "El hombre superior entiende la rectitud".</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILA 7: DISTINCIONES CONCEPTUALES -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>⚖️ Distinciones conceptuales</h2>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div style="background:#e8f5e9; border:1.5px solid #a5d6a7; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#1a7a3a; font-size:10pt; margin-bottom:4px; text-align:center;">✔ Lo que la parábola afirma</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Ayuno: práctica con tiempo y lugar</li>
+          <li>Fiesta: tiempo de alegría por la presencia del esposo</li>
+          <li>Esposo: Jesús, el Mesías</li>
+          <li>Paño nuevo: novedad del Reino</li>
+          <li>Vino nuevo: gracia, Evangelio</li>
+          <li>Odres nuevos: corazones renovados</li>
+          <li>Novedad: cumplimiento y superación de lo antiguo</li>
+          <li>Alegría: signo de la presencia de Dios</li>
+        </ul>
+      </div>
+      <div style="background:#fdecea; border:1.5px solid #ef9a9a; border-radius:5px; padding:6px 8px;">
+        <h3 style="color:#b02020; font-size:10pt; margin-bottom:4px; text-align:center;">✘ Lo que la parábola niega</h3>
+        <ul style="font-size:8.5pt;">
+          <li>Obligación absoluta o práctica inútil</li>
+          <li>Indulgencia superficial</li>
+          <li>Un maestro más</li>
+          <li>Tradición sin renovación</li>
+          <li>Doctrina antigua</li>
+          <li>Estructuras rígidas</li>
+          <li>Ruptura total con el pasado</li>
+          <li>Superficialidad</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:8.5pt; margin-top:5px; text-align:center; color:#7a3a6a;"><strong>La presencia del esposo inaugura un tiempo de alegría. El ayuno tiene su tiempo. Jesús es el esposo, el Mesías. El Reino es nuevo y no puede contenerse en estructuras viejas. La novedad del Reino exige conversión. La resistencia al cambio es humana. El Reino cumple y supera lo antiguo.</strong></p>
+  </div>
+
+  <!-- FILA 8: CRITERIOS DE DISCERNIMIENTO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🔍 Criterios de discernimiento</h2>
+    <div class="criterios-grid">
+      <div class="item">1. ¿Reconozco a Jesús como el <strong>Esposo</strong> o solo como un maestro?</div>
+      <div class="item">2. ¿Vivo la <strong>alegría</strong> del Reino o solo la tristeza del ayuno?</div>
+      <div class="item">3. ¿Reconozco que hay <strong>tiempo</strong> para todo: para ayunar y para festejar?</div>
+      <div class="item">4. ¿Soy un <strong>odre nuevo</strong> o un odre viejo?</div>
+      <div class="item">5. ¿Mi <strong>corazón</strong> está renovado o endurecido?</div>
+      <div class="item">6. ¿<strong>Recibo</strong> el vino nuevo del Evangelio?</div>
+      <div class="item">7. ¿Me <strong>resisto</strong> al cambio que Dios quiere hacer en mi vida?</div>
+      <div class="item">8. ¿Mi <strong>tradición</strong> es viva o estéril?</div>
+      <div class="item">9. ¿Soy <strong>flexible</strong> a la novedad del Espíritu?</div>
+      <div class="item">10. ¿Vivo con la <strong>alegría</strong> del Reino?</div>
+    </div>
+  </div>
+
+  <!-- FILA 9: APLICACIONES POR ÁMBITO -->
+  <div class="card" style="margin-bottom:10px;">
+    <h2>🎯 Aplicaciones prácticas por ámbito</h2>
+    <div class="aplicaciones-grid">
+      <div class="app-item"><strong>Familia</strong> Vivir la alegría del Reino en el hogar; no imponer el ayuno fuera de tiempo.</div>
+      <div class="app-item"><strong>Amistad</strong> Compartir la alegría del Evangelio; no imponer tradiciones antiguas.</div>
+      <div class="app-item"><strong>Comunidad</strong> Crear una cultura de <strong>alegría</strong> y de apertura a la novedad del Espíritu.</div>
+      <div class="app-item"><strong>Trabajo</strong> Ser flexible a los cambios; no aferrarse a lo antiguo.</div>
+      <div class="app-item"><strong>Vida interior</strong> Examinar si soy un <strong>odre nuevo</strong> o un odre viejo.</div>
+      <div class="app-item"><strong>Sociedad</strong> Recibir la novedad del Reino con alegría.</div>
+      <div class="app-item"><strong>Liderazgo</strong> Liderar con alegría y con apertura a la novedad.</div>
+      <div class="app-item"><strong>Espiritual</strong> Vivir la alegría del Reino; practicar el ayuno con sabiduría.</div>
+      <div class="app-item"><strong>Crisis</strong> No aferrarse a lo antiguo; confiar en la novedad de Dios.</div>
+      <div class="app-item"><strong>Evangelización</strong> Anunciar el Evangelio con alegría y novedad.</div>
+    </div>
+  </div>
+
+  <!-- FRASE FINAL -->
+  <div class="frase-final">
+    “¿Acaso pueden los que están de bodas tener luto<br>entre tanto que el esposo está con ellos?”
+    <small>La presencia del esposo inaugura un tiempo de alegría. El ayuno tiene su tiempo: el tiempo de la ausencia del esposo. Jesús es el esposo, el Mesías. El Reino es nuevo y no puede contenerse en estructuras viejas. El paño nuevo no se mezcla con el vestido viejo; el vino nuevo no se echa en odres viejos. La novedad del Reino exige conversión. La resistencia al cambio es humana. La alegría del Reino es profunda. El Reino cumple y supera lo antiguo. El Reino exige flexibilidad.</small>
+  </div>
+
+  <div class="pie">
+    Infografía de referencia · Parábola de los Amigos del Novio / El Ayuno / El Vino Nuevo (Mateo 9:14-17; Marcos 2:18-22; Lucas 5:33-39) · Bloque 7: El juicio y las consecuencias · Para uso personal, docente o pastoral
+  </div>
+
+</div>
+
+</body>
+</html>
